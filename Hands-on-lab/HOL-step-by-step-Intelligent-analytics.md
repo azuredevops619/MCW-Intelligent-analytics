@@ -174,21 +174,27 @@ If you are already connected to your Lab VM, skip to Step 6.
 
 ### Task 2: Download and open the ConciergePlus starter solution
 
-1.  From your Lab VM, download the starter project by copying and pasting the URL, <http://bit.ly/2wMsqW4>, into a web browser.
+1.  From your Lab VM, download the starter project by downloading a .zip copy of the Intelligent analytics GitHub repo.
 
-2.  Unzip the contents of the downloaded ZIP file to the folder **C:\\ConciergePlus**\\.
+2.  In a web browser, navigate to the [Intelligent analytics MCW repo](https://github.com/Microsoft/MCW-Intelligent-analytics).
+
+3.  On the repo page, select **Clone or download**, then select **Download ZIP**.
+
+    ![Download .zip containing the Intelligent analytics repository](media/git-hub-download-repo.png "Download ZIP")
+
+4.  Unzip the contents of the downloaded ZIP file to the folder **C:\\ConciergePlus**\\.
 
     ![In the Extract Compressed (Zipped) Folders window, files will be extracted to C:\ConciergePlus.](media/image18.png 'Extract Compressed (Zipped) Folders window')
 
-3.  Open **ConciergePlusSentiment.sln** with Visual Studio 2017.
+5.  Open **ConciergePlusSentiment.sln** in the C:\\ConciergePlus\\Hands-on-lab\\lab-files\\starter-project\\ folder with Visual Studio 2017.
 
-4.  Sign in to Visual Studio or select create account, if prompted.
+6.  Sign in to Visual Studio or select create account, if prompted.
 
-5.  If presented with the Start with a familiar environment dialog, select Visual C\# from the Development Settings drop down list, and select Start Visual Studio.
+7.  If presented with the Start with a familiar environment dialog, select Visual C\# from the Development Settings drop down list, and select Start Visual Studio.
 
     ![Development Settings are set to Visual C# and are circled in the Visual Studio Start with a familiar environment dialog box.](media/image19.png 'Visual Studio Start with a familiar environment dialog box')
 
-6.  If the Security Warning window appears, uncheck Ask me for every project in this solution, and select OK.
+8.  If the Security Warning window appears, uncheck Ask me for every project in this solution, and select OK.
 
     ![In the Security Warning window, under the Would you like to open this project? prompt, the Ask me for every project in this solution checkbox is circled.](media/image20.png 'Security Warning window')
 
