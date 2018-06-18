@@ -1,16 +1,4 @@
-![](images/HeaderPic.png 'Microsoft Cloud Workshops')
-
-<div class="MCWHeader1">
-Intelligent analytics
-</div>
-
-<div class="MCWHeader2">
-Hands-on lab step-by-step
-</div>
-
-<div class="MCWHeader3">
-March 2018
-</div>
+![](../media/ms-cloud-workshop.png 'Microsoft Cloud Workshops')
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
@@ -21,11 +9,20 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
+# Intelligent analytics hands-on lab step-by-step
+
+Updated May 2018
+
+Adventure Works Travel specializes in building software solutions for the hospitality industry. Their latest product is an enterprise mobile/social chat product called Concierge+ (aka ConciergePlus). The mobile web app enables guests to easily stay in touch with the concierge and other guests, enabling greater personalization and improving their experience during their stay. Sentiment analysis is performed on top of chat messages as they occur, enabling hotel operators to keep tabs on guest sentiments in real-time.
+
+If you have not yet completed the steps to set up your environment in [Before the hands-on lab](./Setup.md), you will need to do that before proceeding.
+
 **Contents**
 
 <!-- TOC -->
 
 - [Intelligent analytics hands-on lab step-by-step](#intelligent-analytics-hands-on-lab-step-by-step)
+- [Intelligent analytics hands-on lab step-by-step](#intelligent-analytics-hands-on-lab-step-by-step-1)
   - [Abstract and learning objectives](#abstract-and-learning-objectives)
   - [Overview](#overview)
   - [Solution architecture](#solution-architecture)
@@ -76,6 +73,10 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
     - [Task 3: Update the Web App web.config](#task-3-update-the-web-app-webconfig)
     - [Task 4: Configure the Search API App](#task-4-configure-the-search-api-app)
     - [Task 5: Re-publish apps](#task-5-re-publish-apps)
+  - [Exercise 8: Add a bot using Bot service and QnA Maker](#exercise-8-add-a-bot-using-bot-service-and-qna-maker)
+    - [Task 1: Create a QnA service instance in Azure](#task-1-create-a-qna-service-instance-in-azure)
+    - [Task 2: Create a QnA bot](#task-2-create-a-qna-bot)
+    - [Task 3: Embed the bot into your web app](#task-3-embed-the-bot-into-your-web-app)
   - [After the hands-on lab](#after-the-hands-on-lab)
     - [Task 1: Delete the resource group](#task-1-delete-the-resource-group)
 
@@ -1720,6 +1721,171 @@ Before going further, a good thing to check is whether messages are being writte
 8.  Navigate to the Search tab on the deployed Web App and try searching for chat messages. (Note that there is up to a 5-minute latency before new messages may appear in the search results.
 
     ![In the Search Messages box, in the Search messages for text box, chat is typed. Below that, 6 results have been found.](media/image182.png 'Search Messages box')
+
+## Exercise 8: Add a bot using Bot service and QnA Maker
+
+Duration: 30 minutes
+
+At this point, you have created a real-time chat service in Azure, allowing people to interact with one another. Now we will build a bot that will automatically respond to user questions, helping take the load off the hotel staff.
+
+### Task 1: Create a QnA service instance in Azure
+
+Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content to build and train a simple question and answer bot that responds to users in a natural, conversational way.
+
+1.  In a new web browser window, navigate to <https://www.qnamaker.ai>.
+
+2.  On the home page, select **Sign In** on the top of the page. Sign in with the same credentials you use for the Azure portal.
+
+    ![Microsoft QnA Maker home page](media/qna-maker-home.png "QnA Maker home page")
+
+3.  Select **Create a knowledge base**.
+
+    ![Select create a knowledge base](media/qna-maker-create-kb-link.png "Select create a knowledge base")
+
+4.  Within the knowledge base creation page, select **Create a QnA service** under Step 1.
+
+    ![Select Create a QnA service](media/qna-maker-create-service.png "Knowledge base creation page")
+
+5.  Within the Create QnA Maker blade, provide the following:
+
+    - Name: Provide a **unique name** for the QnA Maker Service (e.g., awhotel-qna).
+
+    - Subscription: Choose the same subscription you used previously.
+
+    - Management pricing tier: Choose **F0**.
+
+    - Resource Group: Choose the **intelligent-analytics** resource group.
+
+    - Search pricing tier: Choose **F**.
+
+    - Search location: Choose the **same location** you used previously. If the region you've been using isn't available, select a different location for this resource.
+
+    - App name: Provide a **unique name** for the QnA Maker Service (e.g., awhotel-qna).
+
+    - Website location: Choose the **same location** you used previously. If the region you've been using isn't available, select a different location for this resource.
+
+    - App insights: Select **Disable**.
+
+    ![QnA Maker form](media/create-qna-maker.png "Create QnA Maker")
+
+6.  Select **Create**.
+
+7.  Once the service has been created, switch back to the browser tab with the QnA Maker knowledge base creation page and refresh the page.
+
+8.  Underneath Step 2, select your Microsoft Azure Directory ID under which you created the QnA Maker service, select the Azure subscription name, and finally select the **Azure QnA service**.
+
+    ![Connect your QnA service to your KB](media/qna-maker-connect-qna-service.png "Azure QnA service")
+
+9.  Underneath Step 3 (Name your KB), provide a unique name, such as "Concierge Plus".
+
+10. Underneath Step 4 (Populate your KB), select **+ Add file**. [Download this file](lab-files/faq.xlsx) and select it from the file browser.
+
+    ![Select Add file](media/create-qna-maker-add-file.png "Knowledge base creation page")
+
+11. Finally, underneath Step 5 (Create your KB), select **Create your KB**.
+
+    ![The uploaded file is highlighted. Select Create your KB.](media/qna-maker-create-kb.png "Knowledge base creation page")
+
+12. When the KB is being created, you will see the popup window. It takes a few minutes for the extraction process to read the Excel document and identify questions and answers.
+
+13. Once the KB is successfully created, it opens the 'Knowledge Base' page where you can edit the contents of the knowledge base.
+
+14. Select **Add QnA pair** in the top right to add a new row in the Editorial section of the Knowledge Base. Enter 'Hi' into the 'Question' field and 'Hello. Ask me questions about the hotel.' into the 'Answer' field of the new row you created.
+
+    ![Select Add QnA pair, then enter original content](media/qna-maker-created-kb.png "Knowledge base")
+
+15. Select **Save and train** on top of the page. This will save your changes and train the bot how to respond to questions, given the information you imported.
+
+16. Once your changes have been saved, select **Test** at the top of the page. Try typing 'hi there' and press enter. You should see the 'Hello. Ask me questions about the hotel.' response. Experiment with asking different questions.
+
+    ![Screenshot showing testing the QnA maker](media/qna-maker-test.png "QnA Maker Test")
+
+17. Select **Inspect** underneath one of your test questions. The Inspect pane will appear, showing the question you typed, the answer, and a confidence score. This pane provides you an easy way to add alternate phrasing or change the answer.
+
+    ![Screenshot of the Inspect pane](media/qna-maker-inspect.png "QnA Maker Inspect")
+
+18. Select **Publish** on top of the page. In the publish page that appears, select the **Publish** button.
+
+    ![Screenshot of the Publish page](media/qna-maker-publish.png "QnA Maker Publish")
+
+19. The Success page that appears after publishing contains important information you will need to interact with your bot. Review the screenshot below to see where to find the **Knowledge base ID**, **Endpoint HostName**, and **Auth Key**:
+
+    ![](media/qna-maker-success.png)
+
+20. **Save these three values** to notepad or similar text editor.
+
+### Task 2: Create a QnA bot
+
+1.  In the Azure portal, select **Create new resource** in the menu blade, and then select **See all**.
+
+    ![Select Create new resource](media/azure-portal-create-resource.png "Azure Portal create new resource")
+
+2.  In the search box, search for **Functions Bot**.
+
+    ![Search for Functions Bot](media/azure-portal-functions-bot-search.png "Azure Portal search")
+
+3.  Select **Create**.
+
+4.  Provide the following information in the Functions Bot creation blade:
+
+    - Set App name to your bot's name. The name is used as the subdomain when your bot is deployed to the cloud (for example, concierge-plus-bot.azurewebsites.net).
+
+    - Select the subscription, resource group, App service plan, and location.
+
+    - Select the Question and Answer (C#) template for the Bot template field.
+
+    ![Complete the Functions Bot creation blade](media/azure-portal-create-functions-bot.png "Azure Portal create Functions Bot")
+
+5.  Select **Create**.
+
+6.  After the Function Bot has been created, navigate to it within Resource Manager.
+
+7.  Select **Application Settings** from the left-hand menu.
+
+8.  Paste the values you copied at the end of the previous task into the **QnAAuthKey**, **QnAEndpointHostName**, and **QnAKnowledgebaseId** settings, then select **Save**.
+
+    ![Provide values for QnAAuthKey, QnAEndpointHostName, and QnAKnowledgebaseId](media/function-bot-app-settings.png "Application Settings")
+
+9.  Test out the bot by selecting **Test in Web Chat** on the left-hand menu (it make take a couple minutes to appear the first time). Type in a few questions to make sure it responds as expected.
+
+    ![Type in a few questions to test the bot](media/function-bot-test.png "Function Bot Test")
+
+10. Select **Settings** from the left-hand menu. Change the display name to something like "Concierge+ Bot", then select **Save**.
+
+    ![Change the display name for the bot](media/function-bot-settings.png "Function Bot Settings")
+
+11. Select **Channels** from the left-hand menu, then select **Get bot embed codes** underneath the Web Chat channel.
+
+    ![Select Get bot embed codes](media/function-bot-channels.png "Function Bot Channels")
+
+12. A dialog will appear for the embed codes. Select the **Click here to open the Web Chat configuration page** option.
+
+13. Select **Copy** underneath the Embed code. Paste that value to notepad or other text application. Select **Show** underneath the first Secret key. Copy the value and replace YOUR_SECRET_HERE within the embed code with that secret value. Example: `<iframe src='https://webchat.botframework.com/embed/concierge-plus-bot?s=XEYx9upcGtc.cwA.Ku8.hAL6pCxFWfxIjOE9WM48qxkPNtsy4BkT_LST5y0FxEQ'></iframe>`.
+
+    ![Copy the embed code and secret key](media/function-bot-embed.png "Function Bot Embed")
+
+### Task 3: Embed the bot into your web app
+
+1.  Open Visual Studio and open **Bot.cshtml** located within the Views\Home folder of the **ChatWebApp**.
+
+    ![Open Bot.cshtml](media/vs-bot.png "Visual Studio")
+
+2.  Find `<!-- PASTE YOUR BOT EMBED CODE HERE -->` within the page and paste your iframe embed code on a new line beneath.
+
+3.  Modify the iframe code to add `width` and `height` values. The iframe code should look like:
+
+    ```html
+    <!-- PASTE YOUR BOT EMBED CODE HERE -->
+    <iframe width="100%" height="300" src='YOUR_SOURCE'></iframe>
+    ```
+
+    ![Bot.cshtml page with embed code](media/vs-bot-embed.png "Visual Studio")
+
+4.  **Publish** your web app.
+
+5.  After the web app has been published, navigate to it and select the **Bot** menu item. Type in a few questions to ensure the bot is functioning correctly.
+
+    ![Type in a few questions on the bot page](media/bot-service-embedded.png "Bot page")
 
 ## After the hands-on lab
 
