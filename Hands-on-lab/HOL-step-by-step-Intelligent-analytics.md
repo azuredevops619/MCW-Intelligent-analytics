@@ -117,15 +117,15 @@ Below are diagrams of the solution architecture you will build in this lab. Plea
 
 Duration: 60 minutes
 
-Synopsis: The following section walks you through the manual steps to provision the services required using the Azure Portal. Adventure Works has provided a starter solution for you. They have asked you to use this as the starting point for creating the Concierge Plus intelligent chat solution in Azure.
+Synopsis: The following section walks you through the manual steps to provision the services required in the [Azure portal](https://portal.azure.com). Adventure Works has provided a starter solution for you. They have asked you to use this as the starting point for creating the Concierge Plus intelligent chat solution in Azure.
 
 ### Task 1: Connect to the lab VM
 
 If you are already connected to your Lab VM, skip to Step 6.
 
-1. Navigate to the Azure portal, and select Resource groups from the left-hand menu, then enter intelligent-analytics into the filter box, and select the resource group from the list.
+1. In the [Azure portal](https://portal.azure.com), and select Resource groups from the left-hand menu, then enter intelligent-analytics into the filter box, and select the resource group from the list.
 
-    ![In the Azure Portal Resource groups pane, intelligent-analytics is typed in the Subscriptions search field. Under Name, intelligent-analytics is circled.](media/image10.png 'Azure Portal Resource groups')
+    ![In the Azure portal, the Resource groups pane is highlighted, intelligent-analytics is typed in the Subscriptions search field. Under Name, intelligent-analytics is circled.](media/image10.png 'Azure Portal Resource groups')
 
 2. Next, select **LabVM** from the list of available resources.
 
@@ -201,7 +201,7 @@ In these steps, you will provision a Web App and an API App within a single App 
 
 2. Select +Create a resource, then select Web + Mobile, and finally select Web App.
 
-    ![Under the Azure Marketplace in the Azure Portal, New pane, Web + Mobile is selected. Under Featured, Web App (Quickstart tutorial) is circled.](media/image21.png 'Azure Markeplace create a resource')
+    ![Under the Azure Marketplace In the Azure portal, New pane, Web + Mobile is selected. Under Featured, Web App (Quickstart tutorial) is circled.](media/image21.png 'Azure Markeplace create a resource')
 
 3. On the Create Web App blade, enter the following:
 
@@ -223,7 +223,7 @@ In these steps, you will provision a Web App and an API App within a single App 
 
 4. When provisioning completes, navigate to your new Web App in the portal by clicking on **App Services**, and then selecting your web app.
 
-    ![In the Azure Portal, in the App Services pane, under Name, conciergepluschatapp has a status of running, and is circled.](media/image23.png 'Azure Portal, App Services pane')
+    ![In the Azure portal, in the App Services pane, under Name, conciergepluschatapp has a status of running, and is circled.](media/image23.png 'Azure Portal, App Services pane')
 
 5. On the App Service blade, select **Application settings**.
 
@@ -293,7 +293,7 @@ In this section, you will provision a Function App that will be used as the Even
 
 In this section, you will provision a Service Bus Namespace and Service Bus Topic.
 
-1. Continuing within the Azure Portal, select **+Create a resource**.
+1. Continuing in the [Azure portal](https://portal.azure.com), select **+Create a resource**.
 
 2. Select **Enterprise Integration**, then select **Service Bus**.
 
@@ -317,7 +317,7 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
 5. Once provisioning completes, navigate to your new Service Bus in the portal by clicking on Resource Groups in the left menu, the selecting intelligent-analytics, and selecting your Service Bus.
 
-    ![In the Azure Portal Resource Groups pane, under Name, the awhotel-namespace-1 Service bus is circled.](media/image33.png 'Azure Portal Resource Groups')
+    ![In the Azure portal, Resource Groups pane, under Name, the awhotel-namespace-1 Service bus is circled.](media/image33.png 'Azure Portal Resource Groups')
 
 6. On the Overview blade, click on Topic under Entities on the left-hand side of the blade.
 
@@ -341,20 +341,26 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
 9. Select **Create**.
 
-10. 
+10. Next, select **Queues** under Entities on the left-hand menu, and then select **+Queue**.
 
-10. Repeat steps 7 - 9, to create additional topics with the following names:
+11. In the Create queue dialog, enter the following:
 
-    - **Name**: awhotel-guest-notifications
     - **Name**: awhotel-staff-notifications
+    - **Max topic size**: Leave set to 1 GB
+    - **Message time to live**: Set to 1 day
+    - **Enable partitioning**: Uncheck this checkbox
+
+        ![On the Create queue dialog, awhotel-staff-notifications is entered into the Name field, Message time to live is set to 1 day, and Enable partitioning is unchecked.](media/logic-app-create-queue.png "Create queue")
+
+12. Select **Create**.
 
 ### Task 6: Provision Event Hubs
 
 In this task, you will create a new Event Hubs namespace and instance.
 
-1. In the Azure Portal, select **+Create a resource**, then select **Internet of Things**, and select **Event Hubs**.
+1. In the [Azure portal](https://portal.azure.com), select **+Create a resource**, then select **Internet of Things**, and select **Event Hubs**.
 
-    ![In the Azure Portal, New pane, Internet of Things and Event Hubs (learn more) are both circled.](media/image37.png 'New event hub')
+    ![In the Azure portal, New pane, Internet of Things and Event Hubs (learn more) are both circled.](media/image37.png 'New event hub')
 
 2. On the Create namespace blade enter the following:
 
@@ -406,9 +412,9 @@ In this task, you will create a new Event Hubs namespace and instance.
 
 In this section, you will provision an Azure Cosmos DB account, a DocumentDB Database, and a DocumentDB collection that will be used to collect all the chat messages.
 
-1. In the Azure Portal, select +Create a resource, Databases, then select Azure Cosmos DB.
+1. In the [Azure portal](https://portal.azure.com), select +Create a resource, Databases, then select Azure Cosmos DB.
 
-    ![In the Azure Portal, New pane, both Databases and Azure Cosmos DB (Quickstart tutorial) are circled.](media/image42.png 'Azure portal new databases')
+    ![In the Azure portal, New pane, both Databases and Azure Cosmos DB (Quickstart tutorial) are circled.](media/image42.png 'Azure portal new databases')
 
 2. On the Azure Cosmos DB blade, enter the following:
 
@@ -432,7 +438,7 @@ In this section, you will provision an Azure Cosmos DB account, a DocumentDB Dat
 
 4. Select the Overview blade, then select **+Add Collection**.
 
-    ![In the Azure Portal, Azure Cosmos DB account blade, the Add Collection button is circled.](media/image44.png 'Azure Portal, Azure Cosmos DB account')
+    ![In the Azure portal, Azure Cosmos DB account blade, the Add Collection button is circled.](media/image44.png 'Azure Portal, Azure Cosmos DB account')
 
 5. On the Add Collection blade, enter the following:
 
@@ -466,7 +472,7 @@ In this section, you will create an Azure Search instance.
 
 1. Select **+Create a resource, Web + Mobile**, the select **Azure Search**.
 
-    ![In the Azure Portal, New pane, Web + Mobile and Azure Search (Learn More) are circled.](media/image46.png 'Azure Search create a reource')
+    ![In the Azure portal, New pane, Web + Mobile and Azure Search (Learn More) are circled.](media/image46.png 'Azure Search create a reource')
 
 2. On the New Search Service blade, enter the following:
 
@@ -490,7 +496,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
 1. Select **+Create a resource, Data + Analytics**, the select **Stream Analytics** **job**.
 
-    ![In the Azure Portal, New pane, Data + Analytics and Stream Analytics job (Learn more) are circled.](media/image48.png 'Azure create a stream analytics job')
+    ![In the Azure portal, New pane, Data + Analytics and Stream Analytics job (Learn more) are circled.](media/image48.png 'Azure create a stream analytics job')
 
 2. On the New Stream Analytics Job blade, enter the following:
 
@@ -510,7 +516,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
 3. When provisioning completes, navigate to your new Stream Analytics job in the portal by selecting Resource Groups in the left menu, and selecting intelligent-analytics, then selecting your Stream Analytics Job.
 
-    ![In the Azure Portal Resource Groups pane, under Name, the MessageLogger Stream Analytics job is circled.](media/image50.png 'Azure Portal Resource Groups pane')
+    ![In the Azure portal Resource Groups pane, under Name, the MessageLogger Stream Analytics job is circled.](media/image50.png 'Azure Portal Resource Groups pane')
 
 4. Select **Inputs** on the left-hand menu, under Job Topology.
 
@@ -684,7 +690,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
 1. Navigate to your Stream Analytics job in the portal by selecting Resource Groups in the left menu, and selecting intelligent-analytics, then selecting your Stream Analytics Job.
 
-    ![In the Azure Portal, in the Resource Groups pane, under Name, the MessageLogger Stream Analytics Job is circled.](media/image50.png 'Azure Portal, Resource Groups pane')
+    ![In the Azure portal, in the Resource Groups pane, under Name, the MessageLogger Stream Analytics Job is circled.](media/image50.png 'Azure Portal, Resource Groups pane')
 
 2. From the Overview blade, select **Start**.
 
@@ -704,9 +710,9 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
 The EventProcessorHost requires an Azure Storage Account that it will use to manage its state among multiple instances. In this section, you create that Storage Account.
 
-1. Using the Azure Portal, select **+Create a resource, Storage, the select Storage account -- blob, file, table, queue.**
+1. In the [Azure portal](https://portal.azure.com), select **+Create a resource, Storage, the select Storage account -- blob, file, table, queue.**
 
-    ![In the Azure Portal, in the New pane, Storage, and Storage account - blob, file, table queue (Quickstart tutorial) are circled.](media/image65.png 'Azure new storage account')
+    ![In the Azure portal, in the New pane, Storage, and Storage account - blob, file, table queue (Quickstart tutorial) are circled.](media/image65.png 'Azure new storage account')
 
 2. In the Create storage account blade, enter the following:
 
@@ -738,7 +744,7 @@ The EventProcessorHost requires an Azure Storage Account that it will use to man
 
 To provision access to the Text Analytics API (which provides sentiment analysis features), you will need to provision a Cognitive Services account.
 
-1. In the Azure Portal, select +Create a resource, then AI + Cognitive Services, Text Analytics API.
+1. In the [Azure portal](https://portal.azure.com), select +Create a resource, then AI + Cognitive Services, Text Analytics API.
 
     ![The New Azure Resource menu is shown, after clicking AI + Congnitive Services and then Text Analytics API.](media/image67.png 'New Azure resource AI + Cognitive Services')
 
@@ -863,7 +869,7 @@ In this section, you will implement the message forwarding from the ingest Event
 
 ### Task 2: Configure the Chat Message Processor Function App
 
-1. Navigate to your Function App in the Azure portal. You can find it by opening your intelligent-analytics Resource Group and looking through the list of resources.
+1. Navigate to your Function App in the [Azure portal](https://portal.azure.com). You can find it by opening your intelligent-analytics Resource Group and looking through the list of resources.
 
 2. Select **Application settings** in the Overview blade of the Function App.
 
@@ -887,7 +893,7 @@ In this section, you will implement the message forwarding from the ingest Event
 
 The connection string required by the ChatMessageSentimentProcessor is different from the typical Event Hub consumer, because not only does it need Listen permissions, but it also needs Send and Manage permissions on the Service Bus Namespace (because it receives messages, as well as creates Subscriptions).
 
-1. To get the eventHubConnectionString, navigate to the Event Hub namespace in the Azure Portal by selecting Resource Groups on the left menu, then selecting the intelligent-analytics resource group, and selecting your Event Hub from the list of resources.
+1. To get the eventHubConnectionString, navigate to the Event Hub namespace in the [Azure portal](https://portal.azure.com) by selecting Resource Groups on the left menu, then selecting the intelligent-analytics resource group, and selecting your Event Hub from the list of resources.
 
     ![In the Name section of the Resource Groups pane, the awhotel-events-namespace Event Hub is circled.](media/image39.png 'Azure Portal, Resource Groups pane')
 
@@ -907,7 +913,7 @@ The connection string required by the ChatMessageSentimentProcessor is different
 
     ![Two panes display: Shared access policies, and SAS Policy: Chat Console. In the Shared access policies pane, ChatConsole is selected. In the SAS Policy: ChatConsole pane, the Connection string-primary key is circled.](media/image80.png 'Shared access policies, and SAS Policy: Chat Console panes')
 
-7. Return to the **Application Settings** for the Function App in the Azure portal. Select **+ Add new setting** at the bottom of the Application settings section.
+7. Return to the **Application Settings** for the Function App in the [Azure portal](https://portal.azure.com). Select **+ Add new setting** at the bottom of the Application settings section.
 
     ![Select Add new setting](media/function-app-add-new-setting.png "Application settings")
 
@@ -944,7 +950,7 @@ Your storage accounts can be found by going to the intelligent-analytics resourc
 
 The namespace, and therefore connection string, for the service bus is different from the one for the event hub. As we did for the event hub, we need to create a shared access policy to allow the ChatMessageSentimentProcessorFunction Manage, Send, and Listen permissions.
 
-1. To get the **serviceBusConnectionString**, navigate to the **Service Bus namespace** in the Azure Portal.
+1. To get the **serviceBusConnectionString**, navigate to the **Service Bus namespace** in the [Azure portal](https://portal.azure.com).
 
 2. Select **Shared access policies** within the left menu, under Settings.
 
@@ -976,9 +982,11 @@ The namespace, and therefore connection string, for the service bus is different
 
     ![Service bus entities overview blade with topics selected.](media/image89.png 'Service bus entities overview blade')
 
+> TODO: Add section for adding the Logic App Queue into the App.
+
 #### Text Analytics API settings
 
-1. Using the Azure Portal, open the Text API (awhotels-sentiment), copy the value under Endpoint into the **textAnalyticsBaseUrl** setting. Be sure to include a trailing slash in the URL (e.g. <https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/)>.
+1. In the [Azure portal](https://portal.azure.com), open the Text API (awhotels-sentiment), copy the value under Endpoint into the **textAnalyticsBaseUrl** setting. Be sure to include a trailing slash in the URL (e.g. <https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/)>.
 
     ![In the Cognitive Service account blade, the Endpoint value is circled.](media/image90.png 'Cognitive Service account blade')
 
@@ -1089,7 +1097,9 @@ With the App Services projects properly configured, you are now ready to deploy 
 
       i. First, you can find it on the ChatWebApp document in Visual Studio, that was opened when you published the Web App. ![In the Visual Studio ChatWebbApp tab, under Summary, the Site URL.](media/image105.png 'Visual Studio ChatWebbApp tab')
 
-      ii. Alternatively, this can be found in the Azure Portal on the Overview blade for your Web App ![In the Essentials section of the Overview blade, the deployment URL is circled.](media/image106.png 'Azure Portal Overview blade, Essentials section')
+      ii. Alternatively, this can be found in the [Azure portal](https://portal.azure.com) on the Overview blade for your Web App
+
+        ![In the Essentials section of the Overview blade, the deployment URL is circled.](media/image106.png 'Azure Portal Overview blade, Essentials section')
 
 2. Under the Join Chat area, enter your username (anything will do).
 
@@ -1338,11 +1348,11 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     ![The luis-api key in the Publish App screen is selected.](media/luis-copy-key-string.png 'Resources and keys')
 
-    > **Note**: This is the same key you can obtain on the Keys blade for the luis-api Cognitive Service in the Azure portal.
+    > **Note**: This is the same key you can obtain on the Keys blade for the luis-api Cognitive Service in the [Azure portal](https://portal.azure.com).
 
 36. You will enter this into the configuration of the Event Processor Function App.
 
-37. Navigate to the Application Settings for your Event Processor Function App in the Azure Portal.
+37. Navigate to the Application Settings for your Event Processor Function App in the [Azure portal](https://portal.azure.com).
 
 38. Within the Application Settings, for the key **luisAppId** set the text of the value attribute to the App ID of your LUIS App (this value should be a GUID you obtained from the URL and not the name of your LUIS app). For the key **luisKey**, set the text of the value attribute to the Endpoint key used by your LUIS app (as you acquired it from the Azure Portal).
 
@@ -1376,7 +1386,7 @@ There is one last intelligence service to activate in the application---speech r
 
 1. Within Visual Studio Solution Explorer, expand **ChatWebApp**, **Scripts**, and open **chatClient.js**.
 
-2. At the top, locate the variable **speechApiKey**, and update its value with the Key 1 you acquired in [Exercise 1, Task 11, Step 8](#task-11-provision-cognitive-services), when you provisioned your Speech API in the Azure Portal.
+2. At the top, locate the variable **speechApiKey**, and update its value with the Key 1 you acquired in [Exercise 1, Task 11, Step 8](#task-11-provision-cognitive-services), when you provisioned your Speech API in the [Azure portal](https://portal.azure.com).
 
     ![The following variable code displays: //TODO: Enter your Speech API Key here var speechApiKey = "";](media/image136.png 'variable')
 
@@ -1412,11 +1422,11 @@ Now that you have added sentiment analysis, language understanding, and speech r
 
 Duration: 30 minutes
 
-In this exercise, you will create a Logic App for sending SMS or email messages. The Logic App will be triggered when messages are added to Service Bus. The Logic App will use a Twilio connection to send an SMS message to the phone number on file for the guest.
+In this exercise, you will create a Logic App for sending SMS or email messages. The Logic App will be triggered when messages are added to a Service Bus Queue. The Logic App will use a Twilio connector to send SMS messages.
 
 ### Task 1: Create Free Twilio account
 
-In this task, you will create a free Twilio account that will be used to send SMS notifications. Guests will receive notifications that their room service or house keeping request has been received, and is on its way. Hotel staff will receive messages that a customer is upset.
+In this task, you will create a free Twilio account that will be used to send SMS notifications.
 
 1. If you do not have a Twilio account, sign up for one for free at by going to <https://www.twilio.com/try-twilio>.
 
@@ -1462,7 +1472,7 @@ In this task, you will create a free Twilio account that will be used to send SM
 
     ![Get your first Twilio phone number is highlighted on the Get Started with Phone Numbers screen.](./media/twilio-phone-numbers-get-started.png "Get Started with Phone Numbers screen")
 
-9. Select **Choose this Number** (or search for a different number if you want something different). 
+9. Select **Choose this Number** (or search for a different number if you want something different).
 
     ![Choose this Number is highlighted on the Your first Twilio Phone Number screen.](./media/twilio-phone-numbers-first-phone-number.png "Your first Twilio Phone Number screen")
 
@@ -1476,31 +1486,31 @@ In this task, you will create a free Twilio account that will be used to send SM
 
 ### Task 2: Create Logic App
 
-In this task, you will create a new Logic App, which will use the Twilio connector to send SMS notifications to guests and hotel employees.
+In this task, you will create a new Logic App, which will use the Twilio connector to send SMS notifications to hotel guest services employees.
 
-1. In the Azure portal, select **+Create a resource**, enter "logic app" into the Search the Marketplace box, select **Logic App** from the results, and then select **Create**.
+1. In the [Azure portal](https://portal.azure.com), select **+Create a resource**, enter "logic app" into the Search the Marketplace box, select **Logic App** from the results, and then select **Create**.
 
     ![In the Azure portal, + Create a resource is highlighted in the navigation pane, "logic app" is entered into the Search the Marketplace box, and Logic App is in the results.](./media/create-resource-logic-app.png "Create Logic App")
 
 2. In the **Create logic app** blade, enter the following:
 
-    - **Name:** Enter awt-notifications
+    - **Name**: Enter awt-notifications
 
-    - **Subscription:** Select the subscription you are using for this hands-on lab
+    - **Subscription**: Select the subscription you are using for this hands-on lab
 
-    - **Resource group:** Select **Use existing** and choose the **hands-on-lab-SUFFIX** resource group
+    - **Resource group**: Select **Use existing** and choose the **hands-on-lab-SUFFIX** resource group
 
-    - **Location:** Select the location you are using for resources in this hands-on lab
+    - **Location**: Select the location you are using for resources in this hands-on lab
 
     - **Log Analytics**: Select Off
 
         ![The information above is entered on the Create logic app blade.](./media/logic-app-create.png "Logic App blade")
 
-3. Select **Create** to provision the new Logic App
+3. Select **Create** to provision the new Logic App.
 
-### Task 3: Configure guest notifications
+### Task 3: Configure staff notifications
 
-In this task, you will configure a Logic App to send notifications to guests about room service and house keeping orders.
+In this task, you will configure a Logic App to send notifications to hotel guess services employees when a guest is determined to be upset by their Sentiment Analysis score.
 
 1. In the [Azure portal](https://portal.azure.com), navigate to your newly created Logic App, then select **Logic App Designer** under **Development Tools** on the left-hand menu.
 
@@ -1514,96 +1524,91 @@ In this task, you will configure a Logic App to send notifications to guests abo
 
     ![Service Bus is highlighted in the Logic App Connectors pane.](media/logic-app-connectors-service-bus.png "Logic App Connectors")
 
-4. Select **Service Bus - When a message is received in a topic subscription (auto-complete)**
+4. Select **Service Bus - When a message is received in a queue (auto-complete)**
 
-    ![Service Bus - When a message is received in a topic subscription (auto-complete) is highlighted in the Triggers list.](media/logic-app-triggers-service-bus-messages-in-topic.png "Service Bus Triggers")
+    ![Service Bus - When a message is received in a queue (auto-complete) is highlighted in the Triggers list.](media/logic-app-triggers-service-bus-queue.png "Service Bus Triggers")
 
-5. On the When a message is received in a topic subscription (auto-complete) dialog, enter **awhotel-guest-notifications** for the **Connection Name**, select **ChatConsole**, and then select **Create**
+5. On the When a message is received in a queue (auto-complete) dialog, select the **awhotel-staff-notifications** queue from the Queue name drop down.
 
-    ![On the When a message is received in a topic subscription (auto-complete) dialog, awhotel-guest-notifications is entered into the the Connection Name box, and ChatConsole is selected.](media/logic-app-service-bus-connection.png "Service Bus connection")
+    ![On the When a message is received in a queue (auto-complete) dialog, **awhotel-staff-notifications** is selected and highlighted in the Queue name drop down.](media/logic-app-triggers-service-bus-queue-select.png "Queue selection")
 
-> TODO: Complete the configuration for this. Need to configure Service Bus Topics correctly above before continuing.
+6. Select **+ New step**, and then select **Add an action**.
 
-9. In the next When there are messages in a queue dialog, select **notificationqueue** from the **Queue Name** list, and set the interval to **1** **minute**, then select **+New step**, and **Add an action**.
+    ![New step is selected and Add an action is highlighted in the New step context menu.](media/logic-app-new-step-add-an-action.png "Logic App Add an Action")
 
-    ![The information above is entered in the When there are messages in a queue dialog box.](./media/image238.png "When there are messages in a queue dialog box")
+7. In the Choose an action pane, enter "Parse" into the search box, then select **Data Operations - Parse JSON** from the list.
 
-10. In the **Choose an action box**, enter "Parse," and select **Data Operations - Parse JSON** from the list.
+    ![On the Choose an action pane, "Parse" is entered into the search box, and Data Operations - Parse JSON is highlighted in the list.](media/logic-app-choose-an-action-parse-json.png "Choose an action")
 
-    ![In the When there are messages in a queue dialog box, Parse is in the Choose an action box, and Data Operations -- Parse JSON is highlighted below in the list.](./media/image239.png "When there are messages in a queue dialog box")
+> TODO: Complete the configuration for this. Need to configure Service Bus Queue and messages into it before a message schema can be added, and used to move forward with this part.
 
-11. Select the **Content** box, select **Add dynamic content +**, then select **Message Text** from the input parameters list that appears.
+> TODO: Determine what part of the Service Bus message is needed here.
+
+8. Select the **Content** box, select **Add dynamic content +**, then select **Message Text** from the input parameters list that appears.
 
     ![In the Parse JSON window, Message Text is in the Content box, Add dynamic content is highlighted, and Message Text is highlighted below in the input parameters list.](./media/image240.png "Parse JSON window")
 
-12. Next, select **Use sample payload to generate schema** below the **Schema** box. 
+9. Next, select **Use sample payload to generate schema** below the **Schema** box.
 
     ![In the Parse JSON window, Use sample payload to generate schema is highlighted below the Schema box.](./media/image241.png "Parse JSON window")
 
-13. In the dialog that appears, paste the following JSON into the sample JSON payload dialog that appears, then select **Done**.
-    ```
+10. In the dialog that appears, paste the following JSON into the sample JSON payload dialog that appears, then select **Done**.
+
+    ```json
     {"orderId":"5a6748c5d0d3199cfa076ed3","userId":"demouser@bfyo.com","notificationPhone":"3175551212","firstName":"Demo"}
     ```
 
     ![The JSON above is pasted in the sample JSON payload dialog box, and Done is selected below.](./media/image242.png "Paste the JSON in the dialog box")
 
-14. You will now see the Schema for messages coming from the notification queue in the Schema box. Select **+New** **step** and select **Add an action**. 
+11. You will now see the Schema for messages coming from the queue in the Schema box.
 
     ![The Add an action button under + New step is highlighted in the Schema box.](./media/image243.png "Parse JSON window")
 
-15. In the **Choose an action box**, enter "Twilio," and select **Twilio -- Send Text Message (SMS)** under Actions. 
+12. Select **+ New step**, and then select **Add an action**.
 
-    ![Twilio is highlighted in the Choose an action box, and Twilio -- Send Text Message (SMS) is highlighted under Actions.](./media/image244.png "Choose an action box")
+    ![New step is selected and Add an action is highlighted in the New step context menu.](media/logic-app-new-step-add-an-action.png "Logic App Add an Action")
 
-16. In the **Twilio -- Send Text Message (SMS)** dialog, enter the following (You will need the details from Project Info block on the dashboard of your Twilio account for this step):
+13. In the Choose an action pane, enter "Twilio" into the search box, and then select **Twilio - Send Text Message (SMS)** under Actions.
 
-    -   **Connection Name:** Twilio
+    ![Twilio is highlighted in the Choose an action box, and Twilio -- Send Text Message (SMS) is highlighted under Actions.](./media/logic-app-choose-an-action-twilio-send-text-messages.png "Choose an action box")
 
-    -   **Twilio Account Id:** Enter your Twilio account SID.
+14. In the **Twilio -- Send Text Message (SMS)** dialog, enter the following (You will need the details from Project Info block on the dashboard of your Twilio account for this step):
 
-    -   **Twilio Access Token:** Enter your Twilio auth token.
+    - **Connection Name**: Twilio
 
-    -   Select **Create**.
-        
-        ![The information above is entered in the Twilio -- Send Text Message (SMS) dialog box.](./media/image245.png "Twilio ??? Send Text Message (SMS) dialog box")
+    - **Twilio Account Id**: Enter your Twilio account SID.
 
-17. On the next **Send Text Message (SMS)** dialog, enter the following:
+    - **Twilio Access Token**: Enter your Twilio auth token.
 
-    -   **From Phone Number:** Select your Twilio phone number from the drop down.
+        ![The information above is entered in the Twilio -- Send Text Message (SMS) dialog box.](./media/logic-app-choose-an-action-twilio-send-text-messages-config.png "Twilio ??? Send Text Message (SMS) dialog box")
 
-    -   **To Phone Number:** Select **notificationPhone** from the **Parse JSON** parameters. 
-    
+15. Select **Create**.
+
+16. On the next **Send Text Message (SMS)** dialog, enter the following:
+
+    > TODO: Update this based on messages from Service Bus Queue format.
+
+    - **From Phone Number**: Select your Twilio phone number from the drop down.
+
+    - **To Phone Number**: Select **notificationPhone** from the **Parse JSON** parameters.
+
     ![The information above is entered in the next Send Text Message (SMS) dialog box.](./media/image246.png "Send Text Message (SMS) dialog box")
 
-    -   **Text:** Enter a message, such as "Hello \[firstName\], your Best for You Organics weekly order has shipped!" For \[firstName\], select the **firstName** parameter from the **Parse JSON** items. 
-    
+    - **Text**: Enter a message, such as "Guest [Name] appears to be upset in the hotel chat. This requires your immediate attention!" For [Name], select the **Name** parameter from the **Parse JSON** items.
+
     ![The information above is entered in the next Send Text Message (SMS) dialog box.](./media/image247.png "Send Text Message (SMS) dialog box")
 
-18. Select **+New step** and **Add an action**.
+17. Select **Save** on the **Logic Apps Designer** toolbar.
 
-    ![The Add an action button is highlighted under + New step.](./media/image248.png "Add an action button")
+    ![Save is highlighted on the Logic Apps Designer blade toolbar.](./media/logic-app-designer-toolbar-save.png "Logic Apps Designer blade")
 
-19. In the **Choose an action** dialog, enter "queue" in to the search box, and select **Azure Queues -- Delete** **message**. 
+18. The Logic App will begin running immediately, so you should receive a text message on your phone within a minute or two of selecting Save, if there are messages already in the queue.
 
-    ![Queue is highlighted in the Choose an action search box, and Azure Queues -- Delete message is highlighted below.](./media/image249.png "Choose an action dialog box")
+### Task 4: Add negative chat messages to trigger staff notifications
 
-20. Select **notificationqueue** for the Queue Name.
+In this task, you will add messages to the chat containing negative sentiment to trigger notification messages through the Logic App.
 
-21. For Message ID, select the **Message ID** parameter from the **When there are messages in the queue** parameter list.
-
-    ![The information above is entered in the Delete message dialog box.](./media/image250.png "Delete message dialog box")
-
-22. For Pop Receipt, select the **Pop Receipt** parameter from the **When there are messages in a queue** parameter list. 
-
-    ![The information above is entered in the next Delete message dialog box.](./media/image251.png "Delete message dialog box")
-
-23. Select **Save** on the **Logic Apps Designer** toolbar. 
-
-    ![Save is highlighted on the Logic Apps Designer blade toolbar.](./media/image252.png "Logic Apps Designer blade")
-
-24. The Logic App will begin running immediately, so if you entered your cell phone number when you registered your account in the Best for You Organics starter app, and placed an order, you should receive a text message on your phone within a minute or two of selecting Save.
-
-### Task 4: Configure hotel staff notifications
+1. TODO: complete these steps...
 
 ## Exercise 7: Building the Power BI dashboard
 
@@ -1755,15 +1760,15 @@ Now that you have primed the system with some messages, you will create a Search
 
 Before going further, a good thing to check is whether messages are being written to Azure Cosmos DB from the Stream Analytics Job.
 
-1. In the Azure Portal, navigate to your **Azure Cosmos DB account**.
+1. In the [Azure portal](https://portal.azure.com), navigate to your **Azure Cosmos DB account**.
 
 2. On the left-hand menu, select **Data Explorer**.
 
-    ![The Data Explorer sections from within the Azure portal, Cosmos DB has been selected.](media/image160.png 'Data explorer menu')
+    ![The Data Explorer sections from within the Cosmos DB has been selected.](media/image160.png 'Data explorer menu')
 
 3. Under the **awhotels** Cosmos DB, click **messagestore**, then Documents. You should see some data here.
 
-    ![Documents has been selected from within the Data Explorer in the Azure Portal.](media/image161.png 'Documents selected in Data Explorer')
+    ![Documents has been selected from within the Data Explorer.](media/image161.png 'Documents selected in Data Explorer')
 
 4. If you want to peek at the message contents, select any document in the listing.
     ![Message contents display.](media/image162.png 'Message contents')
@@ -1870,11 +1875,11 @@ Before going further, a good thing to check is whether messages are being writte
 
 2. Open **web.config**.
 
-3. This project needs the following three settings configured to capitalize on Azure Search, all of which you can get from the Azure Portal.
+3. This project needs the following three settings configured to capitalize on Azure Search, all of which you can get from the [Azure portal](https://portal.azure.com).
 
     ![Code displays in the Web.config window, showing that the following three key settings are being added: SearchServiceName, SearchServiceQueryApiKey, and SearchIndexName.](media/image175.png 'Web.config')
 
-4. Using the Azure Portal, navigate to the blade of your **Search** service.
+4. In the [Azure portal](https://portal.azure.com), navigate to the blade of your **Search** service.
 
 5. For the **SearchServiceName**, enter the name of your Search service (e.g., **awchatter**).
 
@@ -1936,7 +1941,7 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
 1. In a new web browser window, navigate to <https://www.qnamaker.ai>.
 
-2. On the home page, select **Sign In** on the top of the page. Sign in with the same credentials you use for the Azure portal.
+2. On the home page, select **Sign In** on the top of the page. Sign in with the same credentials you use for the [Azure portal](https://portal.azure.com).
 
     ![Microsoft QnA Maker home page](media/qna-maker-home.png "QnA Maker home page")
 
@@ -2018,7 +2023,7 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
 ### Task 2: Create a QnA bot
 
-1. In the Azure portal, select **Create new resource** in the menu blade, and then select **See all**.
+1. In the [Azure portal](https://portal.azure.com), select **Create new resource** in the menu blade, and then select **See all**.
 
     ![Select Create new resource](media/azure-portal-create-resource.png "Azure Portal create new resource")
 
