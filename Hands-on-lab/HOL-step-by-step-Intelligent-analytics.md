@@ -62,8 +62,8 @@ If you have not yet completed the steps to set up your environment in [Before th
 - [Exercise 6: Create Logic App for sending SMS notifications](#exercise-6-create-logic-app-for-sending-sms-notifications)
   - [Task 1: Create Free Twilio account](#task-1-create-free-twilio-account)
   - [Task 2: Create Logic App](#task-2-create-logic-app)
-  - [Task 3: Configure guest notifications](#task-3-configure-guest-notifications)
-  - [Task 4: Configure hotel staff notifications](#task-4-configure-hotel-staff-notifications)
+  - [Task 3: Configure staff notifications](#task-3-configure-staff-notifications)
+  - [Task 4: Add negative chat messages to trigger staff notifications](#task-4-add-negative-chat-messages-to-trigger-staff-notifications)
 - [Exercise 7: Building the Power BI dashboard](#exercise-7-building-the-power-bi-dashboard)
   - [Task 1: Create the static dashboard](#task-1-create-the-static-dashboard)
   - [Task 2: Create the real-time dashboard](#task-2-create-the-real-time-dashboard)
@@ -1484,7 +1484,7 @@ In this task, you will create a free Twilio account that will be used to send SM
 
     ![The Home icon is highlighted on your Account Dashboard.](./media/twilio-account-dashboard.png "Account dashboard")
 
-### Task 2: Create Logic App
+### Task 2: Provision Logic App
 
 In this task, you will create a new Logic App, which will use the Twilio connector to send SMS notifications to hotel guest services employees.
 
