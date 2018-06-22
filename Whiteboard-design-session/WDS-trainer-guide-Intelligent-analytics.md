@@ -15,31 +15,31 @@ Updated June 2018
 
 ## Contents
 
-* [Trainer Information](#trainer-information)
-  * [Role of the trainer](#role-of-the-trainer)
-  * [Whiteboard design session flow](#whiteboard-design-session-flow)
-  * [Before the whiteboard design session: How to prepare](#before-the-whiteboard-design-session-how-to-prepare)
-  * [During the whiteboard design session: Tips for an effective whiteboard design session](#during-the-whiteboard-design-session-tips-for-an-effective-whiteboard-design-session)
-* [Intelligent analytics whiteboard design session student guide](#intelligent-analytics-whiteboard-design-session-student-guide)
-  * [Abstract and learning objectives](#abstract-and-learning-objectives)
-  * [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
-    * [Customer situation](#customer-situation)
-    * [Customer needs](#customer-needs)
-    * [Customer objections](#customer-objections)
-    * [Infographic of common scenarios](#infographic-of-common-scenarios)
-  * [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
-  * [Step 3: Present the solution](#step-3-present-the-solution)
-  * [Wrap-up](#wrap-up)
-  * [Additional references](#additional-references)
-* [Intelligent analytics whiteboard design session trainer guide](#intelligent-analytics-whiteboard-design-session-trainer-guide-1)
-  * [Step 1: Review the customer case study](#step-1-review-the-customer-case-study-1)
-  * [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution-1)
-  * [Step 3: Present the solution](#step-3-present-the-solution-1)
-  * [Wrap-up](#wrap-up-1)
-  * [Preferred target audience](#preferred-target-audience)
-  * [Preferred solution](#preferred-solution)
-  * [Checklist of preferred objection handling](#checklist-of-preferred-objection-handling)
-  * [Customer quote (to be read back to the attendees at the end)](#customer-quote-to-be-read-back-to-the-attendees-at-the-end)
+- [Trainer Information](#trainer-information)
+  - [Role of the trainer](#role-of-the-trainer)
+  - [Whiteboard design session flow](#whiteboard-design-session-flow)
+  - [Before the whiteboard design session: How to prepare](#before-the-whiteboard-design-session-how-to-prepare)
+  - [During the whiteboard design session: Tips for an effective whiteboard design session](#during-the-whiteboard-design-session-tips-for-an-effective-whiteboard-design-session)
+- [Intelligent analytics whiteboard design session student guide](#intelligent-analytics-whiteboard-design-session-student-guide)
+  - [Abstract and learning objectives](#abstract-and-learning-objectives)
+  - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
+    - [Customer situation](#customer-situation)
+    - [Customer needs](#customer-needs)
+    - [Customer objections](#customer-objections)
+    - [Infographic of common scenarios](#infographic-of-common-scenarios)
+  - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
+  - [Step 3: Present the solution](#step-3-present-the-solution)
+  - [Wrap-up](#wrap-up)
+  - [Additional references](#additional-references)
+- [Intelligent analytics whiteboard design session trainer guide](#intelligent-analytics-whiteboard-design-session-trainer-guide-1)
+  - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study-1)
+  - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution-1)
+  - [Step 3: Present the solution](#step-3-present-the-solution-1)
+  - [Wrap-up](#wrap-up-1)
+  - [Preferred target audience](#preferred-target-audience)
+  - [Preferred solution](#preferred-solution)
+  - [Checklist of preferred objection handling](#checklist-of-preferred-objection-handling)
+  - [Customer quote (to be read back to the attendees at the end)](#customer-quote-to-be-read-back-to-the-attendees-at-the-end)
 
 ## Trainer information
 
@@ -49,16 +49,16 @@ Thank you for taking time to support the whiteboard design sessions as a trainer
 
 An amazing trainer:
 
-* Creates a safe environment in which learning can take place.
-* Stimulates the participant's thinking.
-* Involves the participant in the learning process.
-* Manages the learning process (on time, on topic, and adjusting to benefit participants).
-* Ensures individual participant accountability.
-* Ties it all together for the participant.
-* Provides insight and experience to the learning process.
-* Effectively leads the whiteboard design session discussion.
-* Monitors quality and appropriateness of participant deliverables.
-* Effectively leads the feedback process.
+- Creates a safe environment in which learning can take place.
+- Stimulates the participant's thinking.
+- Involves the participant in the learning process.
+- Manages the learning process (on time, on topic, and adjusting to benefit participants).
+- Ensures individual participant accountability.
+- Ties it all together for the participant.
+- Provides insight and experience to the learning process.
+- Effectively leads the whiteboard design session discussion.
+- Monitors quality and appropriateness of participant deliverables.
+- Effectively leads the feedback process.
 
 ### Whiteboard design session flow
 
@@ -68,40 +68,40 @@ Each whiteboard design session uses the following flow:
 
 **Outcome**: Analyze your customer's needs
 
-* Customer's background, situation, needs and technical requirements
-* Current customer infrastructure and architecture
-* Potential issues, objectives and blockers
+- Customer's background, situation, needs and technical requirements
+- Current customer infrastructure and architecture
+- Potential issues, objectives and blockers
 
 #### Step 2: Design a proof of concept solution (60 minutes)
 
 **Outcome**: Prepare to present a solution for your target customer audience
 
-* Determine your target customer audience
-* Determine customer's business needs to address your solution
-* Design and diagram your solution
-* Prepare to present your solution
+- Determine your target customer audience
+- Determine customer's business needs to address your solution
+- Design and diagram your solution
+- Prepare to present your solution
 
 #### Step 3: Present the solution (30 minutes)
 
 **Outcome**: Present solution to your customer
 
-* Present solution
-* Respond to customer objections
-* Receive feedback
+- Present solution
+- Respond to customer objections
+- Receive feedback
 
 #### Wrap-up (15 minutes)
 
-* Review preferred solution
+- Review preferred solution
 
 ### Before the whiteboard design session: How to prepare
 
 Before conducting your first whiteboard design session:
 
-* Read the Student guide (including the case study) and Trainer guide
-* Become familiar with all key points and activities.
-* Plan the point you want to stress, which questions you want to drive, transitions, and be ready to answer questions.
-* Prior to the whiteboard design session, discuss the case study to pick up more ideas.
-* Make notes for later.
+- Read the Student guide (including the case study) and Trainer guide
+- Become familiar with all key points and activities.
+- Plan the point you want to stress, which questions you want to drive, transitions, and be ready to answer questions.
+- Prior to the whiteboard design session, discuss the case study to pick up more ideas.
+- Make notes for later.
 
 ### During the whiteboard design session: Tips for an effective whiteboard design session
 
@@ -111,9 +111,9 @@ Before conducting your first whiteboard design session:
 
 When participants are doing activities, you can **look ahead to refresh your memory**.
 
-* **Adjust activity and whiteboard design session pace** as needed to allow time for presenting, feedback, and sharing.
-* **Add examples, points, and stories** from your own experience. Think about stories you can share that help you make your points clearly and effectively.
-* **Consider creating a "parking lot"** to record issues or questions raised that are outside the scope of the whiteboard design session or can be answered later. Decide how you will address these issues, so you can acknowledge them without being derailed by them.
+- **Adjust activity and whiteboard design session pace** as needed to allow time for presenting, feedback, and sharing.
+- **Add examples, points, and stories** from your own experience. Think about stories you can share that help you make your points clearly and effectively.
+- **Consider creating a "parking lot"** to record issues or questions raised that are outside the scope of the whiteboard design session or can be answered later. Decide how you will address these issues, so you can acknowledge them without being derailed by them.
 
 **Have fun**! Encourage participants to have fun and share!
 
@@ -149,11 +149,11 @@ Adventure Works travel specializes in building software solutions for the hospit
 
 The original requirements for the product were to support:
 
-* One-on-one chat sessions between a hotel guest and a hotel concierge
-* A public chat room for hotel guests and hotel staff, called the Hotel Lobby
-* A bot that can automatically answer guest questions about the hotel
-* Full-text message search, including via #hashtags and @usernames
-* Send email or SMS messages to hotel manager or customer service if guest sentiment indicates they are upset, so hotel staff can respond quickly
+- One-on-one chat sessions between a hotel guest and a hotel concierge
+- A public chat room for hotel guests and hotel staff, called the Hotel Lobby
+- A bot that can automatically answer guest questions about the hotel
+- Full-text message search, including via #hashtags and @usernames
+- Send email or SMS messages to hotel manager or customer service if guest sentiment indicates they are upset, so hotel staff can respond quickly
 
 Adventure Works wants to build a solution that is both scalable and extensible. According to Marc Tripp, the CTO of Adventure Works: "We want it scalable in the sense that it could support the chat requirements of the largest hotels in the world, currently with as many as 7,200 rooms. While we don't anticipate having any single chat room with a thousand guests or 2,000 concurrent one-on-one chats between a guest and the concierge staff, we want a solution that could handle that if it needed to."
 
@@ -315,38 +315,38 @@ Tables reconvene with the larger group to hear a SME share the preferred solutio
 
 ### Step 1: Review the customer case study
 
-* Check in with your table participants to introduce yourself as the trainer.
-* Ask, "What questions do you have about the customer case study?"
-* Briefly review the steps and timeframes of the whiteboard design session.
-* Ready, set, go! Let the table participants begin.
+- Check in with your table participants to introduce yourself as the trainer.
+- Ask, "What questions do you have about the customer case study?"
+- Briefly review the steps and timeframes of the whiteboard design session.
+- Ready, set, go! Let the table participants begin.
 
 ### Step 2: Design a proof of concept solution
 
-* Check in with your tables to ensure that they are transitioning from step to step on time.
-* Provide some feedback on their responses to the business needs and design.
-  * Try asking questions first that will lead the participants to discover the answers on their own.
-* Provide feedback for their responses to the customer's objections.
-  * Try asking questions first that will lead the participants to discover the answers on their own.
+- Check in with your tables to ensure that they are transitioning from step to step on time.
+- Provide some feedback on their responses to the business needs and design.
+  - Try asking questions first that will lead the participants to discover the answers on their own.
+- Provide feedback for their responses to the customer's objections.
+  - Try asking questions first that will lead the participants to discover the answers on their own.
 
 ### Step 3: Present the solution
 
-* Determine which table will be paired with your table before Step 3 begins.
-* For the first round, assign one table as the Microsoft team and the other table as the customer.
-* Have the Microsoft team present their solution to the customer team.
-  * Have the customer team provide one objection for the Microsoft team to respond to.
-  * The presentation and objections should be no longer than 10 minutes.
-* Have participants on the customer team give feedback to the Microsoft team.
-  * The feedback should be no longer than 5 minutes.
-  * If needed, the trainer may also provide feedback.
+- Determine which table will be paired with your table before Step 3 begins.
+- For the first round, assign one table as the Microsoft team and the other table as the customer.
+- Have the Microsoft team present their solution to the customer team.
+  - Have the customer team provide one objection for the Microsoft team to respond to.
+  - The presentation and objections should be no longer than 10 minutes.
+- Have participants on the customer team give feedback to the Microsoft team.
+  - The feedback should be no longer than 5 minutes.
+  - If needed, the trainer may also provide feedback.
 
 ### Wrap-up
 
-* Have the table participants reconvene with the larger session group to hear a SME share the following preferred solution.
+- Have the table participants reconvene with the larger session group to hear a SME share the following preferred solution.
 
 ### Preferred target audience
 
-* Marc Tripp, the CTO of Adventure Works
-* The primary audience is the business decision makers and technology decision makers. From the case study scenario, it would include the Director of Analytics. Usually we talk to the infrastructure managers who report to the chief information officers (CIOs), or to application sponsors, such as a line of business (LOB) vice president (VP), chief marketing officer (CMO), or to those who represent the business unit IT or developers who report to application sponsors.
+- Marc Tripp, the CTO of Adventure Works
+- The primary audience is the business decision makers and technology decision makers. From the case study scenario, it would include the Director of Analytics. Usually we talk to the infrastructure managers who report to the chief information officers (CIOs), or to application sponsors, such as a line of business (LOB) vice president (VP), chief marketing officer (CMO), or to those who represent the business unit IT or developers who report to application sponsors.
 
 ### Preferred solution
 
@@ -356,7 +356,7 @@ Tables reconvene with the larger group to hear a SME share the preferred solutio
 
     ![Preferred solution high-level architecture. Shows data flowing in from user devices, like mobile phones and laptops, to an Azure Web App. Those messages are sent to Event Hub, which are then processed by an Azure Function running an Event Processor Host. This is responsible for executing Azure Cognitive Services for sentiment analysis and language understanding. Data is sent to Service Bus and another Event Hub for processing.](media/high-level-overview.png 'Preferred Solution')
 
-    Messages are sent from browsers running within laptop or mobile clients via Web Sockets to an endpoint running in an Azure Web App. Instead of typing a chat message, end users can leverage the speech to text functionality of the Speech API to type the chat message for them* in this scenario the Speech API is invoked directly from the web page running in a client device. Chat messages received by the Web App are sent to an Event Hub where they are temporarily stored. An Azure Function picks up the chat messages and applies sentiment analysis to the message text (using the Text Analytics API), as well as contextual understanding (using LUIS). The function forwards the chat message to an Event Hub used to store messages for archival purposes, and to a Service Bus Topic which is used to deliver the message to the intended recipients. A Logic App is triggered when messages are added to a Service Bus topic to send SMS messages to hotel staff when negative guest sentiment is detected in the chat. A Stream Analytics Job provides a simple mechanism for pulling the chat messages from the second Event Hub and writing them both to CosmosDB for archival and to PowerBI for visualization of sentiment in real-time as well as trending sentiment. An indexer runs atop CosmosDB that updates the Azure Search index which provides full text search capability. Messages in the Service Bus Topic are pulled by Subscriptions created in the Web App and running on behalf of each client device connected by Web Sockets. When the Subscription receives a message, it is pushed via Web Sockets down to the browser-based app and displayed in a web page.
+    Messages are sent from browsers running within laptop or mobile clients via Web Sockets to an endpoint running in an Azure Web App. Instead of typing a chat message, end users can leverage the speech to text functionality of the Speech API to type the chat message for them* in this scenario the Speech API is invoked directly from the web page running in a client device. Chat messages received by the Web App are sent to an Event Hub where they are temporarily stored. An Azure Function picks up the chat messages and applies sentiment analysis to the message text (using the Text Analytics API), as well as contextual understanding (using LUIS). The function forwards the chat message to an Event Hub used to store messages for archival purposes, and to a Service Bus Topic which is used to deliver the message to the intended recipients. A Logic App is triggered when messages are added to a Service Bus queue to send SMS messages to hotel staff when negative guest sentiment is detected in the chat. A Stream Analytics Job provides a simple mechanism for pulling the chat messages from the second Event Hub and writing them both to CosmosDB for archival and to PowerBI for visualization of sentiment in real-time as well as trending sentiment. An indexer runs atop CosmosDB that updates the Azure Search index which provides full text search capability. Messages in the Service Bus Topic are pulled by Subscriptions created in the Web App and running on behalf of each client device connected by Web Sockets. When the Subscription receives a message, it is pushed via Web Sockets down to the browser-based app and displayed in a web page.
 
     > **Note**: The preferred solution is only one of many possible, viable approaches.
 
@@ -424,7 +424,7 @@ Tables reconvene with the larger group to hear a SME share the preferred solutio
 
 2. How could you integrate this service into your chat message processing flow?
 
-    *If the Sentiment Analysis API determines a guest's sentiment is below a set negative threshold, then Event Processor logic could forward the message on to the Service Bus Topic appropriate for hotel staff notifications. From there, the Logic App could be triggered to send an email or SMS message to hotel guest services using a Service Bus connector for Logic App.*
+    *If the Sentiment Analysis API determines a guest's sentiment is below a set negative threshold, then Event Processor logic could forward the message on to the Service Bus Queue appropriate for hotel staff notifications. From there, the Logic App could be triggered to send an email or SMS message to hotel guest services using a Service Bus connector for Logic App.*
 
 #### Q&A Bot
 
