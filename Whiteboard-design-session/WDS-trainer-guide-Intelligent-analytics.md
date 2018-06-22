@@ -153,7 +153,6 @@ The original requirements for the product were to support:
 * A public chat room for hotel guests and hotel staff, called the Hotel Lobby
 * A bot that can automatically answer guest questions about the hotel
 * Full-text message search, including via #hashtags and @usernames
-* Send email or SMS messages to guests informing them their housekeeping or room service request has been received, and the estimated time of delivery
 * Send email or SMS messages to hotel manager or customer service if guest sentiment indicates they are upset, so hotel staff can respond quickly
 
 Adventure Works wants to build a solution that is both scalable and extensible. According to Marc Tripp, the CTO of Adventure Works: "We want it scalable in the sense that it could support the chat requirements of the largest hotels in the world, currently with as many as 7,200 rooms. While we don't anticipate having any single chat room with a thousand guests or 2,000 concurrent one-on-one chats between a guest and the concierge staff, we want a solution that could handle that if it needed to."
@@ -162,9 +161,7 @@ Extensible in the sense that they can add new features on top of the solid, base
 
 An important extensibility point for them is a way for them to gather the sentiment of their guests as they interact in the public chat rooms and with the concierge. Hotel operators are motivated to keep tabs on guest sentiment in real-time, so they can respond to any upset guests quickly and turn a miserable stay into an amazing stay. To this end, they would like a dashboard (that updates in real-time) showing the volume of chat messages flowing thru their system, a pie chart showing the most active users at a glance, a bar chart highlighting upset users (who need to be addressed ASAP), and some form of gauge showing the average real-time sentiment for window of time (e.g., the last hour, last 24 hours). They would also like to view trending sentiment over time, alongside the real-time sentiment data.
 
-While guest sentiment is important, it is a reactive measure. Adventure Works would like to take a proactive approach in positively affecting sentiment by expediting the requests of their guests via chat. In particular, they are looking to experiment with automating the routing of routine guest requests (e.g., "Can I get more towels?", "I forgot my toothbrush" and "Can I get a bottle of champagne") that would otherwise require the attention of an already overloaded front desk attendant. These requests, once automatically routed, could be sent directly to housekeeping or room service as is most appropriate. Adventure Works has heard of active machine learning, whereby the system improves constantly with use, while still knowing what it is unsure of and asking for help when it determines it needs assistance. They have also requested the ability to use sentiment analysis to notify hotel management or customer service via email or SMS message should the sentiment analysis service detect that a guest is upset, so they can respond more quickly to improve the guest's experience.
-
-Additionally, they are interested in a providing a service that automates the sending of email or SMS messages to hotel guests who have submitted a housekeeping or room service request, informing them that their request has been received, and what time they can expect the request to be delivered to their room.
+While guest sentiment is important, it is a reactive measure. Adventure Works would like to take a proactive approach in positively affecting sentiment by expediting the requests of their guests via chat. In particular, they are looking to experiment with automating the routing of routine guest requests (e.g., "Can I get more towels?", "I forgot my toothbrush" and "Can I get a bottle of champagne") that would otherwise require the attention of an already overloaded front desk attendant. These requests, once automatically routed, could be sent directly to housekeeping or room service as is most appropriate. Adventure Works has heard of active machine learning, whereby the system improves constantly with use, while still knowing what it is unsure of and asking for help when it determines it needs assistance. They have also requested the ability to use sentiment analysis to notify hotel guest services via email or SMS message should the sentiment analysis service detect that a guest is upset, so they can respond more quickly to improve that guest's experience.
 
 Another way they would like to be proactive and reduce load on hotel staff, is to have a bot that can answer guest questions about the hotel. This is something that can be separate from the real-time chat, and it is a feature that they would like automated as much as possible.
 
@@ -245,7 +242,7 @@ Time frame: 60 minutes
 
 ##### SMS messaging
 
-1. What Azure service would you recommend Adventure Works use for sending email or SMS messages to guests requesting housekeeping or room services via chat?
+1. What Azure service would you recommend Adventure Works use for sending email or SMS messages to guest services employees indicating the detection of an upset guest via sentiment analysis in the chat?
 2. How could you integrate this service into your chat message processing flow?
 
 ##### Q&A Bot
@@ -314,7 +311,7 @@ Tables reconvene with the larger group to hear a SME share the preferred solutio
 | Logic Apps        | <https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-overview>                                                |
 |
 
-### Intelligent analytics whiteboard design session trainer guide
+## Intelligent analytics whiteboard design session trainer guide
 
 ### Step 1: Review the customer case study
 
@@ -359,7 +356,7 @@ Tables reconvene with the larger group to hear a SME share the preferred solutio
 
     ![Preferred solution high-level architecture. Shows data flowing in from user devices, like mobile phones and laptops, to an Azure Web App. Those messages are sent to Event Hub, which are then processed by an Azure Function running an Event Processor Host. This is responsible for executing Azure Cognitive Services for sentiment analysis and language understanding. Data is sent to Service Bus and another Event Hub for processing.](media/high-level-overview.png 'Preferred Solution')
 
-    Messages are sent from browsers running within laptop or mobile clients via Web Sockets to an endpoint running in an Azure Web App. Instead of typing a chat message, end users can leverage the speech to text functionality of the Speech API to type the chat message for them* in this scenario the Speech API is invoked directly from the web page running in a client device. Chat messages received by the Web App are sent to an Event Hub where they are temporarily stored. An Azure Function picks up the chat messages and applies sentiment analysis to the message text (using the Text Analytics API), as well as contextual understanding (using LUIS). The function forwards the chat message to an Event Hub used to store messages for archival purposes, and to a Service Bus Topic which is used to deliver the message to the intended recipients. A Service Bus messages added trigger fires a Logic App using the Twilio connector to send SMS messages to guests and hotel staff, depending on the message received. A Stream Analytics Job provides a simple mechanism for pulling the chat messages from the second Event Hub and writing them both to CosmosDB for archival and to PowerBI for visualization of sentiment in real-time as well as trending sentiment. An indexer runs atop CosmosDB that updates the Azure Search index which provides full text search capability. Messages in the Service Bus Topic are pulled by Subscriptions created in the Web App and running on behalf of each client device connected by Web Sockets. When the Subscription receives a message, it is pushed via Web Sockets down to the browser-based app and displayed in a web page.
+    Messages are sent from browsers running within laptop or mobile clients via Web Sockets to an endpoint running in an Azure Web App. Instead of typing a chat message, end users can leverage the speech to text functionality of the Speech API to type the chat message for them* in this scenario the Speech API is invoked directly from the web page running in a client device. Chat messages received by the Web App are sent to an Event Hub where they are temporarily stored. An Azure Function picks up the chat messages and applies sentiment analysis to the message text (using the Text Analytics API), as well as contextual understanding (using LUIS). The function forwards the chat message to an Event Hub used to store messages for archival purposes, and to a Service Bus Topic which is used to deliver the message to the intended recipients. A Logic App is triggered when messages are added to a Service Bus topic to send SMS messages to hotel staff when negative guest sentiment is detected in the chat. A Stream Analytics Job provides a simple mechanism for pulling the chat messages from the second Event Hub and writing them both to CosmosDB for archival and to PowerBI for visualization of sentiment in real-time as well as trending sentiment. An indexer runs atop CosmosDB that updates the Azure Search index which provides full text search capability. Messages in the Service Bus Topic are pulled by Subscriptions created in the Web App and running on behalf of each client device connected by Web Sockets. When the Subscription receives a message, it is pushed via Web Sockets down to the browser-based app and displayed in a web page.
 
     > **Note**: The preferred solution is only one of many possible, viable approaches.
 
@@ -421,13 +418,13 @@ Tables reconvene with the larger group to hear a SME share the preferred solutio
 
 #### SMS messaging
 
-1. What Azure service would you recommend Adventure Works use for sending email or SMS messages to guests requesting housekeeping or room services via chat?
+1. What Azure service would you recommend Adventure Works use for sending email or SMS messages to guest services employees indicating the detection of an upset guest via sentiment analysis in the chat?
 
-    *Logic App could be used to send email or SMS messages to guests who request either housekeeping or room service requests via the chat application, while also meeting the Adventure Works' desire to use a serverless architecture in Azure. They could use a Twilio connector to send SMS messages to the guest's phone number on file, or an email could be sent if no phone number is available.*
+    *Logic App could be used to send email or SMS messages (with the Twilio connector) to hotel staff when negative guest sentiment is detected in the chat application. This would also meet Adventure Works' desire to use a serverless architecture in Azure.*
 
 2. How could you integrate this service into your chat message processing flow?
 
-    *If the LUIS API determines the request should be forwarded to either housekeeping or room service, then Event Processor logic could forward the message on to the Service Bus Topic appropriate for room service or housekeeping. From there, the Logic App could be triggered to send an email or SMS message to the guest as appropriate using the Service Bus connector for Logic App.*
+    *If the Sentiment Analysis API determines a guest's sentiment is below a set negative threshold, then Event Processor logic could forward the message on to the Service Bus Topic appropriate for hotel staff notifications. From there, the Logic App could be triggered to send an email or SMS message to hotel guest services using a Service Bus connector for Logic App.*
 
 #### Q&A Bot
 
