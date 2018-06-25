@@ -1,16 +1,4 @@
-![](images/HeaderPic.png "Microsoft Cloud Workshops")
-
-<div class="MCWHeader1">
-Intelligent analytics
-</div>
-
-<div class="MCWHeader2">
-Hands-on lab unguided
-</div>
-
-<div class="MCWHeader3">
-March 2018
-</div>
+![](../media/ms-cloud-workshop.png 'Microsoft Cloud Workshops')
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
@@ -21,93 +9,63 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
+# Intelligent analytics hands-on lab unguided
+
+Updated May 2018
+
+Adventure Works Travel specializes in building software solutions for the hospitality industry. Their latest product is an enterprise mobile/social chat product called Concierge+ (aka ConciergePlus). The mobile web app enables guests to easily stay in touch with the concierge and other guests, enabling greater personalization and improving their experience during their stay. Sentiment analysis is performed on top of chat messages as they occur, enabling hotel operators to keep tabs on guest sentiments in real-time.
+
+If you have not yet completed the steps to set up your environment in [Before the hands-on lab](./Setup.md), you will need to do that before proceeding.
+
 **Contents**
 
 <!-- TOC -->
 
 - [Intelligent analytics hands-on lab unguided](#intelligent-analytics-hands-on-lab-unguided)
-    - [Abstract and learning objectives](#abstract-and-learning-objectives)
-    - [Overview](#overview)
-    - [Solution architecture](#solution-architecture)
-    - [Requirements](#requirements)
-    - [Exercise 1: Environment setup](#exercise-1-environment-setup)
-        - [Task 1: Connect to the lab VM](#task-1-connect-to-the-lab-vm)
-        - [Task 2: Download and open the ConciergePlus starter solution](#task-2-download-and-open-the-conciergeplus-starter-solution)
-        - [Task 3: Create App Services](#task-3-create-app-services)
-        - [Task 4: Provision Service Bus](#task-4-provision-service-bus)
-        - [Task 5: Provision Event Hubs](#task-5-provision-event-hubs)
-        - [Task 6: Provision Azure Cosmos DB](#task-6-provision-azure-cosmos-db)
-        - [Task 7: Provision Azure Search](#task-7-provision-azure-search)
-        - [Task 8: Create Stream Analytics job](#task-8-create-stream-analytics-job)
-        - [Task 9: Start the Stream Analytics Job](#task-9-start-the-stream-analytics-job)
-        - [Task 10: Provision an Azure Storage account](#task-10-provision-an-azure-storage-account)
-        - [Task 11: Provision Cognitive Services](#task-11-provision-cognitive-services)
-    - [Exercise 2: Implement message forwarding](#exercise-2-implement-message-forwarding)
-        - [Task 1: Implement the event processor](#task-1-implement-the-event-processor)
-        - [Task 2: Configure the Chat Message Processor Web Job](#task-2-configure-the-chat-message-processor-web-job)
-    - [Exercise 3: Configure the Chat Web App settings](#exercise-3-configure-the-chat-web-app-settings)
-        - [Task 1: Configure the Chat Web App settings](#task-1-configure-the-chat-web-app-settings)
-    - [Exercise 4: Deploying the App Services](#exercise-4-deploying-the-app-services)
-        - [Task 1: Publish the ChatMessageSentimentProcessor Web Job](#task-1-publish-the-chatmessagesentimentprocessor-web-job)
-        - [Task 2: Publish the ChatWebApp](#task-2-publish-the-chatwebapp)
-        - [Task 3: Testing hotel lobby chat](#task-3-testing-hotel-lobby-chat)
-    - [Exercise 5: Add intelligence](#exercise-5-add-intelligence)
-        - [Task 1: Implement sentiment analysis](#task-1-implement-sentiment-analysis)
-        - [Task 2: Implement linguistic understanding](#task-2-implement-linguistic-understanding)
-        - [Task 3: Implement speech to text](#task-3-implement-speech-to-text)
-        - [Task 4: Re-deploy and test](#task-4-re-deploy-and-test)
-    - [Exercise 6: Building the Power BI dashboard](#exercise-6-building-the-power-bi-dashboard)
-        - [Task 1: Create the static dashboard](#task-1-create-the-static-dashboard)
-        - [Task 2: Create the real-time dashboard](#task-2-create-the-real-time-dashboard)
-    - [Exercise 7: Enabling search indexing](#exercise-7-enabling-search-indexing)
-        - [Task 1: Verifying message archival](#task-1-verifying-message-archival)
-        - [Task 2: Creating the index and indexer](#task-2-creating-the-index-and-indexer)
-        - [Task 3: Update the Web App web.config](#task-3-update-the-web-app-webconfig)
-        - [Task 4: Configure the Search API App](#task-4-configure-the-search-api-app)
-        - [Task 5: Re-publish apps](#task-5-re-publish-apps)
-    - [After the hands-on lab](#after-the-hands-on-lab)
-        - [Task 1: Delete the resource group](#task-1-delete-the-resource-group)
+  - [Exercise 1: Environment setup](#exercise-1-environment-setup)
+    - [Task 1: Connect to the lab VM](#task-1-connect-to-the-lab-vm)
+    - [Task 2: Download and open the ConciergePlus starter solution](#task-2-download-and-open-the-conciergeplus-starter-solution)
+    - [Task 3: Create App Services](#task-3-create-app-services)
+    - [Task 4: Provision Function App](#task-4-provision-function-app)
+    - [Task 5: Provision Service Bus](#task-5-provision-service-bus)
+    - [Task 6: Provision Event Hubs](#task-6-provision-event-hubs)
+    - [Task 7: Provision Azure Cosmos DB](#task-7-provision-azure-cosmos-db)
+    - [Task 8: Provision Azure Search](#task-8-provision-azure-search)
+    - [Task 9: Create Stream Analytics job](#task-9-create-stream-analytics-job)
+    - [Task 10: Start the Stream Analytics Job](#task-10-start-the-stream-analytics-job)
+    - [Task 11: Provision an Azure Storage account](#task-11-provision-an-azure-storage-account)
+    - [Task 12: Provision Cognitive Services](#task-12-provision-cognitive-services)
+  - [Exercise 2: Implement message forwarding](#exercise-2-implement-message-forwarding)
+    - [Task 1: Implement the event processor](#task-1-implement-the-event-processor)
+    - [Task 2: Configure the Chat Message Processor Function App](#task-2-configure-the-chat-message-processor-function-app)
+  - [Exercise 3: Configure the Chat Web App settings](#exercise-3-configure-the-chat-web-app-settings)
+    - [Task 1: Configure the Chat Web App settings](#task-1-configure-the-chat-web-app-settings)
+  - [Exercise 4: Deploying the App Services](#exercise-4-deploying-the-app-services)
+    - [Task 1: Publish the ChatMessageSentimentProcessor Function App](#task-1-publish-the-chatmessagesentimentprocessor-function-app)
+    - [Task 2: Publish the ChatWebApp](#task-2-publish-the-chatwebapp)
+    - [Task 3: Testing hotel lobby chat](#task-3-testing-hotel-lobby-chat)
+  - [Exercise 5: Add intelligence](#exercise-5-add-intelligence)
+    - [Task 1: Implement sentiment analysis](#task-1-implement-sentiment-analysis)
+    - [Task 2: Implement linguistic understanding](#task-2-implement-linguistic-understanding)
+    - [Task 3: Implement speech to text](#task-3-implement-speech-to-text)
+    - [Task 4: Re-deploy and test](#task-4-re-deploy-and-test)
+  - [Exercise 6: Building the Power BI dashboard](#exercise-6-building-the-power-bi-dashboard)
+    - [Task 1: Create the static dashboard](#task-1-create-the-static-dashboard)
+    - [Task 2: Create the real-time dashboard](#task-2-create-the-real-time-dashboard)
+    - [Task 3: Add a trending sentiment chart to the dashboard](#task-3-add-a-trending-sentiment-chart-to-the-dashboard)
+  - [Exercise 7: Enabling search indexing](#exercise-7-enabling-search-indexing)
+    - [Task 1: Verifying message archival](#task-1-verifying-message-archival)
+    - [Task 2: Creating the index and indexer](#task-2-creating-the-index-and-indexer)
+    - [Task 3: Update the Web App web.config](#task-3-update-the-web-app-webconfig)
+    - [Task 4: Configure the Search API App](#task-4-configure-the-search-api-app)
+    - [Task 5: Re-publish apps](#task-5-re-publish-apps)
+  - [Exercise 8: Add a bot using Bot service and QnA Maker](#exercise-8-add-a-bot-using-bot-service-and-qna-maker)
+    - [Task 1: Create a QnA service instance in Azure](#task-1-create-a-qna-service-instance-in-azure)
+    - [Task 2: Create a QnA bot](#task-2-create-a-qna-bot)
+  - [After the hands-on lab](#after-the-hands-on-lab)
+    - [Task 1: Delete the resource group](#task-1-delete-the-resource-group)
 
 <!-- /TOC -->
-
-# Intelligent analytics hands-on lab unguided
-
-## Abstract and learning objectives
-
-This package is designed to facilitate learning real-time analytics without IoT. Participants will enable intelligent conversation in a machine learning-enabled, real-time chat pipeline to allow hotel guests to chat with one another, and to communicate directly with the concierge. They will also apply analytics to visualize customer sentiment in real-time. After completion, students will be better able to implement a lambda architecture, and enable web-based real-time messaging thru Web Sockets, Event Hubs, and Services Bus. In addition, participants will better understand how to:
-
--   Leverage Cognitive Services (LUIS & Text Analytics API)
-
--   Process Events with Web Jobs
-
--   Index with Search
-
--   Archive with Cosmos DB
-
--   Visualize with Power BI Q&A
-
-## Overview
-
-Adventure Works Travel specializes in building software solutions for the hospitality industry. Their latest product is an enterprise mobile/social chat product called Concierge+ (aka ConciergePlus). The mobile web app enables guests to easily stay in touch with the concierge and other guests, enabling greater personalization and improving their experience during their stay. Sentiment analysis is performed on top of chat messages as they occur, enabling hotel operators to keep tabs on guest sentiments in real-time.
-
-## Solution architecture
-
-Below are diagrams of the solution architecture you will build in this lab. Please study this carefully, so you understand the whole of the solution as you are working on the various components.
-
-![The preferred solution is shown to meet the customer requirements. From right to left there is an architecture diagram which shows the connections from a mobile device to a Web Application. The Web Application is shown setting data to an Event Hub which is connected to a Web Job. From there Event Hub and Service Bus work together with Stream Analytics, Power BI and Cosomos DB to provide the full solution.](images/Hands-onlabunguided-Intelligentanalyticsimages/media/image2.png "Solution architecture")
-
-## Requirements
-
--   Microsoft Azure subscription must be pay-as-you-go or MSDN.
-
-    -   Trial subscriptions will not work.
-
--   A virtual machine configured with:
-
-    -   Visual Studio Community 2017 or later
-
-    -   Azure SDK 2.9 or later (Included with Visual Studio 2017)
-
 
 ## Exercise 1: Environment setup
 
@@ -117,79 +75,101 @@ Synopsis: The following section walks you through the manual steps to provision 
 
 ### Task 1: Connect to the lab VM
 
-*Tasks to complete*:
+_Tasks to complete_:
 
 1.  Create an RDP connection to your Lab VM.
 
 2.  Disable Internet Explorer Enhanced Security Configuration.
 
-*Exit criteria*:
+_Exit criteria_:
 
--   You have an active session to your Lab VM.
+- You have an active session to your Lab VM.
 
 ### Task 2: Download and open the ConciergePlus starter solution
 
-*Tasks to complete*:
+_Tasks to complete_:
 
-1.  On your Lab VM, download the ConciergePlus starter solution from the following URL: <http://bit.ly/2wMsqW4>
+1.  From your Lab VM, download the starter project by downloading a .zip copy of the Intelligent analytics GitHub repo.
 
-2.  Unzip the contents to C:\\ConciergePlus\\.
+2.  In a web browser, navigate to the [Intelligent analytics MCW repo](https://github.com/Microsoft/MCW-Intelligent-analytics).
 
-3.  Open the solution in Visual Studio 2017 on your Lab VM.
+3.  On the repo page, select **Clone or download**, then select **Download ZIP**.
 
-*Exit criteria*:
+    ![Download .zip containing the Intelligent analytics repository](media/git-hub-download-repo.png 'Download ZIP')
 
--   The ConciergePlusSentiments solution is open in Visual Studio on your Lab VM.
+4.  Unzip the contents of the downloaded ZIP file to the folder **C:\\ConciergePlus**\\.
+
+    ![In the Extract Compressed (Zipped) Folders window, files will be extracted to C:\ConciergePlus.](media/image18.png 'Extract Compressed (Zipped) Folders window')
+
+5.  Open **ConciergePlusSentiment.sln** in the C:\\ConciergePlus\\Hands-on-lab\\lab-files\\starter-project\\ folder with Visual Studio 2017.
+
+6.  Open the solution in Visual Studio 2017 on your Lab VM.
+
+_Exit criteria_:
+
+- The ConciergePlusSentiments solution is open in Visual Studio on your Lab VM.
 
 **Note**: If you attempt to build the solution at this point, you will see many build errors. This is intentional. You will correct these in the exercises that follow.
 
 ### Task 3: Create App Services
 
-In these steps, you will provision two Web Apps and an API App within a single App Service Plan.
+In these steps, you will provision a Web App and an API App within a single App Service Plan.
 
-*Tasks to complete*:
+_Tasks to complete_:
 
 1.  Provision a Web App to host the website in an App Service Plan in the Resource Group "intelligent-analytics". Name the Web App something like "ConciergePlusWeb".
 
-2.  Provision another Web App to host a Web Job in the same App Service Plan and Resource Group. Name it something like "ChatProcessorWebJob".
+2.  Configure the Web App to enable Web sockets.
 
-3.  Configure the Web Job Web App to have Always On enabled.
+3.  Provision an API App, adding it to the same resource group and App Service Plan/location. Name the API App something like "ChatSearchApi".
 
-*Exit criteria*:
+_Exit criteria_:
 
--   You can navigate to the empty websites for both deployed Web Apps using a web browser.
+- You can navigate to the empty websites for deployed Web App and API App using a web browser.
 
-### Task 4: Provision Service Bus 
+### Task 4: Provision Function App
+
+In this section, you will provision a Function App that will be used as the EventProcessorHost for processing and enriching Event Hubs data.
+
+_Tasks to complete_:
+
+1.  Provision a Consumption Plan-based Function App.
+
+_Exit criteria_:
+
+- You have a Function App within the same resource group as your other lab resources.
+
+### Task 5: Provision Service Bus
 
 In this section, you will provision a Service Bus Namespace and Service Bus Topic.
 
-*Tasks to complete*:
+_Tasks to complete_:
 
 1.  Provision a Service Bus Topic in the same region/resource group as your App Services.
 
 2.  Provision an Event Hub in the same region/resource group as your App Services.
 
-*Exit criteria*:
+_Exit criteria_:
 
--   Your Service Bus Topic is listed in the Azure Portal.
+- Your Service Bus Topic is listed in the Azure Portal.
 
-### Task 5: Provision Event Hubs
+### Task 6: Provision Event Hubs
 
 In this task, you will create a new Event Hubs namespace and instance.
 
-*Tasks to complete*:
+_Tasks to complete_:
 
 1.  Provision two Event Hub instances in a new namespace and in the same region/resource group as your App Services. Use a partition count of 32 and message retention of 1 day. The second Event Hub will store messages for archival and be processed by Stream Analytics.
 
-*Exit criteria*:
+_Exit criteria_:
 
--   Your Event Hubs are listed in the Azure Portal.
+- Your Event Hubs are listed in the Azure Portal.
 
-### Task 6: Provision Azure Cosmos DB
+### Task 7: Provision Azure Cosmos DB
 
 In this section, you will provision an Azure Cosmos DB account, a SQL (DocumentDB) Database, and a DocumentDB collection that will be used to collect all the chat messages.
 
-*Tasks to complete*:
+_Tasks to complete_:
 
 1.  Provision a new Azure Cosmos DB account in the same resource group and region as your other services.
 
@@ -197,69 +177,75 @@ In this section, you will provision an Azure Cosmos DB account, a SQL (DocumentD
 
 3.  Add a Collection. The pricing tier should be left at Standard with the Throughput at 1000.
 
-*Exit criteria*:
+_Exit criteria_:
 
--   You can view your Collection in the Azure Portal.
+- You can view your Collection in the Azure Portal.
 
-### Task 7: Provision Azure Search
+### Task 8: Provision Azure Search
 
 In this section, you will create an Azure Search instance.
 
-*Tasks to complete*:
+_Tasks to complete_:
 
 1.  Provision a new instance of Azure Search in the same resource group and region as your other services, at the Basic Pricing tier.
 
-*Exit criteria*:
+_Exit criteria_:
 
--   You can view your Azure Search instance in the Azure Portal.
+- You can view your Azure Search instance in the Azure Portal.
 
-### Task 8: Create Stream Analytics job
+### Task 9: Create Stream Analytics job
 
 In this section, you will create the Stream Analytics Job that will be used to read chat messages from the Event Hub and write them to Azure Cosmos DB.
 
-*Tasks to complete*:
+_Tasks to complete_:
 
 1.  Provision a new Stream Analytics Job in the same region as your other resources.
 
 2.  Add an Input to it that reads from your second Event Hub (the one used for archival). The serialization should be JSON/UTF8.
 
-3.  Add an Output to the Job that targets your Collection in DocumentDB. The Partition Key should be sessionid (all lowercase) and the Document ID messageid (all lower case).
+3.  Add an Output to the Job that targets your Collection in DocumentDB. The Collection name pattern should match your Cosmos DB collection you created, and the Document ID should be messageid (all lower case).
 
-4.  Add a Query that selects all data from the Event Hub and sends it to DocumentDB.
+4.  Create **two** Power BI outputs, one with a Dataset/Table name of Messages, and the other TrendingSentiment.
 
-*Exit criteria*:
+5.  Add a Query that selects all data from the Event Hub and sends it to DocumentDB.
 
--   You can view your Stream Analytics instance in the Azure Portal.
+6.  Add to the query to also select all into the Power BI output that contains the Messages dataset.
 
-### Task 9: Start the Stream Analytics Job
+7.  Finally, add to the query to select the average score and TimeStamp, grouped by a 5-minute tumbling window, into the Power BI output that contains the TrendingSentiment dataset.
+
+_Exit criteria_:
+
+- You can view your Stream Analytics instance in the Azure Portal.
+
+### Task 10: Start the Stream Analytics Job
 
 In this section, you will run the Stream Analytics Job that will be used to read chat messages from the Event Hub, and write them to Azure Cosmos DB.
 
-*Tasks to complete*:
+_Tasks to complete_:
 
 1.  Start the Stream Analytics Job.
 
-*Exit criteria*:
+_Exit criteria_:
 
--   Your Job starts without error.
+- Your Job starts without error.
 
-### Task 10: Provision an Azure Storage account
+### Task 11: Provision an Azure Storage account
 
 The EventProcessorHost requires an Azure Storage Account that it will use to manage its state among multiple instances. In this section, you create that Storage Account.
 
-*Tasks to complete*:
+_Tasks to complete_:
 
 1.  Provision a resource model based Storage Account of type Standard LRS in the same Location and Resource Group as your other services.
 
-*Exit criteria*:
+_Exit criteria_:
 
--   You can view your Storage Account in the Portal.
+- You can view your Storage Account in the Portal.
 
-### Task 11: Provision Cognitive Services
+### Task 12: Provision Cognitive Services
 
 To provision access to the Text Analytics API (which provides sentiment analysis features), you will need to provision a Cognitive Services account.
 
-*Tasks to complete*:
+_Tasks to complete_:
 
 1.  Provision a Text Analytics API in the same Location and Resource Group as your other services. Take note of the value of KEY 1.
 
@@ -267,43 +253,56 @@ To provision access to the Text Analytics API (which provides sentiment analysis
 
 3.  Provision a API Type Language Understanding Intelligent Service (LUIS) in the same Location and Resource Group as your other services. Take note of the value of KEY 1.
 
-*Exit criteria*:
+_Exit criteria_:
 
--   You can view your Cognitive Services in the Portal, you should have one for Text Analytics API, another for Bing Speech API, and a third for LUIS.
+- You can view your Cognitive Services in the Portal, you should have one for Text Analytics API, another for Bing Speech API, and a third for LUIS.
 
 ## Exercise 2: Implement message forwarding
 
 Duration: 45 minutes
 
-In this section, you will implement the message forwarding from the ingest Event Hub instance to an Event Hub instance and a Service Bus Topic. You will also configure the web-based components, which consist of three parts: The Web App UI, a Web Job that runs the EventProcessorHost, and the API App that provides a wrapper around the Search API.
+In this section, you will implement the message forwarding from the ingest Event Hub instance to an Event Hub instance and a Service Bus Topic. You will also configure the web-based components, which consist of three parts: The Web App UI, a Function App that runs the EventProcessorHost, and the API App that provides a wrapper around the Search API.
 
 ### Task 1: Implement the event processor
 
 In this section, you will run the Stream Analytics Job that will be used to read chat messages from the Event Hub and write them to Cosmos DB.
 
-*Tasks to complete*:
+_Tasks to complete_:
 
-1.  In Visual Studio on your Lab VM, open SentimentEventProcessor.cs, and navigate to the IEventProcessor.ProcessEventsAsync method.
+1.  In Visual Studio on your Lab VM, open ProcessChatMessage.cs within the ChatMessageSentimentProcessorFunction project.
 
 2.  Complete the TODOs numbered 1 through 6.
 
-*Exit criteria*:
+_Exit criteria_:
 
--   There are no errors in the IEventProcessor.ProcessEventsAsync method in Visual Studio. Note that at this point the solution will not yet run.
+- There are no errors in the Run method in Visual Studio. Note that at this point the solution will not yet run.
 
-### Task 2: Configure the Chat Message Processor Web Job
+### Task 2: Configure the Chat Message Processor Function App
 
-Within Visual Studio Solution Explorer, expand the ChatMessageSentimentProcessor project, and open App.Config. You will update the appSettings in this file.
+Navigate to your **Function App** in the Azure portal. You will update the **Application settings** by adding the following application settings:
 
-*Tasks to complete*:
+```
+eventHubConnectionString
+sourceEventHubName
+destinationEventHubName
+storageAccountName
+storageAccountKey
+serviceBusConnectionString
+chatTopicPath
+textAnalyticsBaseUrl
+textAnalyticsAccountName
+textAnalyticsAccountKey
+```
+
+_Tasks to complete_:
 
 1.  Create a Shared Access Policy for Event Hub with Manage, Send, and Listen permissions.
 
 2.  Create a Shared Access Policy for Service Bus with Manage, Send, and Listen permissions.
 
-3.  Copy the connection string from the policy into the eventHubConnectionString setting in the app.config.
+3.  Copy the connection string from the policy and add it to the new eventHubConnectionString App setting.
 
-4.  Copy the connection string from the policy into the serviceBusConnectionString setting in the app.config.
+4.  Copy the connection string from the policy and add it to the new serviceBusConnectionString App setting.
 
 5.  Set sourceEventHubName to the name of your first Event Hub.
 
@@ -321,9 +320,9 @@ Within Visual Studio Solution Explorer, expand the ChatMessageSentimentProcessor
 
 12. Set textAnalyticsAccountKey to the value of KEY 1 from this same Cognitive Services account.
 
-*Exit criteria*:
+_Exit criteria_:
 
--   You should have values for all the app settings except LuisAppId and LuisKey.
+- You should have values for all the app settings except LuisAppId and LuisKey.
 
 ## Exercise 3: Configure the Chat Web App settings
 
@@ -331,9 +330,9 @@ Duration: 10 minutes
 
 Within Visual Studio Solution Explorer, expand the ChatWebApp project and open Web.Config. You will update the appSettings in this file.
 
-### Task 1: Configure the Chat Web App settings 
+### Task 1: Configure the Chat Web App settings
 
-*Tasks to complete*:
+_Tasks to complete_:
 
 1.  Copy the connection string from the Event Hub policy you created into the eventHubConnectionString setting.
 
@@ -345,9 +344,9 @@ Within Visual Studio Solution Explorer, expand the ChatWebApp project and open W
 
 5.  Set chatRequestTopicPath to the name of the Service Bus Topic you created.
 
-*Exit criteria*:
+_Exit criteria_:
 
--   You should have values for all the app settings except chatSearchApiBase.
+- You should have values for all the app settings except chatSearchApiBase.
 
 ## Exercise 4: Deploying the App Services
 
@@ -355,31 +354,31 @@ Duration: 15 minutes
 
 With the App Services projects properly configured, you are now ready to deploy them to their pre-created services in Azure.
 
-### Task 1: Publish the ChatMessageSentimentProcessor Web Job
+### Task 1: Publish the ChatMessageSentimentProcessor Function App
 
-*Tasks to complete*:
+_Tasks to complete_:
 
-1.  Publish the ChatMessageSentimentProcessor Web Job with a run mode of Run Continuously to the Web App you had provisioned for it.
+1.  Publish the ChatMessageSentimentProcessorFunction Function App project to the Function App you had provisioned for it.
 
-*Exit criteria*:
+_Exit criteria_:
 
--   The Output dialog indicates your publish was successful.
+- The Output dialog indicates your publish was successful.
 
 ### Task 2: Publish the ChatWebApp
 
-*Tasks to complete*:
+_Tasks to complete_:
 
 1.  Publish the ChatWebApp to the Web App you had provisioned for it.
 
-*Exit criteria*:
+_Exit criteria_:
 
--   A browser window should appear with content similar to the following:
-    
-    ![The Browser window displays the Contoso Hotels webpage, with a Join Chat window open below.](images/Hands-onlabunguided-Intelligentanalyticsimages/media/image10.png "Browser window")
+- A browser window should appear with content similar to the following:
+
+  ![The Browser window displays the Contoso Hotels webpage, with a Join Chat window open below.](media/image104.png 'Browser window')
 
 ### Task 3: Testing hotel lobby chat
 
-*Tasks to complete*:
+_Tasks to complete_:
 
 1.  Open a browser instance and navigate to the deployed Web App.
 
@@ -389,9 +388,9 @@ With the App Services projects properly configured, you are now ready to deploy 
 
 4.  Start a conversation between these users in the Hotel Lobby.
 
-*Exit criteria*:
+_Exit criteria_:
 
--   You should see your messages appear in all other browser instances joined to the chat.
+- You should see your messages appear in all other browser instances joined to the chat.
 
 ## Exercise 5: Add intelligence
 
@@ -403,21 +402,21 @@ In this exercise, you will implement code to activate multiple cognitive intelli
 
 In this task, you will add code that enables the Event Processor to invoke the Text Analytics API using the REST API and retrieve a sentiment score (a value between 0.0, negative, and 1.0, positive sentiment) for the text of a chat message.
 
-*Tasks to complete*:
+_Tasks to complete_:
 
 1.  Complete the TODOs numbered 7 through 11 in the GetSentimentScore method.
 
-2.  Complete TODO 12 in the ProcessEventsAsync method.
+2.  Complete TODO 12 in the Run method.
 
-*Exit criteria*:
+_Exit criteria_:
 
--   You should see no errors in either the GetSentimentScore or ProcessEventsAsync methods.
+- You should see no errors in either the GetSentimentScore or Run methods.
 
 ### Task 2: Implement linguistic understanding
 
 In this task, you will create a LUIS app, publish it, and then enable the Event Processor to invoke LUIS using the REST API.
 
-*Tasks to complete*:
+_Tasks to complete_:
 
 1.  Use <http://www.luis.ai> to create a new App.
 
@@ -437,27 +436,27 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 9.  Test the model with the query "order me a pizza" and verify you get the intent of OrderIn (with a score close to 1.0) and entity pizza with a type of "RoomService::FoodItem".
 
-1. Copy the App ID and Subscription Key from your LUIS app into the App.config of the ChatMessageSentimentProcessor project, to the luisAppID and luisKey settings respectively.
+10. Copy the App ID and Subscription Key from your LUIS app into and paste them into two new App settings within your Function App in the Azure portal: `luisAppID` and `luisKey` settings respectively.
 
-11. Complete TODO 13 in SentimentEventProcessor.cs.
+11. Complete TODO 13 in ProcessChatMessage.cs.
 
-12. Update the \_luisBaseUrl in SentimentEventProcessor.cs to match that base URL from your LUIS app.
+12. Update the \_luisBaseUrl in ProcessChatMessage.cs to match that base URL from your LUIS app.
 
-*Exit criteria*:
+_Exit criteria_:
 
--   All TODO items in SentimentEventProcessor.cs should be completed.
+- All TODO items in ProcessChatMessage.cs should be completed.
 
 ### Task 3: Implement speech to text
 
 There is one last intelligence service to activate in the application---speech recognition. This is powered by the Bing Speech API, and is invoked directly from the web page without going through the web server. In the section that follows, you insert your Cognitive Services Speech API key into the configuration to enable speech to text.
 
-*Tasks to complete*:
+_Tasks to complete_:
 
 1.  Add your Speech API Key under the TODO in scripts\\chatClient.js of the ChatWebApp project.
 
-*Exit criteria*:
+_Exit criteria_:
 
--   You should have all TODO items complete in chatClient.js.
+- You should have all TODO items complete in chatClient.js.
 
 **Note**: Embedding the API Key as shown here is done only for convenience. In a production app, you will want to maintain your API Key server-side.
 
@@ -465,23 +464,23 @@ There is one last intelligence service to activate in the application---speech r
 
 Now that you have added sentiment analysis, language understanding, and speech recognition to the solution, you need to re-deploy the apps so you can test out the new functionality.
 
-*Tasks to complete*:
+_Tasks to complete_:
 
-1.  Publish the ChatMessageSentimentProcessor.
+1.  Publish the ChatMessageSentimentProcessorFunction Function App.
 
 2.  Publish ChatWebApp.
 
-*Exit criteria*:
+_Exit criteria_:
 
--   Open a browser and navigate to your deployed website using HTTPS. Use multiple browser instances or tabs to simulate multiple users.
+- Open a browser and navigate to your deployed website using HTTPS. Use multiple browser instances or tabs to simulate multiple users.
 
--   Send chat messages between them and verify that you see the sentiment indicator (a thumbs up or thumbs down icon next to each chat message).
+- Send chat messages between them and verify that you see the sentiment indicator (a thumbs up or thumbs down icon next to each chat message).
 
--   You can order something from room service, like "bring me towels" and you get a response from the ConciergeBot.
+- You can order something from room service, like "bring me towels" and you get a response from the ConciergeBot.
 
--   You can select the microphone to the left of the text box and speak for two to three seconds. Your spoken message should appear.
+- You can select the microphone to the left of the text box and speak for two to three seconds. Your spoken message should appear.
 
-    ![The Live Chat window has a chat going on between the Concierge Bot and the guest.](images/Hands-onlabunguided-Intelligentanalyticsimages/media/image11.png "Live Chat window")
+  ![The Live Chat window has a chat going on between the Concierge Bot and the guest.](media/chat-with-luis.png 'Live Chat window')
 
 ## Exercise 6: Building the Power BI dashboard
 
@@ -491,21 +490,21 @@ Now that you have the solution deployed and exchanging messages, you can build a
 
 ### Task 1: Create the static dashboard
 
-*Tasks to complete*:
+_Tasks to complete_:
 
-1.  Using PowerBI.com, create a new report from your streamed dataset that contains a semi-circular gauge. It should chart the average score, with a range of 0.0 to 1.0.
+1.  Using PowerBI.com, create a new report from your streamed **Messages** dataset that contains a semi-circular gauge. It should chart the average score, with a range of 0.0 to 1.0.
 
-*Exit criteria*:
+_Exit criteria_:
 
--   Your report should look like the following:
-    
-    ![A half-donut graph displays an Average score of 0.62.](images/Hands-onlabunguided-Intelligentanalyticsimages/media/image12.png "Average of score donut graph")
+- Your report should look like the following:
+
+  ![A half-donut graph displays an Average score of 0.62.](media/image146.png 'Average of score donut graph')
 
 ### Task 2: Create the real-time dashboard
 
 This gauge is currently a static visualization. You will use the report just created to seed a dashboard whose visualizations update as new messages arrive.
 
-*Tasks to complete*:
+_Tasks to complete_:
 
 1.  Create a new dashboard by pinning the gauge you created previously.
 
@@ -522,12 +521,30 @@ This gauge is currently a static visualization. You will use the report just cre
 7.  Navigate to the ConciergePlus website and send some messages, observing that your Gauge updates in real time.
 
 8.  Add three additional visualizations so your dashboard looks as follows:
-    
-    ![The Power BI dashboard has four panes: two Count of Messages panes, an Average Sentiment, and Upset Users. The first Count of Messages pane displays a number (18). The second Count of Messages is a pie chart broken out by username. The Average Sentiment is a donut chart displaying the Average Sentiment (0.58) in the past 24 hours. Upset Users chart is a horizontal bar chart displaying the average of upset users (0.25) in the past 24 hours.](images/Hands-onlabunguided-Intelligentanalyticsimages/media/image13.png "Power BI dashboard")
 
-*Exit criteria*:
+    ![The Power BI dashboard has four panes: two Count of Messages panes, an Average Sentiment, and Upset Users. The first Count of Messages pane displays a number (18). The second Count of Messages is a pie chart broken out by username. The Average Sentiment is a donut chart displaying the Average Sentiment (0.58) in the past 24 hours. Upset Users chart is a horizontal bar chart displaying the average of upset users (0.25) in the past 24 hours.](media/image158.png 'Power BI dashboard')
 
--   Your chart should update in real-time and appear as above.
+_Exit criteria_:
+
+- Your chart should update in real-time and appear as above.
+
+### Task 3: Add a trending sentiment chart to the dashboard
+
+The sentiment visualization you created is great for getting a sense of sentiment as of this moment. However, Adventure Works Travel wishes to view sentiment over time for historical reference and to see whether overall sentiment is trending one way or another. To do this, we will use the tumbling window query output from Stream Analytics to display this data in a line chart.
+
+_Tasks to complete_:
+
+1.  Create a new report from the **TrendingSentiment** dataset.
+
+2.  The report should have a line chart with "snapshot" as the Axis, and "average" as the Values.
+
+3.  Save the report and pin this visual to the dashboard you created.
+
+_Exit criteria_:
+
+- Your new line chart should display on the dashboard, showing the trending sentiment:
+
+![Power BI dashboard showing the average score gauges and trending sentiment](media/power-bi-dashboard-with-trending-sentiment.png 'Power BI Dashboard')
 
 ## Exercise 7: Enabling search indexing
 
@@ -539,21 +556,21 @@ Now that you have primed the system with some messages, you will create a Search
 
 Before going further, a good thing to check is whether messages are being written to Azure Cosmos DB from the Stream Analytics Job.
 
-*Tasks to complete*:
+_Tasks to complete_:
 
 1.  Using the Azure Portal, navigate to Data Explorer for your Cosmos DB Collection.
 
-*Exit criteria*:
+_Exit criteria_:
 
--   You should see a list of document IDs, similar to the following:
-    
-    ![Documents has been selected from within the Data Explorer in the Azure Portal.](images/Hands-onlabunguided-Intelligentanalyticsimages/media/image14.png "Data Explorer")
+- You should see a list of document IDs, similar to the following:
 
-    ![Message contents display.](images/Hands-onlabunguided-Intelligentanalyticsimages/media/image15.png "Message contents")
+  ![Documents has been selected from within the Data Explorer in the Azure Portal.](media/image161.png 'Data Explorer')
+
+  ![Message contents display.](media/image162.png 'Message contents')
 
 ### Task 2: Creating the index and indexer
 
-*Tasks to complete*:
+_Tasks to complete_:
 
 1.  In your Azure Search Index, use the Connect to your data feature to index the collection.
 
@@ -569,27 +586,27 @@ Before going further, a good thing to check is whether messages are being writte
 
 7.  Create an Indexer with a 5-minute interval that starts today.
 
-*Exit criteria*:
+_Exit criteria_:
 
--   After a few moments, your indexer status should appear similar to the following:
-    
-    ![The Indexer displays Successes (1), and Failed (0).](images/Hands-onlabunguided-Intelligentanalyticsimages/media/image16.png "Indexer")
+- After a few moments, your indexer status should appear similar to the following:
+
+  ![The Indexer displays Successes (1), and Failed (0).](media/image171.png 'Indexer')
 
 ### Task 3: Update the Web App web.config
 
-*Tasks to complete*:
+_Tasks to complete_:
 
 1.  Modify the web.config of the ChatWebApp project.
 
 2.  Set the chatSearchApiBase to the URI of the deployed Search API app.
 
-*Exit criteria*:
+_Exit criteria_:
 
--   You should have all app settings completed with values in the web.config.
+- You should have all app settings completed with values in the web.config.
 
 ### Task 4: Configure the Search API App
 
-*Tasks to complete*:
+_Tasks to complete_:
 
 1.  Modify the web.config of the ChatApi project.
 
@@ -599,29 +616,77 @@ Before going further, a good thing to check is whether messages are being writte
 
 4.  Set the SearchIndexName to the name of the Index you created in Search.
 
-*Exit criteria*:
+_Exit criteria_:
 
--   You should have all app settings completed with values in the web.config.
+- You should have all app settings completed with values in the web.config.
 
 ### Task 5: Re-publish apps
 
-*Tasks to complete*:
+_Tasks to complete_:
 
 1.  Publish the ChatWebApp.
 
 2.  Publish the ChatApiApp to your API App.
 
-*Exit criteria*:
+_Exit criteria_:
 
--   Navigate to the Search tab on the deployed Web App and try searching for chat messages. (Note that there is up to a 5-minute latency before new messages may appear in the search results.)
-    
-    ![A Search Message box displays over the Web App Search tab.](images/Hands-onlabunguided-Intelligentanalyticsimages/media/image17.png "Web App Search tab ")
+- Navigate to the Search tab on the deployed Web App and try searching for chat messages. (Note that there is up to a 5-minute latency before new messages may appear in the search results.)
 
-## After the hands-on lab 
+  ![A Search Message box displays over the Web App Search tab.](media/image182.png 'Web App Search tab ')
+
+## Exercise 8: Add a bot using Bot service and QnA Maker
+
+Duration: 30 minutes
+
+At this point, you have created a real-time chat service in Azure, allowing people to interact with one another. Now we will build a bot that will automatically respond to user questions, helping take the load off the hotel staff.
+
+### Task 1: Create a QnA service instance in Azure
+
+_Tasks to complete_:
+
+1.  Sign up for/into <https://www.qnamaker.ai> and create a new **knowledge base** into the same subscription and resource group as your other lab components.
+
+2.  Choose the **F** pricing tier.
+
+3.  Name your KB "Concierge Plus". [Download this file](lab-files/faq.xlsx) and use it to populate your KB.
+
+4.  Add a **QnA pair** with "Hi" as the Question, and "Hello. Ask me questions about the hotel" as the Answer.
+
+5.  Test and publish your service.
+
+_Exit criteria_:
+
+- The Success page that appears after publishing. You have copied and saved the values for **Knowledge base ID**, **Endpoint HostName**, and **Auth Key** to Notepad or similar:
+
+  ![Successful deployment](media/qna-maker-success.png 'Success')
+
+### Task 2: Create a QnA bot
+
+_Tasks to complete_:
+
+1.  Create a new **Functions Bot** using the **Question and Answer (C#)** template.
+
+2.  After it is provisioned, update the Functions Bot's Application Settings with the values you copied at the end of the previous task into the **QnAAuthKey**, **QnAEndpointHostName**, and **QnAKnowledgebaseId** settings.
+
+3.  Update the settings to set the bot's display name to "Concierge+ Bot".
+
+4.  Copy the bot's embed code, updating it with the Secret key, and paste it into the Views/Home/Bot.cshtml file within your web app, replacing `<!-- PASTE YOUR BOT EMBED CODE HERE -->`.
+
+5.  Add `width` and `hieght` values to your iframe, setting the values to "100%" and "300", respectively.
+
+6.  Publish your web app.
+
+_Exit criteria_:
+
+- After the web app has been published, navigate to it and select the **Bot** menu item. You have typed in a few questions to ensure the bot is functioning correctly.
+
+  ![Type in a few questions on the bot page](media/bot-service-embedded.png 'Bot page')
+
+## After the hands-on lab
 
 Duration: 10 Minutes
 
-In this exercise, attendees will deprovision any Azure resources that were created in support of the lab. You should follow all steps provided *after* attending the Hands-on lab.
+In this exercise, attendees will deprovision any Azure resources that were created in support of the lab. You should follow all steps provided _after_ attending the Hands-on lab.
 
 ### Task 1: Delete the resource group
 
@@ -630,4 +695,3 @@ In this exercise, attendees will deprovision any Azure resources that were creat
 2.  Search for the name of your research group and select it from the list.
 
 3.  Select Delete in the command bar and confirm the deletion by re-typing the Resource group name and selecting Delete.
-

@@ -22,11 +22,6 @@ If you have not yet completed the steps to set up your environment in [Before th
 <!-- TOC -->
 
 - [Intelligent analytics hands-on lab step-by-step](#intelligent-analytics-hands-on-lab-step-by-step)
-- [Intelligent analytics hands-on lab step-by-step](#intelligent-analytics-hands-on-lab-step-by-step-1)
-  - [Abstract and learning objectives](#abstract-and-learning-objectives)
-  - [Overview](#overview)
-  - [Solution architecture](#solution-architecture)
-  - [Requirements](#requirements)
   - [Exercise 1: Environment setup](#exercise-1-environment-setup)
     - [Task 1: Connect to the lab VM](#task-1-connect-to-the-lab-vm)
     - [Task 2: Download and open the ConciergePlus starter solution](#task-2-download-and-open-the-conciergeplus-starter-solution)
@@ -81,44 +76,6 @@ If you have not yet completed the steps to set up your environment in [Before th
     - [Task 1: Delete the resource group](#task-1-delete-the-resource-group)
 
 <!-- /TOC -->
-
-# Intelligent analytics hands-on lab step-by-step
-
-## Abstract and learning objectives
-
-This package is designed to facilitate learning real-time analytics without IoT. Participants will enable intelligent conversation in a machine learning-enabled, real-time chat pipeline to allow hotel guests to chat with one another, and to communicate directly with the concierge. They will also apply analytics to visualize customer sentiment in real-time. After completion, students will be better able to implement a lambda architecture, and enable web-based real-time messaging thru Web Sockets, Event Hubs, and Services Bus. In addition, participants will better understand how to:
-
-- Leverage Cognitive Services (LUIS & Text Analytics API)
-
-- Process Events with Web Jobs
-
-- Index with Search
-
-- Archive with Cosmos DB
-
-- Visualize with Power BI Q&A
-
-## Overview
-
-Adventure Works Travel specializes in building software solutions for the hospitality industry. Their latest product is an enterprise mobile/social chat product called Concierge+ (aka ConciergePlus). The mobile web app enables guests to easily stay in touch with the concierge and other guests, enabling greater personalization and improving their experience during their stay. Sentiment analysis is performed on top of chat messages as they occur, enabling hotel operators to keep tabs on guest sentiments in real-time.
-
-## Solution architecture
-
-Below are diagrams of the solution architecture you will build in this lab. Please study this carefully, so you understand the whole of the solution as you are working on the various components.
-
-![The preferred solution is shown to meet the customer requirements. From right to left there is an architecture diagram which shows the connections from a mobile device to a Web Application. The Web Application is shown setting data to an Event Hub which is connected to a Web Job. From there Event Hub and Service Bus work together with Stream Analytics, Power BI and Cosmos DB to provide the full solution.](media/image2.png 'Solution architecture')
-
-## Requirements
-
-- Microsoft Azure subscription must be pay-as-you-go or MSDN.
-
-  - Trial subscriptions will not work.
-
-- A virtual machine configured with:
-
-  - Visual Studio Community 2017 or later
-
-  - Azure SDK 2.9 or later (Included with Visual Studio 2017)
 
 ## Exercise 1: Environment setup
 
@@ -794,7 +751,7 @@ To provision access to the Text Analytics API (which provides sentiment analysis
 
 Duration: 45 minutes
 
-In this section, you will implement the message forwarding from the ingest Event Hub instance to an Event Hub instance and a Service Bus Topic. You will also configure the web-based components, which consist of three parts: The Web App UI, a Web Job that runs the EventProcessorHost, and the API App that provides a wrapper around the Search API.
+In this section, you will implement the message forwarding from the ingest Event Hub instance to an Event Hub instance and a Service Bus Topic. You will also configure the web-based components, which consist of three parts: The Web App UI, a Function App that runs the EventProcessorHost, and the API App that provides a wrapper around the Search API.
 
 ### Task 1: Implement the event processor
 
@@ -881,6 +838,7 @@ In this section, you will implement the message forwarding from the ingest Event
     storageAccountKey
     serviceBusConnectionString
     chatTopicPath
+    textAnalyticsBaseUrl
     textAnalyticsAccountName
     textAnalyticsAccountKey
     ```
@@ -1816,7 +1774,7 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
 19. The Success page that appears after publishing contains important information you will need to interact with your bot. Review the screenshot below to see where to find the **Knowledge base ID**, **Endpoint HostName**, and **Auth Key**:
 
-    ![](media/qna-maker-success.png)
+    ![Successful deployment](media/qna-maker-success.png "Success")
 
 20. **Save these three values** to notepad or similar text editor.
 

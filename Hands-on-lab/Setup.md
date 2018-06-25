@@ -58,13 +58,15 @@ If you do not already have a Power BI account:
 
 4.  Select **OK** to move to the next step.
 
-5.  On the Choose a size blade, ensure the Supported disk type is set to SSD, and select View all. This machine won't be doing much heavy lifting, so selecting DS2_V3 Standard is a good baseline option.
+5.  On the Choose a size blade, select **DS2_V3 Standard**.
 
-    ![The Choose a size blade has the D2S_V3 Standard option circled. The circled fields are Supported disk type, which is set to SSD, and the View all button.](media/setup8.png 'Choose a size blade')
+    ![The Choose a size blade has the D2S_V3 Standard option selected](media/setup-vm-size.png 'Choose a size blade')
 
 6.  Click **Select** to move on to the Settings blade.
 
-7.  Accept all the default values on the Settings blade, and select **OK**.
+7.  On the Settings blade, select **RDP (3389)** from the Select public inbound ports drop down, then select **OK**.
+
+    ![Select RDP (3389) from the Select public inbound ports drop down](media/setup-vm-settings.png 'Setting blade')
 
 8.  Select Create on the Create blade to provision the virtual machine.
 

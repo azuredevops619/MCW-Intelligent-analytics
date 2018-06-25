@@ -11,7 +11,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/legal/intellect
 
 # Intelligent analytics whiteboard design session trainer guide
 
-March 2018
+May 2018
 
 **Contents**
 
