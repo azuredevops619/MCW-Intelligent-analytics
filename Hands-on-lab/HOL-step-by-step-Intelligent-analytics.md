@@ -101,16 +101,14 @@ Below are diagrams of the solution architecture you will build in this lab. Plea
 
 ![The preferred solution is shown to meet the customer requirements. From right to left there is an architecture diagram which shows the connections from a mobile device to a Web Application. The Web Application is shown setting data to an Event Hub which is connected to a Web Job. From there Event Hub and Service Bus work together with Stream Analytics, Power BI and Cosmos DB to provide the full solution.](media/preferred-solution-architecture.png 'Solution architecture')
 
+Messages are sent from browsers running within laptop or mobile clients via Web Sockets to an endpoint running in an Azure Web App. Instead of typing a chat message, end users can leverage the speech to text functionality of the Speech API to type the chat message for them in this scenario the Speech API is invoked directly from the web page running in a client device. Chat messages received by the Web App are sent to an Event Hub where they are temporarily stored. An Azure Function picks up the chat messages and applies sentiment analysis to the message text (using the Text Analytics API), as well as contextual understanding (using LUIS). The function forwards the chat message to an Event Hub used to store messages for archival purposes, and to a Service Bus Topic which is used to deliver the message to the intended recipients. A Stream Analytics Job provides a simple mechanism for pulling the chat messages from the second Event Hub and writing them to CosmosDB for archiving, a Service Bus queue for negative sentiment notifications, and to PowerBI for visualization of sentiment in real-time as well as trending sentiment. A Logic App is triggered when messages are added to a Service Bus queue, and sends SMS messages to hotel staff when negative guest sentiment is detected in the chat. An indexer runs atop CosmosDB that updates the Azure Search index which provides full text search capability. Messages in the Service Bus Topic are pulled by Subscriptions created in the Web App and running on behalf of each client device connected by Web Sockets. When the Subscription receives a message, it is pushed via Web Sockets down to the browser-based app and displayed in a web page.
+
 ## Requirements
 
 - Microsoft Azure subscription must be pay-as-you-go or MSDN.
-
   - Trial subscriptions will not work.
-
 - A virtual machine configured with:
-
   - Visual Studio Community 2017 or later
-
   - Azure SDK 2.9 or later (Included with Visual Studio 2017)
 
 ## Exercise 1: Environment setup
@@ -528,27 +526,25 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
 6. On the New Input blade, enter the following:
 
-    - Input Alias: Set the value to **eventhub**.
+    - **Input Alias**: Set the value to **eventhub**.
 
-    - Choose: **Select Event Hub from your subscriptions**
+    - **Choose**: **Select Event Hub from your subscriptions**
 
-    - Subscription: Choose the same subscription you have been using thus far.
+    - **Subscription**: Choose the same subscription you have been using thus far.
 
-    - Event Hub namespace: Choose the Namespace which contains **your Event Hubs instance** (e.g., awhotelevents-namespace).
+    - **Event Hub namespace**: Choose the Namespace which contains **your Event Hubs instance** (e.g., awhotelevents-namespace).
 
-    - Event hub name: Choose the second Event Hub instance you created (**awchathub2**).
+    - **Event hub name**: Choose the second Event Hub instance you created (**awchathub2**).
 
-    - Service bus namespace:
+    - **Event hub policy name**: Leave as **RootManageSharedAccessKey.**
 
-    - Event hub policy name: Leave as **RootManageSharedAccessKey.**
+    - **Event hub consumer group**: Leave this **blank** (\$Default consumer group will be used).
 
-    - Event hub consumer group: Leave this **blank** (\$Default consumer group will be used).
+    - **Event serialization format**: Leave as **JSON**.
 
-    - Event serialization format: Leave as **JSON**.
+    - **Encoding**: Leave as **UTF-8**.
 
-    - Encoding: Leave as **UTF-8**.
-
-    - Event compression type: Leave set to **None**.
+    - **Event compression type**: Leave set to **None**.
 
     - Select **Save**.
 
@@ -564,45 +560,35 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
 9. On the Cosmos DB New output blade, enter the following:
 
-    - Output alias: Enter **cosmosdb**.
+    - **Output alias**: Enter **cosmosdb**.
 
-    - Import Option: Leave set to Select Cosmos DB from your subscriptions.
+    - **Import Option**: Leave set to Select Cosmos DB from your subscriptions.
 
-    - Subscription: Choose the same subscription you have been using thus far.
+    - **Subscription**: Choose the same subscription you have been using thus far.
 
-    - Account Id: Select your Account id (e.g., awhotel-cosmosdb).
+    - **Account Id**: Select your Account id (e.g., awhotel-cosmosdb).
 
-    - Database: Select your database, **awhotels**.
+    - **Database**: Select your database, **awhotels**.
 
-    - Collection name pattern: Set to the name of your messages collection, **messagestore**.
+    - **Collection name pattern**: Set to the name of your messages collection, **messagestore**.
 
-    - Document Id: Set to **messageid** (all lowercase).
+    - **Document Id**: Set to **messageid** (all lowercase).
 
     - Select **Save**.
 
       ![The CosmosDB New Output blade fields display the previously mentioned settings.](media/image56.png 'CosmosDB New Output')
 
-10. Create another Output, this time for Power BI.
+10. Create another Output, this time for **Service Bus queue**.
 
-    ![The Add New Outputs is shown with the Power BI option selected.](media/image57.png 'Add New Outputs')
+    ![Add New Outputs is shown with the Service Bus queue option highlighted.](media/stream-analytics-add-output-service-bus-queue.png "Add Service Bus queue output")
 
-11. On the New output blade, enter the following:
-
-    - Output alias: Enter **powerbi**
-
-    - Group workspace: **Authorize connection to load workspaces**.
-
-    - Dataset Name: Set to **Messages**
-
-    - Table Name: Set to **Messages**
-
-    - Select **Authorize**. This will authorize the connection to your Power BI account. When prompted in the popup window, enter the account credentials you used to create your Power BI account in [Before the Hands-on Lab, Task 1](#task-1-provision-power-bi). You may have to enter your Username and Password.
-
-      ![The Power BI New output screen is shown configured. The Authorize connection has been clicked.](media/image58.png 'Power BI new output')
-
-12. On the Service Bus queue New output blade, enter the following:
+11. On the Service Bus queue New output blade, enter the following:
 
     - **Output alias**: Enter staff-notification-queue
+
+    - Choose **Select queue from your subscriptions**
+
+    - **Subscription**: Select the subscription you are using for this hands on lab
 
     - **Service Bus namespace**: Select the awhotel-sbnamespace
 
@@ -610,13 +596,35 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     - **Queue policy name**: Select ChatConsole
 
-13. Select **Save**.
+    - **Event serialization format**: Leave as JSON
 
-14. Create another output, this time for **Service Bus queue**.
+    - **Encoding**: Leave as UTF-8
 
-    ![Add New Outputs is shown with the Service Bus queue option highlighted.](media/stream-analytics-add-output-service-bus-queue.png "Add Service Bus queue output")
+    - **Format**: Leave set to Line separated
 
-15. Create one final Output for Power BI.
+        ![On the Service Bus queue New output blade, the values specified above are entered into the appropriate fields.](media/stream-analytics-add-output-service-bus-queue-new.png "Add new Service Bus queue output")
+
+12. Select **Save**.
+
+13. Create another Output, this time for **Power BI**.
+
+    ![The Add New Outputs is shown with the Power BI option selected.](media/image57.png 'Add New Outputs')
+
+14. On the New output blade, enter the following:
+
+    - **Output alias**: Enter **powerbi**
+
+    - **Group workspace**: **Authorize connection to load workspaces**.
+
+    - **Dataset Name**: Set to **Messages**
+
+    - **Table Name**: Set to **Messages**
+
+    - Select **Authorize**. This will authorize the connection to your Power BI account. When prompted in the popup window, enter the account credentials you used to create your Power BI account in [Before the Hands-on Lab, Task 1](#task-1-provision-power-bi). You may have to enter your Username and Password.
+
+      ![The Power BI New output screen is shown configured. The Authorize connection has been clicked.](media/image58.png 'Power BI new output')
+
+15. Create one final Output for **Power BI**.
 
     ![The Add New Outputs is shown with the Power BI option selected.](media/image57.png 'Add New Outputs')
 
@@ -636,7 +644,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
 17. Select **Save**.
 
-18. Next, select Query from the left-hand menu, under Job Topology.
+18. Next, select **Query** from the left-hand menu, under Job Topology.
 
     ![Under Job Topology, Query is circled.](media/image59.png 'Job Topology section')
 
@@ -655,7 +663,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     ![Select save option.](media/image60.png 'Save option')
 
-21. Now, modify your query to add the following Service Bus query. Enter or paste the following code below the first query:
+21. Now, modify your query to add the following Service Bus queue query. Enter or paste the following code below the first query:
 
     ```sql
     SELECT *
@@ -712,7 +720,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
     GROUP BY TumblingWindow(minute, 5)
     ```
 
-25. Select Save again, and select Yes when prompted with the confirmation.
+25. Select **Save** again, and select **Yes** when prompted with the confirmation.
 
     ![The Save button is selected.](media/image60.png 'Save button')
 
@@ -1575,11 +1583,15 @@ In this task, you will configure a Logic App to send notifications to hotel gues
 
     ![On the Choose an action pane, "Parse" is entered into the search box, and Data Operations - Parse JSON is highlighted in the list.](media/logic-app-choose-an-action-parse-json.png "Choose an action")
 
-8. Select the **Content** box, select **Add dynamic content +**, then select **Service Bus Message** from the input parameters list that appears, then select **Use sample payload to generate schema**.
+8. In the **Parse JSON** pane, paste the following expression into the **Content** box.
+
+    ```csharp
+    @substring(base64ToString(triggerBody()?['ContentData']), indexof(base64ToString(triggerBody()?['ContentData']), '{'), sub(lastindexof(base64ToString(triggerBody()?['ContentData']), '}'),indexof(base64ToString(triggerBody()?['ContentData']), '{')))
+    ```
 
     ![In the Parse JSON pane, Service Bus Message is in the Content box, Add dynamic content is highlighted, and in the Dynamic content pane Service Bus Message is highlighted. The Use sample payload to generate schema link is highlighted.](media/logic-app-parse-json.png "Parse JSON action")
 
-9. In the Enter or paste a sample JSON payload dialog, paste the following JSON sample, and then select **Done**.
+9. Select **Use sample payload to generate schema**, and on the Enter or paste a sample JSON payload dialog, paste the following JSON sample, and then select **Done**.
 
     ```json
     {
@@ -1646,6 +1658,10 @@ In this task, you will add messages to the chat containing negative sentiment to
 2. Enter a message with negative sentiment, such as "The service at this hotel is horrible!" and send the message.
 
     ![The Live Chat is displayed, and a message with negative sentiment, "The service at this hotel is horrible!" is entered into the chat message box.](media/chat-app-negative-sentiment-message.png "Live Chat")
+
+3. Within a minute, you should receive a text notification at the phone number you specified when configuring the Logic App.
+
+4. Test sending a "positive" message, and ensure you don't receive a notification.
 
 ## Exercise 7: Building the Power BI dashboard
 

@@ -19,12 +19,17 @@ This hands-on lab is designed to provide exposure to many of Microsoft's transfo
 
 Below is a diagram of the solution architecture you will build in this lab. Please study this carefully so you understand the whole of the solution as you are working on the various components.
 
-![This is the high-level overview diagram of the end-to-end solution.](../Whiteboard-design-session/media/high-level-overview.png 'High-level overview diagram')
+![This is the high-level overview diagram of the end-to-end solution.](media/preferred-solution-architecture.png 'High-level overview diagram')
+
+Messages are sent from browsers running within laptop or mobile clients via Web Sockets to an endpoint running in an Azure Web App. Instead of typing a chat message, end users can leverage the speech to text functionality of the Speech API to type the chat message for them in this scenario the Speech API is invoked directly from the web page running in a client device. Chat messages received by the Web App are sent to an Event Hub where they are temporarily stored. An Azure Function picks up the chat messages and applies sentiment analysis to the message text (using the Text Analytics API), as well as contextual understanding (using LUIS). The function forwards the chat message to an Event Hub used to store messages for archival purposes, and to a Service Bus Topic which is used to deliver the message to the intended recipients. A Stream Analytics Job provides a simple mechanism for pulling the chat messages from the second Event Hub and writing them to CosmosDB for archiving, a Service Bus queue for negative sentiment notifications, and to PowerBI for visualization of sentiment in real-time as well as trending sentiment. A Logic App is triggered when messages are added to a Service Bus queue, and sends SMS messages to hotel staff when negative guest sentiment is detected in the chat. An indexer runs atop CosmosDB that updates the Azure Search index which provides full text search capability. Messages in the Service Bus Topic are pulled by Subscriptions created in the Web App and running on behalf of each client device connected by Web Sockets. When the Subscription receives a message, it is pushed via Web Sockets down to the browser-based app and displayed in a web page.
 
 ## Requirements
 
-- Microsoft Azure subscription must be pay-as-you-go or MSDN
-  - Trial subscriptions will not work
+- Microsoft Azure subscription must be pay-as-you-go or MSDN.
+  - Trial subscriptions will not work.
+- A virtual machine configured with:
+  - Visual Studio Community 2017 or later
+  - Azure SDK 2.9 or later (Included with Visual Studio 2017)
 
 ## Before the Hands-on Lab
 
