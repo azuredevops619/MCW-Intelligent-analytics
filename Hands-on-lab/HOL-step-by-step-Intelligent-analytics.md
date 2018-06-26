@@ -600,11 +600,27 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
       ![The Power BI New output screen is shown configured. The Authorize connection has been clicked.](media/image58.png 'Power BI new output')
 
-12. Create one final Output for Power BI.
+12. On the Service Bus queue New output blade, enter the following:
+
+    - **Output alias**: Enter staff-notification-queue
+
+    - **Service Bus namespace**: Select the awhotel-sbnamespace
+
+    - **Queue name**: Choose Use existing and select awhotel-staff-notifications
+
+    - **Queue policy name**: Select ChatConsole
+
+13. Select **Save**.
+
+14. Create another output, this time for **Service Bus queue**.
+
+    ![Add New Outputs is shown with the Service Bus queue option highlighted.](media/stream-analytics-add-output-service-bus-queue.png "Add Service Bus queue output")
+
+15. Create one final Output for Power BI.
 
     ![The Add New Outputs is shown with the Power BI option selected.](media/image57.png 'Add New Outputs')
 
-13. On the New output blade, enter the following:
+16. On the New output blade, enter the following:
 
     - Output alias: Enter **trending-sentiment**
 
@@ -618,13 +634,13 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
       ![The Power BI New output screen is shown configured. The Authorize connection has been clicked.](media/stream-analytics-second-pbi-output.png 'Power BI new output')
 
-14. Select **Save**.
+17. Select **Save**.
 
-15. Next, select Query from the left-hand menu, under Job Topology.
+18. Next, select Query from the left-hand menu, under Job Topology.
 
     ![Under Job Topology, Query is circled.](media/image59.png 'Job Topology section')
 
-16. In the query text box, enter the following query for Cosmos DB:
+19. In the query text box, enter the following query for Cosmos DB:
 
     ```sql
     SELECT
@@ -635,11 +651,20 @@ In this section, you will create the Stream Analytics Job that will be used to r
     eventhub
     ```
 
-17. Select Save, and Yes when prompted with the confirmation.
+20. Select Save, and Yes when prompted with the confirmation.
 
     ![Select save option.](media/image60.png 'Save option')
 
-18. Now, modify your query to add the following Power BI query. Enter or paste the following code below the first query:
+21. Now, modify your query to add the following Service Bus query. Enter or paste the following code below the first query:
+
+    ```sql
+    SELECT *
+    INTO [staff-notification-queue]
+    FROM eventhub
+    WHERE score < 0.1
+    ```
+
+22. Now, modify your query to add the following Power BI query. Enter or paste the following code below the Service Bus query:
 
     ```sql
     SELECT
@@ -650,7 +675,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
     eventhub
     ```
 
-19. Finally, add the following query below that aggregates the average sentiment into 5-minute tumbling windows:
+23. Finally, add the following query below that aggregates the average sentiment into 5-minute tumbling windows:
 
     ```sql
     SELECT AVG(score) AS Average, System.TimeStamp AS Snapshot
@@ -659,7 +684,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
     GROUP BY TumblingWindow(minute, 5)
     ```
 
-20. Your query text should now look like the following:
+24. Your query text should now look like the following:
 
     ```sql
     SELECT
@@ -669,6 +694,11 @@ In this section, you will create the Stream Analytics Job that will be used to r
     FROM
     eventhub
 
+    SELECT *
+    INTO [staff-notification-queue]
+    FROM eventhub
+    WHERE score < 0.1
+
     SELECT
     *
     INTO
@@ -682,7 +712,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
     GROUP BY TumblingWindow(minute, 5)
     ```
 
-21. Select Save again, and select Yes when prompted with the confirmation.
+25. Select Save again, and select Yes when prompted with the confirmation.
 
     ![The Save button is selected.](media/image60.png 'Save button')
 
@@ -806,7 +836,7 @@ In this section, you will implement the message forwarding from the ingest Event
 
 1. On your Lab VM, open the `ConciergePlusSentiment.sln` file that you downloaded using Visual Studio, if it is not already open.
 
-2. Open `ProcessChatMessage.cs` (found within the **ChatMessageSentimentProcessorFunction** project in the Solution Explorer).
+2. Open `ProcessChatMessage.cs` (found within the `ChatMessageSentimentProcessorFunction` project in the Solution Explorer).
 
     ![Visual Studio is expanded as follows: ChatMessageSentimentProcessorFunction\ProcessChatMessage.cs](media/vs-process-chat-message.png "Visual Studio")
 
@@ -948,7 +978,7 @@ Your storage accounts can be found by going to the intelligent-analytics resourc
 
 #### Service Bus connection string
 
-The namespace, and therefore connection string, for the service bus is different from the one for the event hub. As we did for the event hub, we need to create a shared access policy to allow the ChatMessageSentimentProcessorFunction Manage, Send, and Listen permissions.
+The namespace, and therefore connection string, for the service bus is different from the one for the event hub. As we did for the event hub, we need to create a shared access policy to allow the `ChatMessageSentimentProcessorFunction` Manage, Send, and Listen permissions.
 
 1. To get the **serviceBusConnectionString**, navigate to the **Service Bus namespace** in the [Azure portal](https://portal.azure.com).
 
@@ -982,8 +1012,6 @@ The namespace, and therefore connection string, for the service bus is different
 
     ![Service bus entities overview blade with topics selected.](media/image89.png 'Service bus entities overview blade')
 
-> TODO: Add section for adding the Logic App Queue into the App.
-
 #### Text Analytics API settings
 
 1. In the [Azure portal](https://portal.azure.com), open the Text API (awhotels-sentiment), copy the value under Endpoint into the **textAnalyticsBaseUrl** setting. Be sure to include a trailing slash in the URL (e.g. <https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/)>.
@@ -1006,8 +1034,15 @@ The namespace, and therefore connection string, for the service bus is different
 
 Duration: 10 minutes
 
-Within Visual Studio Solution Explorer, expand the **ChatWebApp** project and open **Web.Config**. You will update the settings in this file. The following sections walk you through the process of retrieving the values for the following settings:
-`<add key="eventHubConnectionString" value=" "/> <add key="eventHubName" value=" "/> <add key="serviceBusConnectionString" value=" "/> <add key="chatRequestTopicPath" value=" "/> <add key="chatTopicPath" value=" "/>`
+Within Visual Studio Solution Explorer, expand the `ChatWebApp` project and open `Web.Config`. You will update the settings in this file. The following sections walk you through the process of retrieving the values for the following settings:
+
+```csharp
+<add key="eventHubConnectionString" value=" "/>
+<add key="eventHubName" value=" "/>
+<add key="serviceBusConnectionString" value=" "/>
+<add key="chatRequestTopicPath" value=" "/>
+<add key="chatTopicPath" value=" "/>
+```
 
 ### Task 1: Event Hub connection String
 
@@ -1037,7 +1072,7 @@ With the App Services projects properly configured, you are now ready to deploy 
 
 ### Task 1: Publish the ChatMessageSentimentProcessor Function App
 
-1. Within Visual Studio Solution Explorer, right-click the **ChatMessageSentimentProcessorFunction** project in the Solution Explorer, and select **Publish...**.
+1. Within Visual Studio Solution Explorer, right-click the `ChatMessageSentimentProcessorFunction` project in the Solution Explorer, and select **Publish...**.
 
     ![In Solution Explorer, the sub-menu for ChatMessageSentimentProcessorFunction displays, with Publish... selected.](media/vs-publish-function-menu.png "Solution Explorer")
 
@@ -1067,7 +1102,7 @@ With the App Services projects properly configured, you are now ready to deploy 
 
 ### Task 2: Publish the ChatWebApp
 
-1. Within Visual Studio Solution Explorer, right-click the ChatWebApp project and select **Publish...**.
+1. Within Visual Studio Solution Explorer, right-click the `ChatWebApp` project and select **Publish...**.
 
     ![In the Visual Studio Solution Explorer ChatWebApp sub-menu, Publish is selected.](media/image100.png 'Visual Studio Solution Explorer')
 
@@ -1133,7 +1168,7 @@ In this exercise, you will implement code to activate multiple cognitive intelli
 
 In this task, you will add code that enables the Event Processor to invoke the Text Analytics API using the REST API and retrieve a sentiment score (a value between 0.0, negative, and 1.0, positive sentiment) for the text of a chat message.
 
-1. In the Solution Explorer in Visual Studio, open **ProcessChatMessage.cs** in **ChatMessageSentimentProcessorFunction** project.
+1. In the Solution Explorer in Visual Studio, open `ProcessChatMessage.cs` in the `ChatMessageSentimentProcessorFunction` project.
 
 2. Scroll down to the method **Run**.
 
@@ -1147,7 +1182,7 @@ In this task, you will add code that enables the Event Processor to invoke the T
     _sentimentClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
     ```
 
-4. Scroll down to the **GetSentimentScore** method and replace the code following TODO: 8 with the following:
+4. Scroll down to the `GetSentimentScore` method and replace the code following TODO: 8 with the following:
 
     ```csharp
     //TODO: 8.Construct a sentiment request object
@@ -1360,7 +1395,7 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 39. **Save** your Application Settings. The Event Processor is pre-configured to invoke the LUIS API using the provided App ID and key.
 
-40. Open Visual Studio then open ProcessChatMessage.cs within the ChatMessageSentimentProcessorFunction project, and navigate to the Run method.
+40. Open Visual Studio then open `ProcessChatMessage.cs` within the `ChatMessageSentimentProcessorFunction` project, and navigate to the Run method.
 
 41. Locate TODO: 13 and replace it with the following:
 
@@ -1370,7 +1405,7 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
     await HandleIntent(intent, msgObj, outputServiceBus);
     ```
 
-42. At the top of the file, locate the variable named \_luisBaseUrl.
+42. At the top of the file, locate the variable named _luisBaseUrl.
 
     ![In Visual Studio, the URL for luisBaseURL is circled.](media/image135.png 'Visual Studio')
 
@@ -1384,13 +1419,13 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 There is one last intelligence service to activate in the application---speech recognition. This is powered by the Bing Speech API, and is invoked directly from the web page without going through the web server. In the steps that follow, you insert your Cognitive Services Speech API key into the configuration to enable speech to text.
 
-1. Within Visual Studio Solution Explorer, expand **ChatWebApp**, **Scripts**, and open **chatClient.js**.
+1. Within Visual Studio Solution Explorer, expand `ChatWebApp`, **Scripts**, and open `chatClient.js`.
 
 2. At the top, locate the variable **speechApiKey**, and update its value with the Key 1 you acquired in [Exercise 1, Task 11, Step 8](#task-11-provision-cognitive-services), when you provisioned your Speech API in the [Azure portal](https://portal.azure.com).
 
     ![The following variable code displays: //TODO: Enter your Speech API Key here var speechApiKey = "";](media/image136.png 'variable')
 
-3. Save chatClient.js.
+3. Save `chatClient.js`.
 
 **Note**: Embedding the API Key as shown here is done only for convenience. In a production app, you will want to maintain your API Key server-side.
 
@@ -1398,9 +1433,9 @@ There is one last intelligence service to activate in the application---speech r
 
 Now that you have added sentiment analysis, language understanding, and speech recognition to the solution, you need to re-deploy the apps so you can test out the new functionality.
 
-1. Publish the **ChatMessageSentimentProcessorFunction** Function App using Visual Studio just as you did in [Exercise 4, Task 1](#task-1-publish-the-chatmessagesentimentprocessor-web-job).
+1. Publish the `ChatMessageSentimentProcessorFunction` Function App using Visual Studio just as you did in [Exercise 4, Task 1](#task-1-publish-the-chatmessagesentimentprocessor-web-job).
 
-2. Publish the **ChatWebApp** just as you did in [Exercise 4, Task 2](#task-2-publish-the-chatwebapp).
+2. Publish the `ChatWebApp` just as you did in [Exercise 4, Task 2](#task-2-publish-the-chatwebapp).
 
 3. When both have published, navigate to your deployed web app making sure to use HTTPS. (This is required for most browsers to support the microphone needed for speech recognition.)
 
@@ -1540,39 +1575,39 @@ In this task, you will configure a Logic App to send notifications to hotel gues
 
     ![On the Choose an action pane, "Parse" is entered into the search box, and Data Operations - Parse JSON is highlighted in the list.](media/logic-app-choose-an-action-parse-json.png "Choose an action")
 
-> TODO: Complete the configuration for this. Need to configure Service Bus Queue and messages into it before a message schema can be added, and used to move forward with this part.
+8. Select the **Content** box, select **Add dynamic content +**, then select **Service Bus Message** from the input parameters list that appears, then select **Use sample payload to generate schema**.
 
-> TODO: Determine what part of the Service Bus message is needed here.
+    ![In the Parse JSON pane, Service Bus Message is in the Content box, Add dynamic content is highlighted, and in the Dynamic content pane Service Bus Message is highlighted. The Use sample payload to generate schema link is highlighted.](media/logic-app-parse-json.png "Parse JSON action")
 
-8. Select the **Content** box, select **Add dynamic content +**, then select **Message Text** from the input parameters list that appears.
-
-    ![In the Parse JSON window, Message Text is in the Content box, Add dynamic content is highlighted, and Message Text is highlighted below in the input parameters list.](./media/image240.png "Parse JSON window")
-
-9. Next, select **Use sample payload to generate schema** below the **Schema** box.
-
-    ![In the Parse JSON window, Use sample payload to generate schema is highlighted below the Schema box.](./media/image241.png "Parse JSON window")
-
-10. In the dialog that appears, paste the following JSON into the sample JSON payload dialog that appears, then select **Done**.
+9. In the Enter or paste a sample JSON payload dialog, paste the following JSON sample, and then select **Done**.
 
     ```json
-    {"orderId":"5a6748c5d0d3199cfa076ed3","userId":"demouser@bfyo.com","notificationPhone":"3175551212","firstName":"Demo"}
+    {
+        "message": "this hotel is horrible",
+        "createDate": "2018-06-26T15:01:48.4925693Z",
+        "username": "kyle",
+        "sessionId": "hotellobby",
+        "messageId": "7f180d06-c4ac-40c5-8539-1de4218afcd0",
+        "score": 0.0019252896308898926,
+        "EventProcessedUtcTime": "2018-06-26T15:01:49.7819289Z",
+        "PartitionId": 24,
+        "EventEnqueuedUtcTime": "2018-06-26T15:01:49.6440000Z"
+    }
     ```
 
-    ![The JSON above is pasted in the sample JSON payload dialog box, and Done is selected below.](./media/image242.png "Paste the JSON in the dialog box")
+    ![The JSON above is pasted in the sample JSON payload dialog box, and Done is selected below.](media/logic-app-parse-json-sample-payload.png "Sample JSON payload")
 
-11. You will now see the Schema for messages coming from the queue in the Schema box.
+10. The Schema box in the Parse JSON pane will now be populated with a reformatted Schema.
 
-    ![The Add an action button under + New step is highlighted in the Schema box.](./media/image243.png "Parse JSON window")
-
-12. Select **+ New step**, and then select **Add an action**.
+11. Select **+ New step**, and then select **Add an action**.
 
     ![New step is selected and Add an action is highlighted in the New step context menu.](media/logic-app-new-step-add-an-action.png "Logic App Add an Action")
 
-13. In the Choose an action pane, enter "Twilio" into the search box, and then select **Twilio - Send Text Message (SMS)** under Actions.
+12. In the Choose an action pane, enter "Twilio" into the search box, and then select **Twilio - Send Text Message (SMS)** under Actions.
 
     ![Twilio is highlighted in the Choose an action box, and Twilio -- Send Text Message (SMS) is highlighted under Actions.](./media/logic-app-choose-an-action-twilio-send-text-messages.png "Choose an action box")
 
-14. In the **Twilio -- Send Text Message (SMS)** dialog, enter the following (You will need the details from Project Info block on the dashboard of your Twilio account for this step):
+13. In the **Twilio -- Send Text Message (SMS)** dialog, enter the following (You will need the details from Project Info block on the dashboard of your Twilio account for this step):
 
     - **Connection Name**: Twilio
 
@@ -1582,33 +1617,35 @@ In this task, you will configure a Logic App to send notifications to hotel gues
 
         ![The information above is entered in the Twilio -- Send Text Message (SMS) dialog box.](./media/logic-app-choose-an-action-twilio-send-text-messages-config.png "Twilio ??? Send Text Message (SMS) dialog box")
 
-15. Select **Create**.
+14. Select **Create**.
 
-16. On the next **Send Text Message (SMS)** dialog, enter the following:
+15. On the next **Send Text Message (SMS)** dialog, enter the following:
 
-    > TODO: Update this based on messages from Service Bus Queue format.
+    - **Text**: Enter a message, such as "Guest [Name] appears to be upset in the hotel chat. This requires your immediate attention!" For [Name], select the **username** parameter from the **Dynamic content** items.
 
     - **From Phone Number**: Select your Twilio phone number from the drop down.
 
-    - **To Phone Number**: Select **notificationPhone** from the **Parse JSON** parameters.
+    - **To Phone Number**: For this hands-on lab, you will enter your mobile phone number into this field. In a real-world app, you would most likely add another step into the Logic App to retrieve the target phone number from a database.
 
-    ![The information above is entered in the next Send Text Message (SMS) dialog box.](./media/image246.png "Send Text Message (SMS) dialog box")
+        ![The information above is entered in the next Send Text Message (SMS) dialog box.](media/logic-app-twilio-sent-text-message.png "Send Text Message (SMS) dialog box")
 
-    - **Text**: Enter a message, such as "Guest [Name] appears to be upset in the hotel chat. This requires your immediate attention!" For [Name], select the **Name** parameter from the **Parse JSON** items.
-
-    ![The information above is entered in the next Send Text Message (SMS) dialog box.](./media/image247.png "Send Text Message (SMS) dialog box")
-
-17. Select **Save** on the **Logic Apps Designer** toolbar.
+16. Select **Save** on the **Logic Apps Designer** toolbar.
 
     ![Save is highlighted on the Logic Apps Designer blade toolbar.](./media/logic-app-designer-toolbar-save.png "Logic Apps Designer blade")
 
-18. The Logic App will begin running immediately, so you should receive a text message on your phone within a minute or two of selecting Save, if there are messages already in the queue.
+17. The Logic App will begin running immediately, so you should receive a text message on your phone within a minute or two of selecting Save, if there are messages already in the queue.
 
 ### Task 4: Add negative chat messages to trigger staff notifications
 
 In this task, you will add messages to the chat containing negative sentiment to trigger notification messages through the Logic App.
 
-1. TODO: complete these steps...
+1. Return to the chat application in your web browser, enter a username, and select **Join**.
+
+    ![The Join Chat login box is displayed, with a username entered.](media/chat-app-login.png "Join Chat")
+
+2. Enter a message with negative sentiment, such as "The service at this hotel is horrible!" and send the message.
+
+    ![The Live Chat is displayed, and a message with negative sentiment, "The service at this hotel is horrible!" is entered into the chat message box.](media/chat-app-negative-sentiment-message.png "Live Chat")
 
 ## Exercise 7: Building the Power BI dashboard
 
@@ -1849,11 +1886,11 @@ Before going further, a good thing to check is whether messages are being writte
 
 ### Task 3: Update the Web App web.config
 
-1. On your Lab VM, within Visual Studio Solution Explorer, expand the **ChatWebApp** project.
+1. On your Lab VM, within Visual Studio Solution Explorer, expand the `ChatWebApp` project.
 
-2. Open **Web.config**.
+2. Open `Web.config`.
 
-3. For the **chatSearchApiBase**, enter the URI of the Search API App (e.g., <http://awchatsearch.azurewebsites.net)>. This value should not be the URL to your instance of Azure Search.
+3. For the `chatSearchApiBase`, enter the URI of the Search API App (e.g., <http://awchatsearch.azurewebsites.net)>. This value should not be the URL to your instance of Azure Search.
 
     - You can find this by going to Resource Groups, selecting the **intelligent-analytics** resource group, and selecting your search app service from the list.
 
@@ -1867,13 +1904,13 @@ Before going further, a good thing to check is whether messages are being writte
 
     ![chatSearchApiBase key displays the URL value copied from the Essentials blade.](media/image174.png 'chatSearchApiBase key')
 
-5. Save **Web.config**.
+5. Save `Web.config`.
 
 ### Task 4: Configure the Search API App
 
-1. Within Visual Studio Solution Explorer, expand the **ChatAPI** project.
+1. Within Visual Studio Solution Explorer, expand the `ChatAPI` project.
 
-2. Open **web.config**.
+2. Open `web.config`.
 
 3. This project needs the following three settings configured to capitalize on Azure Search, all of which you can get from the [Azure portal](https://portal.azure.com).
 
@@ -1901,11 +1938,11 @@ Before going further, a good thing to check is whether messages are being writte
 
 7. For the **SearchIndexName** setting, enter the name of the Index you created in Search, chatmessages.
 
-8. Save **Web.config**.
+8. Save `Web.config`.
 
 ### Task 5: Re-publish apps
 
-1. Publish the updated **ChatWebApp** using Visual Studio, as was shown previously in [Exercise 4, Task 2](#task-2-publish-the-chatwebapp).
+1. Publish the updated `ChatWebApp` using Visual Studio, as was shown previously in [Exercise 4, Task 2](#task-2-publish-the-chatwebapp).
 
 2. Within Visual Studio Solution Explorer, right-click the **ChatAPI** project and select **Publish**.
 
@@ -2073,7 +2110,7 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
 ### Task 3: Embed the bot into your web app
 
-1. Open Visual Studio and open **Bot.cshtml** located within the Views\Home folder of the **ChatWebApp**.
+1. Open Visual Studio and open `Bot.cshtml` located within the Views\Home folder of the `ChatWebApp`.
 
     ![Open Bot.cshtml](media/vs-bot.png "Visual Studio")
 

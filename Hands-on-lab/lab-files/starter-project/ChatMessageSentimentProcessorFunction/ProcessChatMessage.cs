@@ -35,54 +35,64 @@ namespace ChatMessageSentimentProcessorFunction
                 Connection="eventHubConnectionString")]IAsyncCollector<EventData> outputEventHub,
             [ServiceBus("%chatTopicPath%",
                 Connection = "serviceBusConnectionString")]IAsyncCollector<BrokeredMessage> outputServiceBus,
+            //[ServiceBus("%notificationQueuePath%",
+            //    Connection = "serviceBusConnectionString")]IAsyncCollector<BrokeredMessage> outputServiceBusQueue,
             TraceWriter log)
+            
         {
             // Reuse the HttpClient across calls as much as possible so as not to exhaust all available sockets on the server on which it runs.
             _sentimentClient = _sentimentClient ?? new HttpClient();
             _intentClient = _intentClient ?? new HttpClient();
             //TODO: 7.Configure the HTTPClient base URL and request headers
-            //_sentimentClient.DefaultRequestHeaders.Clear();
-            //_sentimentClient.DefaultRequestHeaders.Accept.Clear();
-            //_sentimentClient.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", /* Complete this with Key to Text API  */);
-            //_sentimentClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            _sentimentClient.DefaultRequestHeaders.Clear();
+            _sentimentClient.DefaultRequestHeaders.Accept.Clear();
+            _sentimentClient.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", _textAnalyticsAccountKey);
+            _sentimentClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             foreach (var eventData in messages)
             {
                 try
                 {
                     //TODO: 1.Extract the JSON payload from the binary message
-                    //var eventBytes = //Complete this...
-                    //var jsonMessage = Encoding.UTF8.GetString(//Complete this...);
+                    var eventBytes = eventData.GetBytes();
+                    var jsonMessage = Encoding.UTF8.GetString(eventBytes);
 
                     //TODO: 2.Deserialize the JSON message payload into an instance of MessageType
-                    //var msgObj = JsonConvert.DeserializeObject<MessageType>(//Complete this...);
+                    var msgObj = JsonConvert.DeserializeObject<MessageType>(jsonMessage);
 
                     //TODO: 12 Append sentiment score to chat message object
-                    //Add a line here that invokes GetSentimentScore and sets the score on the msg object
+                    msgObj.score = await GetSentimentScore(msgObj.message);
 
-                    //TODO: 3.Create a BrokeredMessage (for Service Bus) and EventData instance (for EventHubs) from source message body
-                    //var updatedEventBytes = //Complete this...
-                    //BrokeredMessage chatMessage = //Complete this...
-                    //EventData updatedEventData = new EventData(//Complete this...);
+                    //TODO: 3. Create a BrokeredMessage (for Service Bus) and EventData instance (for EventHubs) from source message body
+                    var updatedEventBytes = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(msgObj));
+                    BrokeredMessage chatMessage = new BrokeredMessage(updatedEventBytes);
+                    EventData updatedEventData = new EventData(updatedEventBytes);
 
                     //TODO: 4.Copy the message properties from source to the outgoing message instances
-                    //foreach (var prop in eventData.Properties)
-                    //{
-                    //    chatMessage.Properties.Add(//Complete this...);
-                    //    updatedEventData.Properties.Add(//Complete this...);
-                    //}
+                    foreach (var prop in eventData.Properties)
+                    {
+                        chatMessage.Properties.Add(prop.Key, prop.Value);
+                        updatedEventData.Properties.Add(prop.Key, prop.Value);
+                    }
 
                     //TODO: 5.Send chat message to Topic
-                    //await outputServiceBus.AddAsync(//Complete this...);
-                    //Console.WriteLine("Forwarded message to topic.");
+                    await outputServiceBus.AddAsync(chatMessage);
+                    Console.WriteLine("Forwarded message to topic.");
 
+                    //TODO: 14.Send message with negative sentiment to the notification Queue
+                    //if (msgObj.score <= .5)
+                    //{
+                    //    await outputServiceBusQueue.AddAsync(chatMessage);
+                    //    Console.WriteLine("Forwarded message with negative sentiment to notification queue.");
+                    //}
+                    
                     //TODO: 6.Send chat message to next EventHub (for archival)
-                    //await outputEventHub.AddAsync(//Complete this...);
-                    //Console.WriteLine("Forwarded message to event hub.");
+                    await outputEventHub.AddAsync(updatedEventData);
+                    Console.WriteLine("Forwarded message to event hub.");
 
                     //TODO: 13.Respond to chat message intent if appropriate
-                    //var intent = await GetIntentAndEntities(//Complete with the message object message property);
-                    //await HandleIntent(//Complete with passing the intent, message object, and outputServiceBus collection);
+                    var intent = await GetIntentAndEntities(msgObj.message);
+                    await HandleIntent(intent, msgObj, outputServiceBus);
                 }
                 catch (Exception ex)
                 {
@@ -99,30 +109,33 @@ namespace ChatMessageSentimentProcessorFunction
         {
             double sentimentScore = -1;
 
-            //TODO: 8.Construct a sentiment request object 
-            //var req = new SentimentRequest()
-            //{
-            //    /* Complete this with a single document having id of 1 and text of the message */
-            //};
+            //TODO: 8.Construct a sentiment request object
+            var req = new SentimentRequest()
+            {
+                documents = new SentimentDocument[]
+                {
+                    new SentimentDocument() { id = "1", text = messageText }
+                }
+            };
 
             //TODO: 9.Serialize the request object to a JSON encoded in a byte array
-            //var jsonReq = //Complete this...  
-            //byte[] byteData = //Complete this...get byte array from jsonReq 
+            var jsonReq = JsonConvert.SerializeObject(req);
+            byte[] byteData = Encoding.UTF8.GetBytes(jsonReq);
 
-            //TODO: 10.Post the request to the /sentiment endpoint
-            //string uri = $"{_textAnalyticsBaseUrl}/sentiment";
-            //string jsonResponse = "";
-            //using (var content = new ByteArrayContent(byteData))
-            //{
-            //    content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            //    var sentimentResponse = //Complete this... do a Post using the uri and content 
-            //    jsonResponse = //Complete this...extract the response content as a string 
-            //}
-            //Console.WriteLine("\nDetect sentiment response:\n" + jsonResponse);
+            //TODO: 10.Post the rquest to the /sentiment endpoint
+            string uri = $"{_textAnalyticsBaseUrl}/sentiment";
+            string jsonResponse = "";
+            using (var content = new ByteArrayContent(byteData))
+            {
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                var sentimentResponse = await _sentimentClient.PostAsync(uri, content);
+                jsonResponse = await sentimentResponse.Content.ReadAsStringAsync();
+            }
+            Console.WriteLine("\nDetect sentiment response:\n" + jsonResponse);
 
             //TODO: 11.Deserialize sentiment response and extract the score
-            //var result = JsonConvert.DeserializeObject<SentimentResponse>(jsonResponse);
-            //sentimentScore = //Complete this...retrieve the score for the first document in the result
+            var result = JsonConvert.DeserializeObject<SentimentResponse>(jsonResponse);
+            sentimentScore = result.documents[0].score;
 
             return sentimentScore;
         }
