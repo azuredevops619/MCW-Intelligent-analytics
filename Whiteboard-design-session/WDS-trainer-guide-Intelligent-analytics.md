@@ -5,6 +5,7 @@ Information in this document, including URL and other Internet Web site referenc
 Microsoft may have patents, patent applications, trademarks, copyrights, or other intellectual property rights covering subject matter in this document. Except as expressly provided in any written license agreement from Microsoft, the furnishing of this document does not give you any license to these patents, trademarks, copyrights, or other intellectual property.
 
 The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
+
 © 2018 Microsoft Corporation. All rights reserved.
 
 Microsoft and the trademarks listed at https://www.microsoft.com/legal/intellectualproperty/Trademarks/Usage/General.aspx are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
@@ -54,25 +55,25 @@ Thank you for taking time to support the whiteboard design sessions as a trainer
 
 An amazing trainer:
 
-- Creates a safe environment in which learning can take place.
+- Creates a safe environment in which learning can take place
 
-- Stimulates the participant's thinking.
+- Stimulates the participant's thinking
 
-- Involves the participant in the learning process.
+- Involves the participant in the learning process
 
-- Manages the learning process (on time, on topic, and adjusting to benefit participants).
+- Manages the learning process (on time, on topic, and adjusting to benefit participants)
 
-- Ensures individual participant accountability.
+- Ensures individual participant accountability
 
-- Ties it all together for the participant.
+- Ties it all together for the participant
 
-- Provides insight and experience to the learning process.
+- Provides insight and experience to the learning process
 
-- Effectively leads the whiteboard design session discussion.
+- Effectively leads the whiteboard design session discussion
 
-- Monitors quality and appropriateness of participant deliverables.
+- Monitors quality and appropriateness of participant deliverables
 
-- Effectively leads the feedback process.
+- Effectively leads the feedback process
 
 ## Whiteboard design session flow
 
@@ -118,15 +119,15 @@ Receive feedback
 
 Before conducting your first whiteboard design session:
 
-- Read the Attendee guide (including the case study) and Trainer guide
+- Read the student guide (including the case study) and trainer guide
 
-- Become familiar with all key points and activities.
+- Become familiar with all key points and activities
 
-- Plan the point you want to stress, which questions you want to drive, transitions, and be ready to answer questions.
+- Plan the point you want to stress, which questions you want to drive, transitions, and be ready to answer questions
 
-- Prior to the whiteboard design session, discuss the case study to pick up more ideas.
+- Prior to the whiteboard design session, discuss the case study to pick up more ideas
 
-- Make notes for later.
+- Make notes for later
 
 ## During the whiteboard design session: Tips for an effective whiteboard design session
 
@@ -136,7 +137,7 @@ Before conducting your first whiteboard design session:
 
 When participants are doing activities, you can **look ahead to refresh your memory.**
 
-- **Adjust activity and whiteboard design session pace** as needed to allow time for presenting, feedback, and sharing.
+- **Adjust activity and whiteboard design session pace** as needed to allow time for presenting, feedback, and sharing
 
 - **Add examples, points, and stories** from your own experience. Think about stories you can share that help you make your points clearly and effectively.
 
@@ -163,7 +164,9 @@ In this whiteboard design session, you will work with a group to design a soluti
 **Outcome**
 
 Analyze your customer’s needs.
-Time frame: 15 minutes
+
+Timeframe: 15 minutes
+
 Directions: With all participants in the session, the facilitator/SME presents an overview of the customer case study along with technical tips.
 
 1.  Meet your table participants and trainer
@@ -172,7 +175,7 @@ Directions: With all participants in the session, the facilitator/SME presents a
 
 ### Customer situation
 
-Adventure Works travel specializes in building software solutions for the hospitality industry. They are designing their latest product, an enterprise grade, social chat app called Concierge+. The mobile friendly web app is intended to enable guests to easily stay in touch with the concierge and other guests, enabling greater personalization and improving their experience during their stay.
+AdventureWorks Travel (AWT) specializes in building software solutions for the hospitality industry. They are designing their latest product, an enterprise grade, social chat app called Concierge+. The mobile friendly web app is intended to enable guests to easily stay in touch with the concierge and other guests, enabling greater personalization and improving their experience during their stay.
 
 The original requirements for the product were to support:
 
@@ -184,13 +187,13 @@ The original requirements for the product were to support:
 
 - Full-text message search, including via \#hashtags and \@usernames
 
-Adventure Works wants to build a solution that is both scalable and extensible. According to Marc Tripp, the CTO of Adventure Works: "We want it scalable in the sense that it could support the chat requirements of the largest hotels in the world, currently with as many as 7,200 rooms. While we don't anticipate having any single chat room with a thousand guests or 2,000 concurrent one-on-one chats between a guest and the concierge staff, we want a solution that could handle that if it needed to."
+AdventureWorks wants to build a solution that is both scalable and extensible. According to Marc Tripp, the CTO of AdventureWorks: "We want it scalable in the sense that it could support the chat requirements of the largest hotels in the world, currently with as many as 7,200 rooms. While we don't anticipate having any single chat room with a thousand guests or 2,000 concurrent one-on-one chats between a guest and the concierge staff, we want a solution that could handle that if it needed to."
 
 Extensible in the sense that they can add new features on top of the solid, baseline real-time messaging functionality. For example, while they are starting by supporting search (for their backend) across chat messages, they already have a set of extensions they know they want to perform.
 
 An important extensibility point for them is a way for them to gather the sentiment of their guests as they interact in the public chat rooms and with the concierge. Hotel operators are motivated to keep tabs on guest sentiment in real-time, so they can respond to any upset guests quickly and turn a miserable stay into an amazing stay. To this end, they would like a dashboard (that updates in real-time) showing the volume of chat messages flowing thru their system, a pie chart showing the most active users at a glance, a bar chart highlighting upset users (who need to be addressed ASAP), and some form of gauge showing the average real-time sentiment for window of time (e.g., the last hour, last 24 hours). They would also like to view trending sentiment over time, alongside the real-time sentiment data.
 
-While guest sentiment is important, it is a reactive measure. Adventure Works would like to take a proactive approach in positively affecting sentiment by expediting the requests of their guests via chat. In particular, they are looking to experiment with automating the routing of routine guest requests (e.g., "Can I get more towels?", "I forgot my toothbrush" and "Can I get a bottle of champagne") that would otherwise require the attention of an already overloaded front desk attendant. These requests, once automatically routed, could be sent directly to housekeeping or room service as is most appropriate. Adventure Works has heard of active machine learning\-- whereby the system improves constantly with use, while still knowing what it is unsure of and asking for help when it determines it needs assistance.
+While guest sentiment is important, it is a reactive measure. AdventureWorks would like to take a proactive approach in positively affecting sentiment by expediting the requests of their guests via chat. In particular, they are looking to experiment with automating the routing of routine guest requests (e.g., "Can I get more towels?", "I forgot my toothbrush" and "Can I get a bottle of champagne") that would otherwise require the attention of an already overloaded front desk attendant. These requests, once automatically routed, could be sent directly to housekeeping or room service as is most appropriate. AdventureWorks has heard of active machine learning\-- whereby the system improves constantly with use, while still knowing what it is unsure of and asking for help when it determines it needs assistance.
 
 Another way they would like to be proactive and reduce load on hotel staff, is to have a bot that can answer guest questions about the hotel. This is something that can be separate from the real-time chat, and it is a feature that they would like automated as much as possible.
 
@@ -198,23 +201,23 @@ Finally, to help them reflect on chats that occur in public chat rooms, they wou
 
 ### Customer needs
 
-1.  Adventure Works would like their Concierge+ service to avoid using any servers or VMs that they would have to maintain.
+1.  AdventureWorks would like their Concierge+ service to avoid using any servers or VMs that they would have to maintain
 
-2.  Their real-time chat solution needs to be scalable to support their largest hotel customers.
+2.  Their real-time chat solution needs to be scalable to support their largest hotel customers
 
-3.  Automatically respond to guest questions with a bot.
+3.  Automatically respond to guest questions with a bot
 
-4.  The chat solution needs to be extensible and provide support for sentiment analysis and contextual understanding.
+4.  The chat solution needs to be extensible and provide support for sentiment analysis and contextual understanding
 
-5.  The public chat history needs to be fully searchable.
+5.  The public chat history needs to be fully searchable
 
-6.  The dashboard they use to visualize sentiment needs to update in real time, as well as display trending sentiment over time.
+6.  The dashboard they use to visualize sentiment needs to update in real time, as well as display trending sentiment over time
 
 ### Customer objections
 
 1.  It is not clear if we should be using the Bot Framework for our request forwarding or something else?
 
-2.  We do not want to build our own machine learning models in order to detect the sentiment of chat in real time.
+2.  We do not want to build our own machine learning models in order to detect the sentiment of chat in real time
 
 3.  Can we really build a real-time, intelligent chat solution entirely in Azure?
 
@@ -225,9 +228,10 @@ Finally, to help them reflect on chats that occur in public chat rooms, they wou
 ## Step 2: Design a proof of concept solution
 
 **Outcome**
+
 Design a solution and prepare to present the solution to the target customer audience in a 15-minute chalk-talk format.
 
-Time frame: 60 minutes
+Timeframe: 60 minutes
 
 **Business needs**
 
@@ -242,11 +246,11 @@ Directions: With all participants at your table, respond to the following questi
 
 _High-level architecture_
 
-1.  Without getting into the details (the following sections will address the particular details), diagram your initial vision for handling the top-level requirements for supporting the baseline chat, sentiment analysis, and request forwarding.
+1.  Without getting into the details (the following sections will address the particular details), diagram your initial vision for handling the top-level requirements for supporting the baseline chat, sentiment analysis, and request forwarding
 
 _Baseline chat_
 
-1.  How would you recommend that Adventure Works receive message from mobile and desktop browsers?
+1.  How would you recommend that AdventureWorks receive message from mobile and desktop browsers?
 
 2.  How would you store ingested messages? Would you use Event Hubs or Service Bus? Be specific on your reasoning and how you would configure it.
 
@@ -258,13 +262,13 @@ _Baseline chat_
 
 _Sentiment Analysis_
 
-1.  What service would you recommend Adventure Works capitalize on in order to scalably apply a sentiment score to each message as it enters the system?
+1.  What service would you recommend AdventureWorks capitalize on in order to scalably apply a sentiment score to each message as it enters the system?
 
 2.  How would you enhance your baseline chat flow to incorporate this sentiment processing?
 
 _Request forwarding_
 
-1.  What Azure service or API would you suggest Adventure Works utilize for understanding how to route guest requests to housekeeping or room service?
+1.  What Azure service or API would you suggest AdventureWorks utilize for understanding how to route guest requests to housekeeping or room service?
 
 2.  How would you implement or configure this service?
 
@@ -272,7 +276,7 @@ _Request forwarding_
 
 _Q&A Bot_
 
-1.  What Azure services would you recommend Adventure Works use for creating a Q&A bot?
+1.  What Azure services would you recommend AdventureWorks use for creating a Q&A bot?
 
 _Message search_
 
@@ -280,7 +284,7 @@ _Message search_
 
 _Visualization and reporting_
 
-1.  What tool would you recommend Adventure Works utilize for constructing their real-time sentiment dashboard?
+1.  What tool would you recommend AdventureWorks utilize for constructing their real-time sentiment dashboard?
 
 2.  How would you build this dashboard using the tool you recommended?
 
@@ -290,9 +294,9 @@ _Visualization and reporting_
 
 Directions: With all participants at your table:
 
-1.  Identify any customer needs that are not addressed with the proposed solution.
-2.  Identify the benefits of your solution.
-3.  Determine how you will respond to the customer’s objections.
+1.  Identify any customer needs that are not addressed with the proposed solution
+2.  Identify the benefits of your solution
+3.  Determine how you will respond to the customer’s objections
 
 Prepare a 15-minute chalk-talk style presentation to the customer.
 
@@ -302,25 +306,25 @@ Prepare a 15-minute chalk-talk style presentation to the customer.
 
 Present a solution to the target customer audience in a 15-minute chalk-talk format.
 
-Time frame: 30 minutes
+Timeframe: 30 minutes
 
 **Presentation**
 
 Directions:
 
-1.  Pair with another table.
-2.  One table is the Microsoft team and the other table is the customer.
-3.  The Microsoft team presents their proposed solution to the customer.
-4.  The customer makes one of the objections from the list of objections.
-5.  The Microsoft team responds to the objection.
-6.  The customer team gives feedback to the Microsoft team.
-7.  Tables switch roles and repeat Steps 2–6.
+1.  Pair with another table
+2.  One table is the Microsoft team and the other table is the customer
+3.  The Microsoft team presents their proposed solution to the customer
+4.  The customer makes one of the objections from the list of objections
+5.  The Microsoft team responds to the objection
+6.  The customer team gives feedback to the Microsoft team
+7.  Tables switch roles and repeat Steps 2–6
 
 ## Wrap-up
 
-Time frame: 15 minutes
+Timeframe: 15 minutes
 
-- Tables reconvene with the larger group to hear a SME share the preferred solution for the case study.
+- Tables reconvene with the larger group to hear a SME share the preferred solution for the case study
 
 ## Additional references
 
@@ -341,53 +345,53 @@ Time frame: 15 minutes
 
 ## Step 1: Review the customer case study
 
-- Check in with your table participants to introduce yourself as the trainer.
+- Check in with your table participants to introduce yourself as the trainer
 
 - Ask, "What questions do you have about the customer case study?"
 
-- Briefly review the steps and Time frames of the whiteboard design session.
+- Briefly review the steps and timeframes of the whiteboard design session
 
 - Ready, set, go! Let the table participants begin.
 
 ## Step 2: Design a proof of concept solution
 
-- Check in with your tables to ensure that they are transitioning from step to step on time.
+- Check in with your tables to ensure that they are transitioning from step to step on time
 
-- Provide some feedback on their responses to the business needs and design.
+- Provide some feedback on their responses to the business needs and design
 
-  - Try asking questions first that will lead the participants to discover the answers on their own.
+  - Try asking questions first that will lead the participants to discover the answers on their own
 
-- Provide feedback for their responses to the customer's objections.
+- Provide feedback for their responses to the customer's objections
 
-  - Try asking questions first that will lead the participants to discover the answers on their own.
+  - Try asking questions first that will lead the participants to discover the answers on their own
 
 ## Step 3: Present the solution
 
-- Determine which table will be paired with your table before Step 3 begins.
+- Determine which table will be paired with your table before Step 3 begins
 
-- For the first round, assign one table as the Microsoft team and the other table as the customer.
+- For the first round, assign one table as the Microsoft team and the other table as the customer
 
-- Have the Microsoft team present their solution to the customer team.
+- Have the Microsoft team present their solution to the customer team
 
-  - Have the customer team provide one objection for the Microsoft team to respond to.
+  - Have the customer team provide one objection for the Microsoft team to respond to
 
-  - The presentation and objections should be no longer than 10-minutes.
+  - The presentation and objections should be no longer than 10-minutes
 
-- Have participants on the customer team give feedback to the Microsoft team.
+- Have participants on the customer team give feedback to the Microsoft team
 
-  - The feedback should be no longer than 5 minutes.
+  - The feedback should be no longer than 5 minutes
 
-  - If needed, the trainer may also provide feedback.
+  - If needed, the trainer may also provide feedback
 
 ## Wrap-up
 
-- Have the table participants reconvene with the larger session group to hear a SME share the following preferred solution.
+- Have the table participants reconvene with the larger session group to hear a SME share the following preferred solution
 
 ## Preferred target audience
 
-Marc Tripp, the CTO of Adventure Works
+Marc Tripp, the CTO of AdventureWorks
 
-The primary audience is the business decision makers and technology decision makers. From the case study scenario, this would include the Marc Tripp, the CTO of Adventure Works. Usually we talk to the infrastructure managers who report to the chief information officers (CIOs), or to application sponsors (like a vice president \[VP\] line of business \[LOB\], or chief marketing officer \[CMO\]), or to those that represent the business unit IT or developers that report to application sponsors.
+The primary audience is the business decision makers and technology decision makers. From the case study scenario, this would include the Marc Tripp, the CTO of AdventureWorks. Usually we talk to the infrastructure managers who report to the chief information officers (CIOs), or to application sponsors (like a vice president \[VP\] line of business \[LOB\], or chief marketing officer \[CMO\]), or to those that represent the business unit IT or developers that report to application sponsors.
 
 ## Preferred solution
 
@@ -403,7 +407,7 @@ _High-level architecture_
 
 _Baseline chat_
 
-1.  How would you recommend that Adventure Works receive messages from mobile and desktop browsers?
+1.  How would you recommend that AdventureWorks receive messages from mobile and desktop browsers?
 
     The flow of chat messages from a mobile browser or desktop browser begins with the mobile browser making a Web Sockets connection to a Web App, over which the web app can receive sent messages and push received messages.
 
@@ -435,7 +439,7 @@ _Baseline chat_
 
 _Sentiment Analysis_
 
-1.  What service would you recommend Adventure Works capitalize on in order to scalably apply a sentiment score to each message as it enters the system?
+1.  What service would you recommend AdventureWorks capitalize on in order to scalably apply a sentiment score to each message as it enters the system?
 
     The Text Analytics API, part of Microsoft Cognitive Services.
 
@@ -445,9 +449,9 @@ _Sentiment Analysis_
 
 _Request Forwarding_
 
-1.  What Azure service or API would you suggest Adventure Works utilize for understanding how to route guest requests to housekeeping or room service?
+1.  What Azure service or API would you suggest AdventureWorks utilize for understanding how to route guest requests to housekeeping or room service?
 
-    The Language Understanding Intelligent Service (LUIS) API, which is a part of Microsoft Cognitive Services would enable Adventure Works to define contextual models that can identify intents (e.g., what the chat user is wanting to do) and entities (e.g., the subject of their action).
+    The Language Understanding Intelligent Service (LUIS) API, which is a part of Microsoft Cognitive Services would enable AdventureWorks to define contextual models that can identify intents (e.g., what the chat user is wanting to do) and entities (e.g., the subject of their action).
 
 2.  How would you implement or configure this service?
 
@@ -459,7 +463,7 @@ _Request Forwarding_
 
 _Q&A Bot_
 
-1.  What Azure services would you recommend Adventure Works use for creating a Q&A bot?
+1.  What Azure services would you recommend AdventureWorks use for creating a Q&A bot?
 
     The first step is to create a knowledge base (KB) from question and answer pairs, often times in the form of FAQs. To do this, use the QnA Maker Cognitive Service tool to use this content to build and train a simple question and answer bot that responds to users in a natural, conversational way. AWT would need to provide FAQ URLs or documents that it can ingest to build the KB. Once the KB has been created and trained, they need to publish it.
 
@@ -479,15 +483,13 @@ _Message search_
 
 _Visualization and reporting_
 
-1.  What tool would you recommend Adventure Works utilize for constructing their real-time sentiment dashboard?
+1.  What tool would you recommend AdventureWorks utilize for constructing their real-time sentiment dashboard?
 
-    To build a dashboard that updates with sentiments statistics in real-time, Adventure Works could use Power BI. Note that they would have to use PowerBI.com to build these dashboards, as currently real-time dashboards cannot be built using Power BI Desktop.
+    To build a dashboard that updates with sentiments statistics in real-time, AdventureWorks could use Power BI. Note that they would have to use PowerBI.com to build these dashboards, as currently real-time dashboards cannot be built using Power BI Desktop.
 
 2.  How would you build this dashboard using the tool you recommended?
 
-    To build a real-time dashboard in PowerBI, one needs to create a dashboard populated with visuals created using PowerBI QA. Adventure Works would need to create a report (using any visualization) on data coming into the dataset from the Stream Analytics Job. This static report is used to select a visualization, such as the Gauge visualization that can then be pinned to a new dashboard. After opening the new dashboard, real-time dashboards are created in Power BI using the QA feature, by typing in a question to visualize in the space provided. In the "Ask a question about your data", they would enter a question that would drive the visualization, such as: "average score created between yesterday and today." They can set the visualization to use to display the
-
-    result and then pin the visual to dashboard. This new visual will update in real-time as data is inserted into the underlying dataset.
+    To build a real-time dashboard in PowerBI, one needs to create a dashboard populated with visuals created using PowerBI QA. AdventureWorks would need to create a report (using any visualization) on data coming into the dataset from the Stream Analytics Job. This static report is used to select a visualization, such as the Gauge visualization that can then be pinned to a new dashboard. After opening the new dashboard, real-time dashboards are created in Power BI using the QA feature, by typing in a question to visualize in the space provided. In the "Ask a question about your data", they would enter a question that would drive the visualization, such as: "average score created between yesterday and today." They can set the visualization to use to display the result and then pin the visual to dashboard. This new visual will update in real-time as data is inserted into the underlying dataset.
 
     ![The Power BI dashboard has four panes: two Count of Messages panes, an Average Sentiment, and Upset Users. The first Count of Messages pane displays a number (18). The second Count of Messages is a pie chart broken out by username. The Average Sentiment is a gauge (half-circle donut) chart displaying the Average Sentiment (0.58) in the past 24 hours. Upset Users chart is a horizontal bar chart displaying the average of upset users (0.25) in the past 24 hours.](media/image6.png 'Power BI dashboard')
 
@@ -510,11 +512,11 @@ _Visualization and reporting_
 
 1.  It is not clear if we should be using the Bot Framework for our request forwarding or something else?
 
-    The Bot Framework is intended for building chat bots that integrate with existing services such as text/sms, Skype, Slack, and Office 365---on its own it does not provide a chat messaging framework. In Adventure Works' case, they are looking for an in-house chat solution, so the Bot framework would not be an appropriate solution for that requirement. However, Bot Framework is appropriate for the Q&A bot capabilities they have asked for, so it’s used in conjunction with the in-house chat solution.
+    The Bot Framework is intended for building chat bots that integrate with existing services such as text/sms, Skype, Slack, and Office 365---on its own it does not provide a chat messaging framework. In AdventureWorks' case, they are looking for an in-house chat solution, so the Bot framework would not be an appropriate solution for that requirement. However, Bot Framework is appropriate for the Q&A bot capabilities they have asked for, so it’s used in conjunction with the in-house chat solution.
 
-2.  We do not want to build our own machine learning models in order to detect the sentiment of chat in real time.
+2.  We do not want to build our own machine learning models in order to detect the sentiment of chat in real time
 
-    By using the Text Analytics API, Adventure Works is able to leverage a field tested, performant text sentiment model that requires only invocation by web service call.
+    By using the Text Analytics API, AdventureWorks is able to leverage a field tested, performant text sentiment model that requires only invocation by web service call.
 
 3.  Can we really build a real-time, intelligent chat solution entirely in Azure?
 
@@ -524,4 +526,4 @@ _Visualization and reporting_
 
 "What's cooler than sentiment analytics on real-time chat? Azure, because it enables us to give hotel operators back the connection they lost as their hotel sizes increased."
 
--Marc Tripp, the CTO of Adventure Works
+-Marc Tripp, the CTO of AdventureWorks
