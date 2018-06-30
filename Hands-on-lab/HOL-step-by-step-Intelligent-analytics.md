@@ -1845,7 +1845,7 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
     ![Bot.cshtml page with embed code](media/vs-bot-embed.png "Visual Studio")
 
-4.  **Publish** your web app.
+4.  **Publish** your web app
 
 5.  After the web app has been published, navigate to it and select the **Bot** menu item. Type in a few questions to ensure the bot is functioning correctly.
 
