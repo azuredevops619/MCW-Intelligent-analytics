@@ -637,7 +637,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     ![The Save button is selected.](media/image60.png 'Save button')
 
-### Task 10: Start the Stream Analytics Job
+### Task 10: Start the Stream Analytics job
 
 1.  Navigate to your Stream Analytics job in the portal by selecting Resource Groups in the left menu, and selecting intelligent-analytics, then selecting your Stream Analytics Job
 
@@ -657,9 +657,9 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     ![The Stream Analytics job is shown in the Azrue portal with a state of Running.](media/image64.png 'Stream analytics job running')
 
-### Task 11: Provision an Azure Storage Account
+### Task 11: Provision an Azure Storage account
 
-The EventProcessorHost requires an Azure Storage Account that it will use to manage its state among multiple instances. In this section, you create that Storage Account.
+The EventProcessorHost requires an Azure Storage account that it will use to manage its state among multiple instances. In this section, you create that Storage account.
 
 1.  Using the Azure Portal, select **+Create a resource, Storage, the select Storage account -- blob, file, table, queue**
 
@@ -1170,35 +1170,35 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     ![The Create LUIS app botton is clicked form the Welcome page of the LUIS AI Service.](media/image112.png 'Create LUIS app')
 
-6.  Complete the additional info and terms of use form and select **Continue**.
+6.  Complete the additional info and terms of use form and select **Continue**
 
     ![The Welcome to Language understanding webpage displays.](media/image113.png 'Welcome to Language')
 
-7.  Under My Apps, select **Create New App**.
+7.  Under My Apps, select **Create New App**
 
-8.  Complete the Create a new app form by providing a name for your LUIS app, the culture and select **Done**.
+8.  Complete the Create a new app form by providing a name for your LUIS app, the culture and select **Done**
 
     ![In the Create a new app dialog box, the Name field is set to awchat, and Culture is set to English.](media/image114.png 'Create new app')
 
-9.  In a moment, your new app will appear. Click the app to see the details.
+9.  In a moment, your new app will appear. Click the app to see the details
 
-10. In the menu bar, select **Publish**, select the appropriate region, and select Add Key.
+10. In the menu bar, select **Publish**, select the appropriate region, and select Add Key
 
     ![The Publish dialog is shown with the region selected and the Add Key button clicked.](media/image115.png 'Publish dialog')
 
-11. In the Assign a key to your app dialog, select your Tenant name and Subscription, and then select the luis-api key from the list.
+11. In the Assign a key to your app dialog, select your Tenant name and Subscription, and then select the luis-api key from the list
 
     ![The Assign a key to your app dialog box displays.](media/image116.png 'Assign a key to your app dialog box')
 
-12. Select **Add Key**.
+12. Select **Add Key**
 
-13. Select My Apps from the menu bar and choose your app from the list.
+13. Select My Apps from the menu bar and choose your app from the list
 
-14. Select **Intents** on the left-hand menu, then **Create new intent**.
+14. Select **Intents** on the left-hand menu, then **Create new intent**
 
     ![The Intents menu for the awchat application and the Create new intent has been selected.](media/image117.png 'awchat application')
 
-15. In the Intents dialog, for the Intent Name enter **OrderIn** and select **Done**.
+15. In the Intents dialog, for the Intent Name enter **OrderIn** and select **Done**
 
     ![The OrderIn intent has been entered into the Create new intent diaglog and the Done button is clicked.](media/image118.png 'Create a new intent')
 
@@ -1206,21 +1206,21 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     ![The utterence order a pizza has been typed into the OrderIn Intent.](media/image119.png 'Orderin utterance')
 
-17. Select Entities from the menu on the left.
+17. Select Entities from the menu on the left
 
     ![The Entities menu item has been selected for the awchat application.](media/image120.png 'Entities menu')
 
-18. Select Create new entity.
+18. Select Create new entity
 
     ![The Create new entity has been clicked for the awchat application.](media/image121.png 'Create new entity')
 
-19. For the Entity name specify "**RoomService**" and set the Entity Type to **Hierarchical**.
+19. For the Entity name specify "**RoomService**" and set the Entity Type to **Hierarchical**
 
     ![In the Add Entity dialog box, Entity name is set to RoomService, and Entity type is set to Hierarchical.](media/image122.png 'Add Entity dialog box')
 
-20. Select **+ Add child entity**.
+20. Select **+ Add child entity**
 
-21. For Child Name provide a name of **FoodItem**.
+21. For Child Name provide a name of **FoodItem**
 
     ![A child entity has been added to the RoomService entity.](media/image123.png 'Child name entity')
 
@@ -1228,13 +1228,13 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     ![The completed Entity name is shown with all of the selections completed. The done button has been selected.](media/image124.png 'Completed entity name')
 
-23. Select **Intents** from the menu on the left and select the **OrderIn** intent you created.
+23. Select **Intents** from the menu on the left and select the **OrderIn** intent you created
 
-24. In the utterance, select the word pizza so it becomes highlighted.
+24. In the utterance, select the word pizza so it becomes highlighted
 
     ![In the Utterances (1) section, order a [pizza] is selected, and below that, RoomService displays with a chevron next to it.](media/image125.png 'Utterances order a pizza')
 
-25. Under Entities select **RoomService**, then select **FoodItem**.
+25. Under Entities select **RoomService**, then select **FoodItem**
 
     ![The expanded chevron displays, with two choices: RoomService::FoodItem, which is selected, and RoomService::RoomItem, which is not.](media/image126.png 'Entities options')
 
@@ -1260,11 +1260,11 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
       ![The utterences after they have been entered and aligned to the proper entities.](media/image127.png 'Utterance list of room service items')
 
-28. Select Train from the menu bar.
+28. Select Train from the menu bar
 
     ![Train menu bar selected/](media/image128.png 'Train menu bar')
 
-29. Click Test and experiment by writing some utterances and pressing enter to see the interpretation.
+29. Click Test and experiment by writing some utterances and pressing enter to see the interpretation
 
     ![An interactive test showing that searching for where can i buy a hamburger will invoke the entity RoomService::FoodItem. ](media/image129.png 'Test of utterances')
 
@@ -1272,7 +1272,7 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     ![The Publish app screen is showing that they timezone has been selected and the Publish to production slot has been selected.](media/luis-publish-app.png 'Publish app')
 
-31. When the publish completes, click the URL displayed next to the **awhotels-luis** key at the bottom of the Publish App screen.
+31. When the publish completes, click the URL displayed next to the **awhotels-luis** key at the bottom of the Publish App screen
 
     ![At the bottom of the Publish App dialog box, the awhotels-luis Endpoint URL is circled.](media/luis-endpoint-url.png 'Publish App dialog box')
 
@@ -1289,9 +1289,9 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
       ![The base URL is highlighted in green, and the App ID is highlighted in yellow.](media/luis-url.png 'LUIS Url')
       https://eastus.api.cognitive.microsoft.com/luis/v2.0/apps/e49117d8-0275-4319-8fed-698ff6dc8192?subscription-key=08a82755f5f040ae9b4376ccab5fa6bc&verbose=true&timezoneOffset=-300&q=
 
-      You can also find your App ID by going to the Settings tab.
+      You can also find your App ID by going to the Settings tab
 
-34. You can add more utterances as desired by repeating the above steps to add new utterances, indicate the entity, train the model, and then update the publish application using the button in the Publish App screen.
+34. You can add more utterances as desired by repeating the above steps to add new utterances, indicate the entity, train the model, and then update the publish application using the button in the Publish App screen
 
 35. When you are ready to integrate LUIS into your app, go to the Publish App screen, and locate the awhotels-luis key under Resources and Keys. Copy the first Key String for awhotels-luis. Paste this to your notepad.
 
@@ -1299,9 +1299,9 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 **Note**: This is the same key you can obtain on the Keys blade for the luis-api Cognitive Service in the Azure portal.
 
-36. You will enter this into the configuration of the Event Processor Function App.
+36. You will enter this into the configuration of the Event Processor Function App
 
-37. Navigate to the Application Settings for your Event Processor Function App in the Azure Portal.
+37. Navigate to the Application Settings for your Event Processor Function App in the Azure Portal
 
 38. Within the Application Settings, for the key **luisAppId** set the text of the value attribute to the App ID of your LUIS App (this value should be a GUID you obtained from the URL and not the name of your LUIS app). For the key **luisKey**, set the text of the value attribute to the Endpoint key used by your LUIS app (as you acquired it from the Azure Portal).
 
@@ -1309,7 +1309,7 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 39. **Save** your Application Settings. The Event Processor is pre-configured to invoke the LUIS API using the provided App ID and key.
 
-40. Open Visual Studio then open ProcessChatMessage.cs within the ChatMessageSentimentProcessorFunction project, and navigate to the Run method.
+40. Open Visual Studio then open ProcessChatMessage.cs within the ChatMessageSentimentProcessorFunction project, and navigate to the Run method
 
 41. Locate TODO: 13 and replace it with the following:
 
@@ -1319,27 +1319,27 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
     await HandleIntent(intent, msgObj, outputServiceBus);
     ```
 
-42. At the top of the file, locate the variable named \_luisBaseUrl.
+42. At the top of the file, locate the variable named \_luisBaseUrl
 
     ![In Visual Studio, the URL for luisBaseURL is circled.](media/image135.png 'Visual Studio')
 
-43. You will replace the value of this variable with the base URL you copied from the LUIS site above (the part highlighted in green).
+43. You will replace the value of this variable with the base URL you copied from the LUIS site above (the part highlighted in green)
 
-44. Take a look at the implementation of both methods if you are curious how the entity and intent information is used to generate an automatic chat message response from a bot.
+44. Take a look at the implementation of both methods if you are curious how the entity and intent information is used to generate an automatic chat message response from a bot
 
-45. Save the file.
+45. Save the file
 
 ### Task 3: Implement speech to text
 
 There is one last intelligence service to activate in the application---speech recognition. This is powered by the Bing Speech API, and is invoked directly from the web page without going through the web server. In the steps that follow, you insert your Cognitive Services Speech API key into the configuration to enable speech to text.
 
-1.  Within Visual Studio Solution Explorer, expand **ChatWebApp**, **Scripts**, and open **chatClient.js**.
+1.  Within Visual Studio Solution Explorer, expand **ChatWebApp**, **Scripts**, and open **chatClient.js**
 
-2.  At the top, locate the variable **speechApiKey**, and update its value with the Key 1 you acquired in [Exercise 1, Task 11, Step 8](#task-11-provision-cognitive-services), when you provisioned your Speech API in the Azure Portal.
+2.  At the top, locate the variable **speechApiKey**, and update its value with the Key 1 you acquired in [Exercise 1, Task 11, Step 8](#task-11-provision-cognitive-services), when you provisioned your Speech API in the Azure Portal
 
     ![The following variable code displays: //TODO: Enter your Speech API Key here var speechApiKey = "";](media/image136.png 'variable')
 
-3.  Save chatClient.js.
+3.  Save chatClient.js
 
 **Note**: Embedding the API Key as shown here is done only for convenience. In a production app, you will want to maintain your API Key server-side.
 
@@ -1347,13 +1347,13 @@ There is one last intelligence service to activate in the application---speech r
 
 Now that you have added sentiment analysis, language understanding, and speech recognition to the solution, you need to re-deploy the apps so you can test out the new functionality.
 
-1.  Publish the **ChatMessageSentimentProcessorFunction** Function App using Visual Studio just as you did in [Exercise 4, Task 1](#task-1-publish-the-chatmessagesentimentprocessor-web-job).
+1.  Publish the **ChatMessageSentimentProcessorFunction** Function App using Visual Studio just as you did in [Exercise 4, Task 1](#task-1-publish-the-chatmessagesentimentprocessor-web-job)
 
-2.  Publish the **ChatWebApp** just as you did in [Exercise 4, Task 2](#task-2-publish-the-chatwebapp).
+2.  Publish the **ChatWebApp** just as you did in [Exercise 4, Task 2](#task-2-publish-the-chatwebapp)
 
-3.  When both have published, navigate to your deployed web app making sure to use HTTPS. (This is required for most browsers to support the microphone needed for speech recognition.)
+3.  When both have published, navigate to your deployed web app making sure to use HTTPS (This is required for most browsers to support the microphone needed for speech recognition)
 
-4.  Join a chat with the Hotel Lobby.
+4.  Join a chat with the Hotel Lobby
 
 5.  Type a message with a positive sentiment, like "I love this weather." Observe the "thumbs-up" icon that appears next to the chat message you sent. Next, types something like, "This weather is terrible," and observe the thumbs-down icon. These are indicators of sentiment (as applied by your solution in real-time).
 
@@ -1375,9 +1375,9 @@ Now that you have the solution deployed and exchanging messages, you can build a
 
 ### Task 1: Create the static dashboard
 
-1.  Sign in to your Power BI subscription (<https://app.powerbi.com>).
+1.  Sign in to your Power BI subscription (<https://app.powerbi.com>)
 
-2.  Select My Workspace on the left-hand menu, the select the Datasets tab.
+2.  Select My Workspace on the left-hand menu, the select the Datasets tab
 
     ![In the Power BI window, on the left menu, My Workspace is circled. In the right pane, Datasets is circled.](media/image140.png 'Power BI window')
 
@@ -1385,19 +1385,19 @@ Now that you have the solution deployed and exchanging messages, you can build a
 
     ![On the Datasets tab, under Name, Messages is circled.](media/image141.png 'Datasets tab')
 
-4.  Select the **Create Report** button under the Actions column.
+4.  Select the **Create Report** button under the Actions column
 
     ![On the Datasets tab, under Actions, the Create Report button is circled.](media/image142.png 'Datasets tab')
 
-5.  On the Visualizations palette, select **Gauge** to create a semi-circular gauge.
+5.  On the Visualizations palette, select **Gauge** to create a semi-circular gauge
 
     ![On the Visualizations palette, the Gauge (donut) icon is circled.](media/image143.png 'Visualizations palette')
 
-6.  In the Fields listing, select and drag the **score** field and drop it onto the **Value** field.
+6.  In the Fields listing, select and drag the **score** field and drop it onto the **Value** field
 
-    ![The Visualizations and Fields listings display. In the Fields listing, under Messages, the ??? score check box is selected. An arrow points from this to the Value field in the Visualizations listing, where score is now listed.](media/image144.png 'Visualizations and Fields listings')
+    ![The Visualizations and Fields listings display. In the Fields listing, under Messages, the score check box is selected. An arrow points from this to the Value field in the Visualizations listing, where score is now listed.](media/image144.png 'Visualizations and Fields listings')
 
-7.  Select the drop-down menu that appears where you dropped score and select **Average**.
+7.  Select the drop-down menu that appears where you dropped score and select **Average**
 
     ![Average is selected and a green checkmark displays next to it on the Drop-down menu.](media/image145.png 'Drop-down menu')
 
@@ -1405,11 +1405,11 @@ Now that you have the solution deployed and exchanging messages, you can build a
 
     ![A semi-circle gauge graph displays for Average of score, which is 0.62.](media/image146.png 'Gauge graph')
 
-9.  From the File menu, select Save to save your visualization to a new report.
+9.  From the File menu, select Save to save your visualization to a new report
 
     ![On the File menu, Save (Save this report) is selected.](media/image147.png 'File menu')
 
-10. Enter **ChatSentiment** for the report name, and select **Save**.
+10. Enter **ChatSentiment** for the report name, and select **Save**
 
     ![In the Save your report window, ChatSentiment is typed in as the name of the report.](media/image148.png 'Save your report window')
 
@@ -1417,15 +1417,15 @@ Now that you have the solution deployed and exchanging messages, you can build a
 
 This gauge is currently a static visualization. You will use the report just created to seed a dashboard whose visualizations update as new messages arrive.
 
-1.  Select the Pin Live Page icon located near the top right of the Gauge control.
+1.  Select the Pin Live Page icon located near the top right of the Gauge control
 
     ![On the Gauge control menu bar, Pin Live Page is circled.](media/image149.png 'Gauge control menu bar')
 
-2.  Select New **dashboard**, enter **Real-time Sentiment** as the name, and select Pin Live.
+2.  Select New **dashboard**, enter **Real-time Sentiment** as the name, and select Pin Live
 
     ![On the Pin to dashboard dialog box, on the left, a Preview of the ChatSentiment Gauge graph displays. On the right, under Where would you like to pin to, the New dashboard radio button is selected.](media/image150.png 'Pin to dashboard dialog box')
 
-3.  Return to the **My Workspace** page, and select your newly created dashboard from the list of dashboards.
+3.  Return to the **My Workspace** page, and select your newly created dashboard from the list of dashboards
 
     ![My Workspace dashboards with Real-time Sentiment selected](media/image151.png 'My Workspace dashboards')
 
@@ -1433,7 +1433,7 @@ This gauge is currently a static visualization. You will use the report just cre
 
     !["average score created between yesterday and today" is typed in the Ask question about your data field. An average of score (0.62) displays below.](media/image152.png 'Ask question about your data field')
 
-5.  Next, convert this to a Gauge chart by expanding the Visualizations palette at right, and selecting the Gauge control.
+5.  Next, convert this to a Gauge chart by expanding the Visualizations palette at right, and selecting the Gauge control
 
     ![Visualizations palette with the Gauge control selected.](media/image153.png 'Visualizations palette')
 
@@ -1445,11 +1445,11 @@ This gauge is currently a static visualization. You will use the report just cre
 
     ![The Gauge graph for average score created between yesterday and today displays with an average of score of 0.62.](media/image155.png 'Gauge graph')
 
-8.  In the top-right corner, select **Pin visual.**
+8.  In the top-right corner, select **Pin visual**
 
     ![Pin visual option](media/image156.png 'Pin visual option')
 
-9.  In the dialog that appears, select the dashboard you recently created and select **Pin**.
+9.  In the dialog that appears, select the dashboard you recently created and select **Pin**
 
     ![On the Pin to dashboard dialog box, on the left, a Preview of the Gauge graph displays. On the right, under Where would you like to pin to, the Existing dashboard radio button is selected.](media/image157.png 'Pin to dashboard dialog box')
 
@@ -1457,7 +1457,7 @@ This gauge is currently a static visualization. You will use the report just cre
 
     ![Two Average of score Gauge graphs display, and both are the same.](media/image158.png 'Gauge graphs')
 
-11. Navigate to the chat website you deployed and send some messages and observe how the sentiment gauge updates with moments of you sending chat messages.
+11. Navigate to the chat website you deployed and send some messages and observe how the sentiment gauge updates with moments of you sending chat messages
 
 ### Task 3: Add a trending sentiment chart to the dashboard
 
@@ -1467,15 +1467,15 @@ The sentiment visualization you created is great for getting a sense of sentimen
 
     ![Go to My Workspace, then the Datasets tab, search for Trending, then select the Create Report action.](media/power-bi-trendingsentiment-dataset.png "Power BI Datasets")
 
-2.  Select the **Line chart** visualization.
+2.  Select the **Line chart** visualization
 
     ![Select the Line chart visualization](media/power-bi-line-chart-visualization.png "Power BI Line Chart")
 
-3.  Drag the **average** field to the **Values** setting, and **snapshot** to **Axis**.
+3.  Drag the **average** field to the **Values** setting, and **snapshot** to **Axis**
 
     ![Drag the average field to the Values setting, and snapshot to Axis](media/power-bi-line-chart-settings.png "Power BI Line Chart")
 
-4.  Resize the line chart and observe how the average sentiment is tracked over time.
+4.  Resize the line chart and observe how the average sentiment is tracked over time
 
     ![Screenshot of the line chart displaying trending sentiment over time](media/power-bi-trending-sentiment-chart.png "Power BI Line Chart")
 
@@ -1483,15 +1483,15 @@ The sentiment visualization you created is great for getting a sense of sentimen
 
     ![Select Save this report](media/power-bi-save-report.png "Save this report")
 
-6.  Next, select **Pin Live Page**.
+6.  Next, select **Pin Live Page**
 
     ![Select Pin Live Page](media/power-bi-pin-live-page.png "Pin Live Page")
 
-7.  In the Pin to dashboard dialog, select **Existing dashboard**, select the dashboard you created previously, then select **Pin live**.
+7.  In the Pin to dashboard dialog, select **Existing dashboard**, select the dashboard you created previously, then select **Pin live**
 
     ![Pin to dashboard dialog](media/power-bi-pin-to-dashboard.png "Pin to dashboard")
 
-8.  Position the Trending Sentiment line chart beneath the average score gauge.
+8.  Position the Trending Sentiment line chart beneath the average score gauge
 
     ![Power BI dashboard showing the average score gauges and trending sentiment](media/power-bi-dashboard-with-trending-sentiment.png "Power BI Dashboard")
 
@@ -1505,7 +1505,7 @@ The sentiment visualization you created is great for getting a sense of sentimen
 
     - Upset Users (Bar chart visualization): Average score by username between yesterday and today
 
-10. Invite some peers to chat and monitor the sentiments using your new, real-time dashboard.
+10. Invite some peers to chat and monitor the sentiments using your new, real-time dashboard
 
 ## Exercise 7: Enabling search indexing
 
@@ -1517,9 +1517,9 @@ Now that you have primed the system with some messages, you will create a Search
 
 Before going further, a good thing to check is whether messages are being written to Azure Cosmos DB from the Stream Analytics Job.
 
-1.  In the Azure Portal, navigate to your **Azure Cosmos DB account**.
+1.  In the Azure Portal, navigate to your **Azure Cosmos DB account**
 
-2.  On the left-hand menu, select **Data Explorer**.
+2.  On the left-hand menu, select **Data Explorer**
 
     ![The Data Explorer sections from within the Azure portal, Cosmos DB has been selected.](media/image160.png 'Data explorer menu')
 
@@ -1527,44 +1527,44 @@ Before going further, a good thing to check is whether messages are being writte
 
     ![Documents has been selected from within the Data Explorer in the Azure Portal.](media/image161.png 'Documents selected in Data Explorer')
 
-4.  If you want to peek at the message contents, select any document in the listing.
+4.  If you want to peek at the message contents, select any document in the listing
     ![Message contents display.](media/image162.png 'Message contents')
 
 ### Task 2: Creating the index and indexer
 
-1.  Select Resource Groups from the left menu, then select the **intelligent-analytics** resource group.
+1.  Select Resource Groups from the left menu, then select the **intelligent-analytics** resource group
 
-2.  Select your **Search** **service** instance from the list.
+2.  Select your **Search** **service** instance from the list
 
-3.  Select **Import data**.
+3.  Select **Import data**
 
     ![Intelligent-analytics resource group search service instance with Import data selectd. ](media/image163.png 'Intelligent-analytics resource group')
 
-4.  On the Import data blade, select **Connect to your data**.
+4.  On the Import data blade, select **Connect to your data**
 
     ![The import data blade is shown with the Connect to your data selected.](media/image164.png 'Implort data blade')
 
-5.  On the Data Source blade, select **Cosmos DB**.
+5.  On the Data Source blade, select **Cosmos DB**
 
     ![The Cosmos DB link is selected](media/image165.png 'Cosmos DB link')
 
-6.  Enter **messagestore** for the name of the data source.
+6.  Enter **messagestore** for the name of the data source
 
     ![New data spirce b;ade with messagestore entered in the Name box. The Cosmos DB accounts blade with an account selected.](media/image166.png 'New data source and cosmos DB accounts')
 
-7.  Select your **Cosmos DB** account.
+7.  Select your **Cosmos DB** account
 
-8.  Choose your **awhotels** database.
+8.  Choose your **awhotels** database
 
-9.  Choose your **messagestore** collection.
+9.  Choose your **messagestore** collection
 
-10. Select **OK** to complete the Data Source configuration.
+10. Select **OK** to complete the Data Source configuration
 
-11. Select **Customize target index**, and observe that the field list has been pre-populated for you based on data in the collection.
+11. Select **Customize target index**, and observe that the field list has been pre-populated for you based on data in the collection
 
-12. Enter **chatmessages** for the name of the index.
+12. Enter **chatmessages** for the name of the index
 
-13. Leave the Key set to id.
+13. Leave the Key set to id
 
     ![Screenshot of the Key ID field.](media/image167.png 'Key ID field')
 
@@ -1576,113 +1576,113 @@ Before going further, a good thing to check is whether messages are being writte
 
 17. Select the Searchable check box for message. Only these fields are indexed for full text search.
 
-18. Confirm your grid looks similar to the following, and select OK.
+18. Confirm your grid looks similar to the following, and select OK
 
     ![On the Import data blade, Customize target index is selected. The Index blade fields and check boxes are set to previously mentioned settings.](media/image168.png 'Import data and Index blades')
 
-19. Select **Import your data**.
+19. Select **Import your data**
 
     ![Import your data selected](media/image169.png 'Import your data')
 
-20. On the Create an Indexer blade, enter **messages-indexer** as the name.
+20. On the Create an Indexer blade, enter **messages-indexer** as the name
 
-21. Set the Schedule toggle to **Custom**.
+21. Set the Schedule toggle to **Custom**
 
-22. Enter an interval of **5** minutes (the minimum allowed).
+22. Enter an interval of **5** minutes (the minimum allowed)
 
-23. Set the Start time to **today's date**.
+23. Set the Start time to **today's date**
 
-24. The description and other fields can be ignored.
+24. The description and other fields can be ignored
 
-25. Select **OK**.
+25. Select **OK**
 
     ![On the Import data blade, Import your data (Indexer) is selected. On the Create an Indexer blade, fields are set to the previously mentioned settings.](media/image170.png 'Import data and Create an Indexer blades')
 
-26. Select **OK** once more to begin importing data using your indexer.
+26. Select **OK** once more to begin importing data using your indexer
 
-27. After a few moments, examine the Indexers tile for the status of the Indexer.
+27. After a few moments, examine the Indexers tile for the status of the Indexer
 
     ![The Indexers tile shows that there was one success, and zero failed.](media/image171.png 'Indexers tile')
 
 ### Task 3: Update the Web App web.config
 
-1.  On your Lab VM, within Visual Studio Solution Explorer, expand the **ChatWebApp** project.
+1.  On your Lab VM, within Visual Studio Solution Explorer, expand the **ChatWebApp** project
 
-2.  Open **Web.config**.
+2.  Open **Web.config**
 
 3.  For the **chatSearchApiBase**, enter the URI of the Search API App (e.g., <http://awchatsearch.azurewebsites.net)>. This value should not be the URL to your instance of Azure Search.
 
-    - You can find this by going to Resource Groups, selecting the **intelligent-analytics** resource group, and selecting your search app service from the list.
+    - You can find this by going to Resource Groups, selecting the **intelligent-analytics** resource group, and selecting your search app service from the list
 
       ![Under Name, the ConciergePlusAppSearchAPI App Service is circled.](media/image172.png 'Name section')
 
-    - On the Essentials blade for your service, you will find the URL value.
+    - On the Essentials blade for your service, you will find the URL value
 
       ![In the Essentials section of the Essentials blade, the URL value is circled.](media/image173.png 'Essentials blade')
 
-4.  Copy the URL value, and paste it into the value setting for the **chatSearchApiBase** key.
+4.  Copy the URL value, and paste it into the value setting for the **chatSearchApiBase** key
 
     ![chatSearchApiBase key displays the URL value copied from the Essentials blade.](media/image174.png 'chatSearchApiBase key')
 
-5.  Save **Web.config**.
+5.  Save **Web.config**
 
 ### Task 4: Configure the Search API App
 
-1.  Within Visual Studio Solution Explorer, expand the **ChatAPI** project.
+1.  Within Visual Studio Solution Explorer, expand the **ChatAPI** project
 
-2.  Open **web.config**.
+2.  Open **web.config**
 
-3.  This project needs the following three settings configured to capitalize on Azure Search, all of which you can get from the Azure Portal.
+3.  This project needs the following three settings configured to capitalize on Azure Search, all of which you can get from the Azure Portal
 
     ![Code displays in the Web.config window, showing that the following three key settings are being added: SearchServiceName, SearchServiceQueryApiKey, and SearchIndexName.](media/image175.png 'Web.config')
 
-4.  Using the Azure Portal, navigate to the blade of your **Search** service.
+4.  Using the Azure Portal, navigate to the blade of your **Search** service
 
-5.  For the **SearchServiceName**, enter the name of your Search service (e.g., **awchatter**).
+5.  For the **SearchServiceName**, enter the name of your Search service (e.g., **awchatter**)
 
 6.  For the **SearchServiceQueryApiKey**, do the following:
 
-    - On the Search service blade, select Keys on the left-hand menu.
+    - On the Search service blade, select Keys on the left-hand menu
 
       ![On the Search Service blade, Settings section, under Settings, Keys is selected.](media/image176.png 'Search Service blade, Settings section')
 
-    - Select **Manage query keys**.
+    - Select **Manage query keys**
 
       ![Manage query keys selected.](media/image177.png 'Manage query keys ')
 
-    - On the Manage query keys blade, copy the \<empty\> key value.
+    - On the Manage query keys blade, copy the \<empty\> key value
 
       ![On the Manage query keys blade, the value in the Key field is circled.](media/image178.png 'Manage query keys blade')
 
-    - Copy this value into the **SearchServiceQueryApiKey** setting.
+    - Copy this value into the **SearchServiceQueryApiKey** setting
 
-7.  For the **SearchIndexName** setting, enter the name of the Index you created in Search, chatmessages.
+7.  For the **SearchIndexName** setting, enter the name of the Index you created in Search, chatmessages
 
-8.  Save **Web.config**.
+8.  Save **Web.config**
 
 ### Task 5: Re-publish apps
 
-1.  Publish the updated **ChatWebApp** using Visual Studio, as was shown previously in [Exercise 4, Task 2](#task-2-publish-the-chatwebapp).
+1.  Publish the updated **ChatWebApp** using Visual Studio, as was shown previously in [Exercise 4, Task 2](#task-2-publish-the-chatwebapp)
 
-2.  Within Visual Studio Solution Explorer, right-click the **ChatAPI** project and select **Publish**.
+2.  Within Visual Studio Solution Explorer, right-click the **ChatAPI** project and select **Publish**
 
     ![In Visual Studio Solution Explorer, the ChatAPI sub-menu displays, with Publish selected.](media/image179.png 'Visual Studio Solution Explorer')
 
-3.  Select Microsoft Azure App Service, choose the Select **existing** radio button and select **Publish**.
+3.  Select Microsoft Azure App Service, choose the Select **existing** radio button and select **Publish**
 
-4.  If prompted, sign in with your credentials to your Azure Subscription.
+4.  If prompted, sign in with your credentials to your Azure Subscription
 
 5.  In the App Service dialog, choose your Subscription that contains your API App you provisioned earlier. Expand your Resource Group (e.g., **intelligent-analytics**), then select the node for your API App in the tree view to select it.
 
     ![In the App Service dialog box, in the tree view, awchat is expanded, and ConciergePlusSearchApi1 is selected.](media/image180.png 'App Service dialog box')
 
-6.  Select **OK**.
+6.  Select **OK**
 
-7.  When the publishing is complete, a browser window should appear with content similar to the following.
+7.  When the publishing is complete, a browser window should appear with content similar to the following
 
     ![A Browser window displays with the message, "Your App Service app has been created," and links to a Quick Start guide, and deployment documentation.](media/image181.png 'Browser window')
 
-8.  Navigate to the Search tab on the deployed Web App and try searching for chat messages. (Note that there is up to a 5-minute latency before new messages may appear in the search results.
+8.  Navigate to the Search tab on the deployed Web App and try searching for chat messages (Note that there is up to a 5-minute latency before new messages may appear in the search results)
 
     ![In the Search Messages box, in the Search messages for text box, chat is typed. Below that, 6 results have been found.](media/image182.png 'Search Messages box')
 
@@ -1696,63 +1696,63 @@ At this point, you have created a real-time chat service in Azure, allowing peop
 
 Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content to build and train a simple question and answer bot that responds to users in a natural, conversational way.
 
-1.  In a new web browser window, navigate to <https://www.qnamaker.ai>.
+1.  In a new web browser window, navigate to <https://www.qnamaker.ai>
 
 2.  On the home page, select **Sign In** on the top of the page. Sign in with the same credentials you use for the Azure portal.
 
     ![Microsoft QnA Maker home page](media/qna-maker-home.png "QnA Maker home page")
 
-3.  Select **Create a knowledge base**.
+3.  Select **Create a knowledge base**
 
     ![Select create a knowledge base](media/qna-maker-create-kb-link.png "Select create a knowledge base")
 
-4.  Within the knowledge base creation page, select **Create a QnA service** under Step 1.
+4.  Within the knowledge base creation page, select **Create a QnA service** under Step 1
 
     ![Select Create a QnA service](media/qna-maker-create-service.png "Knowledge base creation page")
 
 5.  Within the Create QnA Maker blade, provide the following:
 
-    - Name: Provide a **unique name** for the QnA Maker Service (e.g., awhotel-qna).
+    - Name: Provide a **unique name** for the QnA Maker Service (e.g., awhotel-qna)
 
-    - Subscription: Choose the same subscription you used previously.
+    - Subscription: Choose the same subscription you used previously
 
-    - Management pricing tier: Choose **F0**.
+    - Management pricing tier: Choose **F0**
 
-    - Resource Group: Choose the **intelligent-analytics** resource group.
+    - Resource Group: Choose the **intelligent-analytics** resource group
 
-    - Search pricing tier: Choose **F**.
+    - Search pricing tier: Choose **F**
 
     - Search location: Choose the **same location** you used previously. If the region you've been using isn't available, select a different location for this resource.
 
-    - App name: Provide a **unique name** for the QnA Maker Service (e.g., awhotel-qna).
+    - App name: Provide a **unique name** for the QnA Maker Service (e.g., awhotel-qna)
 
     - Website location: Choose the **same location** you used previously. If the region you've been using isn't available, select a different location for this resource.
 
-    - App insights: Select **Disable**.
+    - App insights: Select **Disable**
 
     ![QnA Maker form](media/create-qna-maker.png "Create QnA Maker")
 
-6.  Select **Create**.
+6.  Select **Create**
 
-7.  Once the service has been created, switch back to the browser tab with the QnA Maker knowledge base creation page and refresh the page.
+7.  Once the service has been created, switch back to the browser tab with the QnA Maker knowledge base creation page and refresh the page
 
-8.  Underneath Step 2, select your Microsoft Azure Directory ID under which you created the QnA Maker service, select the Azure subscription name, and finally select the **Azure QnA service**.
+8.  Underneath Step 2, select your Microsoft Azure Directory ID under which you created the QnA Maker service, select the Azure subscription name, and finally select the **Azure QnA service**
 
     ![Connect your QnA service to your KB](media/qna-maker-connect-qna-service.png "Azure QnA service")
 
-9.  Underneath Step 3 (Name your KB), provide a unique name, such as "Concierge Plus".
+9.  Underneath Step 3 (Name your KB), provide a unique name, such as "Concierge Plus"
 
-10. Underneath Step 4 (Populate your KB), select **+ Add file**. [Download this file](lab-files/faq.xlsx) and select it from the file browser.
+10. Underneath Step 4 (Populate your KB), select **+ Add file** [Download this file](lab-files/faq.xlsx) and select it from the file browser
 
     ![Select Add file](media/create-qna-maker-add-file.png "Knowledge base creation page")
 
-11. Finally, underneath Step 5 (Create your KB), select **Create your KB**.
+11. Finally, underneath Step 5 (Create your KB), select **Create your KB**
 
     ![The uploaded file is highlighted. Select Create your KB.](media/qna-maker-create-kb.png "Knowledge base creation page")
 
 12. When the KB is being created, you will see the popup window. It takes a few minutes for the extraction process to read the Excel document and identify questions and answers.
 
-13. Once the KB is successfully created, it opens the 'Knowledge Base' page where you can edit the contents of the knowledge base.
+13. Once the KB is successfully created, it opens the 'Knowledge Base' page where you can edit the contents of the knowledge base
 
 14. Select **Add QnA pair** in the top right to add a new row in the Editorial section of the Knowledge Base. Enter 'Hi' into the 'Question' field and 'Hello. Ask me questions about the hotel.' into the 'Answer' field of the new row you created.
 
@@ -1776,37 +1776,37 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
     ![Successful deployment](media/qna-maker-success.png "Success")
 
-20. **Save these three values** to notepad or similar text editor.
+20. **Save these three values** to notepad or similar text editor
 
 ### Task 2: Create a QnA bot
 
-1.  In the Azure portal, select **Create new resource** in the menu blade, and then select **See all**.
+1.  In the Azure portal, select **Create new resource** in the menu blade, and then select **See all**
 
     ![Select Create new resource](media/azure-portal-create-resource.png "Azure Portal create new resource")
 
-2.  In the search box, search for **Functions Bot**.
+2.  In the search box, search for **Functions Bot**
 
     ![Search for Functions Bot](media/azure-portal-functions-bot-search.png "Azure Portal search")
 
-3.  Select **Create**.
+3.  Select **Create**
 
 4.  Provide the following information in the Functions Bot creation blade:
 
     - Set App name to your bot's name. The name is used as the subdomain when your bot is deployed to the cloud (for example, concierge-plus-bot.azurewebsites.net).
 
-    - Select the subscription, resource group, App service plan, and location.
+    - Select the subscription, resource group, App service plan, and location
 
-    - Select the Question and Answer (C#) template for the Bot template field.
+    - Select the Question and Answer (C#) template for the Bot template field
 
     ![Complete the Functions Bot creation blade](media/azure-portal-create-functions-bot.png "Azure Portal create Functions Bot")
 
-5.  Select **Create**.
+5.  Select **Create**
 
-6.  After the Function Bot has been created, navigate to it within Resource Manager.
+6.  After the Function Bot has been created, navigate to it within Resource Manager
 
-7.  Select **Application Settings** from the left-hand menu.
+7.  Select **Application Settings** from the left-hand menu
 
-8.  Paste the values you copied at the end of the previous task into the **QnAAuthKey**, **QnAEndpointHostName**, and **QnAKnowledgebaseId** settings, then select **Save**.
+8.  Paste the values you copied at the end of the previous task into the **QnAAuthKey**, **QnAEndpointHostName**, and **QnAKnowledgebaseId** settings, then select **Save**
 
     ![Provide values for QnAAuthKey, QnAEndpointHostName, and QnAKnowledgebaseId](media/function-bot-app-settings.png "Application Settings")
 
@@ -1818,7 +1818,7 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
     ![Change the display name for the bot](media/function-bot-settings.png "Function Bot Settings")
 
-11. Select **Channels** from the left-hand menu, then select **Get bot embed codes** underneath the Web Chat channel.
+11. Select **Channels** from the left-hand menu, then select **Get bot embed codes** underneath the Web Chat channel
 
     ![Select Get bot embed codes](media/function-bot-channels.png "Function Bot Channels")
 
@@ -1830,11 +1830,11 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
 ### Task 3: Embed the bot into your web app
 
-1.  Open Visual Studio and open **Bot.cshtml** located within the Views\Home folder of the **ChatWebApp**.
+1.  Open Visual Studio and open **Bot.cshtml** located within the Views\Home folder of the **ChatWebApp**
 
     ![Open Bot.cshtml](media/vs-bot.png "Visual Studio")
 
-2.  Find `<!-- PASTE YOUR BOT EMBED CODE HERE -->` within the page and paste your iframe embed code on a new line beneath.
+2.  Find `<!-- PASTE YOUR BOT EMBED CODE HERE -->` within the page and paste your iframe embed code on a new line beneath
 
 3.  Modify the iframe code to add `width` and `height` values. The iframe code should look like:
 
@@ -1859,8 +1859,8 @@ In this exercise, attendees will deprovision any Azure resources that were creat
 
 ### Task 1: Delete the resource group
 
-1.  Using the Azure portal, navigate to the Resource group you used throughout this hands-on lab by selecting Resource groups in the left menu.
+1.  Using the Azure portal, navigate to the Resource group you used throughout this hands-on lab by selecting Resource groups in the left menu
 
-2.  Search for the name of your research group and select it from the list.
+2.  Search for the name of your research group and select it from the list
 
-3.  Select Delete in the command bar and confirm the deletion by re-typing the Resource group name and selecting Delete.
+3.  Select Delete in the command bar and confirm the deletion by re-typing the Resource group name and selecting Delete
