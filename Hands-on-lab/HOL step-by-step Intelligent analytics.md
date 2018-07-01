@@ -201,13 +201,13 @@ In these steps, you will provision a Web App and an API App within a single App 
 
     ![Save is selected](media/image26.png 'Save option')
 
-16. Now, it's time to create an API App
+8. Now, it's time to create an API App
 
-17. Select **+Create a resource, Web + Mobile, API App** (Sometimes API App does not appear on the list. If that happens, simply click + New and search for API App.)
+9. Select **+Create a resource, Web + Mobile, API App** (Sometimes API App does not appear on the list. If that happens, simply click + New and search for API App.)
 
     ![The Api App selection is shown](media/image29.png 'API App')
 
-18. On the Create API App blade enter the following:
+10. On the Create API App blade enter the following:
 
     - App name: Provide a **unique name** for this API app that reflects it will host the Chat Search API (e.g., ChatSearchApi)
 
@@ -828,7 +828,7 @@ In this section, you will implement the message forwarding from the ingest Event
 
     ![Select Application settings for the Function App](media/function-app-settings-link.png "Application settings link")
 
-2.  You will add the following application settings. The following sections walk you through the process of retrieving the values for these settings:
+3.  You will add the following application settings. The following sections walk you through the process of retrieving the values for these settings:
     
     ```
     eventHubConnectionString
@@ -959,6 +959,7 @@ The namespace, and therefore connection string, for the service bus is different
 Duration: 10 minutes
 
 Within Visual Studio Solution Explorer, expand the **ChatWebApp** project and open **Web.Config**. You will update the settings in this file. The following sections walk you through the process of retrieving the values for the following settings:
+
 `<add key="eventHubConnectionString" value=" "/> <add key="eventHubName" value=" "/> <add key="serviceBusConnectionString" value=" "/> <add key="chatRequestTopicPath" value=" "/> <add key="chatTopicPath" value=" "/>`
 
 ### Task 1: Event Hub connection String
@@ -999,17 +1000,17 @@ With the App Services projects properly configured, you are now ready to deploy 
 
 3.  Select **Publish**
 
-3.  In the App Service dialog, choose the Subscription that contains your Function App you provisioned earlier. Expand your Resource Group (e.g., **intelligent-analytics**), then select the node for your Function App in the tree view to select it.
+4.  In the App Service dialog, choose the Subscription that contains your Function App you provisioned earlier. Expand your Resource Group (e.g., **intelligent-analytics**), then select the node for your Function App in the tree view to select it.
 
     ![In the App Service dialog box, the tree view is expanded to: intelligent-analytics\ChatMessageSentimentProcessorFA.](media/vs-publish-function-select.png "App Service dialog box")
 
-4.  Select **OK**
+5.  Select **OK**
 
-5.  Select Publish. The publish should immediately begin. If not, select the Publish button on the Publish step.
+6.  Select Publish. The publish should immediately begin. If not, select the Publish button on the Publish step.
 
     ![Publish dialog box](media/vs-publish-function-publish.png "Publish dialog box")
 
-6.  When the publish completes, the Output window should indicate success similar to the following:
+7.  When the publish completes, the Output window should indicate success similar to the following:
 
     ![The Output window is set to show output from Build. Output indicates it is updating filess, and that Publish Succeeded.](media/vs-publish-function-output.png "Output window")
 
@@ -1855,7 +1856,7 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
 Duration: 10 minutes
 
-In this exercise, attendees will deprovision any Azure resources that were created in support of the lab. You should follow all steps provided _after_ attending the Hands-on lab.
+In this exercise, attendees will deprovision any Azure resources that were created in support of the lab.
 
 ### Task 1: Delete the resource group
 
@@ -1864,3 +1865,5 @@ In this exercise, attendees will deprovision any Azure resources that were creat
 2.  Search for the name of your research group and select it from the list
 
 3.  Select Delete in the command bar and confirm the deletion by re-typing the Resource group name and selecting Delete
+
+You should follow all steps provided _after_ attending the Hands-on lab.
