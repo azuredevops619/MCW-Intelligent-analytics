@@ -1,4 +1,6 @@
-# Intelligent Analytics setup
+![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
+
+# Intelligent analytics setup
 
 ## Requirements
 
@@ -28,7 +30,7 @@ If you do not already have a Power BI account:
 
 3.  On the page, enter your work email address (which should be the same account as the one you use for your Azure subscription), and select Sign up ![The Get started page has a field for entering your work email address.](media/setup4.png 'Get started page')
 
-4.  Follow the on-screen prompts, and your Power BI environment should be ready within minutes. You can always return to it via <https://app.powerbi.com/>.
+4.  Follow the on-screen prompts, and your Power BI environment should be ready within minutes. You can always return to it via <https://app.powerbi.com/>
 
 ### Task 2: Setup a lab virtual machine (VM)
 
