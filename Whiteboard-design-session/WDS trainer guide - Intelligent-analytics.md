@@ -91,7 +91,7 @@ Outcome: Analyze your customer's needs
 
 **Step 2: Design a proof of concept solution (60 minutes)**
 
-Outcome: Prepare to present a solution for your target customer audience
+Outcome: Design a solution and prepare to present the solution to the target customer audience in a 15-minute chalk-talk format.
 
 - Determine your target customer audience
 
@@ -324,7 +324,7 @@ Directions:
 
 Timeframe: 15 minutes
 
-- Tables reconvene with the larger group to hear a SME share the preferred solution for the case study
+Directions: Tables reconvene with the larger group to hear the facilitator/SME share the preferred solution for the case study.
 
 ## Additional references
 
@@ -385,7 +385,7 @@ Timeframe: 15 minutes
 
 ## Wrap-up
 
-- Have the table participants reconvene with the larger session group to hear a SME share the following preferred solution
+- Have the table participants reconvene with the larger session group to hear the facilitator/SME share the following preferred solution
 
 ## Preferred target audience
 
