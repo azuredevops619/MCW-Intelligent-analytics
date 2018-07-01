@@ -1,5 +1,6 @@
 ![](../media/ms-cloud-workshop.png 'Microsoft Cloud Workshops')
 
+
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
 Microsoft may have patents, patent applications, trademarks, copyrights, or other intellectual property rights covering subject matter in this document. Except as expressly provided in any written license agreement from Microsoft, the furnishing of this document does not give you any license to these patents, trademarks, copyrights, or other intellectual property.
@@ -687,7 +688,7 @@ _Exit criteria_:
 
 Duration: 10 Minutes
 
-In this exercise, attendees will deprovision any Azure resources that were created in support of the lab. You should follow all steps provided _after_ attending the Hands-on lab.
+In this exercise, attendees will deprovision any Azure resources that were created in support of the lab.
 
 ### Task 1: Delete the resource group
 
@@ -696,3 +697,6 @@ In this exercise, attendees will deprovision any Azure resources that were creat
 2.  Search for the name of your research group and select it from the list
 
 3.  Select Delete in the command bar and confirm the deletion by re-typing the Resource group name and selecting Delete
+
+You should follow all steps provided _after_ attending the Hands-on lab.
+
