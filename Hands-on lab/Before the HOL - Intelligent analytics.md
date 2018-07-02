@@ -1,7 +1,7 @@
 ![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 # Intelligent analytics   
-## Hands on lab step-by-step   
+## Before the hands-on lab   
 May 2018
 
 
