@@ -550,7 +550,17 @@ _Tasks to complete_:
 
 8.  Add three additional visualizations so your dashboard looks as follows:
 
-    ![The Power BI dashboard has four panes: two Count of Messages panes, an Average Sentiment, and Upset Users. The first Count of Messages pane displays a number (18). The second Count of Messages is a pie chart broken out by username. The Average Sentiment is a donut chart displaying the Average Sentiment (0.58) in the past 24 hours. Upset Users chart is a horizontal bar chart displaying the average of upset users (0.25) in the past 24 hours.](media/image158.png 'Power BI dashboard')
+    ![Two Average of score Gauge graphs display, and both are the same.](media/image158.png 'Gauge graphs')
+
+9.  Try building out the rest of the real-time dashboard that should look as follows. We provide the following Q&A questions you can use to get started.
+
+    ![The Power BI dashboard has four panes: two Count of Messages panes, an Average Sentiment, and Upset Users. The first Count of Messages pane displays a number (18). The second Count of Messages is a pie chart broken out by username. The Average Sentiment is a donut chart displaying the Average Sentiment (0.58) in the past 24 hours. Upset Users chart is a horizontal bar chart displaying the average of upset users (0.25) in the past 24 hours.](media/image159.png 'Power BI Dashboard')
+
+    - Count of Messages (Card visualization): count of messages between yesterday and today
+
+    - Count of Messages by Username (Pie chart visualization): count of messages by username between yesterday and today
+
+    - Upset Users (Bar chart visualization): Average score by username between yesterday and today
 
 _Exit criteria_:
 
