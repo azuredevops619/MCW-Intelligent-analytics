@@ -1,7 +1,9 @@
 ![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
-# Intelligent analytics   
-## Hands-on lab step-by-step   
+# Intelligent analytics
+
+## Hands-on lab step-by-step
+
 May 2018
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -13,17 +15,16 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
-# Intelligent analytics hands-on lab step-by-step
-
-Adventure Works Travel specializes in building software solutions for the hospitality industry. Their latest product is an enterprise mobile/social chat product called Concierge+ (aka ConciergePlus). The mobile web app enables guests to easily stay in touch with the concierge and other guests, enabling greater personalization and improving their experience during their stay. Sentiment analysis is performed on top of chat messages as they occur, enabling hotel operators to keep tabs on guest sentiments in real-time.
-
-If you have not yet completed the steps to set up your environment in [Before the hands-on lab](./Setup.md), you will need to do that before proceeding.
-
 **Contents**
 
 <!-- TOC -->
 
-- [Intelligent analytics hands-on lab step-by-step](#intelligent-analytics-hands-on-lab-step-by-step)
+- [Intelligent analytics](#intelligent-analytics)
+  - [Hands-on lab step-by-step](#hands-on-lab-step-by-step)
+  - [Abstract and learning objectives](#abstract-and-learning-objectives)
+  - [Overview](#overview)
+  - [Solution architecture](#solution-architecture)
+  - [Requirements](#requirements)
   - [Exercise 1: Environment setup](#exercise-1-environment-setup)
     - [Task 1: Connect to the lab VM](#task-1-connect-to-the-lab-vm)
     - [Task 2: Download and open the ConciergePlus starter solution](#task-2-download-and-open-the-conciergeplus-starter-solution)
@@ -34,8 +35,8 @@ If you have not yet completed the steps to set up your environment in [Before th
     - [Task 7: Provision Azure Cosmos DB](#task-7-provision-azure-cosmos-db)
     - [Task 8: Provision Azure Search](#task-8-provision-azure-search)
     - [Task 9: Create Stream Analytics job](#task-9-create-stream-analytics-job)
-    - [Task 10: Start the Stream Analytics Job](#task-10-start-the-stream-analytics-job)
-    - [Task 11: Provision an Azure Storage Account](#task-11-provision-an-azure-storage-account)
+    - [Task 10: Start the Stream Analytics job](#task-10-start-the-stream-analytics-job)
+    - [Task 11: Provision an Azure Storage account](#task-11-provision-an-azure-storage-account)
     - [Task 12: Provision Cognitive Services](#task-12-provision-cognitive-services)
   - [Exercise 2: Implement message forwarding](#exercise-2-implement-message-forwarding)
     - [Task 1: Implement the event processor](#task-1-implement-the-event-processor)
@@ -78,6 +79,30 @@ If you have not yet completed the steps to set up your environment in [Before th
     - [Task 1: Delete the resource group](#task-1-delete-the-resource-group)
 
 <!-- /TOC -->
+
+## Abstract and learning objectives
+
+This hands-on lab is designed to provide exposure to many of Microsoft's transformative line of business applications built using Microsoft advanced analytics. The goal is to show an end-to-end solution, leveraging many of these technologies, but not necessarily doing work in every component possible.
+
+## Overview
+
+AdventureWorks Travel specializes in building software solutions for the hospitality industry. Their latest product is an enterprise mobile/social chat product called Concierge+ (aka ConciergePlus). The mobile web app enables guests to easily stay in touch with the concierge and other guests, enabling greater personalization and improving their experience during their stay. Sentiment analysis is performed on top of chat messages as they occur, enabling hotel operators to keep tabs on guest sentiments in real-time.
+
+## Solution architecture
+
+Below is a diagram of the solution architecture you will build in this lab. Please study this carefully so you understand the whole of the solution as you are working on the various components.
+
+![This is the high-level overview diagram of the end-to-end solution.](../Whiteboard%20design%20session/media/high-level-overview.png 'High-level overview diagram')
+
+Messages are sent from browsers running within laptop or mobile clients via Web Sockets to an endpoint running in an **Azure Web App**. Instead of typing a chat message, end users can leverage the speech to text functionality of the **Speech API** to type the chat message for them- in this scenario the Speech API is invoked directly from the web page running in a client device. Chat messages received by the Web App are sent to an **Event Hub** where they are temporarily stored. An **Azure Function** picks up the chat messages and applies sentiment analysis to the message text (using the **Text Analytics API**), as well as contextual understanding (using **LUIS**). The function forwards the chat message to an Event Hub used to store messages for archival purposes, and to a **Service Bus Topic** which is used to deliver the message to the intended recipients. A **Stream Analytics** Job provides a simple mechanism for pulling the chat messages from the second Event Hub and writing them both to **Azure Cosmos DB** for archival and to **Power BI** for visualization of sentiment in real-time as well as trending sentiment. An indexer runs atop Cosmos DB that updates the **Azure Search** index which provides full text search capability. Messages in the Service Bus Topic are pulled by Subscriptions created in the Web App and running on behalf of each client device connected by Web Sockets. When the Subscription receives a message, it is pushed via Web Sockets down to the browser-based app and displayed in a web page. **Bot Services** hosts a bot created using QnA maker, which automatically answers simple questions asked by site visitors.
+
+## Requirements
+
+1.  Microsoft Azure subscription must be pay-as-you-go or MSDN
+
+    a. Trial subscriptions will not work
+
+1.  Follow all the steps provided in [Before the Hands-on Lab](Before%20the%20HOL%20-%20Intelligent%20analytics.md)
 
 ## Exercise 1: Environment setup
 
