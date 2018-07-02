@@ -21,7 +21,6 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 <!-- TOC -->
 
 - [Intelligent analytics](#intelligent-analytics)
-  - [Hands-on lab unguided](#hands-on-lab-unguided)
   - [Abstract and learning objectives](#abstract-and-learning-objectives)
   - [Overview](#overview)
   - [Solution architecture](#solution-architecture)
