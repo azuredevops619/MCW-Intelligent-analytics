@@ -20,6 +20,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 <!-- TOC -->
 
 - [Intelligent analytics](#intelligent-analytics)
+  - [Hands-on lab step-by-step](#hands-on-lab-step-by-step)
   - [Abstract and learning objectives](#abstract-and-learning-objectives)
   - [Overview](#overview)
   - [Solution architecture](#solution-architecture)
@@ -169,7 +170,7 @@ If you are already connected to your Lab VM, skip to Step 6.
 
     ![In the Extract Compressed (Zipped) Folders window, files will be extracted to C:\ConciergePlus.](media/image18.png 'Extract Compressed (Zipped) Folders window')
 
-5.  Open **ConciergePlusSentiment.sln** in the C:\\ConciergePlus\\Hands-on-lab\\lab-files\\starter-project\\ folder with Visual Studio 2017
+5.  Open **ConciergePlusSentiment.sln** in the `C:\ConciergePlus\Hands-on lab\lab-files\starter-project\` folder with Visual Studio 2017
 
 6.  Sign in to Visual Studio or select create account, if prompted
 
