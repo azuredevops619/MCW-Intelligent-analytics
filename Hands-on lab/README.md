@@ -32,13 +32,13 @@ Messages are sent from browsers running within laptop or mobile clients via Web 
 
 Before attending the hands-on lab workshop, you should set up your environment for use in the rest of the hands-on lab.
 
-You should follow all the steps provided in the [Before the Hands-on Lab](./Setup.md) section to prepare your environment before attending the hands-on lab. Failure to complete the Before the Hands-on Lab setup may result in an inability to complete the lab with in the time allowed.
+You should follow all the steps provided in the [Before the Hands-on Lab](./Before%20the%20HOL%20-%20Intelligent%20analytics.md) section to prepare your environment before attending the hands-on lab. Failure to complete the Before the Hands-on Lab setup may result in an inability to complete the lab with in the time allowed.
 
 ## Hands-on Lab
 
 Select the guide you are using to complete the Hands-on lab below.
 
-- [Step-by-step guide](./HOL-step-by-step-Intelligent-analytics.md)
+- [Step-by-step guide](./HOL%20step-by-step%20Intelligent%20analytics.md)
   - Provides detailed, step-by-step instructions for completing the lab.
-- [Unguided](./HOL-unguided-Intelligent-analytics.md)
+- [Unguided](./HOL%20unguided%20-%20Intelligent%20analytics.md)
   - This guide provides minimal instruction, and assumes a high-level of knowledge about the technologies used in this lab. This should typically only be used if you are doing this as part of a group or hackathon.
