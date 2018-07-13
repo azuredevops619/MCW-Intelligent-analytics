@@ -59,7 +59,7 @@ Directions: With all participants in the session, the facilitator/SME presents a
 
 ### Customer situation
 
-Adventure Works travel specializes in building software solutions for the hospitality industry. They are designing their latest product, an enterprise grade, social chat app called Concierge+. The mobile friendly web app is intended to enable guests to easily stay in touch with the concierge and other guests, enabling greater personalization and improving their experience during their stay.
+First Up Consultants specializes in building software solutions for the hospitality industry. They are designing their latest product, an enterprise grade, social chat app called Concierge+. The mobile friendly web app is intended to enable guests to easily stay in touch with the concierge and other guests, enabling greater personalization and improving their experience during their stay.
 
 The original requirements for the product were to support:
 
@@ -69,19 +69,19 @@ The original requirements for the product were to support:
 
 -   Full-text message search, including via \#hashtags and \@usernames
 
-Adventure Works wants to build a solution that is both scalable and extensible. According to Marc Tripp, the CTO of Adventure Works: "We want it scalable in the sense that it could support the chat requirements of the largest hotels in the world, currently with as many as 7,200 rooms. While we don't anticipate having any single chat room with a thousand guests or 2,000 concurrent one-on-one chats between a guest and the concierge staff, we want a solution that could handle that if it needed to."
+First Up Consultants to build a solution that is both scalable and extensible. According to Marc Tripp, the CTO of First Up Consultants: "We want it scalable in the sense that it could support the chat requirements of the largest hotels in the world, currently with as many as 7,200 rooms. While we don't anticipate having any single chat room with a thousand guests or 2,000 concurrent one-on-one chats between a guest and the concierge staff, we want a solution that could handle that if it needed to."
 
 Extensible in the sense that they can add new features on top of the solid, baseline real-time messaging functionality. For example, while they are starting by supporting search (for their backend) across chat messages, they already have a set of extensions they know they want to perform.
 
 An important extensibility point for them is a way for them to gather the sentiment of their guests as they interact in the public chat rooms and with the concierge. Hotel operators are motivated to keep tabs on guest sentiment in real-time, so they can respond to any upset guests quickly and turn a miserable stay into an amazing stay. To this end, they would like a dashboard (that updates in real-time) showing the volume of chat messages flowing thru their system, a pie chart showing the most active users at a glance, a bar chart highlighting upset users (who need to be addressed ASAP), and some form of gauge showing the average real-time sentiment for window of time (e.g., the last hour, last 24 hours).
 
-While guest sentiment is important, it is a reactive measure. Adventure Works would like to take a proactive approach in positively affecting sentiment by expediting the requests of their guests via chat. In particular, they are looking to experiment with automating the routing of routine guest requests (e.g., "Can I get more towels?", "I forgot my toothbrush" and "Can I get a bottle of champagne") that would otherwise require the attention of an already overloaded front desk attendant. These requests, once automatically routed, could be sent directly to housekeeping or room service as is most appropriate. Adventure Works has heard of active machine learning\-- whereby the system improves constantly with use, while still knowing what it is unsure of and asking for help when it determines it needs assistance.
+While guest sentiment is important, it is a reactive measure. First Up Consultants would like to take a proactive approach in positively affecting sentiment by expediting the requests of their guests via chat. In particular, they are looking to experiment with automating the routing of routine guest requests (e.g., "Can I get more towels?", "I forgot my toothbrush" and "Can I get a bottle of champagne") that would otherwise require the attention of an already overloaded front desk attendant. These requests, once automatically routed, could be sent directly to housekeeping or room service as is most appropriate. First Up Consultants has heard of active machine learning\-- whereby the system improves constantly with use, while still knowing what it is unsure of and asking for help when it determines it needs assistance.
 
 Finally, to help them reflect on chats that occur in public chat rooms, they would like to log the messages to a durable store and make them full text searchable. In the future, they are thinking of using this same approach to enable Twitter-like search for \@entities and \#labels.
 
 ### Customer needs
 
-1.  Adventure Works would like their Concierge+ service to avoid using any servers or VMs that they would have to maintain
+1.  First Up Consultants would like their Concierge+ service to avoid using any servers or VMs that they would have to maintain
 
 2.  Their real-time chat solution needs to be scalable to support their largest hotel customers
 
@@ -128,7 +128,7 @@ Directions: With all participants at your table, respond to the following questi
 
 *Baseline chat*
 
-1.  How would you recommend that Adventure Works receive message from mobile and desktop browsers?
+1.  How would you recommend that First Up Consultants receive message from mobile and desktop browsers?
 
 2.  How would you store ingested messages? Would you use Event Hubs or Service Bus? Be specific on your reasoning and how you would configure it.
 
@@ -140,13 +140,13 @@ Directions: With all participants at your table, respond to the following questi
 
 *Sentiment Analysis*
 
-1.  What service would you recommend Adventure Works capitalize on in order to scalably apply a sentiment score to each message as it enters the system?
+1.  What service would you recommend First Up Consultants capitalize on in order to scalably apply a sentiment score to each message as it enters the system?
 
 2.  How would you enhance your baseline chat flow to incorporate this sentiment processing?
 
 *Request forwarding*
 
-1.  What Azure service or API would you suggest Adventure Works utilize for understanding how to route guest requests to housekeeping or room service?
+1.  What Azure service or API would you suggest First Up Consultants utilize for understanding how to route guest requests to housekeeping or room service?
 
 2.  How would you implement or configure this service?
 
@@ -158,7 +158,7 @@ Directions: With all participants at your table, respond to the following questi
 
 *Visualization and reporting*
 
-1.  What tool would you recommend Adventure Works utilize for constructing their real-time sentiment dashboard?
+1.  What tool would you recommend First Up Consultants utilize for constructing their real-time sentiment dashboard?
 
 2.  How would you build this dashboard using the tool you recommended?
 

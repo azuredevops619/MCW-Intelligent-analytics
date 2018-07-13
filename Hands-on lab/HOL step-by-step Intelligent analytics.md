@@ -20,7 +20,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
 
 Updated June 2018
 
-Adventure Works Travel specializes in building software solutions for the hospitality industry. Their latest product is an enterprise mobile/social chat product called Concierge+ (aka ConciergePlus). The mobile web app enables guests to easily stay in touch with the concierge and other guests, enabling greater personalization and improving their experience during their stay. Sentiment analysis is performed on top of chat messages as they occur, enabling hotel operators to keep tabs on guest sentiments in real-time.
+First Up Consultants specializes in building software solutions for the hospitality industry. Their latest product is an enterprise mobile/social chat product called Concierge+ (aka ConciergePlus). The mobile web app enables guests to easily stay in touch with the concierge and other guests, enabling greater personalization and improving their experience during their stay. Sentiment analysis is performed on top of chat messages as they occur, enabling hotel operators to keep tabs on guest sentiments in real-time.
 
 If you have not yet completed the steps to set up your environment in [Before the hands-on lab](./Setup.md), you will need to do that before proceeding.
 
@@ -94,7 +94,7 @@ This hands-on lab is designed to provide exposure to many of Microsoft's transfo
 
 ## Overview
 
-AdventureWorks Travel specializes in building software solutions for the hospitality industry. Their latest product is an enterprise mobile/social chat product called Concierge+ (aka ConciergePlus). The mobile web app enables guests to easily stay in touch with the concierge and other guests, enabling greater personalization and improving their experience during their stay. Sentiment analysis is performed on top of chat messages as they occur, enabling hotel operators to keep tabs on guest sentiments in real-time.
+First Up Consultants specializes in building software solutions for the hospitality industry. Their latest product is an enterprise mobile/social chat product called Concierge+ (aka ConciergePlus). The mobile web app enables guests to easily stay in touch with the concierge and other guests, enabling greater personalization and improving their experience during their stay. Sentiment analysis is performed on top of chat messages as they occur, enabling hotel operators to keep tabs on guest sentiments in real-time.
 
 ## Solution architecture
 
@@ -116,7 +116,7 @@ Messages are sent from browsers running within laptop or mobile clients via Web 
 
 Duration: 60 minutes
 
-Synopsis: The following section walks you through the manual steps to provision the services required in the [Azure portal](https://portal.azure.com). Adventure Works has provided a starter solution for you. They have asked you to use this as the starting point for creating the Concierge Plus intelligent chat solution in Azure.
+Synopsis: The following section walks you through the manual steps to provision the services required in the [Azure portal](https://portal.azure.com).  First Up Consultants has provided a starter solution for you. They have asked you to use this as the starting point for creating the Concierge Plus intelligent chat solution in Azure.
 
 ### Task 1: Connect to the lab VM
 
@@ -1757,7 +1757,7 @@ This gauge is currently a static visualization. You will use the report just cre
 
 ### Task 3: Add a trending sentiment chart to the dashboard
 
-The sentiment visualization you created is great for getting a sense of sentiment as of this moment. However, Adventure Works Travel wishes to view sentiment over time for historical reference and to see whether overall sentiment is trending one way or another. To do this, we will use the tumbling window query output from Stream Analytics to display this data in a line chart.
+The sentiment visualization you created is great for getting a sense of sentiment as of this moment. However, First Up Consultants wishes to view sentiment over time for historical reference and to see whether overall sentiment is trending one way or another. To do this, we will use the tumbling window query output from Stream Analytics to display this data in a line chart.
 
 1. While still in Power BI, select **My Workspace** once again, then select the Datasets tab. Search for "Trending". You should see the **TrendingSentiment** dataset dynamically created by Stream Analytics. Select the Create Report action.
 

@@ -93,7 +93,7 @@ This hands-on lab is designed to provide exposure to many of Microsoft's transfo
 
 ## Overview
 
-Adventure Works Travel specializes in building software solutions for the hospitality industry. Their latest product is an enterprise mobile/social chat product called Concierge+ (aka ConciergePlus). The mobile web app enables guests to easily stay in touch with the concierge and other guests, enabling greater personalization and improving their experience during their stay. Sentiment analysis is performed on top of chat messages as they occur, enabling hotel operators to keep tabs on guest sentiments in real-time.
+First Up Consultants specializes in building software solutions for the hospitality industry. Their latest product is an enterprise mobile/social chat product called Concierge+ (aka ConciergePlus). The mobile web app enables guests to easily stay in touch with the concierge and other guests, enabling greater personalization and improving their experience during their stay. Sentiment analysis is performed on top of chat messages as they occur, enabling hotel operators to keep tabs on guest sentiments in real-time.
 
 ## Solution architecture
 
@@ -113,7 +113,7 @@ Below are diagrams of the solution architecture you will build in this lab. Plea
 
 Duration: 60 minutes
 
-Synopsis: The following section walks you through the manual steps to provision the services required using the Azure Portal. Adventure Works has provided a starter solution for you. They have asked you to use this as the starting point for creating the Concierge Plus intelligent chat solution in Azure.
+Synopsis: The following section walks you through the manual steps to provision the services required using the Azure Portal. First Up Consultants has provided a starter solution for you. They have asked you to use this as the starting point for creating the Concierge Plus intelligent chat solution in Azure.
 
 ### Task 1: Connect to the lab VM
 

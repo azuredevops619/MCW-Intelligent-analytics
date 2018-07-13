@@ -174,7 +174,7 @@ Directions: With all participants in the session, the facilitator/SME presents a
 
 #### Customer situation
 
-AdventureWorks Travel (AWT) specializes in building software solutions for the hospitality industry. They are designing their latest product, an enterprise grade, social chat app called Concierge+. The mobile friendly web app is intended to enable guests to easily stay in touch with the concierge and other guests, enabling greater personalization and improving their experience during their stay.
+First Up Consultants specializes in building software solutions for the hospitality industry. They are designing their latest product, an enterprise grade, social chat app called Concierge+. The mobile friendly web app is intended to enable guests to easily stay in touch with the concierge and other guests, enabling greater personalization and improving their experience during their stay.
 
 The original requirements for the product were to support:
 
@@ -184,13 +184,13 @@ The original requirements for the product were to support:
 - Full-text message search, including via #hashtags and @usernames
 - Send email or SMS messages to hotel manager or customer service if guest sentiment indicates they are upset, so hotel staff can respond quickly
 
-AdventureWorks wants to build a solution that is both scalable and extensible. According to Marc Tripp, the CTO of AdventureWorks: "We want it scalable in the sense that it could support the chat requirements of the largest hotels in the world, currently with as many as 7,200 rooms. While we don't anticipate having any single chat room with a thousand guests or 2,000 concurrent one-on-one chats between a guest and the concierge staff, we want a solution that could handle that if it needed to."
+First Up Consultants wants to build a solution that is both scalable and extensible. According to Marc Tripp, the CTO of First Up Consultants: "We want it scalable in the sense that it could support the chat requirements of the largest hotels in the world, currently with as many as 7,200 rooms. While we don't anticipate having any single chat room with a thousand guests or 2,000 concurrent one-on-one chats between a guest and the concierge staff, we want a solution that could handle that if it needed to."
 
 Extensible in the sense that they can add new features on top of the solid, baseline real-time messaging functionality. For example, while they are starting by supporting search (for their backend) across chat messages, they already have a set of extensions they know they want to perform.
 
 An important extensibility point for them is a way for them to gather the sentiment of their guests as they interact in the public chat rooms and with the concierge. Hotel operators are motivated to keep tabs on guest sentiment in real-time, so they can respond to any upset guests quickly and turn a miserable stay into an amazing stay. To this end, they would like a dashboard (that updates in real-time) showing the volume of chat messages flowing thru their system, a pie chart showing the most active users at a glance, a bar chart highlighting upset users (who need to be addressed ASAP), and some form of gauge showing the average real-time sentiment for window of time (e.g., the last hour, last 24 hours). They would also like to view trending sentiment over time, alongside the real-time sentiment data.
 
-While guest sentiment is important, it is a reactive measure. Adventure Works would like to take a proactive approach in positively affecting sentiment by expediting the requests of their guests via chat. In particular, they are looking to experiment with automating the routing of routine guest requests (e.g., "Can I get more towels?", "I forgot my toothbrush" and "Can I get a bottle of champagne") that would otherwise require the attention of an already overloaded front desk attendant. These requests, once automatically routed, could be sent directly to housekeeping or room service as is most appropriate. Adventure Works has heard of active machine learning, whereby the system improves constantly with use, while still knowing what it is unsure of and asking for help when it determines it needs assistance. They have also requested the ability to use sentiment analysis to notify hotel guest services via email or SMS message should the sentiment analysis service detect that a guest is upset, so they can respond more quickly to improve that guest's experience.
+While guest sentiment is important, it is a reactive measure. First Up Consultants would like to take a proactive approach in positively affecting sentiment by expediting the requests of their guests via chat. In particular, they are looking to experiment with automating the routing of routine guest requests (e.g., "Can I get more towels?", "I forgot my toothbrush" and "Can I get a bottle of champagne") that would otherwise require the attention of an already overloaded front desk attendant. These requests, once automatically routed, could be sent directly to housekeeping or room service as is most appropriate. First Up Consultants has heard of active machine learning, whereby the system improves constantly with use, while still knowing what it is unsure of and asking for help when it determines it needs assistance. They have also requested the ability to use sentiment analysis to notify hotel guest services via email or SMS message should the sentiment analysis service detect that a guest is upset, so they can respond more quickly to improve that guest's experience.
 
 Another way they would like to be proactive and reduce load on hotel staff, is to have a bot that can answer guest questions about the hotel. This is something that can be separate from the real-time chat, and it is a feature that they would like automated as much as possible.
 
@@ -198,17 +198,17 @@ Finally, to help them reflect on chats that occur in public chat rooms, they wou
 
 #### Customer needs
 
-1.  AdventureWorks would like their Concierge+ service to avoid using any servers or VMs that they would have to maintain
+1. First Up Consultants would like their Concierge+ service to avoid using any servers or VMs that they would have to maintain
 
-2.  Their real-time chat solution needs to be scalable to support their largest hotel customers
+2. Their real-time chat solution needs to be scalable to support their largest hotel customers
 
-3.  Automatically respond to guest questions with a bot
+3. Automatically respond to guest questions with a bot
 
-4.  The chat solution needs to be extensible and provide support for sentiment analysis and contextual understanding
+4. The chat solution needs to be extensible and provide support for sentiment analysis and contextual understanding
 
-5.  The public chat history needs to be fully searchable
+5. The public chat history needs to be fully searchable
 
-6.  The dashboard they use to visualize sentiment needs to update in real time, as well as display trending sentiment over time
+6. The dashboard they use to visualize sentiment needs to update in real time, as well as display trending sentiment over time
 
 #### Customer objections
 
@@ -243,11 +243,11 @@ Timeframe: 60 minutes
 
 ##### High-level architecture
 
-1.  Without getting into the details (the following sections will address the particular details), diagram your initial vision for handling the top-level requirements for supporting the baseline chat, sentiment analysis, and request forwarding
+1. Without getting into the details (the following sections will address the particular details), diagram your initial vision for handling the top-level requirements for supporting the baseline chat, sentiment analysis, and request forwarding
 
 ##### Baseline chat
 
-1.  How would you recommend that AdventureWorks receive message from mobile and desktop browsers?
+1. How would you recommend that First Up Consultants receive message from mobile and desktop browsers?
 
 2. How would you store ingested messages? Would you use Event Hubs or Service Bus? Be specific on your reasoning and how you would configure it.
 
@@ -259,13 +259,13 @@ Timeframe: 60 minutes
 
 ##### Sentiment Analysis
 
-1.  What service would you recommend AdventureWorks capitalize on in order to scalably apply a sentiment score to each message as it enters the system?
+1. What service would you recommend First Up Consultants capitalize on in order to scalably apply a sentiment score to each message as it enters the system?
 
 2. How would you enhance your baseline chat flow to incorporate this sentiment processing?
 
 ##### Request forwarding
 
-1.  What Azure service or API would you suggest AdventureWorks utilize for understanding how to route guest requests to housekeeping or room service?
+1. What Azure service or API would you suggest First Up Consultants utilize for understanding how to route guest requests to housekeeping or room service?
 
 2. How would you implement or configure this service?
 
@@ -273,12 +273,12 @@ Timeframe: 60 minutes
 
 ##### SMS messaging
 
-1. What Azure service would you recommend Adventure Works use for sending email or SMS messages to guest services employees indicating the detection of an upset guest via sentiment analysis in the chat?
+1. What Azure service would you recommend First Up Consultants use for sending email or SMS messages to guest services employees indicating the detection of an upset guest via sentiment analysis in the chat?
 2. How could you integrate this service into your chat message processing flow?
 
 ##### Q&A Bot
 
-1. What Azure services would you recommend Adventure Works use for creating a Q&A bot?
+1. What Azure services would you recommend First Up Consultants use for creating a Q&A bot?
 
 ##### Message search
 
@@ -286,7 +286,7 @@ Timeframe: 60 minutes
 
 ##### Visualization and reporting
 
-1. What tool would you recommend Adventure Works utilize for constructing their real-time sentiment dashboard?
+1. What tool would you recommend First Up Consultants utilize for constructing their real-time sentiment dashboard?
 
 2. How would you build this dashboard using the tool you recommended?
 
@@ -311,13 +311,13 @@ Timeframe: 30 minutes
 
 **Directions**:
 
-1.  Pair with another table
-2.  One table is the Microsoft team and the other table is the customer
-3.  The Microsoft team presents their proposed solution to the customer
-4.  The customer makes one of the objections from the list of objections
-5.  The Microsoft team responds to the objection
-6.  The customer team gives feedback to the Microsoft team
-7.  Tables switch roles and repeat Steps 2–6
+1. Pair with another table
+2. One table is the Microsoft team and the other table is the customer
+3. The Microsoft team presents their proposed solution to the customer
+4. The customer makes one of the objections from the list of objections
+5. The Microsoft team responds to the objection
+6. The customer team gives feedback to the Microsoft team
+7. Tables switch roles and repeat Steps 2–6
 
 ### Wrap-up
 
@@ -390,9 +390,9 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
 ## Preferred target audience
 
-Marc Tripp, the CTO of AdventureWorks
+Marc Tripp, the CTO of First Up Consultants
 
-The primary audience is the business decision makers and technology decision makers. From the case study scenario, this would include the Marc Tripp, the CTO of AdventureWorks. Usually we talk to the infrastructure managers who report to the chief information officers (CIOs), or to application sponsors (like a vice president \[VP\] line of business \[LOB\], or chief marketing officer \[CMO\]), or to those that represent the business unit IT or developers that report to application sponsors.
+The primary audience is the business decision makers and technology decision makers. From the case study scenario, this would include the Marc Tripp, the CTO of First Up Consultants. Usually we talk to the infrastructure managers who report to the chief information officers (CIOs), or to application sponsors (like a vice president \[VP\] line of business \[LOB\], or chief marketing officer \[CMO\]), or to those that represent the business unit IT or developers that report to application sponsors.
 
 ### Preferred solution
 
@@ -408,7 +408,7 @@ The primary audience is the business decision makers and technology decision mak
 
 #### Baseline chat
 
-1.  How would you recommend that AdventureWorks receive messages from mobile and desktop browsers?
+1. How would you recommend that First Up Consultants receive messages from mobile and desktop browsers?
 
     The flow of chat messages from a mobile browser or desktop browser begins with the mobile browser making a Web Sockets connection to a Web App, over which the web app can receive sent messages and push received messages.
 
@@ -440,7 +440,7 @@ The primary audience is the business decision makers and technology decision mak
 
 #### Sentiment Analysis
 
-1.  What service would you recommend AdventureWorks capitalize on in order to scalably apply a sentiment score to each message as it enters the system?
+1. What service would you recommend First Up Consultants capitalize on in order to scalably apply a sentiment score to each message as it enters the system?
 
     The Text Analytics API, part of Microsoft Cognitive Services.
 
@@ -450,9 +450,9 @@ The primary audience is the business decision makers and technology decision mak
 
 #### Request Forwarding
 
-1.  What Azure service or API would you suggest AdventureWorks utilize for understanding how to route guest requests to housekeeping or room service?
+1. What Azure service or API would you suggest First Up Consultants utilize for understanding how to route guest requests to housekeeping or room service?
 
-    The Language Understanding Intelligent Service (LUIS) API, which is a part of Microsoft Cognitive Services would enable AdventureWorks to define contextual models that can identify intents (e.g., what the chat user is wanting to do) and entities (e.g., the subject of their action).
+    The Language Understanding Intelligent Service (LUIS) API, which is a part of Microsoft Cognitive Services would enable First Up Consultants to define contextual models that can identify intents (e.g., what the chat user is wanting to do) and entities (e.g., the subject of their action).
 
 2. How would you implement or configure this service?
 
@@ -464,9 +464,9 @@ The primary audience is the business decision makers and technology decision mak
 
 #### SMS messaging
 
-1. What Azure service would you recommend Adventure Works use for sending email or SMS messages to guest services employees indicating the detection of an upset guest via sentiment analysis in the chat?
+1. What Azure service would you recommend First Up Consultants use for sending email or SMS messages to guest services employees indicating the detection of an upset guest via sentiment analysis in the chat?
 
-    *Logic App could be used to send email or SMS messages (with the Twilio connector) to hotel staff when negative guest sentiment is detected in the chat application. This would also meet Adventure Works' desire to use a serverless architecture in Azure.*
+    *Logic App could be used to send email or SMS messages (with the Twilio connector) to hotel staff when negative guest sentiment is detected in the chat application. This would also meet First Up Consultants' desire to use a serverless architecture in Azure.*
 
 2. How could you integrate this service into your chat message processing flow?
 
@@ -476,9 +476,9 @@ The primary audience is the business decision makers and technology decision mak
 
 #### Q&A Bot
 
-1.  What Azure services would you recommend AdventureWorks use for creating a Q&A bot?
+1. What Azure services would you recommend First Up Consultants use for creating a Q&A bot?
 
-    The first step is to create a knowledge base (KB) from question and answer pairs, often times in the form of FAQs. To do this, use the QnA Maker Cognitive Service tool to use this content to build and train a simple question and answer bot that responds to users in a natural, conversational way. AWT would need to provide FAQ URLs or documents that it can ingest to build the KB. Once the KB has been created and trained, they need to publish it.
+    The first step is to create a knowledge base (KB) from question and answer pairs, often times in the form of FAQs. To do this, use the QnA Maker Cognitive Service tool to use this content to build and train a simple question and answer bot that responds to users in a natural, conversational way. First Up Consultants would need to provide FAQ URLs or documents that it can ingest to build the KB. Once the KB has been created and trained, they need to publish it.
 
     The next step is to create a Bot Service instance, such as a Functions Bot, to respond to questions from the knowledge base they created. Once provisioned, the Bot Service will need to have the QnA published KB information added to its Application Settings. This information includes the KB Id, endpoint host name, and auth key. Then they can embed the chat bot into their web application.
 
@@ -496,13 +496,13 @@ The primary audience is the business decision makers and technology decision mak
 
 #### Visualization and reporting
 
-1.  What tool would you recommend AdventureWorks utilize for constructing their real-time sentiment dashboard?
+1. What tool would you recommend First Up Consultants utilize for constructing their real-time sentiment dashboard?
 
-    To build a dashboard that updates with sentiments statistics in real-time, AdventureWorks could use Power BI. Note that they would have to use PowerBI.com to build these dashboards, as currently real-time dashboards cannot be built using Power BI Desktop.
+    To build a dashboard that updates with sentiments statistics in real-time, First Up Consultants could use Power BI. Note that they would have to use PowerBI.com to build these dashboards, as currently real-time dashboards cannot be built using Power BI Desktop.
 
 2. How would you build this dashboard using the tool you recommended?
 
-    To build a real-time dashboard in PowerBI, one needs to create a dashboard populated with visuals created using PowerBI QA. AdventureWorks would need to create a report (using any visualization) on data coming into the dataset from the Stream Analytics Job. This static report is used to select a visualization, such as the Gauge visualization that can then be pinned to a new dashboard. After opening the new dashboard, real-time dashboards are created in Power BI using the QA feature, by typing in a question to visualize in the space provided. In the "Ask a question about your data", they would enter a question that would drive the visualization, such as: "average score created between yesterday and today." They can set the visualization to use to display the result and then pin the visual to dashboard. This new visual will update in real-time as data is inserted into the underlying dataset.
+    To build a real-time dashboard in PowerBI, one needs to create a dashboard populated with visuals created using PowerBI QA. First Up Consultants would need to create a report (using any visualization) on data coming into the dataset from the Stream Analytics Job. This static report is used to select a visualization, such as the Gauge visualization that can then be pinned to a new dashboard. After opening the new dashboard, real-time dashboards are created in Power BI using the QA feature, by typing in a question to visualize in the space provided. In the "Ask a question about your data", they would enter a question that would drive the visualization, such as: "average score created between yesterday and today." They can set the visualization to use to display the result and then pin the visual to dashboard. This new visual will update in real-time as data is inserted into the underlying dataset.
 
     ![The Power BI dashboard has four panes: two Count of Messages panes, an Average Sentiment, and Upset Users. The first Count of Messages pane displays a number (18). The second Count of Messages is a pie chart broken out by username. The Average Sentiment is a gauge (half-circle donut) chart displaying the Average Sentiment (0.58) in the past 24 hours. Upset Users chart is a horizontal bar chart displaying the average of upset users (0.25) in the past 24 hours.](media/image6.png 'Power BI dashboard')
 
@@ -525,11 +525,11 @@ The primary audience is the business decision makers and technology decision mak
 
 1. It is not clear if we should be using the Bot Framework for our request forwarding or something else?
 
-    The Bot Framework is intended for building chat bots that integrate with existing services such as text/sms, Skype, Slack, and Office 365---on its own it does not provide a chat messaging framework. In AdventureWorks' case, they are looking for an in-house chat solution, so the Bot framework would not be an appropriate solution for that requirement. However, Bot Framework is appropriate for the Q&A bot capabilities they have asked for, so it’s used in conjunction with the in-house chat solution.
+    The Bot Framework is intended for building chat bots that integrate with existing services such as text/sms, Skype, Slack, and Office 365---on its own it does not provide a chat messaging framework. In First Up Consultants' case, they are looking for an in-house chat solution, so the Bot framework would not be an appropriate solution for that requirement. However, Bot Framework is appropriate for the Q&A bot capabilities they have asked for, so it’s used in conjunction with the in-house chat solution.
 
-2.  We do not want to build our own machine learning models in order to detect the sentiment of chat in real time
+2. We do not want to build our own machine learning models in order to detect the sentiment of chat in real time
 
-    By using the Text Analytics API, AdventureWorks is able to leverage a field tested, performant text sentiment model that requires only invocation by web service call.
+    By using the Text Analytics API, First Up Consultants is able to leverage a field tested, performant text sentiment model that requires only invocation by web service call.
 
 3. Can we really build a real-time, intelligent chat solution entirely in Azure?
 
@@ -539,4 +539,4 @@ The primary audience is the business decision makers and technology decision mak
 
 "What's cooler than sentiment analytics on real-time chat? Azure, because it enables us to give hotel operators back the connection they lost as their hotel sizes increased."
 
--Marc Tripp, the CTO of AdventureWorks
+-Marc Tripp, the CTO of First Up Consultants
