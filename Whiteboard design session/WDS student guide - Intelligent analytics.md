@@ -1,4 +1,4 @@
-![](images/HeaderPic.png "Microsoft Cloud Workshops")
+![Microsoft Cloud Workshops](images/HeaderPic.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
 Intelligent analytics
@@ -9,9 +9,8 @@ Whiteboard design session student guide
 </div>
 
 <div class="MCWHeader3">
-March 2018
+June 2018
 </div>
-
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
@@ -20,7 +19,7 @@ Microsoft may have patents, patent applications, trademarks, copyrights, or othe
 The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
 © 2018 Microsoft Corporation. All rights reserved.
 
-Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
+Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
 **Contents**
 
@@ -44,27 +43,18 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 
 ## Abstract and learning objectives
 
-This package is designed to facilitate learning real-time analytics without IoT. Participants will enable intelligent conversation in a machine learning-enabled, real-time chat pipeline to allow hotel guests to chat with one another, and to communicate directly with the concierge. They will also apply analytics to visualize customer sentiment in real-time. After completion, students will be better able to implement a lambda architecture, and enable web-based real-time messaging thru Web Sockets, Event Hubs, and Services Bus. In addition, participants will better understand how to:
+In this whiteboard design session, you will work with a group to design a solution for building a real-time chat pipeline, incorporating machine learning and analytics to detect and visualize customer sentiment. You will also design a lambda architecture to handle both real-time chat processing and data archiving and search indexing for analyzing all data flowing through the system. Finally, you will determine whether a bot can be incorporated in the solution, and how it fits alongside the messaging capabilities.
 
--   Leverage Cognitive Services (LUIS & Text Analytics API)
-
--   Process Events with Web Jobs
-
--   Index with Search
-
--   Archive with Cosmos DB
-
--   Visualize with Power BI Q&A
-
-## Step 1: Review the customer case study 
+## Step 1: Review the customer case study
 
 **Outcome** 
 
 Analyze your customer’s needs.
-Time frame: 15 minutes 
-Directions: With all participants in the session, the facilitator/SME presents an overview of the customer case study along with technical tips. 
+Time frame: 15 minutes
+Directions: With all participants in the session, the facilitator/SME presents an overview of the customer case study along with technical tips.
+
 1.  Meet your table participants and trainer 
-2.  Read all of the directions for steps 1–3 in the student guide 
+2.  Read all of the directions for steps 1–3 in the student guide
 3.  As a table team, review the following customer case study
 
 ### Customer situation
@@ -91,21 +81,21 @@ Finally, to help them reflect on chats that occur in public chat rooms, they wou
 
 ### Customer needs
 
-1.  Adventure Works would like their Concierge+ service to avoid using any servers or VMs that they would have to maintain.
+1.  Adventure Works would like their Concierge+ service to avoid using any servers or VMs that they would have to maintain
 
-2.  Their real-time chat solution needs to be scalable to support their largest hotel customers.
+2.  Their real-time chat solution needs to be scalable to support their largest hotel customers
 
-3.  The chat solution needs to be extensible and provide support for sentiment analysis and contextual understanding.
+3.  The chat solution needs to be extensible and provide support for sentiment analysis and contextual understanding
 
-4.  The public chat history needs to be fully searchable.
+4.  The public chat history needs to be fully searchable
 
-5.  The dashboard they use to visualize sentiment needs to update in real time.
+5.  The dashboard they use to visualize sentiment needs to update in real time
 
 ### Customer objections 
 
 1.  It is not clear if we should be using the Bot Framework for our request forwarding or something else?
 
-2.  We do not want to build our own machine learning models in order to detect the sentiment of chat in real time.
+2.  We do not want to build our own machine learning models in order to detect the sentiment of chat in real time
 
 3.  Can we really build a real-time, intelligent chat solution entirely in Azure?
 
@@ -134,7 +124,7 @@ Directions: With all participants at your table, respond to the following questi
 
 *High-level architecture*
 
-1.  Without getting into the details (the following sections will address the particular details), diagram your initial vision for handling the top-level requirements for supporting the baseline chat, sentiment analysis, and request forwarding.
+1.  Without getting into the details (the following sections will address the particular details), diagram your initial vision for handling the top-level requirements for supporting the baseline chat, sentiment analysis, and request forwarding
 
 *Baseline chat*
 
@@ -174,11 +164,11 @@ Directions: With all participants at your table, respond to the following questi
 
 **Prepare**
 
-Directions: With all participants at your table: 
+Directions: With all participants at your table:
 
-1.  Identify any customer needs that are not addressed with the proposed solution. 
-2.  Identify the benefits of your solution. 
-3.  Determine how you will respond to the customer’s objections. 
+1.  Identify any customer needs that are not addressed with the proposed solution
+2.  Identify the benefits of your solution
+3.  Determine how you will respond to the customer’s objections
 
 
 ## Step 3: Present the solution
@@ -192,13 +182,13 @@ Time frame: 30 minutes
 **Presentation** 
 
 Directions:
-1.  Pair with another table.
-2.  One table is the Microsoft team and the other table is the customer.
-3.  The Microsoft team presents their proposed solution to the customer.
-4.  The customer makes one of the objections from the list of objections.
-5.  The Microsoft team responds to the objection.
-6.  The customer team gives feedback to the Microsoft team. 
-7.  Tables switch roles and repeat Steps 2–6.
+1.  Pair with another table
+2.  One table is the Microsoft team and the other table is the customer
+3.  The Microsoft team presents their proposed solution to the customer
+4.  The customer makes one of the objections from the list of objections
+5.  The Microsoft team responds to the objection
+6.  The customer team gives feedback to the Microsoft team
+7.  Tables switch roles and repeat Steps 2–6
 
 
 ## Wrap-up 
