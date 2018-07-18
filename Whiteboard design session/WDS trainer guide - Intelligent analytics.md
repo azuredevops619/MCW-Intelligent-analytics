@@ -238,7 +238,7 @@ Timeframe: 60 minutes
 
 **Business needs**
 
-Direction*: With all participants at your table, answer the following questions and list the answers on a flip chart.
+Directions: With all participants at your table, answer the following questions and list the answers on a flip chart.
 
 1. Who should you present this solution to? Who is your target customer audience? Who are the decision makers?
 2. What customer business needs do you need to address with your solution?
@@ -469,13 +469,13 @@ The primary audience is the business decision makers and technology decision mak
 
 1. What Azure service would you recommend First Up Consultants use for sending email or SMS messages to guest services employees indicating the detection of an upset guest via sentiment analysis in the chat?
 
-    *Logic App could be used to send email or SMS messages (with the Twilio connector) to hotel staff when negative guest sentiment is detected in the chat application. This would also meet First Up Consultants' desire to use a serverless architecture in Azure.*
+    Logic App could be used to send email or SMS messages (with the Twilio connector) to hotel staff when negative guest sentiment is detected in the chat application. This would also meet First Up Consultants' desire to use a serverless architecture in Azure.
 
 2. How could you integrate this service into your chat message processing flow?
 
-    _The Stream Analytics job could contain a query to send all messages with a sentiment score below a specified threshold, such as 0.1, to a Service Bus queue. The Logic App would implement a Service Bus Message added to queue trigger to launch the workflow, and send message to hotel guest services employees._
+    The Stream Analytics job could contain a query to send all messages with a sentiment score below a specified threshold, such as 0.1, to a Service Bus queue. The Logic App would implement a Service Bus Message added to queue trigger to launch the workflow, and send message to hotel guest services employees.
 
-    _Another alternative would be to have the Event Processor logic could forward messages whose sentiment score is below the threshold on to the Service Bus Queue appropriate for hotel staff notifications. From there, the Logic App could be triggered to send an email or SMS message to hotel guest services using a Service Bus connector for Logic App._
+    Another alternative would be to have the Event Processor logic could forward messages whose sentiment score is below the threshold on to the Service Bus Queue appropriate for hotel staff notifications. From there, the Logic App could be triggered to send an email or SMS message to hotel guest services using a Service Bus connector for Logic App.
 
 *Q&A Bot*
 
