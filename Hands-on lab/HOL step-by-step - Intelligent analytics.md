@@ -1,3 +1,6 @@
+![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
+
+<div class="MCWHeader1">
 Intelligent analytics
 </div>
 
@@ -12,81 +15,77 @@ June 2018
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
 The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
+
 © 2018 Microsoft Corporation. All rights reserved.
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
-# Intelligent analytics hands-on lab step-by-step
+**Contents**
 
-Updated June 2018
+- [Intelligent analytics](#intelligent-analytics-hands-on-lab-step-by-step)
+  - [Abstract and learning objectives](#abstract-and-learning-objectives)
+  - [Overview](#overview)
+  - [Solution architecture](#solution-architecture)
+  - [Requirements](#requirements)
+  - [Exercise 1: Environment setup](#exercise-1-environment-setup)
+    - [Task 1: Connect to the lab VM](#task-1-connect-to-the-lab-vm)
+    - [Task 2: Download and open the ConciergePlus starter solution](#task-2-download-and-open-the-conciergeplus-starter-solution)
+    - [Task 3: Create App Services](#task-3-create-app-services)
+    - [Task 4: Provision Function App](#task-4-provision-function-app)
+    - [Task 5: Provision Service Bus](#task-5-provision-service-bus)
+    - [Task 6: Provision Event Hubs](#task-6-provision-event-hubs)
+    - [Task 7: Provision Azure Cosmos DB](#task-7-provision-azure-cosmos-db)
+    - [Task 8: Provision Azure Search](#task-8-provision-azure-search)
+    - [Task 9: Create Stream Analytics job](#task-9-create-stream-analytics-job)
+    - [Task 10: Start the Stream Analytics Job](#task-10-start-the-stream-analytics-job)
+    - [Task 11: Provision an Azure Storage Account](#task-11-provision-an-azure-storage-account)
+    - [Task 12: Provision Cognitive Services](#task-12-provision-cognitive-services)
+  - [Exercise 2: Implement message forwarding](#exercise-2-implement-message-forwarding)
+    - [Task 1: Implement the event processor](#task-1-implement-the-event-processor)
+    - [Task 2: Configure the Chat Message Processor Function App](#task-2-configure-the-chat-message-processor-function-app)
+      - [Event Hub connection string](#event-hub-connection-string)
+      - [Event Hub name](#event-hub-name)
+      - [Storage account](#storage-account)
+      - [Service Bus connection string](#service-bus-connection-string)
+      - [Chat topic](#chat-topic)
+      - [Text Analytics API settings](#text-analytics-api-settings)
+  - [Exercise 3: Configure the Chat Web App settings](#exercise-3-configure-the-chat-web-app-settings)
+    - [Task 1: Event Hub connection String](#task-1-event-hub-connection-string)
+    - [Task 2: Event Hub name](#task-2-event-hub-name)
+    - [Task 3: Service Bus connection String](#task-3-service-bus-connection-string)
+    - [Task 4: Chat topic path and chat request topic path](#task-4-chat-topic-path-and-chat-request-topic-path)
+  - [Exercise 4: Deploying the App Services](#exercise-4-deploying-the-app-services)
+    - [Task 1: Publish the ChatMessageSentimentProcessor Function App](#task-1-publish-the-chatmessagesentimentprocessor-function-app)
+    - [Task 2: Publish the ChatWebApp](#task-2-publish-the-chatwebapp)
+    - [Task 3: Testing hotel lobby chat](#task-3-testing-hotel-lobby-chat)
+  - [Exercise 5: Add intelligence](#exercise-5-add-intelligence)
+    - [Task 1: Implement sentiment analysis](#task-1-implement-sentiment-analysis)
+    - [Task 2: Implement linguistic understanding](#task-2-implement-linguistic-understanding)
+    - [Task 3: Implement speech to text](#task-3-implement-speech-to-text)
+    - [Task 4: Re-deploy and test](#task-4-re-deploy-and-test)
+  - [Exercise 6: Create Logic App for sending SMS notifications](#exercise-6-create-logic-app-for-sending-sms-notifications)
+    - [Task 1: Create Free Twilio account](#task-1-create-free-twilio-account)
+    - [Task 2: Provision Logic App](#task-2-provision-logic-app)
+    - [Task 3: Configure staff notifications](#task-3-configure-staff-notifications)
+    - [Task 4: Add negative chat messages to trigger staff notifications](#task-4-add-negative-chat-messages-to-trigger-staff-notifications)
+  - [Exercise 7: Building the Power BI dashboard](#exercise-7-building-the-power-bi-dashboard)
+    - [Task 1: Create the static dashboard](#task-1-create-the-static-dashboard)
+    - [Task 2: Create the real-time dashboard](#task-2-create-the-real-time-dashboard)
+    - [Task 3: Add a trending sentiment chart to the dashboard](#task-3-add-a-trending-sentiment-chart-to-the-dashboard)
+  - [Exercise 8: Enabling search indexing](#exercise-8-enabling-search-indexing)
+    - [Task 1: Verifying message archival](#task-1-verifying-message-archival)
+    - [Task 2: Creating the index and indexer](#task-2-creating-the-index-and-indexer)
+    - [Task 3: Update the Web App web.config](#task-3-update-the-web-app-webconfig)
+    - [Task 4: Configure the Search API App](#task-4-configure-the-search-api-app)
+    - [Task 5: Re-publish apps](#task-5-re-publish-apps)
+  - [Exercise 9: Add a bot using Bot service and QnA Maker](#exercise-9-add-a-bot-using-bot-service-and-qna-maker)
+    - [Task 1: Create a QnA service instance in Azure](#task-1-create-a-qna-service-instance-in-azure)
+    - [Task 2: Create a QnA bot](#task-2-create-a-qna-bot)
+    - [Task 3: Embed the bot into your web app](#task-3-embed-the-bot-into-your-web-app)
+  - [After the hands-on lab](#after-the-hands-on-lab)
+    - [Task 1: Delete the resource group](#task-1-delete-the-resource-group)
 
-First Up Consultants specializes in building software solutions for the hospitality industry. Their latest product is an enterprise mobile/social chat product called Concierge+ (aka ConciergePlus). The mobile web app enables guests to easily stay in touch with the concierge and other guests, enabling greater personalization and improving their experience during their stay. Sentiment analysis is performed on top of chat messages as they occur, enabling hotel operators to keep tabs on guest sentiments in real-time.
-
-If you have not yet completed the steps to set up your environment in [Before the hands-on lab](./Setup.md), you will need to do that before proceeding.
-
-## Contents
-
-- [Abstract and learning objectives](#abstract-and-learning-objectives)
-- [Overview](#overview)
-- [Solution architecture](#solution-architecture)
-- [Requirements](#requirements)
-- [Exercise 1: Environment setup](#exercise-1-environment-setup)
-  - [Task 1: Connect to the lab VM](#task-1-connect-to-the-lab-vm)
-  - [Task 2: Download and open the ConciergePlus starter solution](#task-2-download-and-open-the-conciergeplus-starter-solution)
-  - [Task 3: Create App Services](#task-3-create-app-services)
-  - [Task 4: Provision Function App](#task-4-provision-function-app)
-  - [Task 5: Provision Service Bus](#task-5-provision-service-bus)
-  - [Task 6: Provision Event Hubs](#task-6-provision-event-hubs)
-  - [Task 7: Provision Azure Cosmos DB](#task-7-provision-azure-cosmos-db)
-  - [Task 8: Provision Azure Search](#task-8-provision-azure-search)
-  - [Task 9: Create Stream Analytics job](#task-9-create-stream-analytics-job)
-  - [Task 10: Start the Stream Analytics Job](#task-10-start-the-stream-analytics-job)
-  - [Task 11: Provision an Azure Storage Account](#task-11-provision-an-azure-storage-account)
-  - [Task 12: Provision Cognitive Services](#task-12-provision-cognitive-services)
-- [Exercise 2: Implement message forwarding](#exercise-2-implement-message-forwarding)
-  - [Task 1: Implement the event processor](#task-1-implement-the-event-processor)
-  - [Task 2: Configure the Chat Message Processor Function App](#task-2-configure-the-chat-message-processor-function-app)
-    - [Event Hub connection string](#event-hub-connection-string)
-    - [Event Hub name](#event-hub-name)
-    - [Storage account](#storage-account)
-    - [Service Bus connection string](#service-bus-connection-string)
-    - [Chat topic](#chat-topic)
-    - [Text Analytics API settings](#text-analytics-api-settings)
-- [Exercise 3: Configure the Chat Web App settings](#exercise-3-configure-the-chat-web-app-settings)
-  - [Task 1: Event Hub connection String](#task-1-event-hub-connection-string)
-  - [Task 2: Event Hub name](#task-2-event-hub-name)
-  - [Task 3: Service Bus connection String](#task-3-service-bus-connection-string)
-  - [Task 4: Chat topic path and chat request topic path](#task-4-chat-topic-path-and-chat-request-topic-path)
-- [Exercise 4: Deploying the App Services](#exercise-4-deploying-the-app-services)
-  - [Task 1: Publish the ChatMessageSentimentProcessor Function App](#task-1-publish-the-chatmessagesentimentprocessor-function-app)
-  - [Task 2: Publish the ChatWebApp](#task-2-publish-the-chatwebapp)
-  - [Task 3: Testing hotel lobby chat](#task-3-testing-hotel-lobby-chat)
-- [Exercise 5: Add intelligence](#exercise-5-add-intelligence)
-  - [Task 1: Implement sentiment analysis](#task-1-implement-sentiment-analysis)
-  - [Task 2: Implement linguistic understanding](#task-2-implement-linguistic-understanding)
-  - [Task 3: Implement speech to text](#task-3-implement-speech-to-text)
-  - [Task 4: Re-deploy and test](#task-4-re-deploy-and-test)
-- [Exercise 6: Create Logic App for sending SMS notifications](#exercise-6-create-logic-app-for-sending-sms-notifications)
-  - [Task 1: Create Free Twilio account](#task-1-create-free-twilio-account)
-  - [Task 2: Provision Logic App](#task-2-provision-logic-app)
-  - [Task 3: Configure staff notifications](#task-3-configure-staff-notifications)
-  - [Task 4: Add negative chat messages to trigger staff notifications](#task-4-add-negative-chat-messages-to-trigger-staff-notifications)
-- [Exercise 7: Building the Power BI dashboard](#exercise-7-building-the-power-bi-dashboard)
-  - [Task 1: Create the static dashboard](#task-1-create-the-static-dashboard)
-  - [Task 2: Create the real-time dashboard](#task-2-create-the-real-time-dashboard)
-  - [Task 3: Add a trending sentiment chart to the dashboard](#task-3-add-a-trending-sentiment-chart-to-the-dashboard)
-- [Exercise 8: Enabling search indexing](#exercise-8-enabling-search-indexing)
-  - [Task 1: Verifying message archival](#task-1-verifying-message-archival)
-  - [Task 2: Creating the index and indexer](#task-2-creating-the-index-and-indexer)
-  - [Task 3: Update the Web App web.config](#task-3-update-the-web-app-webconfig)
-  - [Task 4: Configure the Search API App](#task-4-configure-the-search-api-app)
-  - [Task 5: Re-publish apps](#task-5-re-publish-apps)
-- [Exercise 9: Add a bot using Bot service and QnA Maker](#exercise-9-add-a-bot-using-bot-service-and-qna-maker)
-  - [Task 1: Create a QnA service instance in Azure](#task-1-create-a-qna-service-instance-in-azure)
-  - [Task 2: Create a QnA bot](#task-2-create-a-qna-bot)
-  - [Task 3: Embed the bot into your web app](#task-3-embed-the-bot-into-your-web-app)
-- [After the hands-on lab](#after-the-hands-on-lab)
-  - [Task 1: Delete the resource group](#task-1-delete-the-resource-group)
+# Intelligent analytics hands-on lab step-by-step 
 
 ## Abstract and learning objectives
 
@@ -106,8 +105,8 @@ Messages are sent from browsers running within laptop or mobile clients via Web 
 
 ## Requirements
 
-- Microsoft Azure subscription must be pay-as-you-go or MSDN.
-  - Trial subscriptions will not work.
+- Microsoft Azure subscription must be pay-as-you-go or MSDN
+  - Trial subscriptions will not work
 - A virtual machine configured with:
   - Visual Studio Community 2017 or later
   - Azure SDK 2.9 or later (Included with Visual Studio 2017)
@@ -351,7 +350,7 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
         ![On the Create queue dialog, awhotel-staff-notifications is entered into the Name field, Message time to live is set to 1 day, and Enable partitioning is unchecked.](media/logic-app-create-queue.png "Create queue")
 
-12. Select **Create**.
+12. Select **Create**
 
 ### Task 6: Provision Event Hubs
 
@@ -1140,9 +1139,9 @@ With the App Services projects properly configured, you are now ready to deploy 
 
     - If you are unsure what this URL is, it can be found in two places:
 
-      i. First, you can find it on the ChatWebApp document in Visual Studio, that was opened when you published the Web App ![In the Visual Studio ChatWebbApp tab, under Summary, the Site URL.](media/image105.png 'Visual Studio ChatWebbApp tab')
+      - First, you can find it on the ChatWebApp document in Visual Studio, that was opened when you published the Web App ![In the Visual Studio ChatWebbApp tab, under Summary, the Site URL.](media/image105.png 'Visual Studio ChatWebbApp tab')
 
-      ii. Alternatively, this can be found in the [Azure portal](https://portal.azure.com) on the Overview blade for your Web App
+      - Alternatively, this can be found in the [Azure portal](https://portal.azure.com) on the Overview blade for your Web App
 
 2. Under the Join Chat area, enter your username (anything will do)
 
