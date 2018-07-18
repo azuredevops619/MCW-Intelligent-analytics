@@ -22,9 +22,7 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
-# Intelligent analytics whiteboard design session trainer guide
-
-**Contents**
+## Contents
 
 - [Trainer Information](#trainer-information)
   - [Role of the trainer](#role-of-the-trainer)
@@ -51,6 +49,8 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
   - [Preferred solution](#preferred-solution)
   - [Checklist of preferred objection handling](#checklist-of-preferred-objection-handling)
   - [Customer quote (to be read back to the attendees at the end)](#customer-quote-to-be-read-back-to-the-attendees-at-the-end)
+
+# Intelligent analytics whiteboard design session trainer guide
 
 ## Trainer information
 
@@ -80,7 +80,7 @@ An amazing trainer:
 
 - Effectively leads the feedback process
 
-## Whiteboard design session flow 
+## Whiteboard design session flow
 
 Each whiteboard design session uses the following flow:
 
@@ -166,7 +166,7 @@ In this whiteboard design session, you will work with a group to design a soluti
 
 ## Step 1: Review the customer case study
 
-**Outcome**: 
+**Outcome**
 
 Analyze your customer’s needs.
 
@@ -335,19 +335,20 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
 ### Additional references
 
-|                   |                                                                                                                        |
-| ---------------- | --------------------------------------------------------------------------------------------------------------------   |
-| **Description**   | **Links**                                                                                                              |
-| Infographic       | <https://www.microsoft.com/legal/intellectualproperty/Trademarks/Usage/General.aspx/>                                  |
-| Service Bus       | <https://azure.microsoft.com/documentation/articles/event-hubs-api-overview/>                                          |
-| Event Hubs        | <https://azure.microsoft.com/documentation/articles/stream-analytics-define-outputs/#event-processor-host-apis/>       |
-| Stream Analytics  | <https://azure.microsoft.com/documentation/articles/hdinsight-apache-spark-overview/>                                  |
-| Power BI          | <https://powerbi.microsoft.com/what-is-power-bi/>                                                                      |
-| Cosmos DB         | <https://docs.microsoft.com/azure/cosmos-db/>                                                                          |
-| QnA Maker         | <https://docs.microsoft.com/azure/cognitive-services/QnAMaker/overview/overview>                                       |
+|     |     |
+| --- | --- |
+| **Description** | **Links** |
+| Infographic | <https://www.microsoft.com/legal/intellectualproperty/Trademarks/Usage/General.aspx/> |
+| Service Bus | <https://azure.microsoft.com/documentation/articles/event-hubs-api-overview/> |
+| Event Hubs | <https://azure.microsoft.com/documentation/articles/stream-analytics-define-outputs/#event-processor-host-apis/> |
+| Stream Analytics | <https://azure.microsoft.com/documentation/articles/hdinsight-apache-spark-overview/> |
+| Power BI | <https://powerbi.microsoft.com/what-is-power-bi/> |
+| Cosmos DB | <https://docs.microsoft.com/azure/cosmos-db/> |
+| QnA Maker | <https://docs.microsoft.com/azure/cognitive-services/QnAMaker/overview/overview> |
 | Azure Bot Service | <https://docs.microsoft.com/azure/bot-service/bot-service-scenario-enterprise-productivity?view=azure-bot-service-3.0> |
-| Azure Functions   | <https://docs.microsoft.com/azure/azure-functions/functions-overview>                                                  |
-| Logic Apps        | <https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-overview>                                                |
+| Azure Functions | <https://docs.microsoft.com/azure/azure-functions/functions-overview> |
+| Logic Apps | <https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-overview> |
+|
 
 # Intelligent analytics whiteboard design session trainer guide
 
