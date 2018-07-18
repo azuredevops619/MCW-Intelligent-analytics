@@ -1640,6 +1640,9 @@ Before going further, a good thing to check is whether messages are being writte
 
 ### Task 3: Update the Web App web.config
 
+We will want to use the **ChatWebApp** to reach out to the **ChatAPI**, which will make a call to the **Azure Search API**.
+![We are using the chat API to reach out the Azure Search API on behalf of the main web app.](media/azure-search-index-configuration.PNG 'Name section')
+
 1.  On your Lab VM, within Visual Studio Solution Explorer, expand the **ChatWebApp** project
 
 2.  Open **Web.config**
