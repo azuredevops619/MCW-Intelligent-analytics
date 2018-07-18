@@ -105,8 +105,8 @@ Messages are sent from browsers running within laptop or mobile clients via Web 
 
 ## Requirements
 
-- Microsoft Azure subscription must be pay-as-you-go or MSDN.
-  - Trial subscriptions will not work.
+- Microsoft Azure subscription must be pay-as-you-go or MSDN
+  - Trial subscriptions will not work
 - A virtual machine configured with:
   - Visual Studio Community 2017 or later
   - Azure SDK 2.9 or later (Included with Visual Studio 2017)
@@ -350,7 +350,7 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
         ![On the Create queue dialog, awhotel-staff-notifications is entered into the Name field, Message time to live is set to 1 day, and Enable partitioning is unchecked.](media/logic-app-create-queue.png "Create queue")
 
-12. Select **Create**.
+12. Select **Create**
 
 ### Task 6: Provision Event Hubs
 
@@ -1139,9 +1139,9 @@ With the App Services projects properly configured, you are now ready to deploy 
 
     - If you are unsure what this URL is, it can be found in two places:
 
-      i. First, you can find it on the ChatWebApp document in Visual Studio, that was opened when you published the Web App ![In the Visual Studio ChatWebbApp tab, under Summary, the Site URL.](media/image105.png 'Visual Studio ChatWebbApp tab')
+      - First, you can find it on the ChatWebApp document in Visual Studio, that was opened when you published the Web App ![In the Visual Studio ChatWebbApp tab, under Summary, the Site URL.](media/image105.png 'Visual Studio ChatWebbApp tab')
 
-      ii. Alternatively, this can be found in the [Azure portal](https://portal.azure.com) on the Overview blade for your Web App
+      - Alternatively, this can be found in the [Azure portal](https://portal.azure.com) on the Overview blade for your Web App
 
 2. Under the Join Chat area, enter your username (anything will do)
 
