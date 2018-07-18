@@ -621,7 +621,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     - **Table Name**: Set to **Messages**
 
-    - Select **Authorize**. This will authorize the connection to your Power BI account. When prompted in the popup window, enter the account credentials you used to create your Power BI account in [Before the Hands-on Lab, Task 1](#task-1-provision-power-bi). You may have to enter your Username and Password.
+    - Select **Authorize**. This will authorize the connection to your Power BI account. When prompted in the popup window, enter the account credentials you used to create your Power BI account in the Before the Hands-on Lab exercise. You may have to enter your Username and Password.
 
       ![The Power BI New output screen is shown configured. The Authorize connection has been clicked.](media/image58.png 'Power BI new output')
 
@@ -639,7 +639,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     - Table Name: Set to **TrendingSentiment**
 
-    - Select **Authorize** (if not already authorized). This will authorize the connection to your Power BI account. When prompted in the popup window, enter the account credentials you used to create your Power BI account in [Before the Hands-on Lab, Task 1](#task-1-provision-power-bi). You may have to enter your Username and Password.
+    - Select **Authorize** (if not already authorized). This will authorize the connection to your Power BI account. When prompted in the popup window, enter the account credentials you used to create your Power BI account in the Before the Hands-on Lab exercise. You may have to enter your Username and Password.
 
       ![The Power BI New output screen is shown configured. The Authorize connection has been clicked.](media/stream-analytics-second-pbi-output.png 'Power BI new output')
 
@@ -1429,7 +1429,7 @@ There is one last intelligence service to activate in the application---speech r
 
 1. Within Visual Studio Solution Explorer, expand `ChatWebApp`, **Scripts**, and open `chatClient.js`
 
-2. At the top, locate the variable **speechApiKey**, and update its value with the Key 1 you acquired in [Exercise 1, Task 11, Step 8](#task-11-provision-cognitive-services), when you provisioned your Speech API in the [Azure portal](https://portal.azure.com)
+2. At the top, locate the variable **speechApiKey**, and update its value with the Key 1 you acquired in [Exercise 1, Task 11, Step 8](#task-12-provision-cognitive-services), when you provisioned your Speech API in the [Azure portal](https://portal.azure.com)
 
     ![The following variable code displays: //TODO: Enter your Speech API Key here var speechApiKey = "";](media/image136.png 'variable')
 
