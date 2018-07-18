@@ -1428,7 +1428,7 @@ There is one last intelligence service to activate in the application---speech r
 
 1. Within Visual Studio Solution Explorer, expand `ChatWebApp`, **Scripts**, and open `chatClient.js`
 
-2. At the top, locate the variable **speechApiKey**, and update its value with the Key 1 you acquired in [Exercise 1, Task 11, Step 8](#task-12-provision-cognitive-services), when you provisioned your Speech API in the [Azure portal](https://portal.azure.com)
+2. At the top, locate the variable **speechApiKey**, and update its value with the Key 1 you acquired in [Exercise 1, Task 12](#task-12-provision-cognitive-services), when you provisioned your Speech API in the [Azure portal](https://portal.azure.com)
 
     ![The following variable code displays: //TODO: Enter your Speech API Key here var speechApiKey = "";](media/image136.png 'variable')
 
@@ -1440,7 +1440,7 @@ There is one last intelligence service to activate in the application---speech r
 
 Now that you have added sentiment analysis, language understanding, and speech recognition to the solution, you need to re-deploy the apps so you can test out the new functionality.
 
-1. Publish the `ChatMessageSentimentProcessorFunction` Function App using Visual Studio just as you did in [Exercise 4, Task 1](#task-1-publish-the-chatmessagesentimentprocessor-web-job)
+1. Publish the `ChatMessageSentimentProcessorFunction` Function App using Visual Studio just as you did in [Exercise 4, Task 1](#task-1-publish-the-chatmessagesentimentprocessor-function-app)
 
 2. Publish the `ChatWebApp` just as you did in [Exercise 4, Task 2](#task-2-publish-the-chatwebapp)
 
