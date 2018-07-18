@@ -80,54 +80,61 @@ An amazing trainer:
 
 - Effectively leads the feedback process
 
-### Whiteboard design session flow
+## Whiteboard design session flow 
 
 Each whiteboard design session uses the following flow:
 
-#### Step 1: Review the customer case study (15 minutes)
+**Step 1: Review the customer case study (15 minutes)**
 
-**Outcome**: Analyze your customer's needs
+Outcome: Analyze your customer's needs.
 
-- Customer's background, situation, needs and technical requirements
-- Current customer infrastructure and architecture
-- Potential issues, objectives and blockers
+-   Customer's background, situation, needs and technical requirements
 
-#### Step 2: Design a proof of concept solution (60 minutes)
+-   Current customer infrastructure and architecture
+
+-   Potential issues, objectives and blockers
+
+**Step 2: Design a proof of concept solution (60 minutes)**
 
 Outcome: Design a solution and prepare to present the solution to the target customer audience in a 15-minute chalk-talk format.
 
-- Determine your target customer audience
-- Determine customer's business needs to address your solution
-- Design and diagram your solution
-- Prepare to present your solution
+-   Determine your target customer audience
 
-#### Step 3: Present the solution (30 minutes)
+-   Determine customer's business needs to address your solution
 
-**Outcome**: Present solution to your customer
+-   Design and diagram your solution
 
-- Present solution
-- Respond to customer objections
-- Receive feedback
+-   Prepare to present your solution
 
-#### Wrap-up (15 minutes)
+**Step 3: Present the solution (30 minutes)**
 
-- Review preferred solution
+Outcome: Present solution to your customer.
 
-### Before the whiteboard design session: How to prepare
+-   Present solution
+
+-   Respond to customer objections
+
+-   Receive feedback
+
+**Wrap-up (15 minutes)**
+
+-   Review preferred solution
+
+## Before the whiteboard design session: How to prepare
 
 Before conducting your first whiteboard design session:
 
-- Read the student guide (including the case study) and trainer guide
+-   Read the Student guide (including the case study) and Trainer guide
 
-- Become familiar with all key points and activities
+-   Become familiar with all key points and activities
 
-- Plan the point you want to stress, which questions you want to drive, transitions, and be ready to answer questions
+-   Plan the point you want to stress, which questions you want to drive, transitions, and be ready to answer questions
 
-- Prior to the whiteboard design session, discuss the case study to pick up more ideas
+-   Prior to the whiteboard design session, discuss the case study to pick up more ideas
 
-- Make notes for later
+-   Make notes for later
 
-### During the whiteboard design session: Tips for an effective whiteboard design session
+## During the whiteboard design session: Tips for an effective whiteboard design session
 
 **Refer to the Trainer guide** to stay on track and observe the timings.
 
@@ -135,12 +142,13 @@ Before conducting your first whiteboard design session:
 
 When participants are doing activities, you can **look ahead to refresh your memory**.
 
-- **Adjust activity and whiteboard design session pace** as needed to allow time for presenting, feedback, and sharing
+-   **Adjust activity and whiteboard design session pace** as needed to allow time for presenting, feedback, and sharing.
 
-- **Add examples, points, and stories** from your own experience. Think about stories you can share that help you make your points clearly and effectively.
-- **Consider creating a "parking lot"** to record issues or questions raised that are outside the scope of the whiteboard design session or can be answered later. Decide how you will address these issues, so you can acknowledge them without being derailed by them.
+-   **Add examples, points, and stories** from your own experience. Think about stories you can share that help you make your points clearly and effectively.
 
-**Have fun**! Encourage participants to have fun and share!
+-   **Consider creating a "parking lot"** to record issues or questions raised that are outside the scope of the whiteboard design session or can be answered later. Decide how you will address these issues, so you can acknowledge them without being derailed by them.
+
+***Have fun**! Encourage participants to have fun and share!*
 
 **Involve your participants.** Talk and share your knowledge but always involve your participants, even while you are the one speaking.
 
@@ -150,17 +158,15 @@ When participants are doing activities, you can **look ahead to refresh your mem
 
 **Wait for responses**. If you ask a question such as, "What's your experience with (fill in the blank)?" then wait. Do not be afraid of a little silence. If you leap into the silence, your participants will feel you are not serious about involving them and will become passive. Give participants a chance to think, and if no one answers, patiently ask again. You will usually get a response.
 
-## Intelligent analytics whiteboard design session student guide
+# Intelligent analytics whiteboard design session student guide
 
-### Abstract and learning objectives
+## Abstract and learning objectives
 
 In this whiteboard design session, you will work with a group to design a solution for building a real-time chat pipeline, incorporating machine learning and analytics to detect and visualize customer sentiment. You will also design a lambda architecture to handle both real-time chat processing and data archiving and search indexing for analyzing all data flowing through the system. Finally, you will determine whether a bot can be incorporated in the solution, and how it fits alongside the messaging capabilities.
 
-### Step 1: Review the customer case study
+## Step 1: Review the customer case study
 
-**Outcome**: Analyze your customer’s needs.
-
-**Time frame**: 15 minutes
+**Outcome**: 
 
 Analyze your customer’s needs.
 
@@ -172,7 +178,7 @@ Directions: With all participants in the session, the facilitator/SME presents a
 2. Read all of the directions for steps 1–3 in the student guide
 3. As a table team, review the following customer case study
 
-#### Customer situation
+### Customer situation
 
 First Up Consultants specializes in building software solutions for the hospitality industry. They are designing their latest product, an enterprise grade, social chat app called Concierge+. The mobile friendly web app is intended to enable guests to easily stay in touch with the concierge and other guests, enabling greater personalization and improving their experience during their stay.
 
@@ -196,7 +202,7 @@ Another way they would like to be proactive and reduce load on hotel staff, is t
 
 Finally, to help them reflect on chats that occur in public chat rooms, they would like to log the messages to a durable store and make them full text searchable. In the future, they are thinking of using this same approach to enable Twitter-like search for @entities and #labels.
 
-#### Customer needs
+### Customer needs
 
 1. First Up Consultants would like their Concierge+ service to avoid using any servers or VMs that they would have to maintain
 
@@ -210,7 +216,7 @@ Finally, to help them reflect on chats that occur in public chat rooms, they wou
 
 6. The dashboard they use to visualize sentiment needs to update in real time, as well as display trending sentiment over time
 
-#### Customer objections
+### Customer objections
 
 1. It is not clear if we should be using the Bot Framework for our request forwarding or something else?
 
@@ -218,7 +224,7 @@ Finally, to help them reflect on chats that occur in public chat rooms, they wou
 
 3. Can we really build a real-time, intelligent chat solution entirely in Azure?
 
-#### Infographic of common scenarios
+### Infographic of common scenarios
 
 ![Screenshot of a sample Internet of Things workflow, which is broken into On-Premises and Azure services.](media/image2.png 'Internet of Things workflow')
 
@@ -230,22 +236,22 @@ Design a solution and prepare to present the solution to the target customer aud
 
 Timeframe: 60 minutes
 
-#### Business needs
+**Business needs**
 
-**Directions**: With all participants at your table, answer the following questions and list the answers on a flip chart.
+Direction*: With all participants at your table, answer the following questions and list the answers on a flip chart.
 
 1. Who should you present this solution to? Who is your target customer audience? Who are the decision makers?
 2. What customer business needs do you need to address with your solution?
 
-#### Design
+**Design**
 
-**Directions**: With all participants at your table, respond to the following questions on a flip chart.
+Directions: With all participants at your table, respond to the following questions on a flip chart.
 
-##### High-level architecture
+*High-level architecture*
 
 1. Without getting into the details (the following sections will address the particular details), diagram your initial vision for handling the top-level requirements for supporting the baseline chat, sentiment analysis, and request forwarding
 
-##### Baseline chat
+*Baseline chat*
 
 1. How would you recommend that First Up Consultants receive message from mobile and desktop browsers?
 
@@ -257,13 +263,13 @@ Timeframe: 60 minutes
 
 5. Given your choice of intermediate storage, how would you implement a public chat room? How would you implement one on one chat?
 
-##### Sentiment Analysis
+*Sentiment Analysis*
 
 1. What service would you recommend First Up Consultants capitalize on in order to scalably apply a sentiment score to each message as it enters the system?
 
 2. How would you enhance your baseline chat flow to incorporate this sentiment processing?
 
-##### Request forwarding
+*Request forwarding*
 
 1. What Azure service or API would you suggest First Up Consultants utilize for understanding how to route guest requests to housekeeping or room service?
 
@@ -271,20 +277,20 @@ Timeframe: 60 minutes
 
 3. How would you integrate this service into your chat message processing flow?
 
-##### SMS messaging
+*SMS messaging*
 
 1. What Azure service would you recommend First Up Consultants use for sending email or SMS messages to guest services employees indicating the detection of an upset guest via sentiment analysis in the chat?
 2. How could you integrate this service into your chat message processing flow?
 
-##### Q&A Bot
+*Q&A Bot*
 
 1. What Azure services would you recommend First Up Consultants use for creating a Q&A bot?
 
-##### Message search
+*Message search*
 
 1. What Azure services would you use to durably store the messages and enable them for full text search? How would you extend your messaging pipeline so that all messages get archived after they have been tagged with sentiment?
 
-##### Visualization and reporting
+*Visualization and reporting*
 
 1. What tool would you recommend First Up Consultants utilize for constructing their real-time sentiment dashboard?
 
@@ -292,9 +298,9 @@ Timeframe: 60 minutes
 
 3. How would you show display the trending sentiment data over time within the dashboard?
 
-#### Prepare
+**Prepare**
 
-**Directions**: With all participants at your table:
+Directions: With all participants at your table:
 
 1. Identify any customer needs that are not addressed with the proposed solution
 2. Identify the benefits of your solution
@@ -303,13 +309,15 @@ Timeframe: 60 minutes
 
 ### Step 3: Present the solution
 
-**Outcome**: Present a solution to the target customer audience in a 15-minute chalk-talk format.
+**Outcome**
+
+Present a solution to the target customer audience in a 15-minute chalk-talk format.
 
 Timeframe: 30 minutes
 
-#### Presentation
+**Presentation**
 
-**Directions**:
+Directions:
 
 1. Pair with another table
 2. One table is the Microsoft team and the other table is the customer
@@ -319,7 +327,7 @@ Timeframe: 30 minutes
 6. The customer team gives feedback to the Microsoft team
 7. Tables switch roles and repeat Steps 2–6
 
-### Wrap-up
+## Wrap-up
 
 Timeframe: 15 minutes
 
@@ -340,11 +348,10 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 | Azure Bot Service | <https://docs.microsoft.com/azure/bot-service/bot-service-scenario-enterprise-productivity?view=azure-bot-service-3.0> |
 | Azure Functions   | <https://docs.microsoft.com/azure/azure-functions/functions-overview>                                                  |
 | Logic Apps        | <https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-overview>                                                |
-|
 
-## Intelligent analytics whiteboard design session trainer guide
+# Intelligent analytics whiteboard design session trainer guide
 
-### Step 1: Review the customer case study
+## Step 1: Review the customer case study
 
 - Check in with your table participants to introduce yourself as the trainer
 
@@ -354,7 +361,7 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
 - Ready, set, go! Let the table participants begin.
 
-### Step 2: Design a proof of concept solution
+## Step 2: Design a proof of concept solution
 
 - Check in with your tables to ensure that they are transitioning from step to step on time
 
@@ -366,25 +373,21 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
   - Try asking questions first that will lead the participants to discover the answers on their own
 
-### Step 3: Present the solution
+## Step 3: Present the solution
 
-- Determine which table will be paired with your table before Step 3 begins
+-   Determine which table will be paired with your table before Step 3 begins
 
-- For the first round, assign one table as the Microsoft team and the other table as the customer
+-   For the first round, assign one table as the presenting team and the other table as the customer
 
-- Have the Microsoft team present their solution to the customer team
+-   Have the presenting team present their solution to the customer team
 
-  - Have the customer team provide one objection for the Microsoft team to respond to
+    -   Have the customer team provide one objection for the presenting team to respond to
 
-  - The presentation and objections should be no longer than 10-minutes
+    -   The presentation, objections, and feedback should take no longer than 15 minutes
 
-- Have participants on the customer team give feedback to the Microsoft team
+    -   If needed, the trainer may also provide feedback
 
-  - The feedback should be no longer than 5 minutes
-
-  - If needed, the trainer may also provide feedback
-
-### Wrap-up
+## Wrap-up
 
 - Have the table participants reconvene with the larger session group to hear the facilitator/SME share the following preferred solution
 
@@ -394,9 +397,9 @@ Marc Tripp, the CTO of First Up Consultants
 
 The primary audience is the business decision makers and technology decision makers. From the case study scenario, this would include the Marc Tripp, the CTO of First Up Consultants. Usually we talk to the infrastructure managers who report to the chief information officers (CIOs), or to application sponsors (like a vice president \[VP\] line of business \[LOB\], or chief marketing officer \[CMO\]), or to those that represent the business unit IT or developers that report to application sponsors.
 
-### Preferred solution
+## Preferred solution
 
-#### High-level architecture
+*High-level architecture*
 
 1. Without getting into the details (the following sections will address the particular details), diagram your initial vision for handling the top-level requirements for handling the baseline chat, sentiment analysis and request forwarding.
 
@@ -406,7 +409,7 @@ The primary audience is the business decision makers and technology decision mak
 
     > **Note**: The preferred solution is only one of many possible, viable approaches.
 
-#### Baseline chat
+*Baseline chat*
 
 1. How would you recommend that First Up Consultants receive messages from mobile and desktop browsers?
 
@@ -438,7 +441,7 @@ The primary audience is the business decision makers and technology decision mak
 
     The one-on-one session (and its corresponding session ID) are established dynamically. The guest to concierge pattern is a lot like it works with the telephone---a guest dials the concierge, a bank of phones ring at the concierge desk and one of them is answered by a concierge. In this case, the hotel guest uses the web app to send a message to a subscription that is listening for messages with a particular username (e.g., "concierge"). Each instance of the concierge app, which is a console client, is effectively a competing consumer against that subscription, and only one of the concierge apps will take the message and join a chat session with the user. This chat request message contains the Session ID that the concierge app should join to in order to speak "privately" with the guest, which the concierge app automatically does following the pattern previously described for the chat message flow. The key distinction is that the Session ID to which the chat client creates Service Bus Subscriptions in this case are dynamically created.
 
-#### Sentiment Analysis
+*Sentiment Analysis*
 
 1. What service would you recommend First Up Consultants capitalize on in order to scalably apply a sentiment score to each message as it enters the system?
 
@@ -448,7 +451,7 @@ The primary audience is the business decision makers and technology decision mak
 
     Azure Functions are used to pull chat messages from Event Hubs, invoke the Text Analytics API to apply sentiment scores to each message and to forward messages (now including a sentiment score) to Service Bus Topics from which chat participants receive their messages.
 
-#### Request Forwarding
+*Request Forwarding*
 
 1. What Azure service or API would you suggest First Up Consultants utilize for understanding how to route guest requests to housekeeping or room service?
 
@@ -462,7 +465,7 @@ The primary audience is the business decision makers and technology decision mak
 
     The Event Processor logic should be extended to support the processing of requests. As messages are scored for sentiment, they can also be sent to the LUIS web service endpoint. The JSON response that LUIS provides will indicate if the message matches one of the configured intents or no intent. If it matches an intent, then Event Processor logic could forward the message on to the Service Bus Topic appropriate for room service or housekeeping, from which they could then respond to the guest as appropriate. If it does not match an intent, the message would be forwarded on to the intended Topic with the expectation that hotel staff would respond to it.
 
-#### SMS messaging
+*SMS messaging*
 
 1. What Azure service would you recommend First Up Consultants use for sending email or SMS messages to guest services employees indicating the detection of an upset guest via sentiment analysis in the chat?
 
@@ -474,7 +477,7 @@ The primary audience is the business decision makers and technology decision mak
 
     _Another alternative would be to have the Event Processor logic could forward messages whose sentiment score is below the threshold on to the Service Bus Queue appropriate for hotel staff notifications. From there, the Logic App could be triggered to send an email or SMS message to hotel guest services using a Service Bus connector for Logic App._
 
-#### Q&A Bot
+*Q&A Bot*
 
 1. What Azure services would you recommend First Up Consultants use for creating a Q&A bot?
 
@@ -484,7 +487,7 @@ The primary audience is the business decision makers and technology decision mak
 
     An alternative to using the Bot Service is to use the QnA Maker's REST API endpoints to programatically send questions and receive answers. This would allow them to integrate it as a separate chat channel of their real-time chat solution.
 
-#### Message search
+*Message search*
 
 1. What Azure services would you use to durably store the messages and enable them for full text search? How would you extend your messaging pipeline so that all messages get archived after they have been tagged with sentiment?
 
@@ -494,7 +497,7 @@ The primary audience is the business decision makers and technology decision mak
 
     The messages matching the search are returned, with HTML and CSS formatting embedded so that the particular text that matches the search query is emphasized upon results display.
 
-#### Visualization and reporting
+*Visualization and reporting*
 
 1. What tool would you recommend First Up Consultants utilize for constructing their real-time sentiment dashboard?
 
@@ -521,7 +524,7 @@ The primary audience is the business decision makers and technology decision mak
 
     ![Line chart showing trending sentiment over time in a scale between 0 and 1.0](media/trending-sentiment.png 'Trending Sentiment chart in Power BI')
 
-### Checklist of preferred objection handling
+## Checklist of preferred objection handling
 
 1. It is not clear if we should be using the Bot Framework for our request forwarding or something else?
 
@@ -535,7 +538,7 @@ The primary audience is the business decision makers and technology decision mak
 
     Yes!
 
-### Customer quote (to be read back to the attendees at the end)
+## Customer quote (to be read back to the attendees at the end)
 
 "What's cooler than sentiment analytics on real-time chat? Azure, because it enables us to give hotel operators back the connection they lost as their hotel sizes increased."
 
