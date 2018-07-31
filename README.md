@@ -1,6 +1,6 @@
 # Abstract
 
-Adventure Works Travel specializes in building software solutions for the hospitality industry. Their latest product is an enterprise mobile/social chat product called Concierge+ (aka ConciergePlus). The mobile web app enables guests to easily stay in touch with the concierge and other guests, enabling greater personalization and improving their experience during their stay. Sentiment analysis is performed on top of chat messages as they occur, enabling hotel operators to keep tabs on guest sentiments in real-time.
+First Up Consultants specializes in building software solutions for the hospitality industry. Their latest product is an enterprise mobile/social chat product called Concierge+ (aka ConciergePlus). The mobile web app enables guests to easily stay in touch with the concierge and other guests, enabling greater personalization and improving their experience during their stay. Sentiment analysis is performed on top of chat messages as they occur, enabling hotel operators to keep tabs on guest sentiments in real-time.
 
 ## Workshop
 
@@ -9,16 +9,12 @@ Learn real-time analytics without IoT. Enable intelligent conversation in a mach
 By attending this workshop, you will be better able to implement a lambda architecture, and enable web-based real-time messaging thru Web Sockets, Event Hubs, and Services Bus. In addition, you will better understand how to:
 
 - Leverage Cognitive Services (LUIS & Text Analytics API)
-
 - Process Events with Azure functions
-
 - Index with Search
-
 - Archive with Cosmos DB
-
 - Visualize with Power BI Q&A
-
 - Use Bot Framework for questions and answers
+- Send notifications with Logic App
 
 ## Whiteboard Design Session
 
@@ -36,22 +32,15 @@ This hands-on lab is designed to provide exposure to many of Microsoft's transfo
 - Azure Event Hubs
 - Azure App Services
 - Azure Functions
+- Azure Logic App
 - Azure Service Bus
 - Azure Storage
 - Azure Stream Analytics
 - Microsoft Bot Framework
 - Power BI
 
-# Contributing
+## Azure solution
 
-This project welcomes contributions and suggestions. Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit https://cla.microsoft.com.
+## Related references
 
-When you submit a pull request, a CLA-bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.
-
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+[MCW](https://github.com/Microsoft/MCW)
