@@ -162,7 +162,9 @@ When participants are doing activities, you can **look ahead to refresh your mem
 
 ## Abstract and learning objectives
 
-In this whiteboard design session, you will work with a group to design a solution for building a real-time chat pipeline, incorporating machine learning and analytics to detect and visualize customer sentiment. You will also design a lambda architecture to handle both real-time chat processing and data archiving and search indexing for analyzing all data flowing through the system. Finally, you will determine whether a bot can be incorporated in the solution, and how it fits alongside the messaging capabilities.
+In this whiteboard design session, you will work with a group to design a solution for building a real-time chat pipeline, incorporating machine learning and analytics to detect and visualize customer sentiment. You will also design a lambda architecture to handle both real-time chat processing and data archiving as well as search indexing for analyzing all data flowing through the system. Finally, you will determine whether a bot can be incorporated in the solution, and how it fits alongside the messaging capabilities.
+
+At the end of this whiteboard design session, you will have a better understanding about how to design a real-time intelligent chat solution in Azure, which is scalable, enhanced by pre-built machine learning models, and the role bots can play as part of your overall solution.
 
 ## Step 1: Review the customer case study
 
