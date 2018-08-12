@@ -9,7 +9,7 @@ Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
-June 2018
+August 2018
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -199,9 +199,9 @@ In these steps, you will provision a Web App and an API App within a single App 
 
 1. Sign in to the Azure Portal (<https://portal.azure.com>)
 
-2. Select +Create a resource, then select Web + Mobile, and finally select Web App
+2. Select +Create a resource, then select Web and finally select Web App
 
-    ![Under the Azure Marketplace In the Azure portal, New pane, Web + Mobile is selected. Under Featured, Web App (Quickstart tutorial) is circled.](media/image21.png 'Azure Markeplace create a resource')
+    ![Under the Azure Marketplace In the Azure portal, New pane, Web is selected. Under Featured, Web App (Quickstart tutorial) is circled.](media/image21.png 'Azure Markeplace create a resource')
 
 3. On the Create Web App blade, enter the following:
 
@@ -239,7 +239,7 @@ In these steps, you will provision a Web App and an API App within a single App 
 
 8. Now, it's time to create an API App
 
-9. Select **+Create a resource, Web + Mobile, API App** (Sometimes API App does not appear on the list. If that happens, simply click + New and search for API App.)
+9. Select **+Create a resource, Web, API App** (Sometimes API App does not appear on the list. If that happens, simply click + New and search for API App.)
 
     ![The Api App selection is shown](media/image29.png 'API App')
 
@@ -295,7 +295,7 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
 1. Continuing in the [Azure portal](https://portal.azure.com), select **+Create a resource**
 
-2. Select **Enterprise Integration**, then select **Service Bus**
+2. Select **Integration**, then select **Service Bus**
 
     ![The Azure Portal New blade has Enterprise Integration, and Service Bus circled.](media/image31.png 'New blade')
 
@@ -470,7 +470,7 @@ In this section, you will provision an Azure Cosmos DB account, a DocumentDB Dat
 
 In this section, you will create an Azure Search instance.
 
-1. Select **+Create a resource, Web + Mobile**, the select **Azure Search**
+1. Select **+Create a resource, Web**, the select **Azure Search**
 
     ![In the Azure portal, New pane, Web + Mobile and Azure Search (Learn More) are circled.](media/image46.png 'Azure Search create a reource')
 
@@ -784,7 +784,7 @@ The EventProcessorHost requires an Azure Storage account that it will use to man
 
 To provision access to the Text Analytics API (which provides sentiment analysis features), you will need to provision a Cognitive Services account.
 
-1. In the [Azure portal](https://portal.azure.com), select +Create a resource, then AI + Cognitive Services, Text Analytics API
+1. In the [Azure portal](https://portal.azure.com), select +Create a resource, then AI + Machine Learning, Text Analytics
 
     ![The New Azure Resource menu is shown, after clicking AI + Congnitive Services and then Text Analytics API.](media/image67.png 'New Azure resource AI + Cognitive Services')
 
