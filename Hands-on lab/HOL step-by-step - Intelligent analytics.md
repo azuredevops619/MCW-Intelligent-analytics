@@ -353,6 +353,20 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
         ![On the Create queue dialog, awhotel-staff-notifications is entered into the Name field, Message time to live is set to 1 day, and Enable partitioning is unchecked.](media/logic-app-create-queue.png "Create queue")
 
 12. Select **Create**
+13. Navigate back to the **Service Bus namespace** in the Azure Portal
+
+    - Select **Shared access policies** within the left menu, under Settings
+    - In the Shared access policies, you are going to create a new policy that the ChatConsole can use to retrieve messages. Click +Add.
+
+    ![The Azure Portal is shown with the Shared Access polices blade of the Service Bus Namespace open. Add is being selected.](media/image85.png 'Azure Shared Access policies blade')
+
+    - For the New Policy Name, enter ChatConsole
+    - In the list of Claims, select Manage, Send, and Listen
+
+    ![In the New policy section, Policy name is set to ChatConsole, and three check boxes are selected: Manage, Send, and Listen.](media/image86.png 'New policy section')
+
+    - Select Create
+
 
 ### Task 6: Provision Event Hubs
 
@@ -989,33 +1003,13 @@ Your storage accounts can be found by going to the intelligent-analytics resourc
 
 #### Service Bus connection string
 
-The namespace, and therefore connection string, for the service bus is different from the one for the event hub. As we did for the event hub, we need to create a shared access policy to allow the `ChatMessageSentimentProcessorFunction` Manage, Send, and Listen permissions.
+The namespace, and therefore connection string, for the service bus is different from the one for the event hub. We need to retrieve the shared access policy to allow the `ChatMessageSentimentProcessorFunction` ChatConsole permissions that was created earlier.
 
-1. To get the **serviceBusConnectionString**, navigate to the **Service Bus namespace** in the Azure Portal
-
-2. Select **Shared access policies** within the left menu, under Settings
-
-    ![Under Settings, Shared access policies is circled.](media/image84.png 'Settings section')
-
-3. In the Shared access policies, you are going to create a new policy that the ChatConsole can use to retrieve messages. Click +Add.
-
-    ![The Azure Portal is shown with the Shared Access polices blade of the Service Bus Namespace open. Add is being selected.](media/image85.png 'Azure Shared Access policies blade')
-
-4. For the New Policy Name, enter ChatConsole
-
-5. In the list of Claims, select Manage, Send, and Listen
-
-    ![In the New policy section, Policy name is set to ChatConsole, and three check boxes are selected: Manage, Send, and Listen.](media/image86.png 'New policy section')
-
-6. Select Create
-
-    ![Screenshot of the Create button.](media/image87.png 'Create button')
-
-7. After the **ChatConsole** shared access policy is created, select it from the list of policies and copy the Primary Connection String value
+1. Select the **ChatConsole** from the list of policies and copy the Primary Connection String value
 
     ![In the SAS Policy: ChatConsole blade, the Primary Connection String value and its corresponding copy button are circled.](media/image88.png 'SAS Policy: ChatConsole blade')
 
-8. Return to the Function App's Application Settings and paste this as the value for **serviceBusConnectionString**
+2. Return to the Function App's Application Settings and paste this as the value for **serviceBusConnectionString**
 
 #### Chat topic
 
