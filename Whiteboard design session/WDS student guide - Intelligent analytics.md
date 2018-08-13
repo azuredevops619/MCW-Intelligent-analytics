@@ -106,7 +106,7 @@ Finally, to help them reflect on chats that occur in public chat rooms, they wou
 
 ### Infographic of common scenarios
 
-![Screenshot of a sample Internet of Things workflow, which is broken into On-Premises and Azure services.](/media/image2.png "Internet of Things workflow")
+![Screenshot of a sample Internet of Things workflow, which is broken into On-Premises and Azure services.](/Whiteboard%20design%20session/media/image2.png "Internet of Things workflow")
 
 ## Step 2: Design a proof of concept solution
 
