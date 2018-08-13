@@ -265,21 +265,25 @@ To provision access to the Text Analytics API (which provides sentiment analysis
 
 #### Tasks to complete
 
-1. Provision a Text Analytics API in the same Location and Resource Group as your other services. Take note of the value of KEY 1.
+1. Provision a Text Analytics in the same Location and Resource Group as your other services. Take note of the value of KEY 1.
 
-2. Provision a Bing Speech API in the same Location and Resource Group as your other services. Take note of the value of KEY 1.
+2. Provision a Bing Speech in the same Location and Resource Group as your other services. Take note of the value of KEY 1.
 
 3. Provision a API Type Language Understanding Intelligent Service (LUIS) in the same Location and Resource Group as your other services. Take note of the value of KEY 1.
 
 #### Exit criteria
 
-- You can view your Cognitive Services in the Portal, you should have one for Text Analytics API, another for Bing Speech API, and a third for LUIS
+- You can view your Cognitive Services in the Portal, you should have one for Text Analytics, another for Bing Speech, and a third for LUIS
+
+### Task 12: Provision Function App
+
+Provision a Function App that will be used as the EventProcessorHost for processing and enriching Event Hubs data.
 
 ## Exercise 2: Implement message forwarding
 
 Duration: 45 minutes
 
-In this section, you will implement the message forwarding from the ingest Event Hub instance to an Event Hub instance and a Service Bus Topic. You will also configure the web-based components, which consist of three parts: The Web App UI, a Web Job that runs the EventProcessorHost, and the API App that provides a wrapper around the Search API.
+In this section, you will implement the message forwarding from the ingest Event Hub instance to an Event Hub instance and a Service Bus Topic. You will also configure the web-based components, which consist of three parts: The Web App UI, an function App that runs the EventProcessorHost, and the API App that provides a wrapper around the Search API.
 
 ### Task 1: Implement the event processor
 
@@ -287,17 +291,17 @@ In this section, you will run the Stream Analytics Job that will be used to read
 
 #### Tasks to complete
 
-1. In Visual Studio on your Lab VM, open `SentimentEventProcessor.cs`, and navigate to the `IEventProcessor.ProcessEventsAsync` method
+1. In Visual Studio on your Lab VM, open `ProcessChatMesssage.cs`, and navigate to the `[FunctionName("ProcessChatMessage")]` method
 
 2. Complete the TODOs numbered 1 through 6.
 
 #### Exit criteria
 
-- There are no errors in the `IEventProcessor.ProcessEventsAsync` method in Visual Studio. Note that at this point the solution will not yet run.
+- There are no errors in the `[FunctionName("ProcessChatMessage")]` method in Visual Studio. Note that at this point the solution will not yet run.
 
-### Task 2: Configure the Chat Message Processor Web Job
+### Task 2: Configure Function App in the Azure Portal
 
-Within Visual Studio Solution Explorer, expand the ChatMessageSentimentProcessor project, and open App.Config. You will update the appSettings in this file.
+In the Azure Portal, on the Function App blade you created, you will update the appSettings of this Function.
 
 #### Tasks to complete
 
@@ -359,11 +363,11 @@ Duration: 15 minutes
 
 With the App Services projects properly configured, you are now ready to deploy them to their pre-created services in Azure.
 
-### Task 1: Publish the ChatMessageSentimentProcessor Web Job
+### Task 1: Publish the ChatMessageSentimentProcessorFunction Function App
 
 #### Tasks to complete
 
-1. Publish the ChatMessageSentimentProcessor Web Job with a run mode of Run Continuously to the Web App you had provisioned for it
+1. Publish the ChatMessageSentimentProcessorFunction Function App to the Function App you had provisioned for it
 
 #### Exit criteria
 
@@ -411,11 +415,11 @@ In this task, you will add code that enables the Event Processor to invoke the T
 
 1. Complete the TODOs numbered 7 through 11 in the GetSentimentScore method
 
-2. Complete TODO 12 in the ProcessEventsAsync method
+2. Complete TODO 12 in the ProcessChatMessage Function 
 
 #### Exit criteria
 
-- You should see no errors in either the GetSentimentScore or ProcessEventsAsync methods
+- You should see no errors in either the GetSentimentScore or ProcessChatMessage methods
 
 ### Task 2: Implement linguistic understanding
 
@@ -441,15 +445,15 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 9. Test the model with the query "order me a pizza" and verify you get the intent of OrderIn (with a score close to 1.0) and entity pizza with a type of "RoomService::FoodItem"
 
-1. Copy the App ID and Subscription Key from your LUIS app into the App.config of the ChatMessageSentimentProcessor project, to the luisAppID and luisKey settings respectively
+10. Copy the App ID and Subscription Key from your LUIS app into the App.config of the Function App in the Azure Portal, to the luisAppID and luisKey settings respectively
 
-11. Complete TODO 13 in SentimentEventProcessor.cs
+11. Complete TODO 13 in ProcessChatMessage.cs
 
-12. Update the \_luisBaseUrl in SentimentEventProcessor.cs to match that base URL from your LUIS app
+12. Update the \_luisBaseUrl in appsettings on the portal of the function App to match that base URL from your LUIS app
 
 #### Exit criteria
 
-- All TODO items in SentimentEventProcessor.cs should be completed
+- All TODO items in ProcesschatMessage.cs should be completed
 
 ### Task 3: Implement speech to text
 
@@ -471,7 +475,7 @@ Now that you have added sentiment analysis, language understanding, and speech r
 
 #### Tasks to complete
 
-1. Publish the ChatMessageSentimentProcessor
+1. Publish the ChatMessageSentimentProcessorFunction
 
 2. Publish ChatWebApp
 
