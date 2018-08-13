@@ -1502,8 +1502,6 @@ In this task, you will create a free Twilio account that will be used to send SM
 
 5. From your account dashboard, select the **All Products & Services icon**
 
-    ![The All Products & Services icon is highlighted on your account dashboard. ](./media/twilio-dashboard-all-products-and-services.png "Accounts Dashboard")
-
 6. Select **#Phone Numbers** under **Super Network**
 
     ![\#Phone Numbers is highlighted under Super Network.](./media/twilio-phone-numbers.png "Super Network section")
@@ -1750,7 +1748,7 @@ This gauge is currently a static visualization. You will use the report just cre
 
     ![On the Pin to dashboard dialog box, on the left, a Preview of the Gauge graph displays. On the right, under Where would you like to pin to, the Existing dashboard radio button is selected.](media/image157.png 'Pin to dashboard dialog box')
 
-10. In the list of dashboards, select your Real-time Sentiment dashboard. Your new gauge should appear next to your original gauge. If the original gauge fills the whole screen, you may need to scroll down to see the new gauge. You can delete the original gauge if you prefer. (Select the top of the visualization, then ellipses that appear, and the, the trash can icon.)
+10. In the list of dashboards, select your Real-time Sentiment dashboard. Your new gauge should appear next to your original gauge. If the original gauge fills the whole screen, you may need to scroll down to see the new gauge. You can delete the original gauge if you prefer. (Select the top of the visualization, then ellipses that appear, and then, the trash can icon.)
 
     ![Two Average of score Gauge graphs display, and both are the same.](media/image158.png 'Gauge graphs')
 
@@ -2110,7 +2108,7 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
     ![Provide values for QnAAuthKey, QnAEndpointHostName, and QnAKnowledgebaseId](media/function-bot-app-settings.png "Application Settings")
 
-9. Test out the bot by selecting **Test in Web Chat** on the left-hand menu (it make take a couple minutes to appear the first time). Type in a few questions to make sure it responds as expected.
+9. Test out the bot by selecting **Test in Web Chat** on the left-hand menu (it may take a couple minutes to appear the first time). Type in a few questions to make sure it responds as expected.
 
     ![Type in a few questions to test the bot](media/function-bot-test.png "Function Bot Test")
 
