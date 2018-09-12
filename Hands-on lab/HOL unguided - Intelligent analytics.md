@@ -415,7 +415,7 @@ In this task, you will add code that enables the Event Processor to invoke the T
 
 1. Complete the TODOs numbered 7 through 11 in the GetSentimentScore method.
 
-2. Complete TODO 12 in the ProcessChatMessage Function .
+2. Complete TODO 12 in the ProcessChatMessage Function.
 
 #### Exit criteria
 
