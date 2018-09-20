@@ -26,14 +26,8 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
 - [Intelligent analytics before the hands-on lab setup guide](#intelligent-analytics-before-the-hands-on-lab-setup-guide)
     - [Requirements](#requirements)
     - [Before the hands-on lab](#before-the-hands-on-lab)
-<<<<<<< HEAD
         - [Task 1: Provision Power BI](#task-1-provision-power-BI)
         - [Task 2: Setup a lab virtual machine (VM)](#task-2-setup-a-lab-virtual-machine)
-=======
-        - [Task 1: Provision Power BI](#task-1-provision-power-bi)
-        - [Task 2: Setup a lab virtual machine (VM)](#task-2-setup-a-lab-virtual-machine-(vm))
->>>>>>> d53039f3b60b7bd66fac5205ca99bea47758f87f
-
 <!-- /TOC -->
 
 # Intelligent analytics before the hands-on lab setup guide
