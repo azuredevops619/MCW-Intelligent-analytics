@@ -27,7 +27,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
     - [Requirements](#requirements)
     - [Before the hands-on lab](#before-the-hands-on-lab)
         - [Task 1: Provision Power BI](#task-1-provision-power-BI)
-        - [Task 2: Setup a lab virtual machine (VM)](#task-2-setup-a-lab-virtual-machine-(VM))
+        - [Task 2: Setup a lab virtual machine (VM)](#task-2-setup-a-lab-virtual-machine)
 
 <!-- /TOC -->
 
@@ -63,7 +63,7 @@ If you do not already have a Power BI account:
 
 4. Follow the on-screen prompts, and your Power BI environment should be ready within minutes. You can always return to it via <https://app.powerbi.com/>.
 
-### Task 2: Setup a lab virtual machine (VM)
+### Task 2: Setup a lab virtual machine 
 
 1. In the [Azure Portal](https://portal.azure.com/), select +Create a resource, then type "Visual Studio" into the search bar. Select Visual Studio Community 2017 on Windows Server 2016 (x64) from the results. 
 
