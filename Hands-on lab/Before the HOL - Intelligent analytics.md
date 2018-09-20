@@ -23,7 +23,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
 
 <!-- TOC -->
 
-- [Intelligent analytics before the hands-on lab setup guide](#Intelligent-analytics-before-the-hands-on-lab-setup-guide)
+- [Intelligent analytics before the hands-on lab setup guide](#intelligent-analytics-before-the-hands-on-lab-setup-guide)
     - [Requirements](#requirements)
     - [Before the hands-on lab](#before-the-hands-on-lab)
         - [Task 1: Provision Power BI](#task-1-provision-power-bi)
