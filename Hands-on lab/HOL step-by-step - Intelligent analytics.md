@@ -9,7 +9,7 @@ Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
-June 2018
+August 2018
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -199,9 +199,9 @@ In these steps, you will provision a Web App and an API App within a single App 
 
 1. Sign in to the Azure Portal (<https://portal.azure.com>)
 
-2. Select +Create a resource, then select Web + Mobile, and finally select Web App
+2. Select +Create a resource, then select Web and finally select Web App
 
-    ![Under the Azure Marketplace In the Azure portal, New pane, Web + Mobile is selected. Under Featured, Web App (Quickstart tutorial) is circled.](media/image21.png 'Azure Markeplace create a resource')
+    ![Under the Azure Marketplace In the Azure portal, New pane, Web is selected. Under Featured, Web App (Quickstart tutorial) is circled.](media/image21.png 'Azure Markeplace create a resource')
 
 3. On the Create Web App blade, enter the following:
 
@@ -239,7 +239,7 @@ In these steps, you will provision a Web App and an API App within a single App 
 
 8. Now, it's time to create an API App
 
-9. Select **+Create a resource, Web + Mobile, API App** (Sometimes API App does not appear on the list. If that happens, simply click + New and search for API App.)
+9. Select **+Create a resource, Web, API App** (Sometimes API App does not appear on the list. If that happens, simply click + New and search for API App.)
 
     ![The Api App selection is shown](media/image29.png 'API App')
 
@@ -295,7 +295,7 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
 1. Continuing in the [Azure portal](https://portal.azure.com), select **+Create a resource**
 
-2. Select **Enterprise Integration**, then select **Service Bus**
+2. Select **Integration**, then select **Service Bus**
 
     ![The Azure Portal New blade has Enterprise Integration, and Service Bus circled.](media/image31.png 'New blade')
 
@@ -353,6 +353,20 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
         ![On the Create queue dialog, awhotel-staff-notifications is entered into the Name field, Message time to live is set to 1 day, and Enable partitioning is unchecked.](media/logic-app-create-queue.png "Create queue")
 
 12. Select **Create**
+13. Navigate back to the **Service Bus namespace** in the Azure Portal
+
+    - Select **Shared access policies** within the left menu, under Settings
+    - In the Shared access policies, you are going to create a new policy that the ChatConsole can use to retrieve messages. Click +Add.
+
+    ![The Azure Portal is shown with the Shared Access polices blade of the Service Bus Namespace open. Add is being selected.](media/image85.png 'Azure Shared Access policies blade')
+
+    - For the New Policy Name, enter ChatConsole
+    - In the list of Claims, select Manage, Send, and Listen
+
+    ![In the New policy section, Policy name is set to ChatConsole, and three check boxes are selected: Manage, Send, and Listen.](media/image86.png 'New policy section')
+
+    - Select Create
+
 
 ### Task 6: Provision Event Hubs
 
@@ -470,7 +484,7 @@ In this section, you will provision an Azure Cosmos DB account, a DocumentDB Dat
 
 In this section, you will create an Azure Search instance.
 
-1. Select **+Create a resource, Web + Mobile**, the select **Azure Search**
+1. Select **+Create a resource, Web**, the select **Azure Search**
 
     ![In the Azure portal, New pane, Web + Mobile and Azure Search (Learn More) are circled.](media/image46.png 'Azure Search create a reource')
 
@@ -784,7 +798,7 @@ The EventProcessorHost requires an Azure Storage account that it will use to man
 
 To provision access to the Text Analytics API (which provides sentiment analysis features), you will need to provision a Cognitive Services account.
 
-1. In the [Azure portal](https://portal.azure.com), select +Create a resource, then AI + Cognitive Services, Text Analytics API
+1. In the [Azure portal](https://portal.azure.com), select +Create a resource, then AI + Machine Learning, Text Analytics
 
     ![The New Azure Resource menu is shown, after clicking AI + Congnitive Services and then Text Analytics API.](media/image67.png 'New Azure resource AI + Cognitive Services')
 
@@ -989,33 +1003,13 @@ Your storage accounts can be found by going to the intelligent-analytics resourc
 
 #### Service Bus connection string
 
-The namespace, and therefore connection string, for the service bus is different from the one for the event hub. As we did for the event hub, we need to create a shared access policy to allow the `ChatMessageSentimentProcessorFunction` Manage, Send, and Listen permissions.
+The namespace, and therefore connection string, for the service bus is different from the one for the event hub. We need to retrieve the shared access policy to allow the `ChatMessageSentimentProcessorFunction` ChatConsole permissions that was created earlier.
 
-1. To get the **serviceBusConnectionString**, navigate to the **Service Bus namespace** in the Azure Portal
-
-2. Select **Shared access policies** within the left menu, under Settings
-
-    ![Under Settings, Shared access policies is circled.](media/image84.png 'Settings section')
-
-3. In the Shared access policies, you are going to create a new policy that the ChatConsole can use to retrieve messages. Click +Add.
-
-    ![The Azure Portal is shown with the Shared Access polices blade of the Service Bus Namespace open. Add is being selected.](media/image85.png 'Azure Shared Access policies blade')
-
-4. For the New Policy Name, enter ChatConsole
-
-5. In the list of Claims, select Manage, Send, and Listen
-
-    ![In the New policy section, Policy name is set to ChatConsole, and three check boxes are selected: Manage, Send, and Listen.](media/image86.png 'New policy section')
-
-6. Select Create
-
-    ![Screenshot of the Create button.](media/image87.png 'Create button')
-
-7. After the **ChatConsole** shared access policy is created, select it from the list of policies and copy the Primary Connection String value
+1. Select the **ChatConsole** from the list of policies and copy the Primary Connection String value
 
     ![In the SAS Policy: ChatConsole blade, the Primary Connection String value and its corresponding copy button are circled.](media/image88.png 'SAS Policy: ChatConsole blade')
 
-8. Return to the Function App's Application Settings and paste this as the value for **serviceBusConnectionString**
+2. Return to the Function App's Application Settings and paste this as the value for **serviceBusConnectionString**
 
 #### Chat topic
 
@@ -1502,8 +1496,6 @@ In this task, you will create a free Twilio account that will be used to send SM
 
 5. From your account dashboard, select the **All Products & Services icon**
 
-    ![The All Products & Services icon is highlighted on your account dashboard. ](./media/twilio-dashboard-all-products-and-services.png "Accounts Dashboard")
-
 6. Select **#Phone Numbers** under **Super Network**
 
     ![\#Phone Numbers is highlighted under Super Network.](./media/twilio-phone-numbers.png "Super Network section")
@@ -1750,7 +1742,7 @@ This gauge is currently a static visualization. You will use the report just cre
 
     ![On the Pin to dashboard dialog box, on the left, a Preview of the Gauge graph displays. On the right, under Where would you like to pin to, the Existing dashboard radio button is selected.](media/image157.png 'Pin to dashboard dialog box')
 
-10. In the list of dashboards, select your Real-time Sentiment dashboard. Your new gauge should appear next to your original gauge. If the original gauge fills the whole screen, you may need to scroll down to see the new gauge. You can delete the original gauge if you prefer. (Select the top of the visualization, then ellipses that appear, and the, the trash can icon.)
+10. In the list of dashboards, select your Real-time Sentiment dashboard. Your new gauge should appear next to your original gauge. If the original gauge fills the whole screen, you may need to scroll down to see the new gauge. You can delete the original gauge if you prefer. (Select the top of the visualization, then ellipses that appear, and then, the trash can icon.)
 
     ![Two Average of score Gauge graphs display, and both are the same.](media/image158.png 'Gauge graphs')
 
@@ -2110,7 +2102,7 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
     ![Provide values for QnAAuthKey, QnAEndpointHostName, and QnAKnowledgebaseId](media/function-bot-app-settings.png "Application Settings")
 
-9. Test out the bot by selecting **Test in Web Chat** on the left-hand menu (it make take a couple minutes to appear the first time). Type in a few questions to make sure it responds as expected.
+9. Test out the bot by selecting **Test in Web Chat** on the left-hand menu (it may take a couple minutes to appear the first time). Type in a few questions to make sure it responds as expected.
 
     ![Type in a few questions to test the bot](media/function-bot-test.png "Function Bot Test")
 

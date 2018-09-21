@@ -9,7 +9,7 @@ Whiteboard design session trainer guide
 </div>
 
 <div class="MCWHeader3">
-June 2018
+August 2018
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -22,7 +22,7 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
-## Contents
+**Contents**
 
 - [Trainer Information](#trainer-information)
   - [Role of the trainer](#role-of-the-trainer)
@@ -49,44 +49,46 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
   - [Preferred solution](#preferred-solution)
   - [Checklist of preferred objection handling](#checklist-of-preferred-objection-handling)
   - [Customer quote (to be read back to the attendees at the end)](#customer-quote-to-be-read-back-to-the-attendees-at-the-end)
+  
+  <!-- /TOC -->
 
-# Intelligent analytics whiteboard design session trainer guide
-
-## Trainer information
+# Trainer information
 
 Thank you for taking time to support the whiteboard design sessions as a trainer!
 
-### Role of the trainer
+## Role of the trainer
 
 An amazing trainer:
 
-- Creates a safe environment in which learning can take place
+-   Creates a safe environment in which learning can take place.
 
-- Stimulates the participant's thinking
+-   Stimulates the participant's thinking.
 
-- Involves the participant in the learning process
+-   Involves the participant in the learning process.
 
-- Manages the learning process (on time, on topic, and adjusting to benefit participants)
+-   Manages the learning process (on time, on topic, and adjusting to benefit participants).
 
-- Ensures individual participant accountability
+-   Ensures individual participant accountability.
 
-- Ties it all together for the participant
+-   Ties it all together for the participant.
 
-- Provides insight and experience to the learning process
+-   Provides insight and experience to the learning process.
 
-- Effectively leads the whiteboard design session discussion
+-   Effectively leads the whiteboard design session discussion.
 
-- Monitors quality and appropriateness of participant deliverables
+-   Monitors quality and appropriateness of participant deliverables.
 
-- Effectively leads the feedback process
+-   Effectively leads the feedback process.
 
-## Whiteboard design session flow
+## Whiteboard design session flow 
 
 Each whiteboard design session uses the following flow:
 
 **Step 1: Review the customer case study (15 minutes)**
 
-Outcome: Analyze your customer's needs.
+**Outcome**
+
+Analyze your customer's needs.
 
 -   Customer's background, situation, needs and technical requirements
 
@@ -96,19 +98,23 @@ Outcome: Analyze your customer's needs.
 
 **Step 2: Design a proof of concept solution (60 minutes)**
 
-Outcome: Design a solution and prepare to present the solution to the target customer audience in a 15-minute chalk-talk format.
+**Outcome**
 
--   Determine your target customer audience
+Design a solution and prepare to present the solution to the target customer audience in a 15-minute chalk-talk format.
 
--   Determine customer's business needs to address your solution
+-   Determine your target customer audience.
 
--   Design and diagram your solution
+-   Determine customer's business needs to address your solution.
 
--   Prepare to present your solution
+-   Design and diagram your solution.
+
+-   Prepare to present your solution.
 
 **Step 3: Present the solution (30 minutes)**
 
-Outcome: Present solution to your customer.
+**Outcome**
+
+Present solution to your customer:
 
 -   Present solution
 
@@ -124,15 +130,15 @@ Outcome: Present solution to your customer.
 
 Before conducting your first whiteboard design session:
 
--   Read the Student guide (including the case study) and Trainer guide
+-   Read the Student guide (including the case study) and Trainer guide.
 
--   Become familiar with all key points and activities
+-   Become familiar with all key points and activities.
 
--   Plan the point you want to stress, which questions you want to drive, transitions, and be ready to answer questions
+-   Plan the point you want to stress, which questions you want to drive, transitions, and be ready to answer questions.
 
--   Prior to the whiteboard design session, discuss the case study to pick up more ideas
+-   Prior to the whiteboard design session, discuss the case study to pick up more ideas.
 
--   Make notes for later
+-   Make notes for later.
 
 ## During the whiteboard design session: Tips for an effective whiteboard design session
 
@@ -176,9 +182,9 @@ Timeframe: 15 minutes
 
 Directions: With all participants in the session, the facilitator/SME presents an overview of the customer case study along with technical tips.
 
-1. Meet your table participants and trainer
-2. Read all of the directions for steps 1–3 in the student guide
-3. As a table team, review the following customer case study
+1. Meet your table participants and trainer.
+2. Read all of the directions for steps 1–3 in the student guide.
+3. As a table team, review the following customer case study.
 
 ### Customer situation
 
@@ -186,11 +192,11 @@ First Up Consultants specializes in building software solutions for the hospital
 
 The original requirements for the product were to support:
 
-- One-on-one chat sessions between a hotel guest and a hotel concierge
-- A public chat room for hotel guests and hotel staff, called the Hotel Lobby
-- A bot that can automatically answer guest questions about the hotel
-- Full-text message search, including via #hashtags and @usernames
-- Send email or SMS messages to hotel manager or customer service if guest sentiment indicates they are upset, so hotel staff can respond quickly
+- One-on-one chat sessions between a hotel guest and a hotel concierge.
+- A public chat room for hotel guests and hotel staff, called the Hotel Lobby.
+- A bot that can automatically answer guest questions about the hotel.
+- Full-text message search, including via #hashtags and @usernames.
+- Send email or SMS messages to hotel manager or customer service if guest sentiment indicates they are upset, so hotel staff can respond quickly.
 
 First Up Consultants wants to build a solution that is both scalable and extensible. According to Marc Tripp, the CTO of First Up Consultants: "We want it scalable in the sense that it could support the chat requirements of the largest hotels in the world, currently with as many as 7,200 rooms. While we don't anticipate having any single chat room with a thousand guests or 2,000 concurrent one-on-one chats between a guest and the concierge staff, we want a solution that could handle that if it needed to."
 
@@ -206,29 +212,29 @@ Finally, to help them reflect on chats that occur in public chat rooms, they wou
 
 ### Customer needs
 
-1. First Up Consultants would like their Concierge+ service to avoid using any servers or VMs that they would have to maintain
+1. First Up Consultants would like their Concierge+ service to avoid using any servers or VMs that they would have to maintain.
 
-2. Their real-time chat solution needs to be scalable to support their largest hotel customers
+2. Their real-time chat solution needs to be scalable to support their largest hotel customers.
 
-3. Automatically respond to guest questions with a bot
+3. Automatically respond to guest questions with a bot.
 
-4. The chat solution needs to be extensible and provide support for sentiment analysis and contextual understanding
+4. The chat solution needs to be extensible and provide support for sentiment analysis and contextual understanding.
 
-5. The public chat history needs to be fully searchable
+5. The public chat history needs to be fully searchable.
 
-6. The dashboard they use to visualize sentiment needs to update in real time, as well as display trending sentiment over time
+6. The dashboard they use to visualize sentiment needs to update in real time, as well as display trending sentiment over time.
 
 ### Customer objections
 
 1. It is not clear if we should be using the Bot Framework for our request forwarding or something else?
 
-2. We do not want to build our own machine learning models in order to detect the sentiment of chat in real time
+2. We do not want to build our own machine learning models in order to detect the sentiment of chat in real time.
 
 3. Can we really build a real-time, intelligent chat solution entirely in Azure?
 
 ### Infographic of common scenarios
 
-![Screenshot of a sample Internet of Things workflow, which is broken into On-Premises and Azure services.](media/image2.png 'Internet of Things workflow')
+![Screenshot of a sample Internet of Things workflow, which is broken into on-premises and Azure services.](media/image2.png 'Internet of Things workflow')
 
 ### Step 2: Design a proof of concept solution
 
@@ -240,14 +246,14 @@ Timeframe: 60 minutes
 
 **Business needs**
 
-Directions: With all participants at your table, answer the following questions and list the answers on a flip chart.
+Directions: With all participants at your table, answer the following questions and list the answers on a flip chart:
 
 1. Who should you present this solution to? Who is your target customer audience? Who are the decision makers?
 2. What customer business needs do you need to address with your solution?
 
 **Design**
 
-Directions: With all participants at your table, respond to the following questions on a flip chart.
+Directions: With all participants at your table, respond to the following questions on a flip chart:
 
 *High-level architecture*
 
@@ -282,6 +288,7 @@ Directions: With all participants at your table, respond to the following questi
 *SMS messaging*
 
 1. What Azure service would you recommend First Up Consultants use for sending email or SMS messages to guest services employees indicating the detection of an upset guest via sentiment analysis in the chat?
+
 2. How could you integrate this service into your chat message processing flow?
 
 *Q&A Bot*
@@ -304,10 +311,10 @@ Directions: With all participants at your table, respond to the following questi
 
 Directions: With all participants at your table:
 
-1. Identify any customer needs that are not addressed with the proposed solution
-2. Identify the benefits of your solution
-3. Determine how you will respond to the customer’s objections
-4. Prepare a 15-minute chalk-talk style presentation to the customer
+1. Identify any customer needs that are not addressed with the proposed solution.
+2. Identify the benefits of your solution.
+3. Determine how you will respond to the customer’s objections.
+4. Prepare a 15-minute chalk-talk style presentation to the customer.
 
 ### Step 3: Present the solution
 
@@ -321,13 +328,13 @@ Timeframe: 30 minutes
 
 Directions:
 
-1. Pair with another table
-2. One table is the Microsoft team and the other table is the customer
-3. The Microsoft team presents their proposed solution to the customer
-4. The customer makes one of the objections from the list of objections
-5. The Microsoft team responds to the objection
-6. The customer team gives feedback to the Microsoft team
-7. Tables switch roles and repeat Steps 2–6
+1. Pair with another table.
+2. One table is the Microsoft team and the other table is the customer.
+3. The Microsoft team presents their proposed solution to the customer.
+4. The customer makes one of the objections from the list of objections.
+5. The Microsoft team responds to the objection.
+6. The customer team gives feedback to the Microsoft team.
+7. Tables switch roles and repeat Steps 2–6.
 
 ## Wrap-up
 
@@ -350,49 +357,49 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 | Azure Bot Service | <https://docs.microsoft.com/azure/bot-service/bot-service-scenario-enterprise-productivity?view=azure-bot-service-3.0> |
 | Azure Functions | <https://docs.microsoft.com/azure/azure-functions/functions-overview> |
 | Logic Apps | <https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-overview> |
-|
+
 
 # Intelligent analytics whiteboard design session trainer guide
 
 ## Step 1: Review the customer case study
 
-- Check in with your table participants to introduce yourself as the trainer
+-   Check in with your table participants to introduce yourself as the trainer.
 
-- Ask, "What questions do you have about the customer case study?"
+-   Ask, "What questions do you have about the customer case study?"
 
-- Briefly review the steps and timeframes of the whiteboard design session
+-   Briefly review the steps and timeframes of the whiteboard design session.
 
-- Ready, set, go! Let the table participants begin.
+-   Ready, set, go! Let the table participants begin.
 
 ## Step 2: Design a proof of concept solution
 
-- Check in with your tables to ensure that they are transitioning from step to step on time
+-   Check in with your tables to ensure that they are transitioning from step to step on time.
 
-- Provide some feedback on their responses to the business needs and design
+-   Provide some feedback on their responses to the business needs and design.
 
-  - Try asking questions first that will lead the participants to discover the answers on their own
+    -   Try asking questions first that will lead the participants to discover the answers on their own.
 
-- Provide feedback for their responses to the customer's objections
+-   Provide feedback for their responses to the customer's objections.
 
-  - Try asking questions first that will lead the participants to discover the answers on their own
+    -   Try asking questions first that will lead the participants to discover the answers on their own.
 
 ## Step 3: Present the solution
 
--   Determine which table will be paired with your table before Step 3 begins
+-   Determine which table will be paired with your table before Step 3 begins.
 
--   For the first round, assign one table as the presenting team and the other table as the customer
+-   For the first round, assign one table as the presenting team and the other table as the customer.
 
--   Have the presenting team present their solution to the customer team
+-   Have the presenting team present their solution to the customer team.
 
-    -   Have the customer team provide one objection for the presenting team to respond to
+    -   Have the customer team provide one objection for the presenting team to respond to.
 
-    -   The presentation, objections, and feedback should take no longer than 15 minutes
+    -   The presentation, objections, and feedback should take no longer than 15 minutes.
 
-    -   If needed, the trainer may also provide feedback
+    -   If needed, the trainer may also provide feedback.
 
 ## Wrap-up
 
-- Have the table participants reconvene with the larger session group to hear the facilitator/SME share the following preferred solution
+-   Have the table participants reconvene with the larger session group to hear the facilitator/SME share the following preferred solution.
 
 ## Preferred target audience
 
@@ -494,7 +501,7 @@ The primary audience is the business decision makers and technology decision mak
 
 1. What Azure services would you use to durably store the messages and enable them for full text search? How would you extend your messaging pipeline so that all messages get archived after they have been tagged with sentiment?
 
-    In order to support the requirements of searchable messaging and long-term extensibility, all chat messages flow thru Event Hubs (which gives the solution the ability to "plug in" new forms of downstream message processing) and are stored in CosmosDB. To support the searching of messages, an Azure Search Index is created that is updated every five minutes by an Azure Search Indexer that pulls new message entries from CosmosDB. Once a message is indexed within Azure Search, it properties (such as the username of the user who sent) and its message body become full-text searchable. To perform a search, the browser which loads the search web page on the device makes a cross-origin, XmlHttpRequest to an API App that wraps requests to the Azure Search API, as illustrated by the following diagram:
+    In order to support the requirements of searchable messaging and long-term extensibility, all chat messages flow through Event Hubs (which gives the solution the ability to "plug in" new forms of downstream message processing) and are stored in CosmosDB. To support the searching of messages, an Azure Search Index is created that is updated every five minutes by an Azure Search Indexer that pulls new message entries from CosmosDB. Once a message is indexed within Azure Search, it properties (such as the username of the user who sent) and its message body become full-text searchable. To perform a search, the browser which loads the search web page on the device makes a cross-origin, XmlHttpRequest to an API App that wraps requests to the Azure Search API, as illustrated by the following diagram:
 
     ![This is the Preferred solution for Message Fowarding, sending chat messages through Event Hubs. Search implemented through Azure Search. As described in the previous text. Devices (performing searches) on the left feed into API App (Search API) via #Seattle. API App (via #Seattle) then flows into an Azure cloud labeled Search (match text) which then flows back to API App with a collection of message documents with hit highlighting.](media/image5.png 'Azure Services flowchart')
 

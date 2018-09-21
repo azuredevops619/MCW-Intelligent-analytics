@@ -9,7 +9,7 @@ Whiteboard design session student guide
 </div>
 
 <div class="MCWHeader3">
-June 2018
+August 2018
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -50,13 +50,13 @@ At the end of this whiteboard design session, you will have a better understandi
 
 Analyze your customer’s needs.
 
-Time frame: 15 minutes
+Timeframe: 15 minutes
 
 Directions: With all participants in the session, the facilitator/SME presents an overview of the customer case study along with technical tips.
 
-1. Meet your table participants and trainer
-2. Read all of the directions for steps 1–3 in the student guide
-3. As a table team, review the following customer case study
+1. Meet your table participants and trainer.
+2. Read all of the directions for steps 1–3 in the student guide.
+3. As a table team, review the following customer case study.
 
 ### Customer situation
 
@@ -64,11 +64,11 @@ First Up Consultants specializes in building software solutions for the hospital
 
 The original requirements for the product were to support:
 
-- One-on-one chat sessions between a hotel guest and a hotel concierge
-- A public chat room for hotel guests and hotel staff, called the Hotel Lobby
-- A bot that can automatically answer guest questions about the hotel
-- Full-text message search, including via #hashtags and @usernames
-- Send email or SMS messages to hotel manager or customer service if guest sentiment indicates they are upset, so hotel staff can respond quickly
+- One-on-one chat sessions between a hotel guest and a hotel concierge.
+- A public chat room for hotel guests and hotel staff, called the Hotel Lobby.
+- A bot that can automatically answer guest questions about the hotel.
+- Full-text message search, including via #hashtags and @usernames.
+- Send email or SMS messages to hotel manager or customer service if guest sentiment indicates they are upset, so hotel staff can respond quickly.
 
 First Up Consultants wants to build a solution that is both scalable and extensible. According to Marc Tripp, the CTO of First Up Consultants: "We want it scalable in the sense that it could support the chat requirements of the largest hotels in the world, currently with as many as 7,200 rooms. While we don't anticipate having any single chat room with a thousand guests or 2,000 concurrent one-on-one chats between a guest and the concierge staff, we want a solution that could handle that if it needed to."
 
@@ -84,29 +84,29 @@ Finally, to help them reflect on chats that occur in public chat rooms, they wou
 
 ### Customer needs
 
-1. First Up Consultants would like their Concierge+ service to avoid using any servers or VMs that they would have to maintain
+1. First Up Consultants would like their Concierge+ service to avoid using any servers or VMs that they would have to maintain.
 
-2. Their real-time chat solution needs to be scalable to support their largest hotel customers
+2. Their real-time chat solution needs to be scalable to support their largest hotel customers.
 
-3. Automatically respond to guest questions with a bot
+3. Automatically respond to guest questions with a bot.
 
-4. The chat solution needs to be extensible and provide support for sentiment analysis and contextual understanding
+4. The chat solution needs to be extensible and provide support for sentiment analysis and contextual understanding.
 
-5. The public chat history needs to be fully searchable
+5. The public chat history needs to be fully searchable.
 
-6. The dashboard they use to visualize sentiment needs to update in real time, as well as display trending sentiment over time
+6. The dashboard they use to visualize sentiment needs to update in real time, as well as display trending sentiment over time.
 
 ### Customer objections
 
 1. It is not clear if we should be using the Bot Framework for our request forwarding or something else?
 
-2. We do not want to build our own machine learning models in order to detect the sentiment of chat in real time
+2. We do not want to build our own machine learning models in order to detect the sentiment of chat in real time.
 
 3. Can we really build a real-time, intelligent chat solution entirely in Azure?
 
 ### Infographic of common scenarios
 
-![Screenshot of a sample Internet of Things workflow, which is broken into On-Premises and Azure services.](images/Whiteboarddesignsessiontrainerguide-Intelligentanalyticsimages/media/image2.png "Internet of Things workflow")
+![Screenshot of a sample Internet of Things workflow, which is broken into on-premises and Azure services.](/Whiteboard%20design%20session/media/image2.png "Internet of Things workflow")
 
 ## Step 2: Design a proof of concept solution
 
@@ -114,22 +114,22 @@ Finally, to help them reflect on chats that occur in public chat rooms, they wou
 
 Design a solution and prepare to present the solution to the target customer audience in a 15-minute chalk-talk format.
 
-Time frame: 60 minutes
+Timeframe: 60 minutes
 
 **Business needs**
 
-Directions: With all participants at your table, answer the following questions and list the answers on a flip chart.
+Directions: With all participants at your table, answer the following questions and list the answers on a flip chart:
 
 1. Who should you present this solution to? Who is your target customer audience? Who are the decision makers?
 2. What customer business needs do you need to address with your solution?
 
 **Design**
 
-Directions: With all participants at your table, respond to the following questions on a flip chart.
+Directions: With all participants at your table, respond to the following questions on a flip chartP
 
 *High-level architecture*
 
-1. Without getting into the details (the following sections will address the particular details), diagram your initial vision for handling the top-level requirements for supporting the baseline chat, sentiment analysis, and request forwarding
+1. Without getting into the details (the following sections will address the particular details), diagram your initial vision for handling the top-level requirements for supporting the baseline chat, sentiment analysis, and request forwarding.
 
 *Baseline chat*
 
@@ -160,6 +160,7 @@ Directions: With all participants at your table, respond to the following questi
 *SMS messaging*
 
 1. What Azure service would you recommend First Up Consultants use for sending email or SMS messages to guest services employees indicating the detection of an upset guest via sentiment analysis in the chat?
+
 2. How could you integrate this service into your chat message processing flow?
 
 *Q&A Bot*
@@ -182,10 +183,10 @@ Directions: With all participants at your table, respond to the following questi
 
 Directions: With all participants at your table:
 
-1. Identify any customer needs that are not addressed with the proposed solution
-2. Identify the benefits of your solution
-3. Determine how you will respond to the customer’s objections
-4. Prepare a 15-minute chalk-talk style presentation to the customer
+1. Identify any customer needs that are not addressed with the proposed solution.
+2. Identify the benefits of your solution.
+3. Determine how you will respond to the customer’s objections.
+4. Prepare a 15-minute chalk-talk style presentation to the customer.
 
 ## Step 3: Present the solution
 
@@ -193,25 +194,25 @@ Directions: With all participants at your table:
 
 Present a solution to the target customer audience in a 15-minute chalk-talk format.
 
-Time frame: 30 minutes
+Timeframe: 30 minutes
 
 **Presentation** 
 
 Directions:
 
-1. Pair with another table
-2. One table is the Microsoft team and the other table is the customer
-3. The Microsoft team presents their proposed solution to the customer
-4. The customer makes one of the objections from the list of objections
-5. The Microsoft team responds to the objection
-6. The customer team gives feedback to the Microsoft team
-7. Tables switch roles and repeat Steps 2–6
+1. Pair with another table.
+2. One table is the Microsoft team and the other table is the customer.
+3. The Microsoft team presents their proposed solution to the customer.
+4. The customer makes one of the objections from the list of objections.
+5. The Microsoft team responds to the objection.
+6. The customer team gives feedback to the Microsoft team.
+7. Tables switch roles and repeat Steps 2–6.
 
 ## Wrap-up
 
 Timeframe: 15 minutes
 
-Directions: Tables reconvene with the larger group to hear a SME share the preferred solution for the case study
+Directions: Tables reconvene with the larger group to hear the facilitator/SME share the preferred solution for the case study.
 
 ## Additional references
 
@@ -228,4 +229,3 @@ Directions: Tables reconvene with the larger group to hear a SME share the prefe
 | Azure Bot Service | <https://docs.microsoft.com/azure/bot-service/bot-service-scenario-enterprise-productivity?view=azure-bot-service-3.0> |
 | Azure Functions | <https://docs.microsoft.com/azure/azure-functions/functions-overview> |
 | Logic Apps | <https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-overview> |
-|
