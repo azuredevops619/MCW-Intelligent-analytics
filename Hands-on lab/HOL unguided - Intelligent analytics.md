@@ -22,9 +22,9 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
-## Contents
+**Contents**
 
-- [Intelligent analytics](#intelligent-analytics-hands-on-lab-unguided)
+- [Intelligent analytics hands-on lab unguided](#intelligent-analytics-hands-on-lab-unguided)
   - [Abstract and learning objectives](#abstract-and-learning-objectives)
   - [Overview](#overview)
   - [Solution architecture](#solution-architecture)
@@ -107,11 +107,11 @@ Below are diagrams of the solution architecture you will build in this lab. Plea
 
 ## Requirements
 
-- Microsoft Azure subscription must be pay-as-you-go or MSDN
-  - Trial subscriptions will not work
+- Microsoft Azure subscription must be pay-as-you-go or MSDN.
+  - Trial subscriptions will not work.
 - A virtual machine configured with:
-  - Visual Studio Community 2017 or later
-  - Azure SDK 2.9 or later (Included with Visual Studio 2017)
+  - Visual Studio Community 2017 or later.
+  - Azure SDK 2.9 or later (Included with Visual Studio 2017).
 
 ## Exercise 1: Environment setup
 
@@ -123,29 +123,29 @@ Synopsis: The following section walks you through the manual steps to provision 
 
 #### Tasks to complete
 
-1. Create an RDP connection to your Lab VM
+1. Create an RDP connection to your Lab VM.
 
-2. Disable Internet Explorer Enhanced Security Configuration
+2. Disable Internet Explorer Enhanced Security Configuration.
 
 #### Exit criteria
 
-- You have an active session to your Lab VM
+- You have an active session to your Lab VM.
 
 ### Task 2: Download and open the ConciergePlus starter solution
 
 #### Tasks to complete
 
-1. On your Lab VM, download the ConciergePlus starter solution from the following URL: <http://bit.ly/2wMsqW4>
+1. On your Lab VM, download the ConciergePlus starter solution from the following URL: <http://bit.ly/2wMsqW4>.
 
-2. Unzip the contents to C:\ConciergePlus
+2. Unzip the contents to C:\ConciergePlus.
 
-3. Open the solution in Visual Studio 2017 on your Lab VM
+3. Open the solution in Visual Studio 2017 on your Lab VM.
 
 #### Exit criteria
 
-- The ConciergePlusSentiments solution is open in Visual Studio on your Lab VM
+- The ConciergePlusSentiments solution is open in Visual Studio on your Lab VM.
 
-**Note**: If you attempt to build the solution at this point, you will see many build errors. This is intentional. You will correct these in the exercises that follow.
+>**Note**: If you attempt to build the solution at this point, you will see many build errors. This is intentional. You will correct these in the exercises that follow.
 
 ### Task 3: Create App Services
 
@@ -157,29 +157,29 @@ In these steps, you will provision two Web Apps and an API App within a single A
 
 2. Provision another Web App to host a Web Job in the same App Service Plan and Resource Group. Name it something like "ChatProcessorWebJob".
 
-3. Configure the Web Job Web App to have Always On enabled
+3. Configure the Web Job Web App to have Always On enabled.
 
 #### Exit criteria
 
-- You can navigate to the empty websites for both deployed Web Apps using a web browser
+- You can navigate to the empty websites for both deployed Web Apps using a web browser.
 
 ### Task 4: Provision Service Bus
 
-In this section, you will provision a Service Bus Namespace and Service Bus Topic
+In this section, you will provision a Service Bus Namespace and Service Bus Topic.
 
 #### Tasks to complete
 
-1. Provision a Service Bus Topic in the same region/resource group as your App Services
-2. Provision an Event Hub in the same region/resource group as your App Services
-3. Create a Service Bus Queue for receiving notifications of hotel guests expressing negative sentiment in the chat room
+1. Provision a Service Bus Topic in the same region/resource group as your App Services.
+2. Provision an Event Hub in the same region/resource group as your App Services.
+3. Create a Service Bus Queue for receiving notifications of hotel guests expressing negative sentiment in the chat room.
 
 #### Exit criteria
 
-- Your Service Bus Topic is listed in the Azure Portal
+- Your Service Bus Topic is listed in the Azure Portal.
 
 ### Task 5: Provision Event Hubs
 
-In this task, you will create a new Event Hubs namespace and instance
+In this task, you will create a new Event Hubs namespace and instance.
 
 #### Tasks to complete
 
@@ -187,7 +187,7 @@ In this task, you will create a new Event Hubs namespace and instance
 
 #### Exit criteria
 
-- Your Event Hubs are listed in the Azure Portal
+- Your Event Hubs are listed in the Azure Portal.
 
 ### Task 6: Provision Azure Cosmos DB
 
@@ -195,27 +195,27 @@ In this section, you will provision an Azure Cosmos DB account, a SQL (DocumentD
 
 #### Tasks to complete
 
-1. Provision a new Azure Cosmos DB account in the same resource group and region as your other services
+1. Provision a new Azure Cosmos DB account in the same resource group and region as your other services.
 
-2. Add SQL (DocumentDB) Database
+2. Add SQL (DocumentDB) Database.
 
-3. Add a Collection. The pricing tier should be left at Standard with the Throughput at 1000
+3. Add a Collection. The pricing tier should be left at Standard with the Throughput at 1000.
 
 #### Exit criteria
 
-- You can view your Collection in the Azure Portal
+- You can view your Collection in the Azure Portal.
 
 ### Task 7: Provision Azure Search
 
-In this section, you will create an Azure Search instance
+In this section, you will create an Azure Search instance.
 
 #### Tasks to complete
 
-1. Provision a new instance of Azure Search in the same resource group and region as your other services, at the Basic Pricing tier
+1. Provision a new instance of Azure Search in the same resource group and region as your other services, at the Basic Pricing tier.
 
 #### Exit criteria
 
-- You can view your Azure Search instance in the Azure Portal
+- You can view your Azure Search instance in the Azure Portal.
 
 ### Task 8: Create Stream Analytics job
 
@@ -223,17 +223,17 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
 #### Tasks to complete
 
-1. Provision a new Stream Analytics Job in the same region as your other resources
+1. Provision a new Stream Analytics Job in the same region as your other resources.
 
 2. Add an Input to it that reads from your second Event Hub (the one used for archival). The serialization should be JSON/UTF8.
 
 3. Add an Output to the Job that targets your Collection in DocumentDB. The Partition Key should be sessionid (all lowercase) and the Document ID messageid (all lower case).
 
-4. Add a Query that selects all data from the Event Hub and sends it to DocumentDB
+4. Add a Query that selects all data from the Event Hub and sends it to DocumentDB.
 
 #### Exit criteria
 
-- You can view your Stream Analytics instance in the Azure Portal
+- You can view your Stream Analytics instance in the Azure Portal.
 
 ### Task 9: Start the Stream Analytics Job
 
@@ -241,11 +241,11 @@ In this section, you will run the Stream Analytics Job that will be used to read
 
 #### Tasks to complete
 
-1. Start the Stream Analytics Job
+1. Start the Stream Analytics Job.
 
 #### Exit criteria
 
-- Your Job starts without error
+- Your Job starts without error.
 
 ### Task 10: Provision an Azure Storage account
 
@@ -253,11 +253,11 @@ The EventProcessorHost requires an Azure Storage Account that it will use to man
 
 #### Tasks to complete
 
-1. Provision a resource model based Storage Account of type Standard LRS in the same Location and Resource Group as your other services
+1. Provision a resource model based Storage Account of type Standard LRS in the same Location and Resource Group as your other services.
 
 #### Exit criteria
 
-- You can view your Storage Account in the Portal
+- You can view your Storage Account in the Portal.
 
 ### Task 11: Provision Cognitive Services
 
@@ -273,7 +273,7 @@ To provision access to the Text Analytics API (which provides sentiment analysis
 
 #### Exit criteria
 
-- You can view your Cognitive Services in the Portal, you should have one for Text Analytics, another for Bing Speech, and a third for LUIS
+- You can view your Cognitive Services in the Portal, you should have one for Text Analytics, another for Bing Speech, and a third for LUIS.
 
 ### Task 12: Provision Function App
 
@@ -291,7 +291,7 @@ In this section, you will run the Stream Analytics Job that will be used to read
 
 #### Tasks to complete
 
-1. In Visual Studio on your Lab VM, open `ProcessChatMesssage.cs`, and navigate to the `[FunctionName("ProcessChatMessage")]` method
+1. In Visual Studio on your Lab VM, open `ProcessChatMesssage.cs`, and navigate to the `[FunctionName("ProcessChatMessage")]` method.
 
 2. Complete the TODOs numbered 1 through 6.
 
@@ -305,33 +305,33 @@ In the Azure Portal, on the Function App blade you created, you will update the 
 
 #### Tasks to complete
 
-1. Create a Shared Access Policy for Event Hub with Manage, Send, and Listen permissions
+1. Create a Shared Access Policy for Event Hub with Manage, Send, and Listen permissions.
 
-2. Create a Shared Access Policy for Service Bus with Manage, Send, and Listen permissions
+2. Create a Shared Access Policy for Service Bus with Manage, Send, and Listen permissions.
 
-3. Copy the connection string from the policy into the eventHubConnectionString setting in the app.config
+3. Copy the connection string from the policy into the eventHubConnectionString setting in the app.config.
 
-4. Copy the connection string from the policy into the serviceBusConnectionString setting in the app.config
+4. Copy the connection string from the policy into the serviceBusConnectionString setting in the app.config.
 
-5. Set sourceEventHubName to the name of your first Event Hub
+5. Set sourceEventHubName to the name of your first Event Hub.
 
-6. Set destinationEventHubName to the name of your second Event Hub
+6. Set destinationEventHubName to the name of your second Event Hub.
 
-7. Set storageAccountName to the name of the storage account you created
+7. Set storageAccountName to the name of the storage account you created.
 
-8. Set storageAccountKey to the Key for the storage account
+8. Set storageAccountKey to the Key for the storage account.
 
-9. Set chatTopicPath the name of the Service Bus Topic you created
+9. Set chatTopicPath the name of the Service Bus Topic you created.
 
 10. Set textAnalyticsBaseUrl to the Endpoint of the Text Analytics Cognitive Services account. Be sure to include a trailing slash in the URL.
 
-11. Set textAnalyticsAccountName to the Account Name of the Text Analytics Cognitive Services account
+11. Set textAnalyticsAccountName to the Account Name of the Text Analytics Cognitive Services account.
 
-12. Set textAnalyticsAccountKey to the value of KEY 1 from this same Cognitive Services account
+12. Set textAnalyticsAccountKey to the value of KEY 1 from this same Cognitive Services account.
 
 #### Exit criteria
 
-- You should have values for all the app settings except LuisAppId and LuisKey
+- You should have values for all the app settings except LuisAppId and LuisKey.
 
 ## Exercise 3: Configure the Chat Web App settings
 
@@ -347,15 +347,15 @@ Within Visual Studio Solution Explorer, expand the ChatWebApp project and open W
 
 2. Copy the connection string from the Service Bus policy you created into the serviceBusConnectionString setting.
 
-3. Set eventHubName to the name of your first Event Hub
+3. Set eventHubName to the name of your first Event Hub.
 
-4. Set chatTopicPath to the name of the Service Bus Topic you created
+4. Set chatTopicPath to the name of the Service Bus Topic you created.
 
-5. Set chatRequestTopicPath to the name of the Service Bus Topic you created
+5. Set chatRequestTopicPath to the name of the Service Bus Topic you created.
 
 #### Exit criteria
 
-- You should have values for all the app settings except chatSearchApiBase
+- You should have values for all the app settings except chatSearchApiBase.
 
 ## Exercise 4: Deploying the App Services
 
@@ -367,17 +367,17 @@ With the App Services projects properly configured, you are now ready to deploy 
 
 #### Tasks to complete
 
-1. Publish the ChatMessageSentimentProcessorFunction Function App to the Function App you had provisioned for it
+1. Publish the ChatMessageSentimentProcessorFunction Function App to the Function App you had provisioned for it.
 
 #### Exit criteria
 
-- The Output dialog indicates your publish was successful
+- The Output dialog indicates your publish was successful.
 
 ### Task 2: Publish the ChatWebApp
 
 #### Tasks to complete
 
-1. Publish the ChatWebApp to the Web App you had provisioned for it
+1. Publish the ChatWebApp to the Web App you had provisioned for it.
 
 #### Exit criteria
 
@@ -389,17 +389,17 @@ With the App Services projects properly configured, you are now ready to deploy 
 
 #### Tasks to complete
 
-1. Open a browser instance and navigate to the deployed Web App
+1. Open a browser instance and navigate to the deployed Web App.
 
-2. Join the chat
+2. Join the chat.
 
-3. Repeat with one or more additional browser tabs or from different a device and browser
+3. Repeat with one or more additional browser tabs or from different a device and browser.
 
-4. Start a conversation between these users in the Hotel Lobby
+4. Start a conversation between these users in the Hotel Lobby.
 
 #### Exit criteria
 
-- You should see your messages appear in all other browser instances joined to the chat
+- You should see your messages appear in all other browser instances joined to the chat.
 
 ## Exercise 5: Add intelligence
 
@@ -413,13 +413,13 @@ In this task, you will add code that enables the Event Processor to invoke the T
 
 #### Tasks to complete
 
-1. Complete the TODOs numbered 7 through 11 in the GetSentimentScore method
+1. Complete the TODOs numbered 7 through 11 in the GetSentimentScore method.
 
-2. Complete TODO 12 in the ProcessChatMessage Function 
+2. Complete TODO 12 in the ProcessChatMessage Function.
 
 #### Exit criteria
 
-- You should see no errors in either the GetSentimentScore or ProcessChatMessage methods
+- You should see no errors in either the GetSentimentScore or ProcessChatMessage methods.
 
 ### Task 2: Implement linguistic understanding
 
@@ -427,33 +427,33 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 #### Tasks to complete
 
-1. Use <http://www.luis.ai> to create a new App
+1. Use <http://www.luis.ai> to create a new App.
 
-2. Set the App Settings in the LUIS website to use your subscription key (KEY 1) from your LUIS Account setup in the Azure Portal and activate it
+2. Set the App Settings in the LUIS website to use your subscription key (KEY 1) from your LUIS Account setup in the Azure Portal and activate it.
 
-3. Add an intent named OrderIn with an example utterance of "order a pizza"
+3. Add an intent named OrderIn with an example utterance of "order a pizza".
 
-4. Add an entity named RoomService with hierarchical children FoodItem and RoomItem
+4. Add an entity named RoomService with hierarchical children FoodItem and RoomItem.
 
-5. Review the label for the utterance "order a pizza" and set the intent to OrderIn and entity (pizza) to FoodItem
+5. Review the label for the utterance "order a pizza" and set the intent to OrderIn and entity (pizza) to FoodItem.
 
-6. Add new utterances for "Bring me toothpaste", "Bring me blankets", "Order a soda", and "Order me a pizza"
+6. Add new utterances for "Bring me toothpaste", "Bring me blankets", "Order a soda", and "Order me a pizza".
 
-7. Train the model
+7. Train the model.
 
-8. Publish the model
+8. Publish the model.
 
-9. Test the model with the query "order me a pizza" and verify you get the intent of OrderIn (with a score close to 1.0) and entity pizza with a type of "RoomService::FoodItem"
+9. Test the model with the query "order me a pizza" and verify you get the intent of OrderIn (with a score close to 1.0) and entity pizza with a type of "RoomService::FoodItem".
 
-10. Copy the App ID and Subscription Key from your LUIS app into the App.config of the Function App in the Azure Portal, to the luisAppID and luisKey settings respectively
+10. Copy the App ID and Subscription Key from your LUIS app into the App.config of the Function App in the Azure Portal, to the luisAppID and luisKey settings respectively.
 
-11. Complete TODO 13 in ProcessChatMessage.cs
+11. Complete TODO 13 in `ProcessChatMessage.cs`.
 
-12. Update the \_luisBaseUrl in appsettings on the portal of the function App to match that base URL from your LUIS app
+12. Update the \_luisBaseUrl in appsettings on the portal of the function App to match that base URL from your LUIS app.
 
 #### Exit criteria
 
-- All TODO items in ProcesschatMessage.cs should be completed
+- All TODO items in ProcesschatMessage.cs should be completed.
 
 ### Task 3: Implement speech to text
 
@@ -461,11 +461,11 @@ There is one last intelligence service to activate in the application---speech r
 
 #### Tasks to complete
 
-1. Add your Speech API Key under the TODO in scripts\\chatClient.js of the ChatWebApp project
+1. Add your Speech API Key under the TODO in scripts\\chatClient.js of the ChatWebApp project.
 
 #### Exit criteria
 
-- You should have all TODO items complete in chatClient.js
+- You should have all TODO items complete in `chatClient.js`.
 
     > **Note**: Embedding the API Key as shown here is done only for convenience. In a production app, you will want to maintain your API Key server-side.
 
@@ -475,19 +475,19 @@ Now that you have added sentiment analysis, language understanding, and speech r
 
 #### Tasks to complete
 
-1. Publish the ChatMessageSentimentProcessorFunction
+1. Publish the ChatMessageSentimentProcessorFunction.
 
-2. Publish ChatWebApp
+2. Publish ChatWebApp.
 
 #### Exit criteria
 
-- Open a browser and navigate to your deployed website using HTTPS. Use multiple browser instances or tabs to simulate multiple users
+- Open a browser and navigate to your deployed website using HTTPS. Use multiple browser instances or tabs to simulate multiple users.
 
-- Send chat messages between them and verify that you see the sentiment indicator (a thumbs up or thumbs down icon next to each chat message)
+- Send chat messages between them and verify that you see the sentiment indicator (a thumbs up or thumbs down icon next to each chat message).
 
-- You can order something from room service, like "bring me towels" and you get a response from the ConciergeBot
+- You can order something from room service, like "bring me towels" and you get a response from the ConciergeBot.
 
-- You can select the microphone to the left of the text box and speak for two to three seconds. Your spoken message should appear
+- You can select the microphone to the left of the text box and speak for two to three seconds. Your spoken message should appear.
 
     ![The Live Chat window has a chat going on between the Concierge Bot and the guest.](images/Hands-onlabunguided-Intelligentanalyticsimages/media/image11.png "Live Chat window")
 
@@ -503,12 +503,12 @@ In this task, you will create a free Twilio account that will be used to send SM
 
 #### Tasks to complete
 
-- If you do not have a Twilio account, sign up for one for free at by going to <https://www.twilio.com/try-twilio>
-- Create a Twilio phone number with SMS capabilities
+- If you do not have a Twilio account, sign up for one for free at by going to <https://www.twilio.com/try-twilio>.
+- Create a Twilio phone number with SMS capabilities.
 
 ### Exit criteria
 
-- You have a Twilio account, and a phone number which is capable of receiving SMS messages
+- You have a Twilio account, and a phone number which is capable of receiving SMS messages.
 
 ### Task 2: Provision Logic App
 
@@ -516,11 +516,11 @@ In this task, you will create a new Logic App, which will use the Twilio connect
 
 #### Tasks to complete
 
-- Provision a Logic App in the Azure portal
+- Provision a Logic App in the Azure portal.
 
 #### Exit criteria
 
-- You have a Logic App within your Azure subscription
+- You have a Logic App within your Azure subscription.
 
 ### Task 3: Configure staff notifications
 
@@ -528,14 +528,14 @@ In this task, you will configure a Logic App to send notifications to hotel gues
 
 #### Tasks to complete
 
-- Use the Logic App Designer to create a new Logic App
-- Use a Service Bus connector to trigger the Logic App when new message are received in the staff notifications queue Service Bus Queue
-- Parse the JSON message received from the Service Bus Queue
-- Send an SMS message via the Twilio connector, passing the [Name] property from the Queue message into the SMS message
+- Use the Logic App Designer to create a new Logic App.
+- Use a Service Bus connector to trigger the Logic App when new message are received in the staff notifications queue Service Bus Queue.
+- Parse the JSON message received from the Service Bus Queue.
+- Send an SMS message via the Twilio connector, passing the [Name] property from the Queue message into the SMS message.
 
 #### Exit criteria
 
-- You have a completed Logic App which sends SMS messages when messages arrive in the notification queue in your Service Bus instance
+- You have a completed Logic App which sends SMS messages when messages arrive in the notification queue in your Service Bus instance.
 
 ### Task 4: Add negative chat messages to trigger staff notifications
 
@@ -543,11 +543,11 @@ In this task, you will add messages to the chat containing negative sentiment to
 
 #### Tasks to complete
 
-- Add a message with negative sentiment into the hotel chat
+- Add a message with negative sentiment into the hotel chat.
 
 #### Exit criteria
 
-- You receive an SMS message containing the username of the guest in the chat room who expressed negative sentiment
+- You receive an SMS message containing the username of the guest in the chat room who expressed negative sentiment.
 
 ## Exercise 7: Building the Power BI dashboard
 
@@ -573,19 +573,19 @@ This gauge is currently a static visualization. You will use the report just cre
 
 #### Tasks to complete
 
-1. Create a new dashboard by pinning the gauge you created previously
+1. Create a new dashboard by pinning the gauge you created previously.
 
-2. Open the new dashboard
+2. Open the new dashboard.
 
-3. Enter the QA query "average score created between yesterday and today" and visualize it with the Gauge chart
+3. Enter the QA query "average score created between yesterday and today" and visualize it with the Gauge chart.
 
-4. Format the chart so it ranges from 0.0 to 1.0 and has an indicator at 0.5
+4. Format the chart so it ranges from 0.0 to 1.0 and has an indicator at 0.5.
 
-5. Pin this visual to the dashboard you created
+5. Pin this visual to the dashboard you created.
 
-6. Delete the old static chart from the dashboard
+6. Delete the old static chart from the dashboard.
 
-7. Navigate to the ConciergePlus website and send some messages, observing that your Gauge updates in real time
+7. Navigate to the ConciergePlus website and send some messages, observing that your Gauge updates in real time.
 
 8. Add three additional visualizations so your dashboard looks as follows:
 
@@ -593,7 +593,7 @@ This gauge is currently a static visualization. You will use the report just cre
 
 #### Exit criteria
 
-- Your chart should update in real-time and appear as above
+- Your chart should update in real-time and appear as above.
 
 ## Exercise 8: Enabling search indexing
 
@@ -607,7 +607,7 @@ Before going further, a good thing to check is whether messages are being writte
 
 #### Tasks to complete
 
-1. Using the Azure Portal, navigate to Data Explorer for your Cosmos DB Collection
+1. Using the Azure Portal, navigate to Data Explorer for your Cosmos DB Collection.
 
 #### Exit criteria
 
@@ -621,19 +621,19 @@ Before going further, a good thing to check is whether messages are being writte
 
 #### Tasks to complete
 
-1. In your Azure Search Index, use the Connect to your data feature to index the collection
+1. In your Azure Search Index, use the Connect to your data feature to index the collection.
 
-2. Provide any name for the index, but leave the Key set to id
+2. Provide any name for the index, but leave the Key set to id.
 
-3. Ensure that the id, message, createDate, and username are Retrievable
+3. Ensure that the id, message, createDate, and username are Retrievable.
 
-4. Ensure that createDate, username, and sessionId are Filterable
+4. Ensure that createDate, username, and sessionId are Filterable.
 
-5. Ensure that create date, username, and sessionId are Sortable
+5. Ensure that create date, username, and sessionId are Sortable.
 
-6. Ensure that the message field is Searchable
+6. Ensure that the message field is Searchable.
 
-7. Create an Indexer with a 5-minute interval that starts today
+7. Create an Indexer with a 5-minute interval that starts today.
 
 #### Exit criteria
 
@@ -645,37 +645,37 @@ Before going further, a good thing to check is whether messages are being writte
 
 #### Tasks to complete
 
-1. Modify the web.config of the ChatWebApp project
+1. Modify the web.config of the ChatWebApp project.
 
-2. Set the chatSearchApiBase to the URI of the deployed Search API app
+2. Set the chatSearchApiBase to the URI of the deployed Search API app.
 
 #### Exit criteria
 
-- You should have all app settings completed with values in the web.config
+- You should have all app settings completed with values in the web.config.
 
 ### Task 4: Configure the Search API App
 
 #### Tasks to complete
 
-1. Modify the web.config of the ChatApi project
+1. Modify the web.config of the ChatApi project.
 
-2. Set the SearchServiceName to the name of your Search service
+2. Set the SearchServiceName to the name of your Search service.
 
-3. Set the SearchServiceQueryApiKey to the Key of your Search service
+3. Set the SearchServiceQueryApiKey to the Key of your Search service.
 
-4. Set the SearchIndexName to the name of the Index you created in Search
+4. Set the SearchIndexName to the name of the Index you created in Search.
 
 #### Exit criteria
 
-- You should have all app settings completed with values in the web.config
+- You should have all app settings completed with values in the web.config.
 
 ### Task 5: Re-publish apps
 
 #### Tasks to complete
 
-1. Publish the ChatWebApp
+1. Publish the ChatWebApp.
 
-2. Publish the ChatApiApp to your API App
+2. Publish the ChatApiApp to your API App.
 
 #### Exit criteria
 
@@ -691,10 +691,10 @@ In this exercise, attendees will deprovision any Azure resources that were creat
 
 ### Task 1: Delete the resource group
 
-1. Using the Azure portal, navigate to the Resource group you used throughout this hands-on lab by selecting Resource groups in the left menu
+1. Using the Azure portal, navigate to the Resource group you used throughout this hands-on lab by selecting Resource groups in the left menu.
 
-2. Search for the name of your research group and select it from the list
+2. Search for the name of your research group and select it from the list.
 
-3. Select Delete in the command bar and confirm the deletion by re-typing the Resource group name and selecting Delete
+3. Select Delete in the command bar and confirm the deletion by re-typing the Resource group name and selecting Delete.
 
 You should follow all steps provided *after* attending the Hands-on lab.

@@ -80,7 +80,7 @@ An amazing trainer:
 
 -   Effectively leads the feedback process.
 
-## Whiteboard design session flow 
+## Whiteboard design session flow
 
 Each whiteboard design session uses the following flow:
 
