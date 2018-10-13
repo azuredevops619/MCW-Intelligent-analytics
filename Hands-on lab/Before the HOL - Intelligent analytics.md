@@ -26,8 +26,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
 - [Intelligent analytics before the hands-on lab setup guide](#intelligent-analytics-before-the-hands-on-lab-setup-guide)
     - [Requirements](#requirements)
     - [Before the hands-on lab](#before-the-hands-on-lab)
-        - [Task 1: Provision Power BI](#task-1-provision-power-bi)
-        - [Task 2: Setup a lab virtual machine](#task-2-setup-a-lab-virtual-machine)
+        - [Task: Setup a lab virtual machine](#task-2-setup-a-lab-virtual-machine)
 <!-- /TOC -->
 
 # Intelligent analytics before the hands-on lab setup guide
@@ -46,23 +45,7 @@ Duration: 20 minutes
 
 Synopsis: In this exercise, you will set up your environment for use in the rest of the hands-on lab. You should follow all the steps provided in the Before the Hands-on Lab section to prepare your environment before attending the hands-on lab.
 
-### Task 1: Provision Power BI
-
-If you do not already have a Power BI account:
-
-1. Go to <https://powerbi.microsoft.com/features/>.
-
-2. Scroll down until you see the Try Power BI for free! section of the page, and select the Try Free\> button.
-
-![Screenshot of the Power BI Try for free section.](media/setup3.png 'Power BI Try for free section')
-
-3. On the page, enter your work email address (which should be the same account as the one you use for your Azure subscription), and select Sign up.
-
-![The Get started page has a field for entering your work email address.](media/setup4.png 'Get started page')
-
-4. Follow the on-screen prompts, and your Power BI environment should be ready within minutes. You can always return to it via <https://app.powerbi.com/>.
-
-### Task 2: Setup a lab virtual machine 
+### Task: Setup a lab virtual machine 
 
 1. In the [Azure Portal](https://portal.azure.com/), select +Create a resource, then type "Visual Studio" into the search bar. Select Visual Studio Community 2017 on Windows Server 2016 (x64) from the results. 
 
