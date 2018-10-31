@@ -9,7 +9,7 @@ Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
-August 2018
+October 2018
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -69,9 +69,10 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
     - [Task 3: Configure staff notifications](#task-3-configure-staff-notifications)
     - [Task 4: Add negative chat messages to trigger staff notifications](#task-4-add-negative-chat-messages-to-trigger-staff-notifications)
   - [Exercise 7: Building the Power BI dashboard](#exercise-7-building-the-power-bi-dashboard)
-    - [Task 1: Create the static dashboard](#task-1-create-the-static-dashboard)
-    - [Task 2: Create the real-time dashboard](#task-2-create-the-real-time-dashboard)
-    - [Task 3: Add a trending sentiment chart to the dashboard](#task-3-add-a-trending-sentiment-chart-to-the-dashboard)
+    - [Task 1: Provision Power BI](#task-1-provision-power-bi)
+    - [Task 2: Create the static dashboard](#task-2-create-the-static-dashboard)
+    - [Task 3: Create the real-time dashboard](#task-3-create-the-real-time-dashboard)
+    - [Task 4: Add a trending sentiment chart to the dashboard](#task-4-add-a-trending-sentiment-chart-to-the-dashboard)
   - [Exercise 8: Enabling search indexing](#exercise-8-enabling-search-indexing)
     - [Task 1: Verifying message archival](#task-1-verifying-message-archival)
     - [Task 2: Creating the index and indexer](#task-2-creating-the-index-and-indexer)
@@ -95,7 +96,7 @@ By the end of the hands-on lab, you will be more confident in the various servic
 
 ## Overview
 
-First Up Consultants specializes in building software solutions for the hospitality industry. Their latest product is an enterprise mobile/social chat product called Concierge+ (aka ConciergePlus). The mobile web app enables guests to easily stay in touch with the concierge and other guests, enabling greater personalization and improving their experience during their stay. Sentiment analysis is performed on top of chat messages as they occur, enabling hotel operators to keep tabs on guest sentiments in real-time.
+First Up Consultants specialize in building software solutions for the hospitality industry. Their latest product is an enterprise mobile/social chat product called Concierge+ (aka ConciergePlus). The mobile web app enables guests to easily stay in touch with the concierge and other guests, enabling greater personalization and improving their experience during their stay. Sentiment analysis is performed on top of chat messages as they occur, enabling hotel operators to keep tabs on guest sentiments in real-time.
 
 ## Solution architecture
 
@@ -117,7 +118,7 @@ Messages are sent from browsers running within laptop or mobile clients via Web 
 
 Duration: 60 minutes
 
-Synopsis: The following section walks you through the manual steps to provision the services required in the [Azure portal](https://portal.azure.com).  First Up Consultants has provided a starter solution for you. They have asked you to use this as the starting point for creating the Concierge Plus intelligent chat solution in Azure.
+Synopsis: The following section walks you through the manual steps to provision the services required in the [Azure portal](https://portal.azure.com).  First Up Consultants have provided a starter solution for you. They have asked you to use this as the starting point for creating the Concierge Plus intelligent chat solution in Azure.
 
 ### Task 1: Connect to the lab VM
 
@@ -205,15 +206,15 @@ In these steps, you will provision a Web App and an API App within a single App 
 
 3. On the Create Web App blade, enter the following:
 
-    - App Name: Provide **a unique name** that is indicative of this resource being used to host the Concierge+ chat website (e.g., conciergepluschatapp).
+    - **App Name**: Provide **a unique name** that is indicative of this resource being used to host the Concierge+ chat website (e.g., conciergepluschatapp).
 
-    - Subscription: **Select your subscription**.
+    - **Subscription**: Select your subscription.
 
-    - Resource Group: Select Use existing, and select the **intelligent-analytics** resource group created previously.
+    - **Resource Group**: Select Use existing, and select the **intelligent-analytics** resource group created previously.
 
-    - OS: **Windows**
+    - **OS**: Windows
 
-    - App Service plan/Location: Select **Create new**, and enter **awchatplus** for the App Service plan name, select the location you used for the resource group created previously, and choose a Pricing tier of **S1 Standard**.
+    - **App Service plan/Location**: Select **Create new**, and enter **awchatplus** for the App Service plan name, select the location you used for the resource group created previously, and choose a Pricing tier of **S1 Standard**.
 
     - Select **OK** on the New App Service Plan blade.
 
@@ -245,13 +246,13 @@ In these steps, you will provision a Web App and an API App within a single App 
 
 10. On the Create API App blade enter the following:
 
-    - App name: Provide a **unique name** for this API app that reflects it will host the Chat Search API (e.g., ChatSearchApi).
+    - **App name**: Provide a **unique name** for this API app that reflects it will host the Chat Search API (e.g., ChatSearchApi).
 
-    - Subscription: Select the same subscription as used previously.
+    - **Subscription**: Select the same subscription as used previously.
 
-    - Resource Group: Select the **intelligent-analytics** Resource Group.
+    - **Resource Group**: Select the **intelligent-analytics** Resource Group.
 
-    - App Service plan/Location: Select the **awchatplus** App Service plan.
+    - **App Service plan/Location**: Select the **awchatplus** App Service plan.
 
     - Select **Create**.
 
@@ -269,21 +270,21 @@ In this section, you will provision a Function App that will be used as the Even
 
     - App Name: Provide **a unique name** that is indicative of this resource being used to process chat messages (e.g., chatprocessor).
 
-    - Subscription: **Select your subscription**.
+    - **Subscription**: Select your subscription.
 
-    - Resource Group: Select Use existing, and select the **intelligent-analytics** resource group created previously.
+    - **Resource Group**: Select Use existing, and select the **intelligent-analytics** resource group created previously.
 
-    - OS: **Windows**
+    - **OS**: Windows
 
-    - Hosting Plan: Select **Consumption Plan**.
+    - **Hosting Plan**: Select **Consumption Plan**.
 
-    - Location: Select the location you used for the resource group created previously.
+    - **Location**: Select the location you used for the resource group created previously.
 
-    - Storage: Select **Create new** and accept the generated name.
+    - **Storage**: Select **Create new** and accept the generated name.
 
-    - Application Insights: **On**
+    - **Application Insights**: **On**
 
-    - Application Insights Location: Select the same location you selected for the Location field above.
+    - **Application Insights Location**: Select the same location you selected for the Location field above.
 
     - Select **Create** to provision the Function App.
 
@@ -648,13 +649,13 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
 16. On the New output blade, enter the following:
 
-    - Output alias: Enter **trending-sentiment**.
+    - **Output alias**: Enter **trending-sentiment**.
 
-    - Group workspace: **My workspace**
+    - **Group workspace**: **My workspace**
 
-    - Dataset Name: Set to **TrendingSentiment**.
+    - **Dataset Name**: Set to **TrendingSentiment**.
 
-    - Table Name: Set to **TrendingSentiment**.
+    - **Table Name**: Set to **TrendingSentiment**.
 
     - Select **Authorize** (if not already authorized). This will authorize the connection to your Power BI account. When prompted in the popup window, enter the account credentials you used to create your Power BI account in the Before the Hands-on Lab exercise. You may have to enter your Username and Password.
 
@@ -1245,7 +1246,9 @@ In this task, you will add code that enables the Event Processor to invoke the T
 
 In this task, you will create a LUIS app, publish it, and then enable the Event Processor to invoke LUIS using the REST API.
 
-1. Using a browser, navigate to <http://www.luis.ai>.
+1. Using a browser, navigate to <http://www.luis.ai>.  
+
+>**Note**: If in Exercise 1, Step 12 you created your Luis account in Azure in an European region (e.g. West Europe), user <http://eu.luis.ai> instead. If you selected an Australian region use <http://au.luis.ai>.
 
 2. Select **Sign in** **or create an account**.
 
@@ -1665,7 +1668,23 @@ Duration: 30 minutes
 
 Now that you have the solution deployed and exchanging messages, you can build a Power BI dashboard that monitors the sentiments of the messages being exchanged in real time. The following steps walk through the creation of the dashboard.
 
-### Task 1: Create the static dashboard
+### Task 1: Provision Power BI
+
+If you do not already have a Power BI account:
+
+1. Go to <https://powerbi.microsoft.com/features/>.
+
+2. Scroll down until you see the Try Power BI for free! section of the page, and select the Try Free\> button.
+
+![Screenshot of the Power BI Try for free section.](media/setup3.png 'Power BI Try for free section')
+
+3. On the page, enter your work email address (which should be the same account as the one you use for your Azure subscription), and select Sign up.
+
+![The Get started page has a field for entering your work email address.](media/setup4.png 'Get started page')
+
+4. Follow the on-screen prompts, and your Power BI environment should be ready within minutes. You can always return to it via <https://app.powerbi.com/>.
+
+### Task 2: Create the static dashboard
 
 1. Sign in to your Power BI subscription (<https://app.powerbi.com>).
 
@@ -1705,7 +1724,7 @@ Now that you have the solution deployed and exchanging messages, you can build a
 
     ![In the Save your report window, ChatSentiment is typed in as the name of the report.](media/image148.png 'Save your report window')
 
-### Task 2: Create the real-time dashboard
+### Task 3: Create the real-time dashboard
 
 This gauge is currently a static visualization. You will use the report just created to seed a dashboard whose visualizations update as new messages arrive.
 
@@ -1751,7 +1770,7 @@ This gauge is currently a static visualization. You will use the report just cre
 
 11. Navigate to the chat website you deployed and send some messages and observe how the sentiment gauge updates with moments of you sending chat messages.
 
-### Task 3: Add a trending sentiment chart to the dashboard
+### Task 4: Add a trending sentiment chart to the dashboard
 
 The sentiment visualization you created is great for getting a sense of sentiment as of this moment. However, First Up Consultants wishes to view sentiment over time for historical reference and to see whether overall sentiment is trending one way or another. To do this, we will use the tumbling window query output from Stream Analytics to display this data in a line chart.
 
@@ -2008,23 +2027,23 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
 5. Within the Create QnA Maker blade, provide the following:
 
-    - Name: Provide a **unique name** for the QnA Maker Service (e.g., awhotel-qna).
+    - **Name**: Provide a **unique name** for the QnA Maker Service (e.g., awhotel-qna).
 
-    - Subscription: Choose the same subscription you used previously.
+    - **Subscription**: Choose the same subscription you used previously.
 
-    - Management pricing tier: Choose **F0**.
+    - **Management pricing tier**: Choose **F0**.
 
-    - Resource Group: Choose the **intelligent-analytics** resource group.
+    - **Resource Group**: Choose the **intelligent-analytics** resource group.
 
-    - Search pricing tier: Choose **F**.
+    - **Search pricing tier**: Choose **F**.
 
-    - Search location: Choose the **same location** you used previously. If the region you've been using isn't available, select a different location for this resource.
+    - **Search location**: Choose the **same location** you used previously. If the region you've been using isn't available, select a different location for this resource.
 
-    - App name: Provide a **unique name** for the QnA Maker Service (e.g., awhotel-qna).
+    - **App name**: Provide a **unique name** for the QnA Maker Service (e.g., awhotel-qna).
 
-    - Website location: Choose the **same location** you used previously. If the region you've been using isn't available, select a different location for this resource.
+    - **Website location**: Choose the **same location** you used previously. If the region you've been using isn't available, select a different location for this resource.
 
-    - App insights: Select **Disable**.
+    - **App insight**s: Select **Disable**.
 
     ![QnA Maker form](media/create-qna-maker.png "Create QnA Maker")
 
