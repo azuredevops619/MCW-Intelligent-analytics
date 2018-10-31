@@ -206,15 +206,15 @@ In these steps, you will provision a Web App and an API App within a single App 
 
 3. On the Create Web App blade, enter the following:
 
-    - App Name: Provide **a unique name** that is indicative of this resource being used to host the Concierge+ chat website (e.g., conciergepluschatapp).
+    - **App Name**: Provide **a unique name** that is indicative of this resource being used to host the Concierge+ chat website (e.g., conciergepluschatapp).
 
-    - Subscription: **Select your subscription**.
+    - **Subscription**: Select your subscription.
 
-    - Resource Group: Select Use existing, and select the **intelligent-analytics** resource group created previously.
+    - **Resource Group**: Select Use existing, and select the **intelligent-analytics** resource group created previously.
 
-    - OS: **Windows**
+    - **OS**: Windows
 
-    - App Service plan/Location: Select **Create new**, and enter **awchatplus** for the App Service plan name, select the location you used for the resource group created previously, and choose a Pricing tier of **S1 Standard**.
+    - **App Service plan/Location**: Select **Create new**, and enter **awchatplus** for the App Service plan name, select the location you used for the resource group created previously, and choose a Pricing tier of **S1 Standard**.
 
     - Select **OK** on the New App Service Plan blade.
 
@@ -246,13 +246,13 @@ In these steps, you will provision a Web App and an API App within a single App 
 
 10. On the Create API App blade enter the following:
 
-    - App name: Provide a **unique name** for this API app that reflects it will host the Chat Search API (e.g., ChatSearchApi).
+    - **App name**: Provide a **unique name** for this API app that reflects it will host the Chat Search API (e.g., ChatSearchApi).
 
-    - Subscription: Select the same subscription as used previously.
+    - **Subscription**: Select the same subscription as used previously.
 
-    - Resource Group: Select the **intelligent-analytics** Resource Group.
+    - **Resource Group**: Select the **intelligent-analytics** Resource Group.
 
-    - App Service plan/Location: Select the **awchatplus** App Service plan.
+    - **App Service plan/Location**: Select the **awchatplus** App Service plan.
 
     - Select **Create**.
 
@@ -270,21 +270,21 @@ In this section, you will provision a Function App that will be used as the Even
 
     - App Name: Provide **a unique name** that is indicative of this resource being used to process chat messages (e.g., chatprocessor).
 
-    - Subscription: **Select your subscription**.
+    - **Subscription**: Select your subscription.
 
-    - Resource Group: Select Use existing, and select the **intelligent-analytics** resource group created previously.
+    - **Resource Group**: Select Use existing, and select the **intelligent-analytics** resource group created previously.
 
-    - OS: **Windows**
+    - **OS**: Windows
 
-    - Hosting Plan: Select **Consumption Plan**.
+    - **Hosting Plan**: Select **Consumption Plan**.
 
-    - Location: Select the location you used for the resource group created previously.
+    - **Location**: Select the location you used for the resource group created previously.
 
-    - Storage: Select **Create new** and accept the generated name.
+    - **Storage**: Select **Create new** and accept the generated name.
 
-    - Application Insights: **On**
+    - **Application Insights**: **On**
 
-    - Application Insights Location: Select the same location you selected for the Location field above.
+    - **Application Insights Location**: Select the same location you selected for the Location field above.
 
     - Select **Create** to provision the Function App.
 
@@ -649,13 +649,13 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
 16. On the New output blade, enter the following:
 
-    - Output alias: Enter **trending-sentiment**.
+    - **Output alias**: Enter **trending-sentiment**.
 
-    - Group workspace: **My workspace**
+    - **Group workspace**: **My workspace**
 
-    - Dataset Name: Set to **TrendingSentiment**.
+    - **Dataset Name**: Set to **TrendingSentiment**.
 
-    - Table Name: Set to **TrendingSentiment**.
+    - **Table Name**: Set to **TrendingSentiment**.
 
     - Select **Authorize** (if not already authorized). This will authorize the connection to your Power BI account. When prompted in the popup window, enter the account credentials you used to create your Power BI account in the Before the Hands-on Lab exercise. You may have to enter your Username and Password.
 
@@ -2025,23 +2025,23 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
 5. Within the Create QnA Maker blade, provide the following:
 
-    - Name: Provide a **unique name** for the QnA Maker Service (e.g., awhotel-qna).
+    - **Name**: Provide a **unique name** for the QnA Maker Service (e.g., awhotel-qna).
 
-    - Subscription: Choose the same subscription you used previously.
+    - **Subscription**: Choose the same subscription you used previously.
 
-    - Management pricing tier: Choose **F0**.
+    - **Management pricing tier**: Choose **F0**.
 
-    - Resource Group: Choose the **intelligent-analytics** resource group.
+    - **Resource Group**: Choose the **intelligent-analytics** resource group.
 
-    - Search pricing tier: Choose **F**.
+    - **Search pricing tier**: Choose **F**.
 
-    - Search location: Choose the **same location** you used previously. If the region you've been using isn't available, select a different location for this resource.
+    - **Search location**: Choose the **same location** you used previously. If the region you've been using isn't available, select a different location for this resource.
 
-    - App name: Provide a **unique name** for the QnA Maker Service (e.g., awhotel-qna).
+    - **App name**: Provide a **unique name** for the QnA Maker Service (e.g., awhotel-qna).
 
-    - Website location: Choose the **same location** you used previously. If the region you've been using isn't available, select a different location for this resource.
+    - **Website location**: Choose the **same location** you used previously. If the region you've been using isn't available, select a different location for this resource.
 
-    - App insights: Select **Disable**.
+    - **App insight**s: Select **Disable**.
 
     ![QnA Maker form](media/create-qna-maker.png "Create QnA Maker")
 
