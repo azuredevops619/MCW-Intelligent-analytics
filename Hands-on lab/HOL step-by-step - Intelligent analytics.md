@@ -283,9 +283,7 @@ In this section, you will provision a Function App that will be used as the Even
     - **Storage**: Select **Create new** and accept the generated name.
 
     - **Application Insights**: **On**
-
-    - **Application Insights Location**: Select the same location you selected for the Location field above.
-
+    
     - Select **Create** to provision the Function App.
 
     ![Create Function App blade](media/provision-function-app.png "Provision Function App")
