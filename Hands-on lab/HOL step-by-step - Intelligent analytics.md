@@ -433,7 +433,7 @@ In this section, you will provision an Azure Cosmos DB account, a DocumentDB Dat
 
 2. On the Azure Cosmos DB blade, enter the following:
 
-    - **ID**: Provide a unique name for the Azure Cosmos DB account (e.g., awhotelcosmosdb).
+    - **Account Name**: Provide a unique name for the Azure Cosmos DB account (e.g., awhotelcosmosdb).
 
     - **API**: Select SQL.
 
@@ -461,7 +461,7 @@ In this section, you will provision an Azure Cosmos DB account, a DocumentDB Dat
 
     - **Collection Id**: Enter messagestore.
 
-    - **Storage Capacity**: Select Fixed (10 GB).
+    - **Partition Key**: Enter a partition key such as /userid or /australia.
 
     - **Throughput**: Set to 1000.
 
@@ -789,8 +789,6 @@ The EventProcessorHost requires an Azure Storage account that it will use to man
 
     - **Location**: Select the location you are using for resources in this hands-on lab.
 
-    - **Configure virtual networks**: Leave set to Disabled.
-
     - Select **Create**.
 
       ![The Create storage account blade fields display the previously mentioned settings. ](media/image66.png 'Create storage account blade')
@@ -831,7 +829,7 @@ To provision access to the Text Analytics API (which provides sentiment analysis
 
     ![In the Keys pane, the Key 1 value is circled, and a callout points to the copy button for this key.](media/image70.png 'Keys pane')
 
-7. Repeat steps 1-7, this time selecting Bing Speech API:
+7. Repeat steps 1-7, this time selecting Speech:
 
     - Enter the name speech-api.
 
@@ -1274,15 +1272,9 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 9. In a moment, your new app will appear. Click the app to see the details.
 
-10. In the menu bar, select **Publish**, select the appropriate region, and select Add Key.
+10. In the menu bar, select **Train** and then  **Publish** .
 
     ![The Publish dialog is shown with the region selected and the Add Key button clicked.](media/image115.png 'Publish dialog')
-
-11. In the Assign a key to your app dialog, select your Tenant name and Subscription, and then select the luis-api key from the list.
-
-    ![The Assign a key to your app dialog box displays.](media/image116.png 'Assign a key to your app dialog box')
-
-12. Select **Add Key**.
 
 13. Select My Apps from the menu bar and choose your app from the list.
 
@@ -1360,13 +1352,11 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     ![An interactive test showing that searching for where can i buy a hamburger will invoke the entity RoomService::FoodItem. ](media/image129.png 'Test of utterances')
 
-30. Select Publish App from the menu on the top. Then select the proper Timezone, and select Publish to production slot.
+30. Select Publish App from the menu on the top. 
 
-    ![The Publish app screen is showing that they timezone has been selected and the Publish to production slot has been selected.](media/luis-publish-app.png 'Publish app')
+31. When the publish completes, Refer to Keys and Endpoints under Manage in menu bar for Endpoint URL.
 
-31. When the publish completes, click the URL displayed next to the **awhotels-luis** key at the bottom of the Publish App screen.
-
-    ![At the bottom of the Publish App dialog box, the awhotels-luis Endpoint URL is circled.](media/luis-endpoint-url.png 'Publish App dialog box')
+    ![At the bottom of the Keys and endpoints dialog box, the awhotels-luis Endpoint URL is circled.](media/luis-endpoint-url.png 'Publish App dialog box')
 
 32. This will open a new tab in your browser. Modify the end of the URL (the text following q= ) so it contains the phrase "order a pizza," and press ENTER. You should receive output similar to the following. Observe that it correctly identified the intent as OrderIn (in this case with a confidence of 0.9999995 or nearly 100%) and the entity as pizza having an entity type of RoomService::FoodItem (in this case with a confidence score of 96.1%).
 
