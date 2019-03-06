@@ -1376,7 +1376,7 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 34. You can add more utterances as desired by repeating the above steps to add new utterances, indicate the entity, train the model, and then update the publish application using the button in the Publish App screen.
 
-35. When you are ready to integrate LUIS into your app, go to the Publish App screen, and locate the awhotels-luis key under Resources and Keys. Copy the first Key String for awhotels-luis. Paste this to your notepad.
+35. When you are ready to integrate LUIS into your app, go to the Manage option in menu bar, and locate the luis key under Resources and Keys. Copy the first Key String. Paste this to your notepad.
 
     ![The luis-api key in the Publish App screen is selected.](media/luis-copy-key-string.png 'Resources and keys')
 
