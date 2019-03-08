@@ -1272,7 +1272,7 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 9. In a moment, your new app will appear. Click the app to see the details.
 
-10. In the menu bar, select **Train** and then  **Publish** .
+10. In the menu bar, select **Train** and then **Publish**.
 
     ![The Publish dialog is shown with the region selected and the Add Key button clicked.](media/image115.png 'Publish dialog')
 
