@@ -92,7 +92,7 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 
 6. Advanced - Use managed disks: **Yes**
 
-    ![](media/2019-03-20-11-28-25.png)
+    ![Create virutal machine.  Basics configuration blade.](media/2019-03-20-11-28-25.png "Create a Virtual Machine")
 
 7. Click **Next: Networking**
 

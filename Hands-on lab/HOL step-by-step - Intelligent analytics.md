@@ -215,7 +215,7 @@ If you are already connected to your Lab VM, skip to Step 6.
 
 > **Note**: Visual Studio Installer will show the installed version of Visual Studio and if the Azure SDK is installed. If the Azure SDK is missing, go back to the **Before the HOL** and make sure you created the correct VM. Updating Visual Studio manually may install components that may not work with the lab.
 
-![](media/2019-03-20-16-02-17.png)
+![Visual Studio Installer - Modifying Visual Studio Community. Displaying Workloads.](media/2019-03-20-16-02-17.png "Workloads Configuration")
 
 ### Task 3: Create App Services
 
@@ -1992,11 +1992,11 @@ Before going further, a good thing to check is whether messages are being writte
 
     You should see your messages indexed.
 
-    ![](media/2019-03-21-16-22-06.png)
+    !["conciergeplusapp search indexes.  chatmessages displays number of documents indexed."](media/2019-03-21-16-22-06.png "Documents Indexed")
 
     Click on the index name.  You can test the searches.
 
-    ![](media/2019-03-21-16-24-18.png)
+    !["Testing the chat message search.  Show results of search. Indexes work."](media/2019-03-21-16-24-18.png "Testing Search Indexes")
 
 ### Task 3: Update the Web App web.config
 
