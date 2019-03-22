@@ -36,7 +36,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
 - Microsoft Azure subscription must be pay-as-you-go or MSDN.
   - Trial subscriptions will not work.
 - A virtual machine configured with:
-  - Visual Studio Community 2017 or greater, version 15.7 or later (<https://www.visualstudio.com/vs/>).
+  - Visual Studio Community 2017 or greater, version 15.7 or later (<https://www.visualstudio.com/vs/>).  Use latest release.
   - Azure SDK 2.9 or later (Included with Visual Studio 2017).
 
 ## Before the hands-on lab
@@ -47,48 +47,69 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 
 ### Task: Setup a lab virtual machine 
 
-1. In the [Azure Portal](https://portal.azure.com/), select +Create a resource, then type "Visual Studio" into the search bar. Select Visual Studio Community 2017 on Windows Server 2016 (x64) from the results. 
+1. In the [Azure Portal](https://portal.azure.com/), select +Create a resource, then type "Visual Studio" into the search bar. Select Visual Studio Community 2017 **(latest release)** on Windows Server 2016 (x64) from the results. 
 
-![In the Azure Portal Everything section, under Results, under Name, Visual Studio Community 2017 on Windows Server 2016 is circled.](media/setup5.png 'Azure Portal Everything section')
+![In the Azure Portal Everything section, under Results, under Name, Visual Studio Community 2017 on Windows Server 2016 is circled.](media/2019-03-20-10-21-21.png)
+![](media/2019-03-20-10-27-57.png)
 
 2. On the blade that comes up, at the bottom, ensure the deployment model is set to Resource Manager, and select Create.
 
-    ![At the Bottom of the blade, Resource Manager is selected as the deployment model.](media/setup6.png 'Bottom of the blade')
+    ![At the Bottom of the blade, Resource Manager is selected as the deployment model.] 
 
 3. Set the following configuration on the Basics tab:
 
-    - Name: Enter **LabVM**
+    - Subscription: (Your Subscription) Select the subscription you are using for this hands-on lab.
+    
+    - Resource Group: Select Create new, and enter **intelligent-analytics** as the name of the new resource group.
 
-    - VM disk type: Select **SSD**
+    - Virtual Machine Name: Enter **LabVM**
+
+    - Region: Select a region close to you.
+
+    - Availability Options:  Leave the availability option as **No infrastructure redundancy required**.
+
+    - Size: **Standard D2s v3**
 
     - User name: Enter **demouser**
 
     - Password: Enter **Password.1!!**
 
-    - Subscription: Select the subscription you are using for this hands-on lab.
+    - Public inbound ports: **Allow selected ports**
 
-    - Resource Group: Select Create new, and enter **intelligent-analytics** as the name of the new resource group.
+    - Select inbound ports: Select **RDP**
 
-    - Location: Select a region close to you.
+    - Already have a Windos license?: (Default)
 
-    ![The Basics blade fields fields display the previously mentioned settings.](media/setup7.png 'Basics blade')
+    - VM disk type: Select **SSD**
 
-4. Select **OK** to move to the next step.
+    ![The Basics blade fields fields display the previously mentioned settings.](media/2019-03-20-10-50-25.png)
 
-5. On the Choose a size blade, select **DS2_V3 Standard**.
+4. Select **Next: Disks** to move to the next step. 
 
-    ![The Choose a size blade has the D2S_V3 Standard option selected](media/setup-vm-size.png 'Choose a size blade')
+    ![Review the next blade - Disks.](media/2019-03-20-10-53-39.png)
 
-6. Choose **Select** to move on to the Settings blade.
+5. OS Disk type: **Standard SSD**
 
-7. On the Settings blade, select **RDP (3389)** from the Select public inbound ports drop down, then select **OK**.
+6. Advanced - Use managed disks: **Yes**
 
-    ![Select RDP (3389) from the Select public inbound ports drop down](media/setup-vm-settings.png 'Setting blade')
+    ![](media/2019-03-20-11-28-25.png)
 
-8. Select Create on the Create blade to provision the virtual machine.
+7. Click **Next: Networking**
 
-    ![The Create blade shows that validation passed, and provides the offer details.](media/setup9.png 'Create blade')
+    ![Review the next blade - Networking.](media/2019-03-20-11-18-33.png)
 
-9. It may take 10+ minutes for the virtual machine to complete provisioning.
+8. Leave defaults
+
+    ![](media/2019-03-20-11-20-21.png)
+
+9. Click the **Review + create** button.
+
+    ![Review and create button displayed.](media/2019-03-20-11-23-20.png)
+
+10. Azure will validate your settings.  If everything is valid, then click **Create**.
+
+    ![Validate the VM settings before creation.](media/2019-03-20-15-18-30.png)
+
+It may take 10+ minutes for the virtual machine to complete provisioning.
 
 You should follow all steps provided *before* performing the Hands-on lab.
