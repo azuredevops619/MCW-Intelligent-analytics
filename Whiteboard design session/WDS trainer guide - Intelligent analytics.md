@@ -9,7 +9,7 @@ Whiteboard design session trainer guide
 </div>
 
 <div class="MCWHeader3">
-October 2018
+April 2018
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -24,7 +24,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
 
 **Contents**
 
-- [Trainer Information](#trainer-information)
+- [Trainer information](#trainer-information)
   - [Role of the trainer](#role-of-the-trainer)
   - [Whiteboard design session flow](#whiteboard-design-session-flow)
   - [Before the whiteboard design session: How to prepare](#before-the-whiteboard-design-session-how-to-prepare)
@@ -36,11 +36,11 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
     - [Customer needs](#customer-needs)
     - [Customer objections](#customer-objections)
     - [Infographic of common scenarios](#infographic-of-common-scenarios)
-  - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
+    - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
   - [Step 3: Present the solution](#step-3-present-the-solution)
   - [Wrap-up](#wrap-up)
-  - [Additional references](#additional-references)
-- [Intelligent analytics whiteboard design session trainer guide](#intelligent-analytics-whiteboard-design-session-trainer-guide-1)
+    - [Additional references](#additional-references)
+- [Intelligent analytics whiteboard design session trainer guide](#intelligent-analytics-whiteboard-design-session-trainer-guide)
   - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study-1)
   - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution-1)
   - [Step 3: Present the solution](#step-3-present-the-solution-1)
@@ -308,7 +308,7 @@ Directions: With all participants at your table, respond to the following questi
 
 2. How would you build this dashboard using the tool you recommended?
 
-3. How would you show display the trending sentiment data over time within the dashboard?
+3. How would you display the trending sentiment data over time within the dashboard?
 
 **Prepare**
 
@@ -343,7 +343,7 @@ Directions:
 
 6.  The customer team gives feedback to the Microsoft team.
 
-7.  Tables switch roles and repeat Steps 2-6.
+7.  Tables switch roles and repeat Direction Steps 2-6.
 
 ##  Wrap-up 
 

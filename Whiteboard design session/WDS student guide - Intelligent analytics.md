@@ -9,7 +9,7 @@ Whiteboard design session student guide
 </div>
 
 <div class="MCWHeader3">
-October 2018
+April 2019
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -108,7 +108,7 @@ Finally, to help them reflect on chats that occur in public chat rooms, they wou
 
 ### Infographic of common scenarios
 
-![Screenshot of a sample Internet of Things workflow, which is broken into on-premises and Azure services.](/Whiteboard%20design%20session/media/image2.png "Internet of Things workflow")
+![Screenshot of a sample Internet of Things workflow, which is broken into on-premises and Azure services.](media/image2.png "Internet of Things workflow")
 
 ## Step 2: Design a proof of concept solution
 
@@ -184,7 +184,7 @@ Directions: With all participants at your table, respond to the following questi
 
 2. How would you build this dashboard using the tool you recommended?
 
-3. How would you show display the trending sentiment data over time within the dashboard?
+3. How would you display the trending sentiment data over time within the dashboard?
 
 **Prepare**
 
@@ -222,7 +222,7 @@ Directions:
 
 6.  The customer team gives feedback to the Microsoft team.
 
-7.  Tables switch roles and repeat Steps 2-6.
+7.  Tables switch roles and repeat Direction Steps 2-6.
 
 ##  Wrap-up 
 
