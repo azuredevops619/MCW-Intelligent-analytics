@@ -220,7 +220,7 @@ In these steps, you will provision a Web App and an API App within a single App 
 
 1. Sign in to the Azure Portal (<https://portal.azure.com>).
 
-2. Select +Create a resource, then select Web and finally select Web App. Click     the **Create** button.
+2. Select +Create a resource, then select Web and finally select **Web App**. Click     the **Create** button.
 
   ![Showing the Web App blade.](media/2019-03-20-16-11-35.png "Web App blade")
 
