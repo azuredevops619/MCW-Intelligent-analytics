@@ -9,14 +9,14 @@ Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
-October 2018
+April 2019
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
 The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
 
-© 2018 Microsoft Corporation. All rights reserved.
+© 2019 Microsoft Corporation. All rights reserved.
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
@@ -37,8 +37,8 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
     - [Task 7: Provision Azure Cosmos DB](#task-7-provision-azure-cosmos-db)
     - [Task 8: Provision Azure Search](#task-8-provision-azure-search)
     - [Task 9: Create Stream Analytics job](#task-9-create-stream-analytics-job)
-    - [Task 10: Start the Stream Analytics Job](#task-10-start-the-stream-analytics-job)
-    - [Task 11: Provision an Azure Storage Account](#task-11-provision-an-azure-storage-account)
+    - [Task 10: Start the Stream Analytics job](#task-10-start-the-stream-analytics-job)
+    - [Task 11: Provision an Azure Storage account](#task-11-provision-an-azure-storage-account)
     - [Task 12: Provision Cognitive Services](#task-12-provision-cognitive-services)
   - [Exercise 2: Implement message forwarding](#exercise-2-implement-message-forwarding)
     - [Task 1: Implement the event processor](#task-1-implement-the-event-processor)
@@ -134,7 +134,7 @@ If you are already connected to your Lab VM, skip to Step 6.
 
 3. On the LabVM blade, select **Connect** from the top menu, which will download an RDP file.
 
-    ![The Connect button is circled on the LabVM blade.](media/image12.png 'LabVM blade')
+    ![The Connect button is circled on the LabVM blade.](media/image12.png "LabVM blade")
 
 4. Open the downloaded RDP file.
 
@@ -144,9 +144,9 @@ If you are already connected to your Lab VM, skip to Step 6.
 
 6. Enter the following credentials (or the non-default credentials if you changed them):
 
-    a. User name: **demouser**
+    - User name: **demouser**
 
-    b. Password: **Password.1!!**
+    - Password: **Password.1!!**
 
     ![The Windows Security window asks you to enter the credentials for demouser.](media/image14.png 'Windows Security window')
 
@@ -170,16 +170,16 @@ If you are already connected to your Lab VM, skip to Step 6.
     - Type F10.  The menu should be displayed.
     - Go to **Tools**.
 
-        ![Showing IE menu.](media/2019-03-20-15-40-37.png)
+        ![Showing IE menu.](media/2019-03-20-15-40-37.png "IE menu")
     - Click **Internet Options**
     - Click the **Security** tab and the **Custom Level** for the **Internet**
 
-    ![Showing the Internet Options](media/2019-03-20-15-44-24.png)
+    ![Showing the Internet Options](media/2019-03-20-15-44-24.png "Internet Options")
     - Scroll down to **File download** and enable.
 
-    ![Showing Internet custom options](media/2019-03-20-15-46-49.png)
+    ![Showing Internet custom options](media/2019-03-20-15-46-49.png "Internet custom options")
 
-13. Now you can dowload files from the Internet. Download and install Google Chrome.
+13. Now you can download files from the Internet. Download and install Google Chrome.
 
 
 
@@ -209,7 +209,7 @@ If you are already connected to your Lab VM, skip to Step 6.
 
     ![In the Security Warning window, under the Would you like to open this project? prompt, the Ask me for every project in this solution checkbox is circled.](media/image20.png 'Security Warning window')
 
-    ![Initial solution folder and files](media/2019-03-20-15-58-31.png)
+    ![Initial solution folder and files](media/2019-03-20-15-58-31.png "Initial solution folder and files")
 
 > **Note**: If you attempt to build the solution at this point, you will see many build errors. This is intentional. You will correct these in the exercises that follow.
 
@@ -225,7 +225,7 @@ In these steps, you will provision a Web App and an API App within a single App 
 
 2. Select +Create a resource, then select Web and finally select Web App. Click the **Create** button.
 
-  ![Showing the Web App blade.](media/2019-03-20-16-11-35.png)
+  ![Showing the Web App blade.](media/2019-03-20-16-11-35.png "Web App blade")
 
 3. On the Create Web App blade, enter the following:
 
@@ -265,7 +265,7 @@ In these steps, you will provision a Web App and an API App within a single App 
 
 9. Select **+Create a resource, API, API App**.  Click the **Create** button.
 
-    ![Showing the API App Select a software plan option and Create button.](media/2019-03-20-16-26-33.png)
+    ![Showing the API App Select a software plan option and Create button.](media/2019-03-20-16-26-33.png "Select a software plan")
 
 10. On the Create API App blade enter the following:
 
@@ -279,7 +279,7 @@ In these steps, you will provision a Web App and an API App within a single App 
 
     - Select **Create**.
 
-        ![The Create API app blade fields display the previously mentioned settings. The App Service plan blade and the New App Service plan blade also display.](media/2019-03-20-16-36-57.png)
+        ![The Create API app blade fields display the previously mentioned settings. The App Service plan blade and the New App Service plan blade also display.](media/2019-03-20-16-36-57.png "App Service plan blade and the New App Service plan blade")
 ### Task 4: Provision Function App
 
 In this section, you will provision a Function App that will be used as the EventProcessorHost for processing and enriching Event Hubs data.
@@ -389,7 +389,7 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
     - In the list of claims, select **Manage, Send, and Listen**.
 
-    ![In the New policy section, Policy name is set to ChatConsole, and three check boxes are selected: Manage, Send, and Listen.](media/2019-03-20-16-49-23.png)
+    ![In the New policy section, Policy name is set to ChatConsole, and three check boxes are selected: Manage, Send, and Listen.](media/2019-03-20-16-49-23.png "New policy section")
 
     - Select **Create**.
 
@@ -399,7 +399,7 @@ In this task, you will create a new Event Hubs namespace and instance.
 
 1. In the [Azure portal](https://portal.azure.com), select **+Create a resource**, then search for **Event Hubs**.
 
-    ![Select a software plan.  Event Hubs is selected. Click Create button.](media/2019-03-20-16-53-29.png)
+    ![Select a software plan.  Event Hubs is selected. Click Create button.](media/2019-03-20-16-53-29.png "Event Hubs is selected. Click Create button")
 2. On the Create namespace blade enter the following:
 
     - **Name**: Provide a unique name for the namespace (e.g., awhotel-events-namespace).
@@ -446,7 +446,7 @@ In this task, you will create a new Event Hubs namespace and instance.
 
 6. Repeat steps listed 5 to create another Event Hub. This one will store messages for archival and be processed by Stream Analytics. Name it awchathub2.
 
-    ![Showing the Event Hubs created.](media/2019-03-20-17-01-42.png)
+    ![Showing the Event Hubs created.](media/2019-03-20-17-01-42.png "Event Hubs created")
 
 ### Task 7: Provision Azure Cosmos DB
 
@@ -488,7 +488,7 @@ In this section, you will provision an Azure Cosmos DB account, a DocumentDB Dat
     - **Collection Id**: Enter messagestore.
 
     - **Partition Key**: Enter a partition key such as **/username**.
-        > Note: Pick a field in this schema.  Otherwise, you will have no documents in the CosmoDB collection. Below is a sample of the messages stored in the CosmoDB at a later part in the lab.
+        >**Note**: Pick a field in this schema.  Otherwise, you will have no documents in the CosmoDB collection. Below is a sample of the messages stored in the CosmoDB at a later part in the lab.
 
         ![Display all of the fields in a message document](media/2019-03-21-13-18-47.png "Possible fields to partition on.")
 
@@ -496,7 +496,7 @@ In this section, you will provision an Azure Cosmos DB account, a DocumentDB Dat
 
     - Select **OK** to add the collection.
 
-        ![The Add Collection blade fields display the previously mentioned settings.](media/2019-03-21-13-33-35.png)
+        ![The Add Collection blade fields display the previously mentioned settings.](media/2019-03-21-13-33-35.png "Add Collection blade fields")
 6. Add another collection with the following:
 
     - **Database id**: Enter **awhotels**.
@@ -509,7 +509,7 @@ In this section, you will provision an Azure Cosmos DB account, a DocumentDB Dat
 
     - Select **OK** to add the collection.
 
-    ![Final database collection blade.](media/2019-03-20-17-23-41.png)
+    ![Final database collection blade.](media/2019-03-20-17-23-41.png "Final database collection blade.")
 
 ### Task 8: Provision Azure Search
 
@@ -517,7 +517,7 @@ In this section, you will create an Azure Search instance.
 
 1. Select **+Create a resource, Web**, the select **Azure Search**.
 
-    ![In the Azure portal, New pane, Web + Mobile and Azure Search (Learn More) are circled.](media/image46.png 'Azure Search create a reource')
+    ![In the Azure portal, New pane, Web + Mobile and Azure Search (Learn More) are circled.](media/image46.png 'Azure Search create a resource')
 
 2. On the New Search Service blade, enter the following:
 
@@ -533,7 +533,7 @@ In this section, you will create an Azure Search instance.
 
     - Select **Create**.
 
-      ![The New Search Service bladefields display the previously mentioned settings.](media/2019-03-20-17-28-36.png)
+      ![The New Search Service blade fields display the previously mentioned settings.](media/2019-03-20-17-28-36.png "New Search Service blade fields")
 
 ### Task 9: Create Stream Analytics job
 
@@ -637,7 +637,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     - **Subscription**: Select the subscription you are using for this hands on lab.
 
-    - **Service Bus namespace**: Select the awhotel-sbnamespace.
+    - **Service Bus namespace**: Select the awhotel-sb namespace.
 
     - **Queue name**: Choose Use existing and select awhotel-staff-notifications.
 
@@ -673,7 +673,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
         If the authorization has succeeded, then you should see the workspaces available.
 
-      ![The Power BI authorization has succeeded.](media/2019-03-20-17-44-01.png)
+      ![The Power BI authorization has succeeded.](media/2019-03-20-17-44-01.png "Power BI authorization has succeeded")
 
     - Click the Save button.
 
@@ -826,12 +826,6 @@ The EventProcessorHost requires an Azure Storage account that it will use to man
         Go to the Advanced tab.
 
     - **Secure transfer required**: Select Disabled.
-
-
-
-
-
-
 
     - Select **Review + create**.  Select **Create**.
 
@@ -1051,7 +1045,7 @@ The namespace, and therefore connection string, for the service bus is different
 
 1. Select the **ChatConsole** from the list of policies and copy the Primary Connection String value.
 
-    ![Service Bus: Shared access policies.  ChatConsole listed.](media/2019-03-20-19-45-55.png)
+    ![Service Bus: Shared access policies.  ChatConsole listed.](media/2019-03-20-19-45-55.png "Service Bus - Shared access policies")
 
     ![In the SAS Policy: ChatConsole blade, the Primary Connection String value and its corresponding copy button are circled.](media/image88.png 'SAS Policy: ChatConsole blade')
 
@@ -1138,7 +1132,7 @@ With the App Services projects properly configured, you are now ready to deploy 
 
 5. Select **OK**.
 
-    ![Update Functions Version on Azure](media/2019-03-20-20-13-37.png)
+    ![Update Functions Version on Azure](media/2019-03-20-20-13-37.png "Functions Version on Azure")
 
 6. Select Publish. The publish should immediately begin. If not, select the Publish button on the Publish step.
 
@@ -1477,9 +1471,9 @@ There is one last intelligence service to activate in the application---speech r
 
 Now that you have added sentiment analysis, language understanding, and speech recognition to the solution, you need to re-deploy the apps so you can test out the new functionality.
 
-1. Publish the `ChatMessageSentimentProcessorFunction` Function App using Visual Studio just as you did in [Exercise 4, Task 1](#task-1-publish-the-chatmessagesentimentprocessor-function-app).
+1. Publish the `ChatMessageSentimentProcessorFunction` Function App using Visual Studio just as you did in [Exercise 1, Task 1](#task-1-publish-the-chatmessagesentimentprocessor-function-app).
 
-2. Publish the `ChatWebApp` just as you did in [Exercise 4, Task 2](#task-2-publish-the-chatwebapp).
+2. Publish the `ChatWebApp` just as you did in [Exercise 1, Task 2](#task-2-publish-the-chatwebapp).
 
 3. When both have published, navigate to your deployed web app making sure to use HTTPS. This is required for most browsers to support the microphone needed for speech recognition.
 
@@ -1537,7 +1531,7 @@ In this task, you will create a free Twilio account that will be used to send SM
 
 5. From your account dashboard, select the **All Products & Services icon**.
 
-    ![All Products & Services icon is shown.](media/2019-03-21-06-20-56.png)
+    ![All Products & Services icon is shown.](media/2019-03-21-06-20-56.png "Products & Services icon")
 
 6. Select **#Phone Numbers** under **Super Network**.
 
@@ -1609,9 +1603,9 @@ In this task, you will configure a Logic App to send notifications to hotel gues
     ![Service Bus - When a message is received in a queue (auto-complete) is highlighted in the Triggers list.](media/logic-app-triggers-service-bus-queue.png "Service Bus Triggers")
 
 5. On the When a message is received in a queue (auto-complete) dialog, select the **awhotel-staff-notifications** queue from the Queue name drop down.
-    > Note: Remember the queue you set up earlier.
+    >**Note**: Remember the queue you set up earlier.
 
-    ![Service Bus Namepsace - queue listing.](media/2019-03-21-09-12-48.png "awhotel-staff-notification queue status")
+    ![Service Bus Namespace - queue listing.](media/2019-03-21-09-12-48.png "awhotel-staff-notification queue status")
 
     - Enter the **awhotel-staff-notifications** into the connection input box.
     - Select the **ChatConsole** service bus policy.
@@ -1624,10 +1618,10 @@ In this task, you will configure a Logic App to send notifications to hotel gues
     
     - Save your configuration.
 
-    ![Save your configuration in the Logic Apps Designer](media/2019-03-21-09-27-55.png)
+    ![Save your configuration in the Logic Apps Designer](media/2019-03-21-09-27-55.png "Save your configuration")
  
 6. Select **+ New step**.
-    ![Showing the location of the new step button. New step is selected.](media/2019-03-21-09-30-18.png)
+    ![Showing the location of the new step button. New step is selected.](media/2019-03-21-09-30-18.png "New step is selected")
 
 
 7. In the Choose an action pane, enter "Parse" into the search box, then select **Data Operations - Parse JSON** from the list.
@@ -1900,7 +1894,7 @@ Before going further, a good thing to check is whether messages are being writte
 
     >Note: if you don't see messages, then check for errors in MessageLogger, Outputs, ComsoDB.  If you have to delete the collection and recreate them, make sure to stop and start the MessageLogger.  Test the connection. 
 
-    ![Displaying CosmoDB output details error.](media/2019-03-21-13-45-17.png)
+    ![Displaying CosmoDB output details error.](media/2019-03-21-13-45-17.png "CosmoDB output details error")
 
 ### Task 2: Creating the index and indexer
 
@@ -1908,7 +1902,7 @@ Before going further, a good thing to check is whether messages are being writte
 
 2. Select your **Search** **service** instance from the list.
 
-    ![ChatSearchApi icon and sample name](media/2019-03-21-13-59-10.png)
+    ![ChatSearchApi icon and sample name](media/2019-03-21-13-59-10.png "ChatSearchApi icon")
 
 3. Select **Import data**.
 
@@ -1930,21 +1924,21 @@ Before going further, a good thing to check is whether messages are being writte
 
     >Note: You find your connection string here:
 
-    ![awhotelcosmodb -keys primary connection string copied to the clipboard](media/2019-03-21-14-09-21.png)
+    ![awhotelcosmodb -keys primary connection string copied to the clipboard](media/2019-03-21-14-09-21.png "primary connection string")
 
 8. Choose your **awhotels** database.
 
 9. Choose your **messagestore** collection.
 
-    ![Import data blade. Display all of the fields for configuration.](media/2019-03-21-14-12-53.png)
+    ![Import data blade. Display all of the fields for configuration.](media/2019-03-21-14-12-53.png "Display all of the fields")
 
 10. Select the **Next** button.
 
-    ![Next button](media/2019-03-21-14-17-35.png)
+    ![Next button](media/2019-03-21-14-17-35.png "Next button")
 
     Select **Skip to Customize target index**
 
-    ![](media/2019-03-21-14-20-45.png)
+    ![Skip to Customize target index](media/2019-03-21-14-20-45.png "Skip to Customize target index")
 
 11. Select **Customize target index**, and observe that the field list has been pre-populated for you based on data in the collection.
 
@@ -2264,7 +2258,7 @@ In this exercise, attendees will deprovision any Azure resources that were creat
 
 4. Log into Twilio and release your phone number.
 
-    ![Twilio - release this number.](media/2019-03-21-17-57-37.png)
+    ![Twilio - release this number.](media/2019-03-21-17-57-37.png "Twilio - release this number")
 
 5. PowerBI - Delete **Real-time Sentiment** workspace.
 
