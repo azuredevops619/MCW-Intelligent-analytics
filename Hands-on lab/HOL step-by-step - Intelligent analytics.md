@@ -181,8 +181,6 @@ If you are already connected to your Lab VM, skip to Step 6.
 
 13. Now you can download files from the Internet. Download and install Google Chrome.
 
-
-
 ### Task 2: Download and open the ConciergePlus starter solution
 
 1. From your Lab VM, download the starter project by downloading a .zip copy of the Intelligent analytics GitHub repo.
@@ -212,7 +210,6 @@ If you are already connected to your Lab VM, skip to Step 6.
     ![Initial solution folder and files](media/2019-03-20-15-58-31.png "Initial solution folder and files")
 
 > **Note**: If you attempt to build the solution at this point, you will see many build errors. This is intentional. You will correct these in the exercises that follow.
-
 > **Note**: Visual Studio Installer will show the installed version of Visual Studio and if the Azure SDK is installed. If the Azure SDK is missing, go back to the **Before the HOL** and make sure you created the correct VM. Updating Visual Studio manually may install components that may not work with the lab.
 
 ![Visual Studio Installer - Modifying Visual Studio Community. Displaying Workloads.](media/2019-03-20-16-02-17.png "Workloads Configuration")
@@ -223,7 +220,7 @@ In these steps, you will provision a Web App and an API App within a single App 
 
 1. Sign in to the Azure Portal (<https://portal.azure.com>).
 
-2. Select +Create a resource, then select Web and finally select Web App. Click the **Create** button.
+2. Select +Create a resource, then select Web and finally select Web App. Click     the **Create** button.
 
   ![Showing the Web App blade.](media/2019-03-20-16-11-35.png "Web App blade")
 
@@ -280,6 +277,7 @@ In these steps, you will provision a Web App and an API App within a single App 
     - Select **Create**.
 
         ![The Create API app blade fields display the previously mentioned settings. The App Service plan blade and the New App Service plan blade also display.](media/2019-03-20-16-36-57.png "App Service plan blade and the New App Service plan blade")
+
 ### Task 4: Provision Function App
 
 In this section, you will provision a Function App that will be used as the EventProcessorHost for processing and enriching Event Hubs data.
@@ -307,7 +305,7 @@ In this section, you will provision a Function App that will be used as the Even
     - **Storage**: Select **Create new** and accept the generated name.
 
     - **Application Insights**: **On**
-    
+
     - Select **Create** to provision the Function App.
 
     ![Create Function App blade](media/provision-function-app.png "Provision Function App")
@@ -810,7 +808,7 @@ The EventProcessorHost requires an Azure Storage account that it will use to man
     - **Subscription**: Select the subscription you are using for this hands-on lab.
 
     - **Resource Group**: Choose Use existing and select the intelligent-analytics resource group.
-    
+
     - **Storage account name**: Provide a unique name for the account (e.g., awhotelchatstore).
 
     - **Location**: Select the location you are using for resources in this hands-on lab.
@@ -873,7 +871,7 @@ To provision access to the Text Analytics API (which provides sentiment analysis
 
     - Take note of Key 1 for Speech.
 
-      ![Bing Speeh API from the Azure Marketplace is shown. Locate and click to create this resource.](media/image71.png 'Bing Speech API')
+      ![Bing Speech API from the Azure Marketplace is shown. Locate and click to create this resource.](media/image71.png 'Bing Speech API')
 
 8. Select **+Create a resource**, select **Language Understanding**.  Repeat steps 1-6: Create blade:
 
@@ -963,7 +961,7 @@ In this section, you will implement the message forwarding from the ingest Event
 1. Navigate to your Function App in the [Azure portal](https://portal.azure.com). You can find it by opening your intelligent-analytics Resource Group and looking through the list of resources.
 
 2. Select **Application settings** in the Overview blade of the Function App.
- 
+
     ![Select Application settings for the Function App](media/2019-03-20-18-33-26.png "Application settings link")
 
 3. You will add the following application settings. The following sections walk you through the process of retrieving the values for these settings:
@@ -1074,6 +1072,7 @@ The namespace, and therefore connection string, for the service bus is different
 5. Scroll to the top of Application Settings and select **Save**. Your application settings should now resemble the following:
 
     ![A sample of the completed Application Settings is shown](media/2019-03-20-20-05-35.png "Application settings")
+
 ## Exercise 3: Configure the Chat Web App settings
 
 Duration: 10 minutes
@@ -1285,7 +1284,7 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 1. Using a browser, navigate to <http://www.luis.ai>.  
 
->**Note**: If in Exercise 1, Step 12 you created your Luis account in Azure in an European region (e.g. West Europe), user <http://eu.luis.ai> instead. If you selected an Australian region use <http://au.luis.ai>.
+    >**Note**: If in Exercise 1, Step 12 you created your Luis account in Azure in an European region (e.g. West Europe), user <http://eu.luis.ai> instead. If you selected an Australian region use <http://au.luis.ai>.
 
 2. Select **Sign in** **or create an account**.
 
@@ -1317,53 +1316,53 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     ![The Publish dialog is shown with the region selected and the Add Key button clicked.](media/image115.png 'Publish dialog')
 
-13. Select My Apps from the menu bar and choose your app from the list.
+11. Select My Apps from the menu bar and choose your app from the list.
 
-14. Select **Intents** on the left-hand menu, then **Create new intent**.
+12. Select **Intents** on the left-hand menu, then **Create new intent**.
 
     ![The Intents menu for the awchat application and the Create new intent has been selected.](media/image117.png 'awchat application')
 
-15. In the Intents dialog, for the Intent Name enter **OrderIn** and select **Done**.
+13. In the Intents dialog, for the Intent Name enter **OrderIn** and select **Done**.
 
     ![The OrderIn intent has been entered into the Create new intent diaglog and the Done button is clicked.](media/image118.png 'Create a new intent')
 
-16. In the Utterances text box, enter "order a pizza". Press Enter to add the utterance.
+14. In the Utterances text box, enter "order a pizza". Press Enter to add the utterance.
 
     ![The utterence order a pizza has been typed into the OrderIn Intent.](media/image119.png 'Orderin utterance')
 
-17. Select Entities from the menu on the left.
+15. Select Entities from the menu on the left.
 
     ![The Entities menu item has been selected for the awchat application.](media/image120.png 'Entities menu')
 
-18. Select Create new entity.
+16. Select Create new entity.
 
     ![The Create new entity has been clicked for the awchat application.](media/image121.png 'Create new entity')
 
-19. For the Entity name specify "**RoomService**" and set the Entity Type to **Hierarchical**.
+17. For the Entity name specify "**RoomService**" and set the Entity Type to **Hierarchical**.
 
     ![In the Add Entity dialog box, Entity name is set to RoomService, and Entity type is set to Hierarchical.](media/image122.png 'Add Entity dialog box')
 
-20. Select **+ Add child entity**.
+18. Select **+ Add child entity**.
 
-21. For Child Name provide a name of **FoodItem**.
+19. For Child Name provide a name of **FoodItem**.
 
     ![A child entity has been added to the RoomService entity.](media/image123.png 'Child name entity')
 
-22. Select +Add a child entity and provide a name of **RoomItem**. Select **Done**.
+20. Select +Add a child entity and provide a name of **RoomItem**. Select **Done**.
 
     ![The completed Entity name is shown with all of the selections completed. The done button has been selected.](media/image124.png 'Completed entity name')
 
-23. Select **Intents** from the menu on the left and select the **OrderIn** intent you created.
+21. Select **Intents** from the menu on the left and select the **OrderIn** intent you created.
 
-24. In the utterance, select the word pizza so it becomes highlighted.
+22. In the utterance, select the word pizza so it becomes highlighted.
 
     ![In the Utterances (1) section, order a [pizza] is selected, and below that, RoomService displays with a chevron next to it.](media/image125.png 'Utterances order a pizza')
 
-25. Under Entities select **RoomService**, then select **FoodItem**.
+23. Under Entities select **RoomService**, then select **FoodItem**.
 
     ![The expanded chevron displays, with two choices: RoomService::FoodItem, which is selected, and RoomService::RoomItem, which is not.](media/image126.png 'Entities options')
 
-26. In the Type a new utterance text box, enter the following utterance:
+24. In the Type a new utterance text box, enter the following utterance:
 
     - Utterance: **bring me toothpaste**
 
@@ -1373,7 +1372,7 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     - Entity: **RoomService:RoomItem**
 
-27. Repeat this process for the following phrases (text to select is in bold):
+25. Repeat this process for the following phrases (text to select is in bold):
 
     - **Bring me towels \| RoomService:RoomItem**
 
@@ -1385,25 +1384,25 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
       ![The utterences after they have been entered and aligned to the proper entities.](media/image127.png 'Utterance list of room service items')
 
-28. Select Train from the menu bar.
+26. Select Train from the menu bar.
 
     ![Train menu bar selected/](media/image128.png 'Train menu bar')
 
-29. Click Test and experiment by writing some utterances and pressing enter to see the interpretation.
+27. Click Test and experiment by writing some utterances and pressing enter to see the interpretation.
 
     ![An interactive test showing that searching for where can i buy a hamburger will invoke the entity RoomService::FoodItem. ](media/image129.png 'Test of utterances')
 
-30. Select Publish App from the menu on the top. 
+28. Select Publish App from the menu on the top. 
 
-31. When the publish completes, Refer to Keys and Endpoints under Manage in menu bar for Endpoint URL.
+29. When the publish completes, Refer to Keys and Endpoints under Manage in menu bar for Endpoint URL.
 
     ![At the bottom of the Keys and endpoints dialog box, the awhotels-luis Endpoint URL is circled.](media/luis-endpoint-url.png 'Publish App dialog box')
 
-32. This will open a new tab in your browser. Modify the end of the URL (the text following q= ) so it contains the phrase "order a pizza," and press ENTER. You should receive output similar to the following. Observe that it correctly identified the intent as OrderIn (in this case with a confidence of 0.9999995 or nearly 100%) and the entity as pizza having an entity type of RoomService::FoodItem (in this case with a confidence score of 96.1%).
+30. This will open a new tab in your browser. Modify the end of the URL (the text following q= ) so it contains the phrase "order a pizza," and press ENTER. You should receive output similar to the following. Observe that it correctly identified the intent as OrderIn (in this case with a confidence of 0.9999995 or nearly 100%) and the entity as pizza having an entity type of RoomService::FoodItem (in this case with a confidence score of 96.1%).
 
     ![The code window displays code as previously described.](media/image132.png 'Code window')
 
-33. In the URL, take note of two things:
+31. In the URL, take note of two things:
 
     - The base URL, _highlighted in green_. Copy this value, and paste it into a text editor, such as Notepad, for later reference.
 
@@ -1415,27 +1414,27 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
       You can also find your App ID by going to the Settings tab.
 
-34. You can add more utterances as desired by repeating the above steps to add new utterances, indicate the entity, train the model, and then update the publish application using the button in the Publish App screen.
+32. You can add more utterances as desired by repeating the above steps to add new utterances, indicate the entity, train the model, and then update the publish application using the button in the Publish App screen.
 
-35. When you are ready to integrate LUIS into your app, go to the Manage option in menu bar, and locate the luis key under Resources and Keys. Copy the first Key String. Paste this to your notepad.
+33. When you are ready to integrate LUIS into your app, go to the Manage option in menu bar, and locate the luis key under Resources and Keys. Copy the first Key String. Paste this to your notepad.
 
     ![The luis-api key in the Publish App screen is selected.](media/luis-copy-key-string.png 'Resources and keys')
 
     > **Note**: This is the same key you can obtain on the Keys blade for the luis-api Cognitive Service in the [Azure portal](https://portal.azure.com).
 
-36. You will enter this into the configuration of the Event Processor Function App.
+34. You will enter this into the configuration of the Event Processor Function App.
 
-37. Navigate to the Application Settings for your Event Processor Function App in the [Azure portal](https://portal.azure.com).
+35. Navigate to the Application Settings for your Event Processor Function App in the [Azure portal](https://portal.azure.com).
 
-38. Within the Application Settings, for the key **luisAppId** set the text of the value attribute to the App ID of your LUIS App (this value should be a GUID you obtained from the URL and not the name of your LUIS app). For the key **luisKey**, set the text of the value attribute to the Endpoint key used by your LUIS app (as you acquired it from the Azure Portal).
+36. Within the Application Settings, for the key **luisAppId** set the text of the value attribute to the App ID of your LUIS App (this value should be a GUID you obtained from the URL and not the name of your LUIS app). For the key **luisKey**, set the text of the value attribute to the Endpoint key used by your LUIS app (as you acquired it from the Azure Portal).
 
     ![Set the luisAppId and luisKey values within the function app's app settings](media/function-app-luis-app-settings.png "Function App application settings for LUIS")
 
-39. **Save** your Application Settings. The Event Processor is pre-configured to invoke the LUIS API using the provided App ID and key.
+37. **Save** your Application Settings. The Event Processor is pre-configured to invoke the LUIS API using the provided App ID and key.
 
-40. Open Visual Studio then open `ProcessChatMessage.cs` within the `ChatMessageSentimentProcessorFunction` project, and navigate to the Run method.
+38. Open Visual Studio then open `ProcessChatMessage.cs` within the `ChatMessageSentimentProcessorFunction` project, and navigate to the Run method.
 
-41. Locate TODO: 13 and replace it with the following:
+39. Locate TODO: 13 and replace it with the following:
 
     ```csharp
     //TODO: 13.Respond to chat message intent if appropriate
@@ -1443,15 +1442,15 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
     await HandleIntent(intent, msgObj, outputServiceBus);
     ```
 
-42. At the top of the file, locate the variable named \_luisBaseUrl.
+40. At the top of the file, locate the variable named \_luisBaseUrl.
 
     ![In Visual Studio, the URL for luisBaseURL is circled.](media/image135.png 'Visual Studio')
 
-43. You will replace the value of this variable with the base URL you copied from the LUIS site above (the part highlighted in green).
+41. You will replace the value of this variable with the base URL you copied from the LUIS site above (the part highlighted in green).
 
-44. Take a look at the implementation of both methods if you are curious how the entity and intent information is used to generate an automatic chat message response from a bot.
+42. Take a look at the implementation of both methods if you are curious how the entity and intent information is used to generate an automatic chat message response from a bot.
 
-45. Save the file.
+43. Save the file.
 
 ### Task 3: Implement speech to text
 
@@ -1588,7 +1587,7 @@ In this task, you will configure a Logic App to send notifications to hotel gues
 1. In the [Azure portal](https://portal.azure.com), navigate to your newly created Logic App, then select **Logic App Designer** under **Development Tools** on the left-hand menu.
 
     ![AWT-notifications is selected in the resource list.](media/2019-03-21-06-37-05.png "AWT-Notification Selected")
-    
+
     ![Logic App Designer is selected under Development Tools in the left-hand menu of your newly created Logic App.](./media/logic-app-development-tools-logic-app-designer.png "Development Tools section")
 
 2. In the Logic App Designer, select **Blank Logic App** under **Templates**.
@@ -1633,6 +1632,7 @@ In this task, you will configure a Logic App to send notifications to hotel gues
     ```csharp
     @substring(base64ToString(triggerBody()?['ContentData']), indexof(base64ToString(triggerBody()?['ContentData']), '{'), sub(lastindexof(base64ToString(triggerBody()?['ContentData']), '}'),indexof(base64ToString(triggerBody()?['ContentData']), '{')))
     ```
+
     ![In the Parse JSON pane, Service Bus Message is in the Content box, Add dynamic content is highlighted, and in the Dynamic content pane Service Bus Message is highlighted. The Use sample payload to generate schema link is highlighted.](media/2019-03-21-09-42-51.png "Parse JSON action")
 
 
@@ -1724,11 +1724,11 @@ If you do not already have a Power BI account:
 
 2. Scroll down until you see the Try Power BI for free! section of the page, and select the Try Free\> button.
 
-![Screenshot of the Power BI Try for free section.](media/setup3.png 'Power BI Try for free section')
+    ![Screenshot of the Power BI Try for free section.](media/setup3.png 'Power BI Try for free section')
 
 3. On the page, enter your work email address (which should be the same account as the one you use for your Azure subscription), and select Sign up.
 
-![The Get started page has a field for entering your work email address.](media/setup4.png 'Get started page')
+    ![The Get started page has a field for entering your work email address.](media/setup4.png 'Get started page')
 
 4. Follow the on-screen prompts, and your Power BI environment should be ready within minutes. You can always return to it via <https://app.powerbi.com/>.
 
@@ -1914,11 +1914,7 @@ Before going further, a good thing to check is whether messages are being writte
 
 5. Select **Cosmos DB** from the dropdown.
 
-
-
 6. Enter **messagestore** for the name of the Data Source.
-
-
 
 7. **Cosmo DB account**: Enter your account connection string.
 
@@ -2263,7 +2259,5 @@ In this exercise, attendees will deprovision any Azure resources that were creat
 5. PowerBI - Delete **Real-time Sentiment** workspace.
 
 6. LUIS - https://www.luis.ai/applications.  Delete the **awchat** app.
-
-
 
 You should follow all steps provided _after_ attending the Hands-on lab.
