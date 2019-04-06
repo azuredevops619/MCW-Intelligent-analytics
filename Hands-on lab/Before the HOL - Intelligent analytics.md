@@ -9,13 +9,14 @@ Before the hands-on lab setup guide
 </div>
 
 <div class="MCWHeader3">
-October 2018
+April 2019
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
 The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
-© 2018 Microsoft Corporation. All rights reserved.
+
+© 2019 Microsoft Corporation. All rights reserved.
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
@@ -24,9 +25,9 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
 <!-- TOC -->
 
 - [Intelligent analytics before the hands-on lab setup guide](#intelligent-analytics-before-the-hands-on-lab-setup-guide)
-    - [Requirements](#requirements)
-    - [Before the hands-on lab](#before-the-hands-on-lab)
-        - [Task: Setup a lab virtual machine](#task-2-setup-a-lab-virtual-machine)
+  - [Requirements](#requirements)
+  - [Before the hands-on lab](#before-the-hands-on-lab)
+    - [Task: Setup a lab virtual machine](#task-setup-a-lab-virtual-machine)
 <!-- /TOC -->
 
 # Intelligent analytics before the hands-on lab setup guide
@@ -36,7 +37,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
 - Microsoft Azure subscription must be pay-as-you-go or MSDN.
   - Trial subscriptions will not work.
 - A virtual machine configured with:
-  - Visual Studio Community 2017 or greater, version 15.7 or later (<https://www.visualstudio.com/vs/>).
+  - Visual Studio Community 2017 or greater, version 15.7 or later (<https://www.visualstudio.com/vs/>).  Use latest release.
   - Azure SDK 2.9 or later (Included with Visual Studio 2017).
 
 ## Before the hands-on lab
@@ -47,48 +48,67 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 
 ### Task: Setup a lab virtual machine 
 
-1. In the [Azure Portal](https://portal.azure.com/), select +Create a resource, then type "Visual Studio" into the search bar. Select Visual Studio Community 2017 on Windows Server 2016 (x64) from the results. 
+1. In the [Azure Portal](https://portal.azure.com/), select +Create a resource, then type "Visual Studio" into the search bar. Select Visual Studio Community 2017 **(latest release)** on Windows Server 2016 (x64) from the results. 
 
-![In the Azure Portal Everything section, under Results, under Name, Visual Studio Community 2017 on Windows Server 2016 is circled.](media/setup5.png 'Azure Portal Everything section')
+![In the Azure Portal Everything section, under Results, under Name, Visual Studio Community 2017 on Windows Server 2016 is circled.](media/2019-03-20-10-21-21.png "Visual Studio Community 2017 on Windows Server 2016 (latest release)")
+![List of possible VM images.  Visual Studio Community 2017 (latest release) on Windows 2016 (x64) selected](media/2019-03-20-10-27-57.png "Visual Studio Community 2017 (latest release) on Windows 2016 (x64) selected")
 
-2. On the blade that comes up, at the bottom, ensure the deployment model is set to Resource Manager, and select Create.
+1. On the blade that comes up, ensure the deployment model is set to **Resource Manager**, and click the **Create** button.
 
-    ![At the Bottom of the blade, Resource Manager is selected as the deployment model.](media/setup6.png 'Bottom of the blade')
+2. Set the following configuration on the Basics tab:
 
-3. Set the following configuration on the Basics tab:
+    - **Subscription**: (Your Subscription) Select the subscription you are using for this hands-on lab.
+    
+    - **Resource Group**: Select Create new, and enter **intelligent-analytics** as the name of the new resource group.
 
-    - Name: Enter **LabVM**
+    - **Virtual Machine Name**: Enter LabVM.
 
-    - VM disk type: Select **SSD**
+    - **Region**: Select a region close to you.
 
-    - User name: Enter **demouser**
+    - **Availability Options**:  Leave the availability option as **No infrastructure redundancy required**.
 
-    - Password: Enter **Password.1!!**
+    - **Size**: Standard D2s v3
 
-    - Subscription: Select the subscription you are using for this hands-on lab.
+    - **Username**: demouser
 
-    - Resource Group: Select Create new, and enter **intelligent-analytics** as the name of the new resource group.
+    - **Password**: Password.1!!
 
-    - Location: Select a region close to you.
+    - **Public inbound ports**: Allow selected ports
 
-    ![The Basics blade fields fields display the previously mentioned settings.](media/setup7.png 'Basics blade')
+    - **Select inbound ports**: Select **RDP**.
 
-4. Select **OK** to move to the next step.
+    - **Already have a Windows license?**: (Default)
 
-5. On the Choose a size blade, select **DS2_V3 Standard**.
+    - **VM disk type**: Select **SSD**.
 
-    ![The Choose a size blade has the D2S_V3 Standard option selected](media/setup-vm-size.png 'Choose a size blade')
+    ![The Basics blade fields fields display the previously mentioned settings.](media/2019-03-20-10-50-25.png)
 
-6. Choose **Select** to move on to the Settings blade.
+3. Select **Next: Disks** to move to the next step. 
 
-7. On the Settings blade, select **RDP (3389)** from the Select public inbound ports drop down, then select **OK**.
+    ![Review the next blade - Disks.](media/2019-03-20-10-53-39.png)
 
-    ![Select RDP (3389) from the Select public inbound ports drop down](media/setup-vm-settings.png 'Setting blade')
+4. OS Disk type: **Standard SSD**
 
-8. Select Create on the Create blade to provision the virtual machine.
+5. Advanced - Use managed disks: **Yes**
 
-    ![The Create blade shows that validation passed, and provides the offer details.](media/setup9.png 'Create blade')
+    ![Create virutal machine.  Basics configuration blade. Disks.](media/2019-03-20-11-28-25.png "Create a Virtual Machine")
 
-9. It may take 10+ minutes for the virtual machine to complete provisioning.
+6. Click **Next: Networking**
+
+    ![Review the next blade - Networking.](media/2019-03-20-11-18-33.png "Review the next blade - Networking.")
+
+7. Leave defaults
+
+    ![Networking tab. Configure Virtual Networks.](media/2019-03-20-11-20-21.png "Networking tab - Configure Virtual Networks")
+
+8. Click the **Review + create** button.
+
+    ![Review and create button displayed.](media/2019-03-20-11-23-20.png "Review and create button")
+
+9.  Azure will validate your settings.  If everything is valid, then click **Create**.
+
+    ![Validate the VM settings before creation.](media/2019-03-20-15-18-30.png "Validation passed")
+
+It may take 10+ minutes for the virtual machine to complete provisioning.
 
 You should follow all steps provided *before* performing the Hands-on lab.

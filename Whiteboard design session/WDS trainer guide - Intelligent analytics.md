@@ -9,7 +9,7 @@ Whiteboard design session trainer guide
 </div>
 
 <div class="MCWHeader3">
-October 2018
+April 2018
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -18,13 +18,13 @@ Microsoft may have patents, patent applications, trademarks, copyrights, or othe
 
 The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
 
-© 2018 Microsoft Corporation. All rights reserved.
+© 2019 Microsoft Corporation. All rights reserved.
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
 **Contents**
 
-- [Trainer Information](#trainer-information)
+- [Trainer information](#trainer-information)
   - [Role of the trainer](#role-of-the-trainer)
   - [Whiteboard design session flow](#whiteboard-design-session-flow)
   - [Before the whiteboard design session: How to prepare](#before-the-whiteboard-design-session-how-to-prepare)
@@ -36,11 +36,11 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
     - [Customer needs](#customer-needs)
     - [Customer objections](#customer-objections)
     - [Infographic of common scenarios](#infographic-of-common-scenarios)
-  - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
+    - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
   - [Step 3: Present the solution](#step-3-present-the-solution)
   - [Wrap-up](#wrap-up)
-  - [Additional references](#additional-references)
-- [Intelligent analytics whiteboard design session trainer guide](#intelligent-analytics-whiteboard-design-session-trainer-guide-1)
+    - [Additional references](#additional-references)
+- [Intelligent analytics whiteboard design session trainer guide](#intelligent-analytics-whiteboard-design-session-trainer-guide)
   - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study-1)
   - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution-1)
   - [Step 3: Present the solution](#step-3-present-the-solution-1)
@@ -308,7 +308,7 @@ Directions: With all participants at your table, respond to the following questi
 
 2. How would you build this dashboard using the tool you recommended?
 
-3. How would you show display the trending sentiment data over time within the dashboard?
+3. How would you display the trending sentiment data over time within the dashboard?
 
 **Prepare**
 
@@ -504,13 +504,13 @@ The primary audience is the business decision makers and technology decision mak
 
     The next step is to create a Bot Service instance, such as a Functions Bot, to respond to questions from the knowledge base they created. Once provisioned, the Bot Service will need to have the QnA published KB information added to its Application Settings. This information includes the KB Id, endpoint host name, and auth key. Then they can embed the chat bot into their web application.
 
-    An alternative to using the Bot Service is to use the QnA Maker's REST API endpoints to programatically send questions and receive answers. This would allow them to integrate it as a separate chat channel of their real-time chat solution.
+    An alternative to using the Bot Service is to use the QnA Maker's REST API endpoints to programmatically send questions and receive answers. This would allow them to integrate it as a separate chat channel of their real-time chat solution.
 
 *Message search*
 
 1. What Azure services would you use to durably store the messages and enable them for full text search? How would you extend your messaging pipeline so that all messages get archived after they have been tagged with sentiment?
 
-    In order to support the requirements of searchable messaging and long-term extensibility, all chat messages flow through Event Hubs (which gives the solution the ability to "plug in" new forms of downstream message processing) and are stored in CosmosDB. To support the searching of messages, an Azure Search Index is created that is updated every five minutes by an Azure Search Indexer that pulls new message entries from CosmosDB. Once a message is indexed within Azure Search, it properties (such as the username of the user who sent) and its message body become full-text searchable. To perform a search, the browser which loads the search web page on the device makes a cross-origin, XmlHttpRequest to an API App that wraps requests to the Azure Search API, as illustrated by the following diagram:
+    In order to support the requirements of searchable messaging and long-term extensibility, all chat messages flow through Event Hubs (which gives the solution the ability to "plug in" new forms of downstream message processing) and are stored in CosmosDB. To support the searching of messages, an Azure Search Index is created that is updated every five minutes by an Azure Search Indexer that pulls new message entries from CosmosDB. Once a message is indexed within Azure Search, its properties (such as the username of the user who sent) and its message body become full-text searchable. To perform a search, the browser which loads the search web page on the device makes a cross-origin, XmlHttpRequest to an API App that wraps requests to the Azure Search API, as illustrated by the following diagram:
 
     ![This is the Preferred solution for Message Fowarding, sending chat messages through Event Hubs. Search implemented through Azure Search. As described in the previous text. Devices (performing searches) on the left feed into API App (Search API) via #Seattle. API App (via #Seattle) then flows into an Azure cloud labeled Search (match text) which then flows back to API App with a collection of message documents with hit highlighting.](media/image5.png 'Azure Services flowchart')
 
