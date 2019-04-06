@@ -67,9 +67,9 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 
     - **Availability Options**:  Leave the availability option as **No infrastructure redundancy required**.
 
-    - **Siz**e: Standard D2s v3
+    - **Size**: Standard D2s v3
 
-    - **User name**: demouser
+    - **Username**: demouser
 
     - **Password**: Password.1!!
 
@@ -77,7 +77,7 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 
     - **Select inbound ports**: Select **RDP**.
 
-    - **Already have a Windos license?**: (Default)
+    - **Already have a Windows license?**: (Default)
 
     - **VM disk type**: Select **SSD**.
 
