@@ -144,9 +144,9 @@ If you are already connected to your Lab VM, skip to Step 6.
 
 6. Enter the following credentials (or the non-default credentials if you changed them):
 
-    - User name: **demouser**
+    - **Username**: demouser
 
-    - Password: **Password.1!!**
+    - **Password**: Password.1!!
 
     ![The Windows Security window asks you to enter the credentials for demouser.](media/image14.png 'Windows Security window')
 
@@ -288,7 +288,7 @@ In this section, you will provision a Function App that will be used as the Even
 
 2. On the Create Function App blade, enter the following:
 
-    - App Name: Provide **a unique name** that is indicative of this resource being used to process chat messages (e.g., chatprocessor).
+    - **App Name**: Provide **a unique name** that is indicative of this resource being used to process chat messages (e.g., chatprocessor).
 
     - **Subscription**: Select your subscription.
 
@@ -573,7 +573,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     - **Input Alias**: Set the value to **eventhub**.
 
-    - **Choose**: **Select Event Hub from your subscriptions**.
+    - Choose **Select Event Hub from your subscriptions**.
 
     - **Subscription**: Choose the same subscription you have been using thus far.
 
@@ -683,7 +683,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     - **Output alias**: Enter **trending-sentiment**.
 
-    - **Group workspace**: **My workspace**
+    - **Group workspace**: My workspace
 
     - **Dataset Name**: Set to **TrendingSentiment**.
 
@@ -1611,7 +1611,7 @@ In this task, you will configure a Logic App to send notifications to hotel gues
 
     ![On the When a message is received in a queue (auto-complete) dialog, **awhotel-staff-notifications** is entered into the connection name input box. Choosing the policy.](media/2019-03-21-09-16-31.png "Queue selection")
 
-    - Enter 1 minute interval
+    - Enter 1 minute interval.
 
     ![On the When a message is received in a queue (auto-complete) dialog, choosing the interval and frequency](media/2019-03-21-09-18-59.png "Select a queue - interval and frequency")
     
@@ -1620,6 +1620,7 @@ In this task, you will configure a Logic App to send notifications to hotel gues
     ![Save your configuration in the Logic Apps Designer](media/2019-03-21-09-27-55.png "Save your configuration")
  
 6. Select **+ New step**.
+
     ![Showing the location of the new step button. New step is selected.](media/2019-03-21-09-30-18.png "New step is selected")
 
 
