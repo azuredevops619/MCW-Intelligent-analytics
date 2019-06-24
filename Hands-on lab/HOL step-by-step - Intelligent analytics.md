@@ -1239,7 +1239,7 @@ In this task, you will add code that enables the Event Processor to invoke the T
 6. Replace the code following TODO: 10 with the following:
 
     ```csharp
-    //TODO: 10.Post the rquest to the /sentiment endpoint
+    //TODO: 10.Post the request to the /sentiment endpoint
     string uri = $"{_textAnalyticsBaseUrl}/sentiment";
     string jsonResponse = "";
     using (var content = new ByteArrayContent(byteData))
