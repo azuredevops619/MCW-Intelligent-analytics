@@ -9,7 +9,7 @@ Whiteboard design session trainer guide
 </div>
 
 <div class="MCWHeader3">
-April 2019
+June 2019
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -24,31 +24,31 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
 
 **Contents**
 
-- [Trainer information](#trainer-information)
-  - [Role of the trainer](#role-of-the-trainer)
-  - [Whiteboard design session flow](#whiteboard-design-session-flow)
-  - [Before the whiteboard design session: How to prepare](#before-the-whiteboard-design-session-how-to-prepare)
-  - [During the whiteboard design session: Tips for an effective whiteboard design session](#during-the-whiteboard-design-session-tips-for-an-effective-whiteboard-design-session)
-- [Intelligent analytics whiteboard design session student guide](#intelligent-analytics-whiteboard-design-session-student-guide)
-  - [Abstract and learning objectives](#abstract-and-learning-objectives)
-  - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
-    - [Customer situation](#customer-situation)
-    - [Customer needs](#customer-needs)
-    - [Customer objections](#customer-objections)
-    - [Infographic of common scenarios](#infographic-of-common-scenarios)
-    - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
-  - [Step 3: Present the solution](#step-3-present-the-solution)
-  - [Wrap-up](#wrap-up)
-    - [Additional references](#additional-references)
-- [Intelligent analytics whiteboard design session trainer guide](#intelligent-analytics-whiteboard-design-session-trainer-guide)
-  - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study-1)
-  - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution-1)
-  - [Step 3: Present the solution](#step-3-present-the-solution-1)
-  - [Wrap-up](#wrap-up-1)
-  - [Preferred target audience](#preferred-target-audience)
-  - [Preferred solution](#preferred-solution)
-  - [Checklist of preferred objection handling](#checklist-of-preferred-objection-handling)
-  - [Customer quote (to be read back to the attendees at the end)](#customer-quote-to-be-read-back-to-the-attendees-at-the-end)
+- [Trainer information](#Trainer-information)
+  - [Role of the trainer](#Role-of-the-trainer)
+  - [Whiteboard design session flow](#Whiteboard-design-session-flow)
+  - [Before the whiteboard design session: How to prepare](#Before-the-whiteboard-design-session-How-to-prepare)
+  - [During the whiteboard design session: Tips for an effective whiteboard design session](#During-the-whiteboard-design-session-Tips-for-an-effective-whiteboard-design-session)
+- [Intelligent analytics whiteboard design session student guide](#Intelligent-analytics-whiteboard-design-session-student-guide)
+  - [Abstract and learning objectives](#Abstract-and-learning-objectives)
+  - [Step 1: Review the customer case study](#Step-1-Review-the-customer-case-study)
+    - [Customer situation](#Customer-situation)
+    - [Customer needs](#Customer-needs)
+    - [Customer objections](#Customer-objections)
+    - [Infographic of common scenarios](#Infographic-of-common-scenarios)
+    - [Step 2: Design a proof of concept solution](#Step-2-Design-a-proof-of-concept-solution)
+  - [Step 3: Present the solution](#Step-3-Present-the-solution)
+  - [Wrap-up](#Wrap-up)
+    - [Additional references](#Additional-references)
+- [Intelligent analytics whiteboard design session trainer guide](#Intelligent-analytics-whiteboard-design-session-trainer-guide)
+  - [Step 1: Review the customer case study](#Step-1-Review-the-customer-case-study-1)
+  - [Step 2: Design a proof of concept solution](#Step-2-Design-a-proof-of-concept-solution-1)
+  - [Step 3: Present the solution](#Step-3-Present-the-solution-1)
+  - [Wrap-up](#Wrap-up-1)
+  - [Preferred target audience](#Preferred-target-audience)
+  - [Preferred solution](#Preferred-solution)
+  - [Checklist of preferred objection handling](#Checklist-of-preferred-objection-handling)
+  - [Customer quote (to be read back to the attendees at the end)](#Customer-quote-to-be-read-back-to-the-attendees-at-the-end)
   
   <!-- /TOC -->
 
@@ -424,7 +424,7 @@ The primary audience is the business decision makers and technology decision mak
 
     ![Preferred solution high-level architecture. Shows data flowing in from user devices, like mobile phones and laptops, to an Azure Web App. Those messages are sent to Event Hub, which are then processed by an Azure Function running an Event Processor Host. This is responsible for executing Azure Cognitive Services for sentiment analysis and language understanding. Data is sent to Service Bus and another Event Hub for processing.](media/preferred-solution-architecture.png 'Preferred Solution')
 
-    Messages are sent from browsers running within laptop or mobile clients via Web Sockets to an endpoint running in an Azure Web App. Instead of typing a chat message, end users can leverage the speech to text functionality of the Speech API to type the chat message for them in this scenario the Speech API is invoked directly from the web page running in a client device. Chat messages received by the Web App are sent to an Event Hub where they are temporarily stored. An Azure Function picks up the chat messages and applies sentiment analysis to the message text (using the Text Analytics API), as well as contextual understanding (using LUIS). The function forwards the chat message to an Event Hub used to store messages for archival purposes, and to a Service Bus Topic which is used to deliver the message to the intended recipients. A Stream Analytics Job provides a simple mechanism for pulling the chat messages from the second Event Hub and writing them to CosmosDB for archiving, a Service Bus queue for negative sentiment notifications, and to PowerBI for visualization of sentiment in real-time as well as trending sentiment. A Logic App is triggered when messages are added to a Service Bus queue, and sends SMS messages to hotel staff when negative guest sentiment is detected in the chat. An indexer runs atop CosmosDB that updates the Azure Search index which provides full text search capability. Messages in the Service Bus Topic are pulled by Subscriptions created in the Web App and running on behalf of each client device connected by Web Sockets. When the Subscription receives a message, it is pushed via Web Sockets down to the browser-based app and displayed in a web page. Bot Services hosts a bot created using QnA maker, which automatically answers simple questions asked by site visitors.
+    Messages are sent from browsers running within laptop or mobile clients via Web Sockets to an endpoint running in an Azure Web App. Instead of typing a chat message, end users can leverage the speech to text functionality of the Speech API to type the chat message for them in this scenario the Speech API is invoked directly from the web page running in a client device. Chat messages received by the Web App are sent to an Event Hub where they are temporarily stored. An Azure Function picks up the chat messages and applies sentiment analysis to the message text (using the Text Analytics API), as well as contextual understanding (using LUIS). The function forwards the chat message to an Event Hub used to store messages for archival purposes, and to a Service Bus Topic which is used to deliver the message to the intended recipients. A Stream Analytics Job provides a simple mechanism for pulling the chat messages from the second Event Hub and writing them to Cosmos DB for archiving, a Service Bus queue for negative sentiment notifications, and to Power BI for visualization of sentiment in real-time as well as trending sentiment. A Logic App is triggered when messages are added to a Service Bus queue, and sends SMS messages to hotel staff when negative guest sentiment is detected in the chat. An indexer runs atop Cosmos DB that updates the Azure Search index which provides full text search capability. Messages in the Service Bus Topic are pulled by Subscriptions created in the Web App and running on behalf of each client device connected by Web Sockets. When the Subscription receives a message, it is pushed via Web Sockets down to the browser-based app and displayed in a web page. Bot Services hosts a bot created using QnA maker, which automatically answers simple questions asked by site visitors.
 
     > **Note**: The preferred solution is only one of many possible, viable approaches.
 
@@ -524,7 +524,7 @@ The primary audience is the business decision makers and technology decision mak
 
 2. How would you build this dashboard using the tool you recommended?
 
-    To build a real-time dashboard in PowerBI, one needs to create a dashboard populated with visuals created using PowerBI QA. First Up Consultants would need to create a report (using any visualization) on data coming into the dataset from the Stream Analytics Job. This static report is used to select a visualization, such as the Gauge visualization that can then be pinned to a new dashboard. After opening the new dashboard, real-time dashboards are created in Power BI using the QA feature, by typing in a question to visualize in the space provided. In the "Ask a question about your data", they would enter a question that would drive the visualization, such as: "average score created between yesterday and today." They can set the visualization to use to display the result and then pin the visual to dashboard. This new visual will update in real-time as data is inserted into the underlying dataset.
+    To build a real-time dashboard in Power BI, one needs to create a dashboard populated with visuals created using Power BI QA. First Up Consultants would need to create a report (using any visualization) on data coming into the dataset from the Stream Analytics Job. This static report is used to select a visualization, such as the Gauge visualization that can then be pinned to a new dashboard. After opening the new dashboard, real-time dashboards are created in Power BI using the QA feature, by typing in a question to visualize in the space provided. In the "Ask a question about your data", they would enter a question that would drive the visualization, such as: "average score created between yesterday and today." They can set the visualization to use to display the result and then pin the visual to dashboard. This new visual will update in real-time as data is inserted into the underlying dataset.
 
     ![The Power BI dashboard has four panes: two Count of Messages panes, an Average Sentiment, and Upset Users. The first Count of Messages pane displays a number (18). The second Count of Messages is a pie chart broken out by username. The Average Sentiment is a gauge (half-circle donut) chart displaying the Average Sentiment (0.58) in the past 24 hours. Upset Users chart is a horizontal bar chart displaying the average of upset users (0.25) in the past 24 hours.](media/image6.png 'Power BI dashboard')
 

@@ -80,7 +80,7 @@ namespace ChatMessageSentimentProcessorFunction
                     //await outputEventHub.AddAsync(//Complete this...);
                     //Console.WriteLine("Forwarded message to event hub.");
 
-                    //TODO: 13.Respond to chat message intent if appropriate
+                    //TODO: 14.Respond to chat message intent if appropriate
                     //var intent = await GetIntentAndEntities(//Complete with the message object message property);
                     //await HandleIntent(//Complete with passing the intent, message object, and outputServiceBus collection);
                 }
@@ -90,7 +90,7 @@ namespace ChatMessageSentimentProcessorFunction
                 }
             }
 
-            // Perform a final flush to send all remaining events and messages in a batch.
+            //TODO: 13. Perform a final flush to send all remaining events and messages in a batch.
             //await outputEventHub.FlushAsync();
             //await outputServiceBus.FlushAsync();
         }
