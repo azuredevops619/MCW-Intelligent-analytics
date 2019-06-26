@@ -1,4 +1,4 @@
-![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
+![Microsoft Cloud Workshops](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
 Intelligent analytics
@@ -38,7 +38,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
   - Trial subscriptions will **not** work.
   - You will need rights to create an Azure Active Directory application and service principal and assign roles on your subscription.
 - A virtual machine configured with:
-  - Visual Studio Community 2019 or greater or later (<https://www.visualstudio.com/vs/>).  Use latest release.
+  - Visual Studio Community 2019 (latest release) (<https://www.visualstudio.com/vs/>).
   - Azure SDK 2.9 or later (Included with Visual Studio 2019).
 
 ## Before the hands-on lab
@@ -95,11 +95,11 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 
     ![Create virutal machine.  Basics configuration blade. Disks.](media/2019-03-20-11-28-25.png "Create a Virtual Machine")
 
-7. Click **Next: Networking**
+7. Click **Next: Networking**.
 
     ![Review the next blade - Networking.](media/2019-03-20-11-18-33.png "Review the next blade - Networking.")
 
-8. Leave defaults
+8. Leave defaults.
 
     ![Networking tab. Configure Virtual Networks.](media/2019-03-20-11-20-21.png "Networking tab - Configure Virtual Networks")
 
