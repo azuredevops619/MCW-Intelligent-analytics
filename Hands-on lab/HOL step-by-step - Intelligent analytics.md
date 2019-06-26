@@ -1,4 +1,4 @@
-![](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
+![Microsoft Cloud Workshops](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
 <div class="MCWHeader1">
 Intelligent analytics
@@ -104,7 +104,7 @@ Below is a diagram of the solution architecture you will build in this lab. Plea
 
 ![The preferred solution is shown to meet the customer requirements. From right to left there is an architecture diagram which shows the connections from a mobile device to a Web Application. The Web Application is shown setting data to an Event Hub which is connected to a Web Job. From there Event Hub and Service Bus work together with Stream Analytics, Power BI and Cosmos DB to provide the full solution.](media/preferred-solution-architecture.png 'Solution architecture')
 
-Messages are sent from browsers running within laptop or mobile clients via Web Sockets to an endpoint running in an Azure Web App. Instead of typing a chat message, end users can leverage the speech to text functionality of the Speech API to type the chat message for them in this scenario the Speech API is invoked directly from the web page running in a client device. Chat messages received by the Web App are sent to an Event Hub where they are temporarily stored. An Azure Function picks up the chat messages and applies sentiment analysis to the message text (using the Text Analytics API), as well as contextual understanding (using LUIS). The function forwards the chat message to an Event Hub used to store messages for archival purposes, and to a Service Bus Topic which is used to deliver the message to the intended recipients. A Stream Analytics Job provides a simple mechanism for pulling the chat messages from the second Event Hub and writing them to CosmosDB for archiving, a Service Bus queue for negative sentiment notifications, and to PowerBI for visualization of sentiment in real-time as well as trending sentiment. A Logic App is triggered when messages are added to a Service Bus queue, and sends SMS messages to hotel staff when negative guest sentiment is detected in the chat. An indexer runs atop CosmosDB that updates the Azure Search index which provides full text search capability. Messages in the Service Bus Topic are pulled by Subscriptions created in the Web App and running on behalf of each client device connected by Web Sockets. When the Subscription receives a message, it is pushed via Web Sockets down to the browser-based app and displayed in a web page. Bot Services hosts a bot created using QnA maker, which automatically answers simple questions asked by site visitors.
+Messages are sent from browsers running within laptop or mobile clients via Web Sockets to an endpoint running in an Azure Web App. Instead of typing a chat message, end users can leverage the speech to text functionality of the Speech API to type the chat message for them in this scenario the Speech API is invoked directly from the web page running in a client device. Chat messages received by the Web App are sent to an Event Hub where they are temporarily stored. An Azure Function picks up the chat messages and applies sentiment analysis to the message text (using the Text Analytics API), as well as contextual understanding (using LUIS). The function forwards the chat message to an Event Hub used to store messages for archival purposes, and to a Service Bus Topic which is used to deliver the message to the intended recipients. A Stream Analytics Job provides a simple mechanism for pulling the chat messages from the second Event Hub and writing them to Cosmos DB for archiving, a Service Bus queue for negative sentiment notifications, and to Power BI for visualization of sentiment in real-time as well as trending sentiment. A Logic App is triggered when messages are added to a Service Bus queue, and sends SMS messages to hotel staff when negative guest sentiment is detected in the chat. An indexer runs atop Cosmos DB that updates the Azure Search index which provides full text search capability. Messages in the Service Bus Topic are pulled by Subscriptions created in the Web App and running on behalf of each client device connected by Web Sockets. When the Subscription receives a message, it is pushed via Web Sockets down to the browser-based app and displayed in a web page. Bot Services hosts a bot created using QnA maker, which automatically answers simple questions asked by site visitors.
 
 ## Requirements
 
@@ -166,7 +166,7 @@ If you are already connected to your Lab VM, skip to Step 6.
 
 11. Close the Server Manager.
 
-12. Allow for downloading files.  Open **Internet Explorer**
+12. Allow for downloading files.  Open **Internet Explorer**.
     - Type F10.  The menu should be displayed.
     - Go to **Tools**.
 
@@ -210,6 +210,7 @@ If you are already connected to your Lab VM, skip to Step 6.
     ![Initial solution folder and files](media/2019-03-20-15-58-31.png "Initial solution folder and files")
 
 >**Note**: If you attempt to build the solution at this point, you will see many build errors. This is intentional. You will correct these in the exercises that follow.
+
 >**Note**: Visual Studio Installer will show the installed version of Visual Studio and if the Azure SDK is installed. If the Azure SDK is missing, go back to the **Before the HOL** and make sure you created the correct VM. Updating Visual Studio manually may install components that may not work with the lab.
 
 ![Visual Studio Installer - Modifying Visual Studio Community. Displaying Workloads.](media/2019-03-20-16-02-17.png "Workloads Configuration")
@@ -222,7 +223,7 @@ In these steps, you will provision a Web App and an API App within a single App 
 
 2. Select +Create a resource, then select Web and finally select **Web App**. Click     the **Create** button.
 
-    ![Showing the Web App blade. Instructions on what is supported.](media/2019-06-19-15-34-07.png "Web App blade")
+    ![Showing the Web App blade with details of what is supported.](media/2019-06-19-15-34-07.png "Web App blade")
 
 3. On the Create Web App blade, enter the following:
 
@@ -230,7 +231,7 @@ In these steps, you will provision a Web App and an API App within a single App 
     - **Resource Group**: Select Use existing, and select the **intelligent-analytics** resource group created previously.
     - **Name**: Provide **a unique name** that is indicative of this resource being used to host the Concierge+ chat website (e.g., conciergepluschatapp(namespace)).
 
-    - **Publish**: Choose **Code** option
+    - **Publish**: Choose **Code** option.
     - **OS**: Windows
     - **Region**: Choose a region close to you.
     - **App Service plan**: azure-scenario (S1)
@@ -292,7 +293,7 @@ In this section, you will provision a Function App that will be used as the Even
 
     - **Location**: Select the location you used for the resource group created previously.
 
-    - **Runtime Stack**:  Select **.NET Core**
+    - **Runtime Stack**:  Select **.NET Core**.
 
     - **Storage**: Select **Create new** and accept the generated name.
 
@@ -477,7 +478,7 @@ In this section, you will provision an Azure Cosmos DB account, a DocumentDB Dat
     - **Container Id**: Enter messagestore.
 
     - **Partition Key**: Enter a partition key such as **/username**.
-        >**Note**: Pick a field in this schema.  Otherwise, you will have no documents in the CosmoDB container. Below is a sample of the messages stored in the CosmoDB at a later part in the lab.
+        >**Note**: Pick a field in this schema.  Otherwise, you will have no documents in the Cosmo DB container. Below is a sample of the messages stored in the Cosmo DB at a later part in the lab.
 
         ![Displaying all of the configuration fields in a message document](media/2019-03-21-13-18-47.png "Possible fields to partition on.")
 
@@ -623,7 +624,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     - Choose **Select queue from your subscriptions**.
 
-    - **Subscription**: Select the subscription you are using for this hands on lab.
+    - **Subscription**: Select the subscription you are using for this hands-on lab.
 
     - **Service Bus namespace**: Select the awhotel-sb namespace.
 
@@ -1589,7 +1590,7 @@ In this task, you will configure a Logic App to send notifications to hotel gues
     ![Service Bus - When a message is received in a queue (auto-complete) is highlighted in the Triggers list.](media/logic-app-triggers-service-bus-queue.png "Service Bus Triggers")
 
 5. On the When a message is received in a queue (auto-complete) dialog, select the **awhotel-staff-notifications** queue from the Queue name drop down.
-    >**Note**: Remember the **awhotel-staff-notifications** queue you set up earlier in the awhotel Serivce Bus.
+    >**Note**: Remember the **awhotel-staff-notifications** queue you set up earlier in the awhotel Service Bus.
 
     ![Enter the connection name and resource dialog presented.](media/2019-06-21-08-09-18.png "Choose connection and resource group")
 
@@ -1881,7 +1882,7 @@ Before going further, a good thing to check is whether messages are being writte
 
     ![One of the messages select in the left list.  JSON message displayed](media/2019-06-21-10-09-45.png "CosmosDB Item Contents")
 
-    >Note: if you don't see messages, then check for errors in MessageLogger, Outputs, ComsoDB.  If you have to delete the collection and recreate them, make sure to stop and start the MessageLogger.  Test the connection. 
+    >**Note**: If you don't see messages, then check for errors in MessageLogger, Outputs, Comso DB.  If you have to delete the collection and recreate them, make sure to stop and start the MessageLogger.  Test the connection. 
 
     ![Displaying CosmoDB output details error.](media/2019-03-21-13-45-17.png "CosmoDB output details error")
 
@@ -1977,7 +1978,7 @@ Before going further, a good thing to check is whether messages are being writte
 
     ![Index options for CORS are displayed.  The All options is selected.](media/2019-06-22-17-59-36.png "CORS Options")
 
-    >Note: The **All** setting allows search requests from other client applications to successfully execute. For a production application, you would choose the **Custom** option and enter the domain you will be receiving requests from.
+    >**Note**: The **All** setting allows search requests from other client applications to successfully execute. For a production application, you would choose the **Custom** option and enter the domain you will be receiving requests from.
 
 27. We need to capture the index query api key for the web.config files in the Visual Studio solution.
     - On the Search service blade, select Keys on the left-hand menu.
@@ -2172,7 +2173,7 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
 4. Provide the following information in the Functions Bot creation blade:
 
-    >Important: You will need rights to create an Azure Active Directory application and service principal and assign roles on your subscription.
+    >**Important**: You will need rights to create an Azure Active Directory application and service principal and assign roles on your subscription.
 
     - Set App name to your bot's name. The name is used as the subdomain when your bot is deployed to the cloud (for example, concierge-plus-bot).
 
@@ -2253,7 +2254,7 @@ In this exercise, attendees will deprovision any Azure resources that were creat
 
     ![Twilio - release this number.](media/2019-03-21-17-57-37.png "Twilio - release this number")
 
-5. PowerBI - Delete **Real-time Sentiment** workspace.
+5. Power BI - Delete **Real-time Sentiment** workspace.
 
 6. LUIS - https://www.luis.ai/applications.  Delete the **awchat** app.
 
