@@ -42,6 +42,7 @@ By the end of the hands-on lab, you will be more confident in the various servic
 - Azure Stream Analytics
 - Microsoft Bot Framework
 - Power BI
+- Visual Studio
 
 ## Azure solution
 
