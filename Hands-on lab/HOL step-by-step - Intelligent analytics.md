@@ -347,7 +347,7 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
     - Select **Shared access policies** within the left menu, under Settings.
 
-    - In the Shared access policies, you are going to create a new policy that the ChatConsole can use to retrieve messages. Click +Add.
+    - In the Shared access policies, you are going to create a new policy that the ChatConsole can use to retrieve messages. Select +Add.
 
     ![The Azure Portal is shown with the Shared Access polices blade of the Service Bus Namespace open. Add is being selected.](media/image85.png 'Azure Shared Access policies blade')
 
@@ -440,7 +440,7 @@ In this section, you will provision an Azure Cosmos DB account, a DocumentDB Dat
 
       ![The Azure Cosmos DB blade fields display the previously mentioned settings. ](media/image43.png 'Azure Cosmos DB blade')
 
-    - Click the **Review + create** button and then the **Create** button.
+    - Select the **Review + create** button and then the **Create** button.
 
 3. When the provisioning completes, navigate to your new Azure Cosmos DB account in the portal.
 
@@ -481,7 +481,7 @@ In this section, you will provision an Azure Cosmos DB account, a DocumentDB Dat
 
 In this section, you will create an Azure Search instance.
 
-1. Select **+Create a resource**, then search for **Azure Search**.  Click the **Create** button.
+1. Select **+Create a resource**, then search for **Azure Search**.  Choose the **Create** button.
 
     ![In the Azure portal, New pane, Web + Mobile and Azure Search (Learn More) are circled.](media/image46.png 'Azure Search create a resource')
 
@@ -505,7 +505,7 @@ In this section, you will create an Azure Search instance.
 
 In this section, you will create the Stream Analytics Job that will be used to read chat messages from the Event Hub and write them to the Azure Cosmos DB.
 
-1. Select **+Create a resource**, the search for **Stream Analytics** **job**.  Click the **Create** button.
+1. Select **+Create a resource**, the search for **Stream Analytics** **job**.  Choose the **Create** button.
 
 2. On the New Stream Analytics Job blade, enter the following:
 
@@ -639,7 +639,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
       ![The Power BI authorization has succeeded.](media/2019-03-20-17-44-01.png "Power BI authorization has succeeded")
 
-    - Click the Save button.
+    - Select the Save button.
 
 15. Create one final Output for **Power BI**.
 
@@ -765,7 +765,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
 The EventProcessorHost requires an Azure Storage account that it will use to manage its state among multiple instances. In this section, you create that Storage account.
 
-1. In the [Azure portal](https://portal.azure.com), select **+Create a resource, Storage, the select Storage account**.  Click Create button.
+1. In the [Azure portal](https://portal.azure.com), select **+Create a resource, Storage, the select Storage account**.  Select the Create button.
 
 2. In the Create storage account blade, enter the following:
 
@@ -914,7 +914,7 @@ In this section, you will implement the message forwarding from the ingest Event
 
 1. Navigate to your Function App in the [Azure portal](https://portal.azure.com). You can find it by opening your intelligent-analytics Resource Group and looking through the list of resources.
 
-2. Click the **Configuration** link in the Overview blade of the Function App. Click **Application settings** link.
+2. Select the **Configuration** link in the Overview blade of the Function App. Choose the **Application settings** link.
 
     ![The Overview tab is shown.  All options are presented. Click Configuration link for the Function App](media/2019-06-20-16-09-02.png "Configuration Link")
 
@@ -943,7 +943,7 @@ The connection string required by the ChatMessageSentimentProcessor is different
 
 2. Select Shared access policies, under Settings, within the left-hand menu.
 
-3. In the Shared access policies, you are going to create a new policy that the **ChatConsole** can use to retrieve messages. Click **+Add**.
+3. In the Shared access policies, you are going to create a new policy that the **ChatConsole** can use to retrieve messages. Select **+Add**.
 
     ![The Add button is circled in the Shared access policies pane.](media/image78.png 'Shared access policies pane')
 
@@ -961,7 +961,7 @@ The connection string required by the ChatMessageSentimentProcessor is different
 
     ![Select Add new setting](media/function-app-add-new-setting.png "Application settings")
 
-8. Enter **eventHubConnectionString** into the name field, and paste the copied value as the **value** field.  Click the OK button.
+8. Enter **eventHubConnectionString** into the name field, and paste the copied value as the **value** field.  Select the OK button.
 
     ![Screenshot showing new application setting value](media/function-app-eventhubconnectionstring.png "Application setting value")
 
@@ -995,7 +995,7 @@ Your storage accounts can be found by going to the intelligent-analytics resourc
 
 The namespace, and therefore connection string, for the service bus is different from the one for the event hub. We need to retrieve the shared access policy to allow the `ChatMessageSentimentProcessorFunction` **ChatConsole** permissions that was created earlier.
 
-1. Navigate to the service bus overview. Click the Shared Access policies link under Settings. Select the **ChatConsole** from the list of policies and copy the Primary Connection String value.
+1. Navigate to the service bus overview. Choose the Shared Access policies link under Settings. Select the **ChatConsole** from the list of policies and copy the Primary Connection String value.
 
     ![Service Bus: Shared access policies.  ChatConsole listed.](media/2019-03-20-19-45-55.png "Service Bus - Shared access policies")
 
@@ -1057,7 +1057,7 @@ Within Visual Studio Solution Explorer, expand the `ChatWebApp` project and open
 
 1. For the **chatRequestTopicPath** and the **chatTopicPath**, enter the name of the Service Bus Topic you created, **awhotel**. The value is the same for both settings in this case.
 
-2. The **web.config** should resemble the following. Click Save in Visual Studio.
+2. The **web.config** should resemble the following. Select Save in Visual Studio.
 
     ![A web.config code window displays. ](media/image93.png 'web.config code window ')
 
@@ -1273,7 +1273,7 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     ![In the Create a new app dialog box, the Name field is set to awchat, and Culture is set to English.](media/image114.png 'Create new app')
 
-9. In a moment, your new app will appear. Click the app to see the details.
+9. In a moment, your new app will appear. Select the app to see the details.
 
 10. In the menu bar, select **Train** and then **Publish**.
 
@@ -1281,7 +1281,7 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 11. Select My Apps from the menu bar and choose your app from the list.
 
-12. Click on the top **Build** menu. Select **Create new intent**.
+12. Choose the top **Build** menu. Select **Create new intent**.
 
     ![The top menu bar is displayed. The Build menu item is circled.](media/2019-06-20-19-55-55.png "Build Menu Item")
 
@@ -1343,7 +1343,7 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     ![Train menu bar selected/](media/image128.png 'Train menu bar')
 
-25. Click Test and experiment by writing some utterances and pressing enter to see the interpretation.
+25. Choose Test and experiment by writing some utterances and pressing enter to see the interpretation.
 
     ![An interactive test showing that searching for where can i buy a hamburger will invoke the entity RoomService::FoodItem. ](media/image129.png 'Test of utterances')
 
@@ -1379,7 +1379,7 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 32. You will enter this into the configuration of the Event Processor Function App.
 
-33. Click the Configuration link. Navigate to the Application Settings for your Event Processor Function App in the [Azure portal](https://portal.azure.com).
+33. Select the Configuration link. Navigate to the Application Settings for your Event Processor Function App in the [Azure portal](https://portal.azure.com).
 
 34. Set the LUIS Application Settings.
 - For the key **luisAppId** set the text of the value attribute to the App ID of your LUIS App (this value should be a GUID you obtained from the URL and not the name of your LUIS app).
@@ -1540,7 +1540,7 @@ In this task, you will configure a Logic App to send notifications to hotel gues
     - Enter the **awhotelstaffnotifications** into the connection name input box.
     - Double select the **awhotel** namespace entry. e.g. awhotel-namepsace-th
     - Select the **ChatConsole** service bus policy.
-    - Click the **Create** button.
+    - Select the **Create** button.
 
     ![On the When a message is received in a queue (auto-complete) dialog, **awhotelstaffnotifications** is entered into the connection name input box. Choosing the policy.](media/2019-09-07-16-54-42.png "Queue selection")
 
@@ -1825,7 +1825,7 @@ Before going further, a good thing to check is whether messages are being writte
 
     ![One of the messages select in the left list.  JSON message displayed](media/2019-06-21-10-09-45.png "CosmosDB Item Contents")
 
-    >**Note**: If you don't see messages, then check for errors in MessageLogger, Outputs, Comso DB.  If you have to delete the collection and recreate them, make sure to stop and start the MessageLogger.  Test the connection. 
+    >**Note**: If you don't see messages, then check for errors in MessageLogger, Outputs, Cosmos DB.  If you have to delete the collection and recreate them, make sure to stop and start the MessageLogger.  Test the connection. 
 
     ![Displaying CosmoDB output details error.](media/2019-03-21-13-45-17.png "CosmoDB output details error")
 
@@ -2035,13 +2035,13 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
     ![Select Add QnA pair, then enter original content](media/qna-maker-created-kb.png "Knowledge base")
 
-15. Click **Save and train** button on top of the page. This will save your changes and train the bot how to respond to questions, given the information you imported.
+15. Choose **Save and train** button on top of the page. This will save your changes and train the bot how to respond to questions, given the information you imported.
 
 16. Once your changes have been saved, select **Test** at the top of the page. Try typing 'hi there' and press enter. You should see the 'Hello. Ask me questions about the hotel.' response. Experiment with asking different questions.
 
     ![Screenshot showing testing the QnA maker](media/qna-maker-test.png "QnA Maker Test")
 
-17. Select **Inspect** underneath one of your test questions. The Inspect pane will appear, showing the question you typed, the answer, and a confidence score. This pane provides you an easy way to add alternate phrasing or change the answer. Select **Save and train**. Click the **Test** button to hide the testing pane.
+17. Select **Inspect** underneath one of your test questions. The Inspect pane will appear, showing the question you typed, the answer, and a confidence score. This pane provides you an easy way to add alternate phrasing or change the answer. Choose **Save and train**. Click the **Test** button to hide the testing pane.
 
     ![Screenshot of the Inspect pane](media/qna-maker-inspect.png "QnA Maker Inspect")
 
