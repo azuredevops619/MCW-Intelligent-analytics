@@ -22,8 +22,7 @@ namespace ChatMessageSentimentProcessorFunction
         private static readonly string _textAnalyticsBaseUrl = ConfigurationManager.AppSettings["textAnalyticsBaseUrl"];
         private static readonly string _textAnalyticsAccountKey = ConfigurationManager.AppSettings["textAnalyticsAccountKey"];
 
-        // TODO: Update the LUIS base URL to the one assigned to your app
-        private static readonly string _luisBaseUrl = "https://eastus.api.cognitive.microsoft.com/";
+        private static readonly string _luisBaseUrl = ConfigurationManager.AppSettings["luisBaseUrl"];
         private static readonly string _luisQueryParams = "luis/v2.0/apps/{0}?subscription-key={1}&q={2}";
         private static readonly string _luisAppId = ConfigurationManager.AppSettings["luisAppId"];
         private static readonly string _luisKey = ConfigurationManager.AppSettings["luisKey"];

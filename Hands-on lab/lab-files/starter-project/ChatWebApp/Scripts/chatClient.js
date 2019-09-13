@@ -124,6 +124,7 @@ $(document).ready(function () {
                 type: "chat"
             };
 
+            console.log("Message being sent to the Azure web app.", msg);
             socket.send(JSON.stringify(msg));
 
             $("#txtMsg").val('');

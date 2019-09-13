@@ -9,7 +9,7 @@ Before the hands-on lab setup guide
 </div>
 
 <div class="MCWHeader3">
-June 2019
+September 2019
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -24,10 +24,10 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
 
 <!-- TOC -->
 
-- [Intelligent analytics before the hands-on lab setup guide](#Intelligent-analytics-before-the-hands-on-lab-setup-guide)
-  - [Requirements](#Requirements)
-  - [Before the hands-on lab](#Before-the-hands-on-lab)
-    - [Task: Setup a lab virtual machine](#Task-Setup-a-lab-virtual-machine)
+- [Intelligent analytics before the hands-on lab setup guide](#intelligent-analytics-before-the-hands-on-lab-setup-guide)
+  - [Requirements](#requirements)
+  - [Before the hands-on lab](#before-the-hands-on-lab)
+    - [Task: Setup a lab virtual machine](#task-setup-a-lab-virtual-machine)
 <!-- /TOC -->
 
 # Intelligent analytics before the hands-on lab setup guide
@@ -53,9 +53,9 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 
     ![In the Azure Portal Everything section, under Results, under Name, Visual Studio 2019 Latest.](media/2019-06-19-15-05-08.png "Visual Studio 2019 Latest option is displayed")
 
-    ![List of possible VM images.  Visual Studio Community 2019 (latest release) on Windows 2016 (x64) selected](media/2019-06-19-15-03-12.png "Visual Studio Community 2019 (latest release) on Windows 2016 (x64) selected")
+    ![List of possible VM images.  Visual Studio Community 2019 (latest release) on Windows 2019 (x64) selected](media/2019-09-03-12-22-16.png "Visual Studio Community 2019 (latest release) on Windows 2019 (x64) selected")
 
-2. On the blade that comes up, ensure the deployment model is set to **Resource Manager**, and click the **Create** button.
+2. On the blade that comes up, ensure the deployment model is set to **Resource Manager**, and seclet the **Create** button.
 
 3. Set the following configuration on the Basics tab:
 
@@ -69,45 +69,39 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 
     - **Availability Options**:  Leave the availability option as **No infrastructure redundancy required**.
 
+    - **Image**: Select the 'Browse all public and private images' link.  Select **Visual Studio 2019 Community (latest release) on Windows Server 2019 (x64)**.
+
     - **Size**: Standard D2s v3
 
     - **Username**: demouser
 
     - **Password**: Password.1!!
 
-    - **Public inbound ports**: Allow selected ports
+    - **Public inbound ports**: Allow selected ports.
 
     - **Select inbound ports**: Select **RDP**.
 
-    - **Already have a Windows license?**: (Default)
+4. Set the following configuration on the Disks tab:
 
-    - **VM disk type**: Select **SSD**.
+    - **OS disk type**: Select **Standard SSD**.
 
-    ![The Basics blade fields fields display the previously mentioned settings.](media/2019-03-20-10-50-25.png)
-
-4. Select **Next: Disks** to move to the next step.
-
-    ![Review the next blade - Disks.](media/2019-03-20-10-53-39.png)
-
-5. OS Disk type: **Standard SSD**
-
-6. Advanced - Use managed disks: **Yes**
+    - **Advanced** - Use managed disks: **Yes**
 
     ![Create virutal machine.  Basics configuration blade. Disks.](media/2019-03-20-11-28-25.png "Create a Virtual Machine")
 
-7. Click **Next: Networking**.
+5. Select **Next: Networking**.
 
     ![Review the next blade - Networking.](media/2019-03-20-11-18-33.png "Review the next blade - Networking.")
 
-8. Leave defaults.
+6. Leave defaults.
 
     ![Networking tab. Configure Virtual Networks.](media/2019-03-20-11-20-21.png "Networking tab - Configure Virtual Networks")
 
-9. Click the **Review + create** button.
+7. Select the **Review + create** button.
 
     ![Review and create button displayed.](media/2019-03-20-11-23-20.png "Review and create button")
 
-10. Azure will validate your settings.  If everything is valid, then click **Create**.
+8. Azure will validate your settings.  If everything is valid, then select **Create**.
 
     ![Validate the VM settings before creation.](media/2019-03-20-15-18-30.png "Validation passed")
 
