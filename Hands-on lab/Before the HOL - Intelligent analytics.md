@@ -55,7 +55,7 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 
     ![List of possible VM images.  Visual Studio Community 2019 (latest release) on Windows 2019 (x64) selected](media/2019-09-03-12-22-16.png "Visual Studio Community 2019 (latest release) on Windows 2019 (x64) selected")
 
-2. On the blade that comes up, ensure the deployment model is set to **Resource Manager**, and click the **Create** button.
+2. On the blade that comes up, ensure the deployment model is set to **Resource Manager**, and seclet the **Create** button.
 
 3. Set the following configuration on the Basics tab:
 
@@ -69,7 +69,7 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 
     - **Availability Options**:  Leave the availability option as **No infrastructure redundancy required**.
 
-    - **Image**: Click the 'Browse all public and private images' link.  Select **Visual Studio 2019 Community (latest release) on Windows Server 2019 (x64)**
+    - **Image**: Select the 'Browse all public and private images' link.  Select **Visual Studio 2019 Community (latest release) on Windows Server 2019 (x64)**.
 
     - **Size**: Standard D2s v3
 
@@ -77,7 +77,7 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 
     - **Password**: Password.1!!
 
-    - **Public inbound ports**: Allow selected ports
+    - **Public inbound ports**: Allow selected ports.
 
     - **Select inbound ports**: Select **RDP**.
 
@@ -89,7 +89,7 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 
     ![Create virutal machine.  Basics configuration blade. Disks.](media/2019-03-20-11-28-25.png "Create a Virtual Machine")
 
-5. Click **Next: Networking**.
+5. Select **Next: Networking**.
 
     ![Review the next blade - Networking.](media/2019-03-20-11-18-33.png "Review the next blade - Networking.")
 
@@ -97,11 +97,11 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 
     ![Networking tab. Configure Virtual Networks.](media/2019-03-20-11-20-21.png "Networking tab - Configure Virtual Networks")
 
-7. Click the **Review + create** button.
+7. Select the **Review + create** button.
 
     ![Review and create button displayed.](media/2019-03-20-11-23-20.png "Review and create button")
 
-8. Azure will validate your settings.  If everything is valid, then click **Create**.
+8. Azure will validate your settings.  If everything is valid, then select **Create**.
 
     ![Validate the VM settings before creation.](media/2019-03-20-15-18-30.png "Validation passed")
 
