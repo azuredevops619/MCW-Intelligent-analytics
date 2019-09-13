@@ -55,7 +55,7 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 
     ![List of possible VM images.  Visual Studio Community 2019 (latest release) on Windows 2019 (x64) selected](media/2019-09-03-12-22-16.png "Visual Studio Community 2019 (latest release) on Windows 2019 (x64) selected")
 
-2. On the blade that comes up, ensure the deployment model is set to **Resource Manager**, and seclet the **Create** button.
+2. On the blade that comes up, ensure the deployment model is set to **Resource Manager**, and select the **Create** button.
 
 3. Set the following configuration on the Basics tab:
 
