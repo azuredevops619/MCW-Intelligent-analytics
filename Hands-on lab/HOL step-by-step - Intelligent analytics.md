@@ -191,6 +191,8 @@ If you are already connected to your Lab VM, skip to Step 6.
 
 4. Unzip the contents of the downloaded ZIP file to the folder **C:\\ConciergePlus**\\.
 
+   >Note: Make sure to extract to this exact path. If you extract to a longer directory path, you will hit a Windows max 260 character path limit when you try to build the Visual Studio solution. You will not be able to download the NuGet packages. Keep the solution directory path short.
+
     ![In the Extract Compressed (Zipped) Folders window, files will be extracted to C:\ConciergePlus.](media/image18.png 'Extract Compressed (Zipped) Folders window')
 
 5. Open **ConciergePlusSentiment.sln** in the `C:\ConciergePlus\Hands-on lab\lab-files\starter-project\` folder with Visual Studio 2019.
@@ -1041,17 +1043,19 @@ Within Visual Studio Solution Explorer, expand the `ChatWebApp` project and open
 <add key="chatTopicPath" value=" "/>
 ```
 
+>Note: These will be the same setting values you entered for the Function Application settings.
+
 ### Task 1: Event Hub connection String
 
-1. Use the same connection string you used for the **eventHubConnectionString** in the **App.Config** file of the **ChatMessageSentimentProcess** Web Job project.
+1. Enter the **eventHubConnectionString**.
 
 ### Task 2: Event Hub name
 
-1. For the **eventHubName** setting in **Web.config**, enter the name of your first Event Hub (**awchathub**). This event Hub will receive messages from the website chat clients.
+1. For the **eventHubName**, enter the name of your first Event Hub (**awchathub**). This event Hub will receive messages from the website chat clients.
 
 ### Task 3: Service Bus connection String
 
-1. Use the same connection string you used for the **serviceBusConnectionString** in the **app.Config** file of the **ChatMessageSentimentProcess** Web Job project.
+1. Enter the **serviceBusConnectionString**.
 
 ### Task 4: Chat topic path and chat request topic path
 
