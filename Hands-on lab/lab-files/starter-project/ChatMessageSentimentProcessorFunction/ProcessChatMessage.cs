@@ -85,13 +85,18 @@ namespace ChatMessageSentimentProcessorFunction
                 }
                 catch (Exception ex)
                 {
+                    // Need to include the stack trace so you can see the specific details of where the error is occuring.
+                    log.Error(ex.StackTrace);
                     log.Error("Chat message processor encountered error while processing", ex);
+
+                    // Need to rethrow the exception so the Azure Function logs show a failure.
+                    throw ex;
                 }
             }
 
-            //TODO: 13. Perform a final flush to send all remaining events and messages in a batch.
-            //await outputEventHub.FlushAsync();
-            //await outputServiceBus.FlushAsync();
+            //Perform a final flush to send all remaining events and messages in a batch.
+            await outputEventHub.FlushAsync();
+            await outputServiceBus.FlushAsync();
         }
 
         private static async Task<double> GetSentimentScore(string messageText)
@@ -109,7 +114,7 @@ namespace ChatMessageSentimentProcessorFunction
             //byte[] byteData = //Complete this...get byte array from jsonReq 
 
             //TODO: 10.Post the request to the /sentiment endpoint
-            //string uri = $"{_textAnalyticsBaseUrl}/sentiment";
+            //string uri = $"https://{_textAnalyticsBaseUrl}.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment";
             //string jsonResponse = "";
             //using (var content = new ByteArrayContent(byteData))
             //{
@@ -137,7 +142,7 @@ namespace ChatMessageSentimentProcessorFunction
                     //Detected an actionable request with an identified entity
                     if (primaryEntity != null && primaryEntity.score > 0.5)
                     {
-                        var destination = primaryEntity.type.Equals("RoomService::FoodItem") ? "Room Service" : "Housekeeping";
+                        var destination = primaryEntity.type.Equals("RoomService") ? "Room Service" : "Housekeeping";
                         var generatedMessage =
                             $"We've sent your request for {primaryEntity.entity} to {destination}, we will confirm it shortly.";
                         await SendBotMessage(msgObj, generatedMessage, outputServiceBus);
@@ -217,6 +222,7 @@ namespace ChatMessageSentimentProcessorFunction
         {
             public string id;
             public string text;
+            public string language;
         }
 
         class LuisResponse
