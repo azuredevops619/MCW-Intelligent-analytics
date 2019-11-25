@@ -1341,7 +1341,7 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     ![The screenshot shows the OrderIn intent that was created.](media/2019-11-24-10-59-26.png "OrderIn Entity")
 
-21. Enter an utterance for this intent and match it with a entity and role.
+21. Enter an utterance for this intent and match it with an entity and role.
 
     ![The pizza order example is entered into the utterance text box.](media/2019-11-24-11-06-18.png "Order a Pizza")
 
