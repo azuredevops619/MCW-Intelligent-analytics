@@ -246,7 +246,7 @@ In these steps, you will provision a Web App within a single App Service Plan.
 
 6. Select the toggle for **Web Sockets** to **On**.
 
-   >Note: Failure to complete this step will not allow the Javascript client to communicate with the web application and receive continuous data exchange.
+   >**Note**: Failure to complete this step will not allow the Javascript client to communicate with the web application and receive continuous data exchange.
 
 7. Select **Save**.
 
@@ -308,7 +308,7 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
 4. Select **Create**.
 
-5. Once provisioning completes, navigate to your new Service Bus in the portal by clicking on Resource Groups in the left menu, the selecting **intelligent-analytics**, and selecting your Service Bus.
+5. Once provisioning completes, navigate to your new Service Bus in the portal by choosing Resource Groups in the left menu, the selecting **intelligent-analytics**, and selecting your Service Bus.
 
     ![The previously created service bus is shown.](media/2019-06-19-16-48-25.png "Azure Portal Resource Groups")
 
@@ -391,7 +391,7 @@ In this task, you will create a new Event Hubs namespace and instance.
 
       ![The Create namespace blade fields display the previously mentioned settings.](media/image38.png 'Create namespace blade')
 
-3. When provisioning completes, navigate to your new Event Hub namespace in the portal by clicking on Resource Groups in the left menu. Select intelligent-analytics followed by your Event Hub.
+3. When provisioning completes, navigate to your new Event Hub namespace in the portal by choosing Resource Groups in the left menu. Select intelligent-analytics followed by your Event Hub.
 
     ![Under Name, in the Resource pane, the awhotel-events-namespace Event Hub is circled.](media/image39.png 'Azure Portal Resource pane')
 
@@ -438,7 +438,7 @@ In this section, you will provision an Azure Cosmos DB account, a DocumentDB Dat
 
     - **Location**: Select the region you are using for resources in this hands-on lab.
   
-    >Note: You have to pick a different region instance in order for the Geo-Redundancy options to be enabled.  e.g. US-WEST vs US-WEST2
+    >**Note**: You have to pick a different region instance in order for the Geo-Redundancy options to be enabled, e.g. US-WEST vs US-WEST2.
 
     - **Enable geo-redundancy**: Ensure this is enabled.
 
@@ -669,7 +669,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     Select **Authorize** (if not already authorized). This will authorize the connection to your Power BI account. When prompted in the popup window, enter the account credentials you used to create your Power BI account in the Before the Hands-on Lab exercise. You may have to enter your Username and Password.
 
-        ![The Power BI New output screen is shown configured. The Authorize connection has been selected.](media/2019-09-03-14-41-07.png "Power BI new output")
+    ![The Power BI New output screen is shown configured. The Authorize connection has been selected.](media/2019-09-03-14-41-07.png "Power BI new output")
 
 17. Select **Save**.
 
@@ -968,7 +968,7 @@ The connection string required by the ChatMessageSentimentProcessor is different
 
 4. For the New Policy Name, enter ChatConsole.
 
-5. In the list of Claims, select Manage. Send and Listen will be automatically selected when you select Manage. Click the **Create** button.
+5. In the list of Claims, select Manage. Send and Listen will be automatically selected when you select Manage. Select the **Create** button.
 
     ![In the Add SAS Policy dialog box, Policy name is set to ChatConsole. Three check boxes are selected for Manage, Send, and Listen.](media/image79.png 'Add SAS Policy dialog box')
 
@@ -1066,7 +1066,7 @@ Within Visual Studio Solution Explorer, expand the `ChatWebApp` project and open
 <add key="chatTopicPath" value=" "/>
 ```
 
->Note: These will be the same setting values you entered for the Function Application settings.
+>**Note**: These will be the same setting values you entered for the Function Application settings.
 
 ### Task 1: Event Hub connection String
 
@@ -1100,7 +1100,7 @@ With the App Services projects properly configured, you are now ready to deploy 
 
     ![In Solution Explorer, the sub-menu for ChatMessageSentimentProcessorFunction displays, with Publish... selected.](media/vs-publish-function-menu.png "Solution Explorer")
 
-2. In the Publish dialog, select **Select Existing** beneath Azure App Service as the publish target.
+2. In the Publish dialog, choose **Select Existing** beneath Azure App Service as the publish target.
 
     ![In the Publish dialog box, select existing Azure App Service.](media/2019-11-16-13-22-55.png "Publish dialog box")
 
@@ -1148,7 +1148,7 @@ With the App Services projects properly configured, you are now ready to deploy 
 
     ![The Browser window displays the Contoso Hotels webpage, with a Join Chat window open below.](media/image104.png 'Browser window')
 
-    > Note: It may take a couple of minutes for the browser to render. You must use a modern browser like Chrome or Edge.
+    > **Note**: It may take a couple of minutes for the browser to render. You must use a modern browser like Chrome or Edge.
 
 ### Task 3: Testing hotel lobby chat
 
@@ -1594,7 +1594,7 @@ In this task, you will configure a Logic App to send notifications to hotel gues
 
     ![On the Choose an action pane, "Parse" is entered into the search box, and Data Operations - Parse JSON is highlighted in the list.](media/2019-03-21-09-35-19.png "Choose an action")
 
-8. In the **Parse JSON** pane, paste the following expression into the **Content** box.
+8. In the **Parse JSON** pane, paste the following expression into the **Content** box:
 
     ```csharp
     @substring(base64ToString(triggerBody()?['ContentData']), indexof(base64ToString(triggerBody()?['ContentData']), '{'), sub(lastindexof(base64ToString(triggerBody()?['ContentData']), '}'),indexof(base64ToString(triggerBody()?['ContentData']), '{')))
@@ -2077,7 +2077,7 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
     ![Screenshot showing testing the QnA maker](media/qna-maker-test.png "QnA Maker Test")
 
-17. Select **Inspect** underneath one of your test questions. The Inspect pane will appear, showing the question you typed, the answer, and a confidence score. This pane provides you an easy way to add alternate phrasing or change the answer. Choose **Save and train**. Click the **Test** button to hide the testing pane.
+17. Select **Inspect** underneath one of your test questions. The Inspect pane will appear, showing the question you typed, the answer, and a confidence score. This pane provides you an easy way to add alternate phrasing or change the answer. Choose **Save and train**. Select the **Test** button to hide the testing pane.
 
     ![Screenshot of the Inspect pane](media/qna-maker-inspect.png "QnA Maker Inspect")
 
