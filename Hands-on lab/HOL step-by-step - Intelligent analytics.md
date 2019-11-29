@@ -1416,17 +1416,18 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 34. Select the Configuration link. Navigate to the Application Settings for your Event Processor Function App in the [Azure portal](https://portal.azure.com).
 
 35. Set the LUIS Application Settings.
+
 - For the key **luisAppId** set the text of the value attribute to the App ID of your LUIS App (this value should be a GUID you obtained from the URL and not the name of your LUIS app).
 - For the key **luisKey**, set the text of the value attribute to the subscription key used by your LUIS app.
 - Set the **luisBaseUrl** to the LUIS base URL captured earlier.
 
     ![Set the luisAppId and luisKey values within the function app's app settings](media/2019-09-07-08-55-02.png "Function App application settings for LUIS")
 
-36. **Save** your Application Settings. The Event Processor is pre-configured to invoke the LUIS API using the provided App ID and key.
+1.  **Save** your Application Settings. The Event Processor is pre-configured to invoke the LUIS API using the provided App ID and key.
 
-37. Open Visual Studio then open `ProcessChatMessage.cs` within the `ChatMessageSentimentProcessorFunction` project, and navigate to the Run method.
+2.  Open Visual Studio then open `ProcessChatMessage.cs` within the `ChatMessageSentimentProcessorFunction` project, and navigate to the Run method.
 
-38. Locate TODO: 14 and replace it with the following:
+3.  Locate TODO: 14 and replace it with the following:
 
     ```csharp
     //TODO: 14.Respond to chat message intent if appropriate
@@ -1434,17 +1435,17 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
     await HandleIntent(intent, msgObj, outputServiceBus);
     ```
 
-39. Take a look at the implementation of both methods if you are curious how the entity and intent information is used to generate an automatic chat message response from a bot.
+4.  Take a look at the implementation of both methods if you are curious how the entity and intent information is used to generate an automatic chat message response from a bot.
 
-40. Save the file.
+5.  Save the file.
 
 ### Task 3: Re-deploy and test
 
 Now that you have added sentiment analysis and language understanding to the solution, you need to re-deploy the apps so you can test out the new functionality.
 
-1. Publish the `ChatMessageSentimentProcessorFunction` Function App using Visual Studio just as you did in [Exercise 1, Task 1](#task-1-publish-the-chatmessagesentimentprocessor-function-app).
+1. Publish the `ChatMessageSentimentProcessorFunction` Function App using Visual Studio just as you did in [Exercise 4, Task 1](#task-1-publish-the-chatmessagesentimentprocessor-function-app).
 
-2. Publish the `ChatWebApp` just as you did in [Exercise 1, Task 2](#task-2-publish-the-chatwebapp).
+2. Publish the `ChatWebApp` just as you did in [Exercise 4, Task 2](#task-2-publish-the-chatwebapp).
 
 3. Join a chat with the Hotel Lobby.
 
