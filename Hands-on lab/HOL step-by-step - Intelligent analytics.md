@@ -1423,11 +1423,11 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     ![Set the luisAppId and luisKey values within the function app's app settings](media/2019-09-07-08-55-02.png "Function App application settings for LUIS")
 
-1.  **Save** your Application Settings. The Event Processor is pre-configured to invoke the LUIS API using the provided App ID and key.
+1. **Save** your Application Settings. The Event Processor is pre-configured to invoke the LUIS API using the provided App ID and key.
 
-2.  Open Visual Studio then open `ProcessChatMessage.cs` within the `ChatMessageSentimentProcessorFunction` project, and navigate to the Run method.
+2. Open Visual Studio then open `ProcessChatMessage.cs` within the `ChatMessageSentimentProcessorFunction` project, and navigate to the Run method.
 
-3.  Locate TODO: 14 and replace it with the following:
+3. Locate TODO: 14 and replace it with the following:
 
     ```csharp
     //TODO: 14.Respond to chat message intent if appropriate
@@ -1435,9 +1435,9 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
     await HandleIntent(intent, msgObj, outputServiceBus);
     ```
 
-4.  Take a look at the implementation of both methods if you are curious how the entity and intent information is used to generate an automatic chat message response from a bot.
+4. Take a look at the implementation of both methods if you are curious how the entity and intent information is used to generate an automatic chat message response from a bot.
 
-5.  Save the file.
+5. Save the file.
 
 ### Task 3: Re-deploy and test
 
@@ -1602,7 +1602,6 @@ In this task, you will configure a Logic App to send notifications to hotel gues
     ```
 
     ![In the Parse JSON pane, Service Bus Message is in the Content box, Add dynamic content is highlighted, and in the Dynamic content pane Service Bus Message is highlighted. The Use sample payload to generate schema link is highlighted.](media/2019-03-21-09-42-51.png "Parse JSON action")
-
 
 9. Select **Use sample payload to generate schema**, and on the Enter or paste a sample JSON payload dialog, paste the following JSON sample, and then select **Done**.
 
@@ -1954,7 +1953,7 @@ Before going further, a good thing to check is whether messages are being writte
 
     >**Note**: The **All** setting allows search requests from other client applications to successfully execute. For a production application, you would choose the **Custom** option and enter the domain you will be receiving requests from.
 
-29. We need to capture the index query api key for the web.config files in the Visual Studio solution.
+26. We need to capture the index query api key for the web.config files in the Visual Studio solution.
     - On the Search service blade, select Keys on the left-hand menu.
 
       ![On the Search Service blade, Settings section, under Settings, Keys is selected.](media/image176.png 'Search Service blade, Settings section')
@@ -2085,7 +2084,6 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 18. Select **Publish** on top of the page. In the publish page that appears, select the **Publish** button.
 
     ![Screenshot of the Publish page](media/qna-maker-publish.png "QnA Maker Publish")
-
 
 ### Task 2: Create a QnA bot
 
