@@ -28,6 +28,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
   - [Requirements](#requirements)
   - [Before the hands-on lab](#before-the-hands-on-lab)
     - [Task: Setup a lab virtual machine](#task-setup-a-lab-virtual-machine)
+    - [Task: Create a PowerBI account (optional)](#task-create-a-powerbi-account-optional)
 <!-- /TOC -->
 
 # Intelligent analytics before the hands-on lab setup guide
@@ -104,6 +105,10 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 8. Azure will validate your settings.  If everything is valid, then select **Create**.
 
     ![Validate the VM settings before creation.](media/2019-03-20-15-18-30.png "Validation passed")
+
+### Task: Create a PowerBI account (optional)
+
+1. If you do not have a PowerBI account, navigate to [PowerBI sign up](https://powerbi.microsoft.com/) to create an account.
 
 It may take 10+ minutes for the virtual machine to complete provisioning.
 
