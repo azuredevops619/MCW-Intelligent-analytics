@@ -1333,7 +1333,7 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     - Enter **FoodItem** and hit the Enter key.
   
-19. Repeat the same steps for Housekeeping entity and RoomItem role.
+19. Repeat steps 14 to 18 to create a **Housekeeping** entity with its associated **RoomItem** role.
 
     ![The screenshot shows the finished entities list.](media/2019-11-24-10-56-53.png "LUIS Entity List")
 
@@ -1359,13 +1359,13 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     - Text to select: **toothpaste**
 
-    - Entity: **RoomService:RoomItem**
+    - Entity: **Housekeeping:RoomItem**
 
 24. Repeat this process for the following phrases (text to select is in bold):
 
-    - **Bring me towels \| RoomService:RoomItem**
+    - **Bring me towels \| Housekeeping:RoomItem**
 
-    - **Bring me blankets \| RoomService:RoomItem**
+    - **Bring me blankets \| Housekeeping:RoomItem**
 
     - **Order a soda \| RoomService:FoodItem**
 
@@ -1383,11 +1383,11 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 27. Select Publish App from the menu on the top.
 
-28. When the publish completes, Refer to Keys and Endpoints under Manage in menu bar for Endpoint URL.
+28. When the publish completes, Refer to Keys and Endpoints under Manage in menu bar for an Example Query URL.
 
     ![The application settings menu is displayed. The Azure resources menu item is selected. The LUIS key information is displayed.](media/2019-11-18-18-58-03.png "LUIS Key Information")
 
-29. This will open a new tab in your browser. Modify the end of the URL (the text following q= ) so it contains the phrase "bring me towels," and press ENTER. You should receive output similar to the following. Observe that it correctly identified the intent as OrderIn (in this case with a confidence of 0.9999995 or nearly 100%) and the entity as pizza having an entity type of Housekeeping:RoomItem (in this case with a confidence score of 96.9%).
+29. Open a new tab in your browser. Paste the Example Query URL into the address bar and modify the end of the URL (the text following q= ) so it contains the phrase "bring me towels," and press ENTER. You should receive output similar to the following. Observe that it correctly identified the intent as OrderIn (in this case with a confidence of 0.9999995 or nearly 100%) and the entity as pizza having an entity type of Housekeeping:RoomItem (in this case with a confidence score of 96.9%).
 
     ![An example of the LUIS call JSON result is displayed.](media/2019-11-24-11-14-17.png "Sample LUIS Response")
 
