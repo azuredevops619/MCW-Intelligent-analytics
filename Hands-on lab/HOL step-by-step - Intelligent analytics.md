@@ -1387,7 +1387,7 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     ![The application settings menu is displayed. The Azure resources menu item is selected. The LUIS key information is displayed.](media/2019-11-18-18-58-03.png "LUIS Key Information")
 
-29. Open a new tab in your browser. Paste the example query URL into the address bar and modify the end of the URL (the text following q= ) so it contains the phrase "bring me towels," and press ENTER. You should receive output similar to the following. Observe that it correctly identified the intent as OrderIn (in this case with a confidence of 0.9999995 or nearly 100%) and the entity as pizza having an entity type of Housekeeping:RoomItem (in this case with a confidence score of 96.9%).
+29. Open a new tab in your browser. Paste the Example Query URL into the address bar and modify the end of the URL (the text following q= ) so it contains the phrase "bring me towels," and press ENTER. You should receive output similar to the following. Observe that it correctly identified the intent as OrderIn (in this case with a confidence of 0.9999995 or nearly 100%) and the entity as pizza having an entity type of Housekeeping:RoomItem (in this case with a confidence score of 96.9%).
 
     ![An example of the LUIS call JSON result is displayed.](media/2019-11-24-11-14-17.png "Sample LUIS Response")
 
