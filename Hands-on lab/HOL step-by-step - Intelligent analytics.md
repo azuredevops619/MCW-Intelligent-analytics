@@ -1333,7 +1333,7 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     - Enter **FoodItem** and hit the Enter key.
   
-19. Repeat steps 14 to 18 and create a **Housekeeping** entity with its associated **RoomItem** role.
+19. Repeat steps 14 to 18 to create a **Housekeeping** entity with its associated **RoomItem** role.
 
     ![The screenshot shows the finished entities list.](media/2019-11-24-10-56-53.png "LUIS Entity List")
 
