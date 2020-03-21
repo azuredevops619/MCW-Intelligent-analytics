@@ -2,7 +2,7 @@
 
 First Up Consultants specializes in building software solutions for the hospitality industry. Their latest product is an enterprise mobile/social chat product called Concierge+ (aka ConciergePlus). The mobile web app enables guests to easily stay in touch with the concierge and other guests, enabling greater personalization and improving their experience during their stay. Sentiment analysis is performed on top of chat messages as they occur, enabling hotel operators to keep tabs on guest sentiments in real-time.
 
-November 2019
+March 2020
 
 ## Target audience
 
@@ -14,9 +14,8 @@ November 2019
 ### Workshop
 
 In this workshop you will learn real-time analytics without IoT.  You'll enable intelligent conversation in a machine learning enabled, real-time chat pipeline, and apply analytics to visualize customer sentiment in real time for hotel guests, allowing them to chat with one another, and to communicate directly with the concierge. You'll apply analytics to visualize customer sentiment in real-time, as well as view trending sentiment over time and create a bot that can answer questions and embed it in the custom web app.
- You will be able to implement a lambda architecture, and enable web-based, real-time messaging through Web Sockets, Event Hubs, and Services Bus. 
 
-At the end of this workshop, you will better understand how to leverage Cognitive Services (LUIS & Text Analytics API), process events with Azure functions, index with Search Archive and Cosmos DB, visualize with Power BI Q&A, use Bot Framework for questions and answers, and send notifications with Logic App.
+At the end of this workshop, you will better understand how to leverage Cognitive Services (LUIS & Text Analytics API), process events with Azure functions, index with Search Archive and Cosmos DB, visualize with Power BI Q&A, use Bot Framework for questions and answers, and send notifications with Logic App. You will be able to implement a lambda architecture, and enable web-based, real-time messaging through Web Sockets, Event Hubs, and Services Bus.
 
 ### Whiteboard Design Session
 
@@ -59,9 +58,10 @@ Modern Business Intelligence
 We welcome feedback and comments from Microsoft SMEs & learning partners who deliver MCWs.  
 
 ***Having trouble?***
+
 - First, verify you have followed all written lab instructions (including the Before the Hands-on lab document).
 - Next, submit an issue with a detailed description of the problem.
-- Do not submit pull requests. Our content authors will make all changes and submit pull requests for approval.   
+- Do not submit pull requests. Our content authors will make all changes and submit pull requests for approval.
 
 If you are planning to present a workshop, *review and test the materials early*! We recommend at least two weeks prior.
 
