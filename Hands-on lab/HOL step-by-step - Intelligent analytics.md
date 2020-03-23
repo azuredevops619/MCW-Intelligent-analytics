@@ -9,14 +9,14 @@ Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
-November 2019
+March 2020
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
 The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
 
-© 2019 Microsoft Corporation. All rights reserved.
+© 2020 Microsoft Corporation. All rights reserved.
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
@@ -124,60 +124,35 @@ If you are already connected to your Lab VM, skip to Step 6.
 
 1. In the [Azure portal](https://portal.azure.com), and select Resource groups from the left-hand menu, then enter intelligent-analytics into the filter box, and select the resource group from the list.
 
-    ![In the Azure portal, the Resource groups pane is highlighted, intelligent-analytics is typed in the Subscriptions search field. Under Name, intelligent-analytics is circled.](media/image10.png 'Azure Portal Resource groups')
+    ![On the Resource groups screen, intelligent-analytics is typed in the search field. In the search results, intelligent-analytics is selected.](media/image10.png 'Azure Portal Resource groups')
 
 2. Next, select **LabVM** from the list of available resources.
 
-    ![In the List of available resources, the virtual machine LabVM is circled.](media/image11.png 'List of available resources')
+    ![In the List of available resources, LabVM is selected.](media/image11.png 'List of available resources')
 
 3. On the LabVM blade, select **Connect** from the top menu, which will download an RDP file.
 
-    ![The Connect button is circled on the LabVM blade.](media/image12.png "LabVM blade")
+    ![The Connect button is selected on the LabVM blade toolbar.](media/image12.png "LabVM blade")
 
 4. Open the downloaded RDP file.
 
 5. Select Connect on the Remote Desktop Connection dialog.
 
-    ![The Remote Desktop Connection window states that the publisher of the remote connection can't be identified, and asks if you want to connect anyway. The Connect button is circled.](media/image13.png 'Remote Desktop Connection')
+    ![The Remote Desktop Connection window states that the publisher of the remote connection can't be identified, and asks if you want to connect anyway. The Connect button is selected.](media/image13.png 'Remote Desktop Connection')
 
 6. Enter the following credentials (or the non-default credentials if you changed them):
 
-    - **Username**: demouser
+    - **Username**: `demouser`
 
-    - **Password**: Password.1!!
+    - **Password**: `Password.1!!`
 
     ![The Windows Security window asks you to enter the credentials for demouser.](media/image14.png 'Windows Security window')
 
 7. Select Yes to connect, if prompted that the identity of the remote computer cannot be verified.
 
-    ![The Remote Desktop Connection window states that the identity of the remote computer can't be identified, and asks if you want to connect anyway. The Yes button is circled.](media/image15.png 'Remote Desktop Connection window ')
+    ![The Remote Desktop Connection window states that the identity of the remote computer can't be identified, and asks if you want to connect anyway. The Yes button is selected.](media/image15.png 'Remote Desktop Connection window ')
 
-8. Once logged in, launch the **Server Manager**. This should start automatically, but you can access it via the Start menu if it does not.
-
-9. Select Local Server, then select **On** next to **IE Enhanced Security Configuration**.
-
-    ![On the Server Manager Start menu in the left pane, Local Server is selected. In the right, Properties pane, IE Enhanced Security Configuration is set to On, and is circled.](media/image16.png 'Server Manager Start menu')
-
-10. In the Internet Explorer Enhanced Security Configuration dialog, select **Off under Administrators**, then select **OK**.
-
-    ![In the Internet Explorer Enhanced Security Configuration dialog box, the Administrators Off radio button is selected.](media/image17.png 'Internet Explorer Enhanced Security Configuration dialog box')
-
-11. Close the Server Manager.
-
-12. Allow for downloading files.  Open **Internet Explorer**.
-    - Type F10.  The menu should be displayed.
-    - Go to **Tools**.
-
-        ![Showing IE menu.](media/2019-03-20-15-40-37.png "IE menu")
-    - Select **Internet Options**
-    - Select the **Security** tab and the **Custom Level** for the **Internet**
-
-    ![Showing the Internet Options](media/2019-03-20-15-44-24.png "Internet Options")
-    - Scroll down to **File download** and enable.
-
-    ![Showing Internet custom options](media/2019-03-20-15-46-49.png "Internet custom options")
-
-13. Now you can download files from the Internet. Download and install Google Chrome.
+8. Open **Internet Explorer**, then download and install [Google Chrome](https://www.google.com/chrome).
 
 ### Task 2: Download and open the ConciergePlus starter solution
 
@@ -195,23 +170,23 @@ If you are already connected to your Lab VM, skip to Step 6.
 
     ![In the Extract Compressed (Zipped) Folders window, files will be extracted to C:\ConciergePlus.](media/image18.png 'Extract Compressed (Zipped) Folders window')
 
-5. Open **ConciergePlusSentiment.sln** in the `C:\ConciergePlus\Hands-on lab\lab-files\starter-project\` folder with Visual Studio 2019.
+5. Open **ConciergePlusSentiment.sln** in the `C:\ConciergePlus\MCW-Intelligent-analytics-master\Hands-on lab\lab-files\starter-project` folder with Visual Studio 2019.
 
 6. Sign in to Visual Studio or select create account, if prompted.
 
 7. If presented with the Start with a familiar environment dialog, select Visual C\# from the Development Settings drop down list, and select Start Visual Studio.
 
-    ![Development Settings are set to Visual csharp and are circled in the Visual Studio Start with a familiar environment dialog box.](media/image19.png 'Visual Studio Start with a familiar environment dialog box')
+    ![Development Settings is set to Visual C# in the Visual Studio Start with a familiar environment dialog box.](media/image19.png 'Visual Studio Start with a familiar environment dialog box')
 
 8. If the Security Warning window appears, uncheck Ask me for every project in this solution, and select OK.
 
-    ![In the Security Warning window, under the Would you like to open this project? prompt, the Ask me for every project in this solution checkbox is circled.](media/image20.png 'Security Warning window')
+    ![In the Security Warning window, under the Would you like to open this project? prompt, the Ask me for every project in this solution checkbox is highlighted and unchecked.](media/image20.png 'Security Warning window')
 
-    ![Initial solution folder and files](media/2019-03-20-15-58-31.png "Initial solution folder and files")
+    ![The Visual Studio Solution explorer displays with the initial solution folder and files.](media/2019-03-20-15-58-31.png "Initial solution folder and files")
 
->**Note**: If you attempt to build the solution at this point, you will see many build errors. This is intentional. You will correct these in the exercises that follow.
+> **Note**: If you attempt to build the solution at this point, you will see many build errors. This is intentional. You will correct these in the exercises that follow.
 
->**Note**: Visual Studio Installer will show the installed version of Visual Studio and if the Azure SDK is installed. If the Azure SDK is missing, go back to the **Before the HOL** and make sure you created the correct VM. Updating Visual Studio manually may install components that may not work with the lab.
+> **Note**: Visual Studio Installer will show the installed version of Visual Studio and if the Azure SDK is installed. If the Azure SDK is missing, go back to the **Before the HOL** and make sure you created the correct VM. Updating Visual Studio manually may install components that may not work with the lab.
 
 ### Task 3: Create App Services
 
@@ -219,34 +194,35 @@ In these steps, you will provision a Web App within a single App Service Plan.
 
 1. Sign in to the Azure Portal (<https://portal.azure.com>).
 
-2. Select **+Create a resource**, then select Web and finally select **Web App**. Select the **Create** button.
+2. Select **+Create a resource**, then search for `Web` and choose **Web App**. Select the **Create** button.
 
-    ![Showing the Web App blade with details of what is supported.](media/2019-06-19-15-34-07.png "Web App blade")
+    ![The Web App resource overview page is displayed with a Create button.](media/2019-06-19-15-34-07.png "Web App blade")
 
 3. On the Create Web App blade, enter the following:
 
     - **Subscription**: Select your subscription.
     - **Resource Group**: Select Use existing, and select the **intelligent-analytics** resource group created previously.
-    - **Name**: Provide **a unique name** that is indicative of this resource being used to host the Concierge+ chat website (e.g., conciergepluschatapp + (namespace)).
-    - **Runtime stack**: ASP.NET 4.7
-    - **Publish**: Choose **Code** option.
-    - **OS**: Windows
+    - **Name**: Provide **a unique name** that is indicative of this resource being used to host the Concierge+ chat website (e.g., `conciergepluschatapp + (namespace)`).
+    - **Publish**: Choose the **Code** option.
+    - **Runtime stack**: **ASP.NET 4.7**
+    - **OS**: **Windows**
     - **Region**: Choose a region close to you.
-    - **App Service plan**: azure-scenario-experience (S1)
+    - **App Service plan**: Leave as the default - this will create a new App Service Plan.
+    - **Sku and Size**: **Standard S1**
 
     - Select **Review and Create** to provision both Web App and the App Service Plan. Select the **Create** button.
 
-4. When provisioning completes, navigate to your new Web App in the portal by selecting on **App Services**, and then selecting your web app.
+4. When provisioning completes, navigate to your new Web App in the portal by selecting **App Services** from the left menu, and then selecting your web app from the list.
 
-    ![In the Azure portal, in the App Services pane, under Name, conciergepluschatapp has a status of running](media/2019-06-19-16-11-06.png "Azure Portal, App Services pane")
+    ![In the Azure portal, in the App Services screen, the conciergepluschatapp has a status of running and is selected from the list.](media/2019-06-19-16-11-06.png "Azure Portal, App Services pane")
 
-5. On the App Service blade, select **Configuration** and then select the **General settings** menu item.
+5. On the App Service screen, select **Configuration** from the left menu, and then select the **General settings** tab.
 
-    ![App Services panel shown. Configuration link circled. Save button circled. Shows options available.](media/2019-06-19-16-14-40.png "App Services Configuration General Settings")
+    ![In the App Service screen, the Configuration menu item is selected from the left menu. The General Settings tab is selected, and the value of the Web sockets field is highlighted and set to On. The Save button is selected from the toolbar menu.](media/2019-06-19-16-14-40.png "App Services Configuration General Settings")
 
 6. Select the toggle for **Web Sockets** to **On**.
 
-   >**Note**: Failure to complete this step will not allow the Javascript client to communicate with the web application and receive continuous data exchange.
+   > **Note**: Failure to complete this step will not allow the Javascript client to communicate with the web application and receive continuous data exchange.
 
 7. Select **Save**.
 
@@ -254,53 +230,49 @@ In these steps, you will provision a Web App within a single App Service Plan.
 
 In this section, you will provision a Function App that will be used as the EventProcessorHost for processing and enriching Event Hubs data.
 
-1. Select **+Create a resource, search for Function App**.
+1. From the Azure Portal left menu, select **+ Create a resource**, and search for `Function App`. Choose the **Function App** search result and select the **Create** button.
 
-    ![The screen displays the search text box with the Function results displayed.](media/2019-11-13-14-54-06.png "Create Function App")
+    ![The New screen displays the search text box populated with Function and Function App is displayed as a search suggestion.](media/2019-11-13-14-54-06.png "Create Function App")
 
-2. On the Create Function App blade, enter the following:
-
-    - **App Name**: Provide **a unique name** that is indicative of this resource being used to process chat messages (e.g., chatprocessor).
+2. On the Function App form, enter the following on the **Basics** tab:
 
     - **Subscription**: Select your subscription.
 
     - **Resource Group**: Select Use existing, and select the **intelligent-analytics** resource group created previously.
 
-    - **OS**: Windows
+    - **App Name**: Provide **a unique name** that is indicative of this resource being used to process chat messages (e.g., `chatprocessor`).
 
-    - **Plan Type**: Select **Consumption**.
+    - **Publish**: **Code**
+  
+    - **Runtime Stack**:  Select **.NET Core**
+  
+    - **Version**: Select **3.1**
 
-    - **Location**: Select the location you used for the resource group created previously.
+    - **Region**: Select the location you used for the resource group created previously.
 
-    - **Runtime Stack**:  Select **.NET Core**.
+    - Select **Review + create** to provision the Function App.
 
-    - **Storage**: Select **Create new** and accept the generated name.
-
-    - **Application Insights**: **On**
-
-    - Select **Create** to provision the Function App.
-
-    ![An example of the Function App configuration screen is displayed.](media/2019-11-13-14-38-10.png "Function App Configuration")
+    ![The Function App basics tab displays with the form populated with the preceding values.](media/2019-11-13-14-38-10.png "Function App Configuration")
 
 ### Task 5: Provision Service Bus
 
 In this section, you will provision a Service Bus Namespace and Service Bus Topic.
 
-1. Continuing in the [Azure portal](https://portal.azure.com), select **+Create a resource**.
+1. Continuing in the [Azure portal](https://portal.azure.com), select **+ Create a resource** from the left menu.
 
 2. Search for **Service Bus** and select the **Create** button.
 
-    ![Service Bus description option shown.  Create button.](media/2019-06-19-16-41-00.png "Service Bus Description")
+    ![On Service Bus overview screen is displayed with a Create button.](media/2019-06-19-16-41-00.png "Service Bus Description")
 
 3. On the Create namespace blade enter the following:
 
-    - **Name**: Provide a unique name for the namespace (e.g., awhotel-namespace). Namespace could be your initials.
+    - **Name**: Provide a unique name for the namespace (e.g., `awhotel-namespace`). Namespace could be your initials.
 
-    - **Pricing tier**: Select Standard.
+    - **Pricing tier**: Select **Standard**
 
     - **Subscription**: Select the subscription you are using for this hands-on lab.
 
-    - **Resource Group**: Choose Use existing and select the intelligent-analytics resource group.
+    - **Resource Group**: Select the **intelligent-analytics** resource group.
 
     - **Location**: Select the location you are using for resources in this hands-on lab.
 
@@ -308,40 +280,43 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
 4. Select **Create**.
 
-5. Once provisioning completes, navigate to your new Service Bus in the portal by choosing Resource Groups in the left menu, the selecting **intelligent-analytics**, and selecting your Service Bus.
+5. Once provisioning completes, navigate to your new Service Bus in the portal by choosing Resource Groups in the left menu, then selecting the **intelligent-analytics** resource group, and selecting your Service Bus Namespace from the list of resources.
 
-    ![The previously created service bus is shown.](media/2019-06-19-16-48-25.png "Azure Portal Resource Groups")
+    ![The Service Bus Namespace is shown in a resource list.](media/2019-06-19-16-48-25.png "Azure Portal Resource Groups")
 
 6. On the Overview blade, select on Topic under Entities on the left-hand side of the blade.
 
-    ![In the Overview blade Entities section, under Entities, Topics is selected.](media/image34.png 'Overview blade Entities section')
+    ![In the Entities section of the resource left menu, the Topics item is selected from within the Entities section.](media/image34.png 'Overview blade Entities section')
 
 7. Add a new Topic by selecting +Topic.
 
-    ![The Add Topic dialog is shown.](media/image35.png 'Topic option')
+    ![The Topic toolbar is shown with the +Topic button selected.](media/image35.png 'Topic option')
 
 8. On the Create topic blade, enter the following:
 
-    - **Name**: Enter **awhotel**. This represents that this topic will handle the messages for a particular hotel.
+    - **Name**: Enter `awhotel`. This represents that this topic will handle the messages for a particular hotel.
 
-    - **Max topic size**: Leave set to 1 GB.
+    - **Max topic size**: Leave set to **1 GB**.
 
-    - **Message time to live**: Set to 1 day.
+    - **Message time to live**: Set to `1` day.
 
-    - **Enable partitioning**: Uncheck this checkbox. Chat will not function properly if this is left checked.
+    - **Enable partitioning**: Ensure this checkbox remains unchecked. Chat will not function properly if this is checked.
 
-      ![The Create topic blade fields display the previously mentioned settings. In addition, the following fields are circled: Name, which is set to awhotel, Message time to live in Days, which is set to 1, and the Enable partitioning check box.](media/image36.png 'Create topic blade')
+      ![The Create topic blade fields display the previously mentioned settings. In addition, the following fields are highlighted: Name, which is set to awhotel, Message time to live in Days, which is set to 1, and the Enable partitioning check box.](media/image36.png 'Create topic blade')
 
 9. Select **Create**.
 
-10. Next, select **Queues** under Entities on the left-hand menu, and then select **+Queue**.
+10. Next, select **Queues** under Entities on the Service Bus Namespace left-hand menu, and then select **+Queue**.
 
 11. In the Create queue dialog, enter the following:
 
-    - **Name**: awhotelstaffnotifications
-    - **Max topic size**: Leave set to 1 GB.
-    - **Message time to live**: Set to 1 day.
-    - **Enable partitioning**: Uncheck this checkbox.
+    - **Name**: `awhotelstaffnotifications`
+  
+    - **Max topic size**: Leave set to **1 GB**
+  
+    - **Message time to live**: Set to `1` day.
+  
+    - **Enable partitioning**: Ensure this checkbox remains unchecked.
 
         ![On the Create queue dialog, awhotelstaffnotifications is entered into the Name field, Message time to live is set to 1 day, and Enable partitioning is unchecked.](media/logic-app-create-queue.png "Create queue")
 
@@ -353,13 +328,13 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
     - In the Shared access policies, you are going to create a new policy that the ChatConsole can use to retrieve messages. Select +Add.
 
-    ![The Azure Portal is shown with the Shared Access polices blade of the Service Bus Namespace open. Add is being selected.](media/image85.png 'Azure Shared Access policies blade')
+    ![On the Service Bus namespace screen, Shared Access polices is selected from the left menu and the + Add button is highlighted in the toolbar.](media/image85.png 'Azure Shared Access policies blade')
 
     - For the New Policy Name, enter **ChatConsole**.
 
-    - In the list of claims, select **Manage, Send, and Listen**.
+    - In the list of claims, check **Manage**. This will automatically select the **Send**, and **Listen** claims.
 
-    ![In the New policy section, Policy name is set to ChatConsole, and three check boxes are selected: Manage, Send, and Listen.](media/2019-03-20-16-49-23.png "New policy section")
+    ![In the New policy form, Policy name is set to ChatConsole, and three check boxes are selected: Manage, Send, and Listen.](media/2019-03-20-16-49-23.png "New policy section")
 
     - Select **Create**.
 
@@ -367,33 +342,33 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
 In this task, you will create a new Event Hubs namespace and instance.
 
-1. In the [Azure portal](https://portal.azure.com), select **+Create a resource**, then search for **Event Hubs**.
+1. In the [Azure portal](https://portal.azure.com) left menu, select **+Create a resource**, then search for `Event Hubs`
 
-    ![Select a software plan.  Event Hubs is selected. Click Create button.](media/2019-06-19-16-52-46.png "Event Hubs is selected. Click Create button")
+    ![The Event Hubs resource overview page is displayed with a Create button.](media/2019-06-19-16-52-46.png "Event Hubs is selected. Click Create button")
 
 2. On the Create namespace blade enter the following:
 
-    - **Name**: Provide a unique name for the namespace (e.g., awhotel-events-namespace).
+    - **Name**: Provide a unique name for the namespace (e.g., `awhotel-events-namespace`).
 
-    - **Pricing tier**: Select Standard.
+    - **Pricing tier**: Select **Standard (20 Consumer groups, 1000 brokered connections)**
 
     - **Subscription**: Select the subscription you are using for this hands-on lab.
 
-    - **Resource Group**: Choose Use existing and select the intelligent-analytics resource group.
+    - **Resource Group**: Select the **intelligent-analytics** resource group.
 
     - **Location**: Select the location you are using for resources in this hands-on lab.
 
-    - **Throughput Units**: Leave at 1.
+    - **Throughput Units**: Leave at `1`
 
-    - **Enable auto-inflate**: Uncheck.
+    - **Enable auto-inflate**: **Unchecked**
 
     - Select **Create** to provision the Event Hubs namespace.
 
-      ![The Create namespace blade fields display the previously mentioned settings.](media/image38.png 'Create namespace blade')
+      ![The Create Namespace blade fields display the previously mentioned settings.](media/image38.png 'Create namespace blade')
 
-3. When provisioning completes, navigate to your new Event Hub namespace in the portal by choosing Resource Groups in the left menu. Select intelligent-analytics followed by your Event Hub.
+3. When provisioning completes, navigate to your new Event Hub namespace in the portal by choosing **Resource Groups** from the Azure Portal left menu. Select the **intelligent-analytics** resource group followed by your Event Hub Namespace.
 
-    ![Under Name, in the Resource pane, the awhotel-events-namespace Event Hub is circled.](media/image39.png 'Azure Portal Resource pane')
+    ![In the list of resources, the Event Hub Namespace is selected.](media/image39.png 'Azure Portal Resource pane')
 
 4. On the Overview blade, select +Event Hub to add a new Event Hub.
 
@@ -401,143 +376,151 @@ In this task, you will create a new Event Hubs namespace and instance.
 
 5. On the Create Event Hub blade, enter the following:
 
-    - **Name**: Enter awchathub.
+    - **Name**: Enter `awchathub`
 
-    - **Partition Count**: Set to the **max value of 32**. This will enable you to significantly scale up the number of downstream processors on the Event Hub, where each partition consumer (as handled by the EventProcessorHost) can reach up to 1 Throughput Unit per partition should the need arise. You cannot change this value later.
+    - **Partition Count**: Set to the max value of `32`. This will enable you to significantly scale up the number of downstream processors on the Event Hub, where each partition consumer (as handled by the EventProcessorHost) can reach up to 1 Throughput Unit per partition should the need arise. You cannot change this value later.
 
-    - **Message Retention**: Leave set to 1.
+    - **Message Retention**: Leave set to `1`
 
-    - **Capture**: Leave set to Off.
+    - **Capture**: Leave set to **Off**
 
     - Leave the remaining values as their defaults.
 
     - Select **Create**.
 
-      ![The Create Event Hub blade fields display the previously mentioned settings.](media/image41.png 'Create Event Hub blade')
+      ![The Create Event Hub blade fields display with the previously mentioned settings.](media/image41.png 'Create Event Hub blade')
 
-6. Repeat steps listed 5 to create another Event Hub. This one will store messages for archival and be processed by Stream Analytics. Name it awchathub2. If you select the **Event Hubs** menu item to display the list of event hubs, you should see the following:
+6. Repeat steps listed 5 to create another Event Hub. This one will store messages for archival and be processed by Stream Analytics. Name it `awchathub2`. If you select the **Event Hubs** menu item from the left menu, this will display the list of event hubs, you should see the following:
 
-    ![Showing the Event Hubs created. awhotel is circled.](media/2019-03-20-17-01-42.png "Event Hubs created")
+    ![A list of Event Hubs is displayed, awchathub and awchathub2 are shown in this list.](media/2019-03-20-17-01-42.png "Event Hubs created")
 
 ### Task 7: Provision Azure Cosmos DB
 
-In this section, you will provision an Azure Cosmos DB account, a DocumentDB Database, and a DocumentDB collection that will be used to collect all the chat messages.
+In this section, you will provision an Azure Cosmos DB account, a database, and a collection that will be used to collect all the chat messages.
 
 1. In the [Azure portal](https://portal.azure.com), select **+Create a resource**.  Search for **Azure Cosmos DB**.
 
-    ![The screen shows the Azure Cosmos DB icon as well as the create button.](media/2019-11-13-15-27-32.png "Create the Azure Cosmos DB")
+    ![The Azure Cosmos DB resource overview screen shows the Azure Cosmos DB icon as well as the create button.](media/2019-11-13-15-27-32.png "Create the Azure Cosmos DB")
 
 2. On the Azure Cosmos DB blade, enter the following:
+
     - **Subscription**: Select the subscription you are using for this hands-on lab.
 
-    - **Resource Group**: Choose Use existing and select the intelligent-analytics resource group.
+    - **Resource Group**: Select the **intelligent-analytics** resource group.
 
-    - **Account Name**: Provide a unique name for the Azure Cosmos DB account (e.g., awhotelcosmosdb + namespace).
+    - **Account Name**: Provide a unique name for the Azure Cosmos DB account (e.g., `awhotelcosmosdb + namespace`).
 
-    - **API**: Select Core(SQL).
+    - **API**: Select **Core(SQL)**
+
+    - **Notebooks (Preview): Keep this set to **Off**
+
+    - **Apply Free Tier Discount**: There is a limit to one free tier Cosmos DB discount per account. If you still have this available, feel free to apply it here.
 
     - **Location**: Select the region you are using for resources in this hands-on lab.
+
+    - **Account Type**: Keep this set to **Non-Production**
   
-    >**Note**: You have to pick a different region instance in order for the Geo-Redundancy options to be enabled, e.g. US-WEST vs US-WEST2.
+    - **Enable geo-redundancy**: Ensure this is set to **Enable**
 
-    - **Enable geo-redundancy**: Ensure this is enabled.
+    - **Multi-region Writes**: Ensure this is set to **Disable**
 
-    - **Multi-region Writes**: Ensure this is disabled.
+    - **Availability Zones**: Ensure this is set to **Disable**
 
-    - Select awhotelcosmosdb to provision the Azure Cosmos DB instance.
+    - Select **Review + Create**, then **Create** to provision the Azure Cosmos DB instance.
 
       ![The Azure Cosmos DB blade fields display the previously mentioned settings. ](media/image43.png 'Azure Cosmos DB blade')
 
-    - Select the **Review + create** button and then the **Create** button.
-
 3. When the provisioning completes, navigate to your new Azure Cosmos DB account in the portal.
 
-4. Select the Overview blade, then select **+Add Container**.
+4. On the Overview screen, select **+Add Container**.
 
     ![The screen shows the Cosmos DB name the user chose and the add new container button is circled.](media/2019-11-13-16-10-38.png "Add New Container")
 
 5. On the Add Container blade, enter the following:
 
-    - **Database id**: Create new. Enter awhotels.
+    - **Database id**: Create new. Enter `awhotels`
 
-    - **Container Id**: Enter messagestore.
+    - **Container Id**: Enter `messagestore`
 
-    - **Partition Key**: Enter a partition key such as **/username**.
-        >**Note**: Pick a field in this schema.  Otherwise, you will have no documents in the Cosmo DB container. Below is a sample of the messages stored in the Cosmo DB at a later part in the lab.
+    - **Partition Key**: Enter a partition key such as `/username`
 
-        ![Displaying all of the configuration fields in a message document](media/2019-03-21-13-18-47.png "Possible fields to partition on.")
+        > **Note**: Pick a field in this schema.  Otherwise, you will have no documents in the Cosmo DB container. Below is a sample of the messages stored in the Cosmo DB at a later part in the lab.
 
-    - **Throughput**: Set to 400.
+        ![A sample document in Json format is shown displaying all of the fields available to use as a partition key. The username field is highlighted.](media/2019-03-21-13-18-47.png "Possible fields to partition on.")
+
+    - **Throughput**: Set to `400`
 
     - Select **OK** to add the container.
+  
+    ![The Add Container form is displayed and is populated with the preceding values.](media/addcontainer.png "Add New Container")
 
 6. Add another container with the following:
 
-    - **Database id**: Enter existing database id **awhotels**.
+    - **Database id**: Enter existing database id `awhotels`
 
-    - **Container Id**: Enter **sentiment**.
+    - **Container Id**: Enter `sentiment`
 
-    - **Partition Key**: Enter a partition key such as **/username**.
+    - **Partition Key**: Enter a partition key such as `/username`
 
-    - **Throughput**: Set to 400.
+    - **Throughput**: Set to `400`
 
     - Select **OK** to add the container.
 
-    ![The screen shows the Data Explorer results. awhotels node shows the messagestore and sentiment child nodes.](media/2019-11-13-16-06-51.png "Displaying the Cosmos DB Containers")
+    ![The Cosmos DB Data Explorer displays the awhotels database expanded with messagestore and sentiment child containers.](media/2019-11-13-16-06-51.png "Displaying the Cosmos DB Containers")
 
 ### Task 8: Provision Azure Search
 
 In this section, you will create an Azure Search instance.
 
-1. Select **+Create a resource**, then search for **Search**.  Choose the **Create** button.
+1. Select **+Create a resource**, then search for `Search`. Select **Azure Cognitive Search** from the results, then select the **Create** button on the resource overview screen.
 
-    ![The screen displays the Azure Marketplace search text box and the value of search. The result shows Azure Cognitive Search.](media/2019-11-16-05-47-04.png "Create Azure Cognitive Search")
+    ![The New resource search field is populated with the term Search. The suggested results shows Azure Cognitive Search.](media/2019-11-16-05-47-04.png "Create Azure Cognitive Search")
 
 2. On the New Search Service blade, enter the following:
 
-    - **URL**: Provide a **unique name** for the search service (e.g., conciergeplusapp).
-
     - **Subscription**: Select the subscription you are using for this hands-on lab.
+  
+    - **Resource Group**: Select the **intelligent-analytics** resource group.
 
-    - **Resource Group**: Choose Use existing and select the intelligent-analytics resource group.
+    - **URL**: Provide a **unique name** for the search service (e.g., `conciergeplusapp`).
 
     - **Location**: Select the location you are using for resources in this hands-on lab, or the next closest location if your location is unavailable in the list.
 
-    - **Pricing Tier**: Select Basic.
+    - **Pricing Tier**: Select **Change Pricing Tier** and choose **Basic**
 
-    - Select **Create**.
+    - Select **Review + Create**, and once validation has passed, select **Create**.
 
-      ![The New Search Service blade fields display the previously mentioned settings.](media/2019-06-19-17-27-13.png "New Search Service blade fields")
+      ![The New Search Service form is shown populated with the previously mentioned settings.](media/2019-06-19-17-27-13.png "New Search Service blade fields")
 
 ### Task 9: Create Stream Analytics job
 
 In this section, you will create the Stream Analytics Job that will be used to read chat messages from the Event Hub and write them to the Azure Cosmos DB.
 
-1. Select **+Create a resource**, the search for **Stream Analytics** **job**.  Choose the **Create** button.
+1. From the Azure Portal left menu, select **+Create a resource**, the search for **Stream Analytics** **job**.  Choose the **Create** button.
 
 2. On the New Stream Analytics Job blade, enter the following:
 
-    - **Job Name**: Enter MessageLogger.
+    - **Job Name**: Enter `MessageLogger`
 
     - **Subscription**: Select the subscription you are using for this hands-on lab.
 
-    - **Resource Group**: Choose Use existing and select the intelligent-analytics resource group.
+    - **Resource Group**: Select the **intelligent-analytics** resource group.
 
     - **Location**: Select the location you are using for resources in this hands-on lab.
 
-    - **Hosting environment**: Select Cloud.
+    - **Hosting environment**: Select **Cloud**
 
     - Select **Create** to provision the new Stream Analytics job.
 
-      ![The New Stream Analytics Job blade fields display the previously mentioned settings. ](media/image49.png 'New Stream Analytics Job blade')
+      ![The New Stream Analytics Job form fields display the previously mentioned settings. ](media/image49.png 'New Stream Analytics Job blade')
 
-3. When provisioning completes, navigate to your new Stream Analytics job in the portal by selecting Resource Groups in the left menu, and selecting intelligent-analytics, then selecting your Stream Analytics Job.
+3. When provisioning completes, navigate to your new Stream Analytics job in the portal by selecting **Resource Groups** in the left menu, and selecting the **intelligent-analytics** resource group, then selecting your Stream Analytics Job.
 
-    ![In the Azure portal Resource Groups pane, under Name, the MessageLogger Stream Analytics job is circled.](media/image50.png 'Azure Portal Resource Groups pane')
+    ![In the resource group resources listing, the MessageLogger Stream Analytics job is selected.](media/image50.png 'Azure Portal Resource Groups pane')
 
-4. Select **Inputs** on the left-hand menu, under Job Topology.
+4. From the Stream Analytics job left menu, beneath Job topology, select the **Inputs** menu item.
 
-    ![Under Job Topology, Inputs is selected.](media/image51.png 'Job Topology section')
+    ![In the Job Topology section of the menu, the Inputs item is selected.](media/image51.png 'Job Topology section')
 
 5. On the Inputs blade, select **+Add stream input** and then select **Event Hub**.
 
@@ -545,29 +528,29 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
 6. On the New Input blade, enter the following:
 
-    - **Input Alias**: Set the value to **eventhub**.
+    - **Input Alias**: Set the value to `eventhub`
 
-    - Choose **Select Event Hub from your subscriptions**.
+    - Choose **Select Event Hub from your subscriptions**
 
     - **Subscription**: Choose the same subscription you have been using thus far.
 
-    - **Event Hub namespace**: Choose the Namespace which contains **your Event Hubs instance** (e.g., awhotelevents-namespace).
+    - **Event Hub namespace**: Choose the Namespace which contains **your Event Hubs instance** (e.g., `awhotel-events-namespace`).
 
-    - **Event hub name**: Choose the second Event Hub instance you created (**awchathub2**).
+    - **Event hub name**: Choose **awchathub2**, the second Event Hub instance you created.
 
-    - **Event hub policy name**: Leave as **RootManageSharedAccessKey**.
+    - **Event hub policy name**: Select **Use existing**, and choose **RootManageSharedAccessKey**
 
-    - **Event hub consumer group**: Leave this **blank** (\$Default consumer group will be used).
+    - **Event hub consumer group**: Select **Use existing**, and select **$Default**
 
-    - **Event serialization format**: Leave as **JSON**.
+    - **Event serialization format**: Leave as **JSON**
 
-    - **Encoding**: Leave as **UTF-8**.
+    - **Encoding**: Leave as **UTF-8**
 
-    - **Event compression type**: Leave set to **None**.
+    - **Event compression type**: Leave set to **None**
 
-    - Select **Save**.
+    - Select **Save**
 
-      ![The Event Hub New input blade fields display the previously mentioned settings. ](media/image53.png 'Event Hub New input')
+      ![The Event Hub New input form fields display the previously mentioned settings. ](media/image53.png 'Event Hub New input')
 
 7. Now, select **Outputs** from the left-hand menu, under Job Topology.
 
@@ -575,27 +558,27 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
 8. In the Outputs blade, select **+Add**, then select **Cosmos DB**.
 
-    ![The Add New Outputs is shown with the CosmosDB option selected.](media/image55.png 'Add New Outputs')
+    ![The +Add button on the Outputs screen is expanded with Cosmos DB selected from the list.](media/image55.png 'Add New Outputs')
 
 9. On the Cosmos DB New output blade, enter the following:
 
-    - **Output alias**: Enter **cosmosdb**.
+    - **Output alias**: Enter `cosmosdb`
 
-    - **Import Option**: Leave set to Select Cosmos DB from your subscriptions.
+    - Choose **Select Cosmos DB from your subscriptions**
 
     - **Subscription**: Choose the same subscription you have been using thus far.
 
-    - **Account Id**: Select your Account id (e.g., awhotel-cosmosdb).
+    - **Account Id**: Select your Account id (e.g., **awhotel-cosmosdb**).
 
-    - **Database**: Select your database, **awhotels**.
+    - **Database**: Select your database, **awhotels**
 
-    - **Container name pattern**: Set to the name of your messages collection, **messagestore**.
+    - **Container name**: Set to the name of your messages collection, `messagestore`
 
-    - **Document Id**: Set to **messageid** (all lowercase).
+    - **Document id**: Set to **messageid** (all lowercase).
 
     - Select **Save**.
 
-      ![The CosmosDB New Output blade fields display the previously mentioned settings.](media/image56.png 'CosmosDB New Output')
+      ![The Cosmos DB New Output form fields display the previously mentioned settings.](media/image56.png 'CosmosDB New Output')
 
 10. Create another Output, this time for **Service Bus queue**.
 
@@ -603,21 +586,21 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
 11. On the Service Bus queue New output blade, enter the following:
 
-    - **Output alias**: Enter staffnotificationqueue.
+    - **Output alias**: Enter `staffnotificationqueue`
 
     - Choose **Select queue from your subscriptions**.
 
     - **Subscription**: Select the subscription you are using for this hands-on lab.
 
-    - **Service Bus namespace**: Select the awhotel-sb namespace.
+    - **Service Bus namespace**: Select the **awhotel-namespace** namespace.
 
-    - **Queue name**: Choose Use existing and select awhotelstaffnotifications.
+    - **Queue name**: Choose **Use existing** and select **awhotelstaffnotifications**
 
     - **Queue policy name**: Select ChatConsole.
 
-    - **Event serialization format**: Leave as JSON.
+    - **Event serialization format**: Leave as **JSON**
 
-    - **Encoding**: Leave as UTF-8.
+    - **Encoding**: Leave as **UTF-8**
 
     - **Format**: Leave set to Line separated.
 
@@ -629,25 +612,21 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     ![The Add New Outputs is shown with the Power BI option selected.](media/image57.png 'Add New Outputs')
 
-    Select **Authorize**. This will authorize the connection to your Power BI account. When prompted in the popup window, enter the account credentials you used to create your Power BI account in the Before the Hands-on Lab exercise. You may have to enter your Username and Password.
+    A blade will open asking to authorize your Power BI account, select **Authorize**. When prompted in the popup window, enter the account credentials you used to create your Power BI account in the Before the Hands-on Lab exercise. You may have to enter your Username and Password.
 
 14. On the New output blade, enter the following:
 
-    - **Output alias**: Enter **powerbi**.
+    - **Output alias**: Enter `powerbi`
 
-    - **Group workspace**: Authorize connection to load workspaces.
+    - **Group workspace**: Select **My workspace**
 
-    - **Dataset Name**: Set to **Messages**.
+    - **Dataset Name**: Set to `Messages`
 
-    - **Table Name**: Set to **Messages**.
+    - **Table Name**: Set to `Messages`
   
     - **Authentication Mode**: Select **User token**.
 
-      ![The Power BI New output screen is shown configured.](media/2019-11-16-06-02-09.png "Power BI new output")
-
-        If the authorization has succeeded, then you should see the workspaces available.
-
-      ![The Power BI authorization has succeeded.](media/2019-03-20-17-44-01.png "Power BI authorization has succeeded")
+      ![The Power BI New output form is shown and is populated with the preceding values.](media/2019-11-16-06-02-09.png "Power BI new output")
 
     - Select the Save button.
 
@@ -655,27 +634,27 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     ![The Add New Outputs is shown with the Power BI option selected.](media/image57.png 'Add New Outputs')
 
-16. On the New output blade, enter the following:
-
-    - **Output alias**: Enter **trendingsentiment**.
-
-    - **Group workspace**: My workspace
-
-    - **Dataset Name**: Set to **TrendingSentiment**.
-
-    - **Table Name**: Set to **TrendingSentiment**.
-
-    - **Authentication Mode**: Select **User token**.
-
     Select **Authorize** (if not already authorized). This will authorize the connection to your Power BI account. When prompted in the popup window, enter the account credentials you used to create your Power BI account in the Before the Hands-on Lab exercise. You may have to enter your Username and Password.
 
-    ![The Power BI New output screen is shown configured. The Authorize connection has been selected.](media/2019-09-03-14-41-07.png "Power BI new output")
+16. On the New output blade, enter the following:
+
+    - **Output alias**: Enter `trendingsentiment`
+
+    - **Group workspace**: **My workspace**
+
+    - **Dataset Name**: Set to `TrendingSentiment`
+
+    - **Table Name**: Set to `TrendingSentiment`
+
+    - **Authentication Mode**: Select **User token**
+
+    ![The Power BI New output form is shown populated with the preceding values.](media/2019-09-03-14-41-07.png "Power BI new output")
 
 17. Select **Save**.
 
 18. Next, select **Query** from the left-hand menu, under Job Topology.
 
-    ![Under Job Topology, Query is circled.](media/image59.png 'Job Topology section')
+    ![In the Stream Analytics job left menu, under the Job topology section the Query menu item is highlighted.](media/image59.png 'Job Topology section')
 
 19. In the query text box, enter the following query for Cosmos DB:
 
@@ -688,9 +667,9 @@ In this section, you will create the Stream Analytics Job that will be used to r
     eventhub
     ```
 
-20. Select Save, and Yes when prompted with the confirmation.
+20. Select **Save**.
 
-    ![Select save option.](media/image60.png 'Save option')
+    ![The query editor toolbar is displayed with the Save button selected.](media/image60.png 'Save option')
 
 21. Now, modify your query to add the following Service Bus queue query. Enter or paste the following code below the first query:
 
@@ -749,113 +728,123 @@ In this section, you will create the Stream Analytics Job that will be used to r
     GROUP BY TumblingWindow(minute, 5)
     ```
 
-25. Select **Save** again, and select **Yes** when prompted with the confirmation.
+25. Select **Save** again.
 
-    ![The Save button is selected.](media/image60.png 'Save button')
+    ![The query editor toolbar is displayed with the Save button selected.](media/image60.png 'Save option')
 
 ### Task 10: Start the Stream Analytics job
 
-1. Navigate to your Stream Analytics job in the portal by selecting Resource Groups in the left menu, and selecting intelligent-analytics, then selecting your Stream Analytics Job.
+1. Navigate to your Stream Analytics job in the portal by selecting Resource Groups in the left menu, and selecting **intelligent-analytics**, then selecting your Stream Analytics Job.
 
-    ![In the Azure portal, in the Resource Groups pane, under Name, the MessageLogger Stream Analytics Job is circled.](media/image50.png 'Azure Portal, Resource Groups pane')
+    ![In the list of resources, the MessageLogger Stream Analytics Job is selected.](media/image50.png 'Azure Portal, Resource Groups pane')
 
 2. From the Overview blade, select **Start**.
 
-    ![The Now button is selected.](media/image62.png 'Now button')
+    ![The toolbar from the Stream Analytics Overview screen is displayed with the Start button highlighted.](media/image62.png 'Now button')
 
 3. In the Start job blade, select **Now** (the job will start processing messages from the current point in time onward).
 
-    ![For Job output start time, the New button is selected.](media/image63.png 'Start job blade, Now button')
+    ![In the Start job blade the Job output start time field is set to Now.](media/image63.png 'Start job blade, Now button')
 
 4. Select **Start**.
 
 5. Allow your Stream Analytics Job a few minutes to start. Once the Job starts it will move to a state of Running.
 
-    ![The Stream Analytics job is shown in the Azure portal with a state of Running.](media/2019-06-20-15-46-47.png "Stream analytics job running")
+    ![A message is displayed indicating the Stream Analytics Job is running.](media/2019-06-20-15-46-47.png "Stream analytics job running")
 
 ### Task 11: Provision an Azure Storage account
 
 The EventProcessorHost requires an Azure Storage account that it will use to manage its state among multiple instances. In this section, you create that Storage account.
 
-1. In the [Azure portal](https://portal.azure.com), select **+Create a resource, Storage, the select Storage account**.  Select the Create button.
+1. In the [Azure portal](https://portal.azure.com) left menu, select **+Create a resource**, search for `Storage account`, then select **Storage account - blob, file, table, queue**.  Select the Create button on the resource overview page.
 
-2. In the Create storage account blade, enter the following:
+2. In the Create storage account form, **Basics** tab, enter the following:
 
     - **Subscription**: Select the subscription you are using for this hands-on lab.
 
-    - **Resource Group**: Choose Use existing and select the intelligent-analytics resource group.
+    - **Resource Group**: Choose Use existing and select the **intelligent-analytics** resource group.
 
-    - **Storage account name**: Provide a unique name for the account e.g., awhotelchatstore + (namespace).
+    - **Storage account name**: Provide a unique name for the account e.g., `awhotelchatstore + (namespace)`
 
     - **Location**: Select the location you are using for resources in this hands-on lab.
 
-    - **Performance**: Set to Standard.
+    - **Performance**: Set to **Standard**
 
-    - **Account kind**: StorageV2 (general purpose v2)
+    - **Account kind**: **StorageV2 (general purpose v2)**
+  
+    - **Replication**: Set to **Locally Redundant Storage (LRS)**
 
-    - **Access tier**: Hot
+    - **Access tier**: **Hot**
 
-    - **Deployment model**: Leave Resource Manager selected.
-
-    - **Replication**: Set to Locally Redundant Storage (LRS).
-
-        Go to the Advanced tab.
+    Go to the Advanced tab.
 
     - **Secure transfer required**: Select Disabled.
 
     - Select **Review + create**.  Select **Create**.
 
-      ![The Create storage account blade fields display the previously mentioned settings. ](media/image66.png 'Create storage account blade')
+      ![The Create storage account Basics tab fields display the previously mentioned settings. ](media/image66.png 'Create storage account blade')
 
 ### Task 12: Provision Cognitive Services
 
 To provision access to the Text Analytics API (which provides sentiment analysis features), you will need to provision a Cognitive Services account.
 
-1. In the [Azure portal](https://portal.azure.com), select +Create a resource, search for Text Analytics.
+1. From the [Azure portal](https://portal.azure.com) left menu, select **+Create a resource**, then search for `Text Analytics`
 
-    ![The screen shows a Azure Marketplace search text box with the value of Text Analytics.](media/2019-11-16-06-18-06.png "Azure Text Analytics Search")
+    ![The Text Analytics resource overview screen is displayed with a Create button.](media/2019-11-16-06-18-06.png "Azure Text Analytics Search")
 
 2. On the Create blade, enter the following:
 
-    - **Name**: Enter a unique name like awhotels-sentiment.
+    - **Name**: Enter a unique name like `awhotels-sentiment`
 
     - **Subscription**: Select the subscription you are using for this hands-on lab.
 
     - **Location**: Select the location you are using for resources in this hands-on lab.
 
-    - **Pricing tier**: Choose F0.
+    - **Pricing tier**: Choose **F0 (5K Transactions per 30 days)**
 
-    - **Resource Group**: Choose Use existing and select the intelligent-analytics resource group.
+    - **Resource Group**: Select the **intelligent-analytics** resource group.
 
-    - Check the box to confirm you have read and understood the notice.
-
-      ![The Create Text Analytics API blade is shown after completing the configurations.](media/image68.png 'Create Text Analytics')
+    ![The Create Text Analytics from is shown populated with the preceding values.](media/image68.png 'Create Text Analytics')
 
 3. Select **Create**.
 
-4. When it finishes provisioning, browse to the newly created cognitive service by selecting Resource Groups in the left menu, then select the **intelligent-analytics** resource group, and selecting the Cognitive Service, **awhotels-sentiment**.
+4. When it finishes provisioning, browse to the newly created cognitive service by selecting Resource Groups in the left menu, then selecting  the **intelligent-analytics** resource group, and selecting the Cognitive Service, **awhotels-sentiment**.
 
-5. Acquire the key for the API by selecting Keys on the left-hand menu.
+5. Acquire the key for the API by selecting **Keys and Endpoint** on the left-hand menu.
 
-    ![Under Resource Management, Keys is selected.](media/image69.png 'Resource Management section')
+    ![The Resource Management section of the Cognitive Services left menu is displayed, the Keys and Endpoint item is selected.](media/image69.png 'Resource Management section')
 
 6. Copy the value for Key 1, and paste it into a text editor, such as Notepad, for later reference in the ConciergePlusSentiment solution in Visual Studio.
 
-    ![In the Keys pane, the Key 1 value is circled, and a callout points to the copy button for this key.](media/image70.png 'Keys pane')
+    ![In the Keys pane, the Key 1 value is highlighted, and the copy button next to this key is selected.](media/image70.png 'Keys pane')
 
-7. Select **+Create a resource**, select **Language Understanding**.  Repeat steps 1-6: Create blade:
+7. Select **+Create a resource**, select **Language Understanding**, and **Create**.
 
-    - **Name**: **luis-api**.
+     ![The Language Understanding icon is displayed.](media/image72.png 'Language Understanding')
+
+8. On the **Basics** tab of the **Create Cognitive Services** screen, populate the form fields as follows:
+
+    - **Subscription**: Select the subscription you are using for this hands-on lab.
+
+    - **Resource Group**: Select the **intelligent-analytics** resource group.  
+
+    - **Name**: Enter a unique name, like `luis-api-namespace`, where namespace may be your initials.
   
-    - **Authoring location**: Enter a region close to you.
+    - **Authoring Resource: Authoring Location**: Select a region closest to you.
   
-    - **Runtime location**: Enter a region close to you.
+    - **Authoring Resource: Authoring pricing tier**: Select **F0 (5 Calls per second, 1M Calls per month)**
   
-    - Copy **Key 1** for LUIS to your Notepad instance.
+    - **Prediction Resource: Prediction Location**: Select the location you are using for resources in this hands-on lab.
 
-      ![Language Understanding from the Azure Marketplace is shown. Locate and select to create this resource.](media/image72.png 'Language Understanding')
+    - **Prediction Resource: Prediction Pricing Tier**: Select **F0 (5 Calls per second, 1M Calls per month)**
 
-8. Verify that you have captured the two API keys for later reference in this lab.
+     ![The Create Cognitive Services screen is displayed with the Basics tab selected and the form is populated with the preceding values.](media/luis-basics.png)
+
+9. Select **Review + create**, then select **Create**.
+
+10. Repeat steps 4 and 5 to retrieve the Key 1 value for the **luis-api-namespace** Cognitive Service.
+
+11. Verify that you have captured the two API keys for later reference in this lab.
 
 ## Exercise 2: Implement message forwarding
 
@@ -865,15 +854,15 @@ In this section, you will implement the message forwarding from the ingest Event
 
 ### Task 1: Implement the event processor
 
-1. On your Lab VM, open the `ConciergePlusSentiment.sln` file that you downloaded using Visual Studio, if it is not already open.
+1. On your Lab VM, open the **ConciergePlusSentiment.sln** file that you downloaded using Visual Studio, if it is not already open.
 
-2. Open `ProcessChatMessage.cs` (found within the `ChatMessageSentimentProcessorFunction` project in the Solution Explorer).
+2. Open **ProcessChatMessage.cs** (found within the **ChatMessageSentimentProcessorFunction** project in the Solution Explorer).
 
-    ![Visual Studio is expanded as follows: ChatMessageSentimentProcessorFunction\ProcessChatMessage.cs](media/vs-process-chat-message.png "Visual Studio")
+    ![Visual Studio Solution Explorer displays the ChatMessageSentimentProcessorFunction project expanded with the ProcessChatMessage.cs file selected.](media/vs-process-chat-message.png "Visual Studio")
 
 3. Scroll down to the Run method. This method represents the heart of the message processing logic utilized by the Event Processor Host running in an Azure function. It is provided a collection of EventData instances, each of which represent a chat message in the solution.
 
-    ![Screen capture of the Run method](media/vs-function-run-method.png "Run method")
+    ![A Visual Studio source code window is displayed with the method signature of the Run method shown.](media/vs-function-run-method.png "Run method")
 
 4. Locate TODO: 1 and replace the lines that follow the comment with the following:
 
@@ -931,11 +920,11 @@ In this section, you will implement the message forwarding from the ingest Event
 
 ### Task 2: Configure the Chat Message Processor Function App
 
-1. Navigate to your Function App in the [Azure portal](https://portal.azure.com). You can find it by opening your intelligent-analytics Resource Group and looking through the list of resources.
+1. Navigate to your Function App in the [Azure portal](https://portal.azure.com). You can find it by opening your **intelligent-analytics** Resource Group and looking through the list of resources.
 
 2. Select the **Configuration** link in the Overview blade of the Function App. Choose the **Application settings** link.
 
-    ![The Overview tab is shown.  All options are presented. Click Configuration link for the Function App](media/2019-06-20-16-09-02.png "Configuration Link")
+    ![The Overview tab is selected in the Function App. The Configuration link is highlighted in the Configured features section.](media/2019-06-20-16-09-02.png "Configuration Link")
 
 3. You will add the following application settings. The following sections walk you through the process of retrieving the values for these settings:
 
@@ -952,37 +941,39 @@ In this section, you will implement the message forwarding from the ingest Event
     textAnalyticsAccountKey
     ```
 
+    > **Note**: It is beneficial to open a second tab or browser window and access the Azure Portal. This way one instance of the Azure Portal may be used to populate the application settings, and the second one can be used to navigate to different resources to obtain key values, connection strings, and URLs. If you decide to use only a single instance of the Azure Portal, be sure to **Save** application settings (available in the Application Settings toolbar) before leaving the screen.
+
 #### Event Hub connection string
 
 The connection string required by the ChatMessageSentimentProcessor is different from the typical Event Hub consumer, because not only does it need Listen permissions, but it also needs Send and Manage permissions on the Service Bus Namespace (because it receives messages, as well as creates Subscriptions).
 
-1. To get the **eventHubConnectionString**, navigate to the Event Hub namespace in the Azure Portal by selecting Resource Groups on the left menu, then selecting the intelligent-analytics resource group, and selecting your Event Hub from the list of resources.
+1. To get the **eventHubConnectionString**, navigate to the Event Hub namespace in the Azure Portal by selecting **Resource Groups** on the left menu, then selecting the **intelligent-analytics** resource group, and selecting your Event Hubs Namespace from the list of resources.
 
-    ![In the Name section of the Resource Groups pane, the awhotel-events-namespace Event Hub is circled.](media/image39.png 'Azure Portal, Resource Groups pane')
+    ![In the list of resources, the awhotel-events-namespace Event Hub Namespace is selected.](media/image39.png 'Azure Portal, Resource Groups pane')
 
 2. Select Shared access policies, under Settings, within the left-hand menu.
 
 3. In the Shared access policies, you are going to create a new policy that the **ChatConsole** can use to retrieve messages. Select **+Add**.
 
-    ![The Add button is circled in the Shared access policies pane.](media/image78.png 'Shared access policies pane')
+    ![The +Add button is selected in the Shared access policies toolbar menu.](media/image78.png 'Shared access policies pane')
 
-4. For the New Policy Name, enter ChatConsole.
+4. For the New Policy Name, enter `ChatConsole`
 
-5. In the list of Claims, select Manage. Send and Listen will be automatically selected when you select Manage. Select the **Create** button.
+5. In the list of Claims, select **Manage**. **Send** and **Listen** will be automatically selected when you select Manage. Select the **Create** button.
 
-    ![In the Add SAS Policy dialog box, Policy name is set to ChatConsole. Three check boxes are selected for Manage, Send, and Listen.](media/image79.png 'Add SAS Policy dialog box')
+    ![In the Add SAS Policy dialog box, Policy name is set to ChatConsole. Three check boxes are checked for Manage, Send, and Listen.](media/image79.png 'Add SAS Policy dialog box')
 
 6. After the **ChatConsole** shared access policy is created, select it from the list of policies, and then copy the Connection string--primary key value.
 
-    ![Two panes display: Shared access policies, and SAS Policy: Chat Console. In the Shared access policies pane, ChatConsole is selected. In the SAS Policy: ChatConsole pane, the Connection string-primary key is circled.](media/image80.png 'Shared access policies, and SAS Policy: Chat Console panes')
+    ![Two panes display: Shared access policies, and SAS Policy: Chat Console. In the Shared access policies pane, ChatConsole is selected. In the SAS Policy: ChatConsole pane, the Connection string-primary key is selected.](media/image80.png 'Shared access policies, and SAS Policy: Chat Console panes')
 
-7. Return to the **Application Settings** for the Function App in the [Azure portal](https://portal.azure.com). Select **+ Add new setting** at the bottom of the Application settings section.
+7. Return to the **Application Settings** for the Function App in the [Azure portal](https://portal.azure.com) by selecting the **Configuration** link on the Overview pane. Select **+ New application setting** in the toolbar menu of the Application Settings section.
 
-    ![The screenshot displays how to add a new setting.](media/2019-11-16-12-39-18.png "Add new application setting.")
+    ![The Application settings tab is selected and the + New application setting button is selected in the toolbar menu located in the Application settings section of the page.](media/2019-11-16-12-39-18.png "Add new application setting.")
 
-8. Enter **eventHubConnectionString** into the name field, and paste the copied value as the **value** field.  Select the OK button.
+8. Enter `eventHubConnectionString` into the **Name** field, and paste the copied connection string value from step 6 into the **Value** field. Select the **OK** button.
 
-    ![Screenshot showing new application setting value](media/function-app-eventhubconnectionstring.png "Application setting value")
+    ![eventHubConnectionString is shown in the list of application settings.](media/function-app-eventhubconnectionstring.png "Application setting value")
 
 #### Event Hub name
 
@@ -990,67 +981,67 @@ Your event hubs can be found by going to your Event Hub overview blade, and sele
 
 ![Event hubs overview blade](media/image81.png 'Event hubs')
 
-1. For the **sourceEventHubName** setting in Application Settings, enter the name of your first Event Hub, **awchathub**.
+1. Create a new application setting with the **Name** `sourceEventHubName`. For the Value, enter the name of your first Event Hub, `awchathub`
 
-2. For the **destinationEventHubName**, enter the name of your second Event Hub, **awchathub2**.
+2. Create a new application setting with the **Name** `destinationEventHubName`, enter the name of your second Event Hub, **awchathub2**, as the **Value**.
 
 #### Storage account
 
 Your storage accounts can be found by going to the intelligent-analytics resource group, and selecting the Storage account.
 
-1. For the **storageAccountName** setting in Application Settings, enter the name of the storage account you created.
+1. Create a new application setting with the **Name** `storageAccountName` and enter the name of the storage account you created in the **Value** field.
 
-2. For the **storageAccountKey** enter the Key for the storage account you created (which you can retrieve from the Portal).
+2. Create a new application setting with the **Name** `storageAccountKey` and enter the Key for the storage account you created (which you can retrieve from the Portal).
 
     - From your storage account's blade, select Access Keys from the left menu, under Settings.
 
-      ![Under Settings, Access Keys is circled](media/image82.png 'Settings section')
+      ![Under Settings section of the Storage Account left menu, the Access Keys menu item is selected.](media/image82.png 'Settings section')
 
-    - Copy the Key value for key1, and paste that into the value for storageAccountKey in the App.Config file.
+    - Copy the Key value for key1, and paste that into the value for storageAccountKey.
 
-      ![In the Access Keys section, the value for Key1 and its copy button are circled.](media/2019-03-20-19-39-42.png 'Access Keys section')
+      ![In the Access Keys section, the value for Key1 and its copy button are selected.](media/2019-03-20-19-39-42.png 'Access Keys section')
 
 #### Service Bus connection string
 
-The namespace, and therefore connection string, for the service bus is different from the one for the event hub. We need to retrieve the shared access policy to allow the `ChatMessageSentimentProcessorFunction` **ChatConsole** permissions that was created earlier.
+The namespace, and therefore connection string, for the service bus is different from the one for the event hub. We need to retrieve the shared access policy to grant the **ChatMessageSentimentProcessorFunction** the **ChatConsole** permissions that was created earlier.
 
-1. Navigate to the service bus overview. Choose the Shared Access policies link under Settings. Select the **ChatConsole** from the list of policies and copy the Primary Connection String value.
+1. Navigate to the Service Bus Namespace Overview. From the left menu, select the Shared Access policies link in the Settings section. Select the **ChatConsole** from the list of policies and copy the Primary Connection String value.
 
     ![The screen shows the service bus Shared access policies.  The ChatConsole policy is listed.](media/2019-11-16-12-53-19.png "Service Bus - Shared access policies")
 
-    ![In the SAS Policy: ChatConsole blade, the Primary Connection String value and its corresponding copy button are circled.](media/image88.png "SAS Policy: ChatConsole blade")
+    ![In the SAS Policy: ChatConsole blade, the Primary Connection String value and its corresponding copy button are highlighted.](media/image88.png "SAS Policy: ChatConsole blade")
 
-2. Return to the Function App's Application Settings and paste this as the value for **serviceBusConnectionString**.
+2. Return to the Function App's Application Settings and create a new setting with the **Name** `serviceBusConnectionString` and paste this connection string as the **Value**.
 
 #### Chat topic
 
-1. For the **chatTopicPath** application setting, enter the name of the Service Bus Topic you had created (e.g., awhotel). This can be found under Topics on the Service Bus overview blade.
+1. Create a new application setting with the **Name** `chatTopicPath`. Enter the name of the Service Bus Topic you had created (e.g., `awhotel`) as the **Value**. This can be found under **Topics** on the **Service Bus Namespace Overview blade**.
 
-    ![Service bus entities overview blade with topics selected.](media/image89.png 'Service bus entities overview blade')
+    ![The Entities portion of the Service Bus Namespace left menu is displayed with the Topics menu item highlighted.](media/image89.png 'Service bus entities overview blade')
 
 #### Text Analytics API settings
 
-1. In the [Azure portal](https://portal.azure.com), open the Cognitive Service Text API (e.g. awhotels-sentiment). Locate the region the service was created in the Text Analytics Properties menu item.
+1. In the [Azure portal](https://portal.azure.com), open the Cognitive Service Text API (e.g. awhotels-sentiment). Locate the location the service was created in the Text Analytics Properties menu item.
 
-   ![The screenshot shows the Text Analytics general properties. The region value is circled.](media/2019-11-24-09-37-48.png)
+   ![In the Cognitive Services resource, Properties is selected from the left menu. The location value is highlighted.](media/2019-11-24-09-37-48.png)
 
-    Enter the region value under Endpoint into the **textAnalyticsBaseUrl** Function App setting. **Use all lower case alpha characters with no spaces.**
+    Create a new application setting with the **Name** `textAnalyticsBaseUrl` and enter the location as the **Value**. **Use all lower case alpha characters with no spaces.**
 
-    ![The screenshot shows an example of the region value entered into the Function app settings field. The westus2 value is circled.](media/2019-11-24-09-41-40.png "Text Analytics Region Value")
+    ![The textAnalyticsBaseUrl application setting is shown with the value westus2.](media/2019-11-24-09-41-40.png "Text Analytics Region Value")
 
     The region value will be used in a call to https://westus2.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment in the Function code.
 
-2. On the left-hand menu of the Text API blade, select Keys.
+2. On the left-hand menu of the Text API blade, select **Keys and Endpoint**.
 
     ![On the Cognitive Service account blade, the Name value (awhotels-sentiment) and its copy button are circled, as is the Key 1 value and its copy button.](media/image91.png "Cognitive Service account blade")
 
-3. Copy the value of **Name** into the value attribute of **textAnalyticsAccountName** in the Function App's Application Settings.
+3. Create a new application setting with the **Name** `textAnalyticsAccountName` and paste the value of the Cognitive Service **Name** into the **Value** field.
 
-4. Copy the value of **Key 1** from the blade into the value attribute of the **textAnalyticsAccountKey** in the Function App's Application Settings.
+4. Create a new application setting with the **Name** `textAnalyticsAccountKey` and paste the value of **Key 1** of the Cognitive Service into the **Value** field.
 
-5. Scroll to the top of Application Settings and select **Save**. Your application settings should now resemble the following:
+5. Scroll to the top of Application Settings and select **Save**. Your application settings should now resemble the following (to see the hidden values, select the eye icon in the Value column):
 
-    ![A sample of the completed Application Settings is shown](media/2019-11-24-09-48-15.png "Function Application settings")
+    ![The Application Settings listing for the Function App is shown.](media/2019-11-24-09-48-15.png "Function Application settings")
 
 ## Exercise 3: Configure the Chat Web App settings
 
