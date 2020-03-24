@@ -74,7 +74,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
     - [Task 3: Create the real-time dashboard](#task-3-create-the-real-time-dashboard)
     - [Task 4: Add a trending sentiment chart to the dashboard](#task-4-add-a-trending-sentiment-chart-to-the-dashboard)
   - [Exercise 8: Enabling search indexing](#exercise-8-enabling-search-indexing)
-    - [Task 1: Verifying message archival](#task-1-verifying-message-archival)
+    - [Task 1: Verifying message archive](#task-1-verifying-message-archive)
     - [Task 2: Creating the index and indexer](#task-2-creating-the-index-and-indexer)
     - [Task 3: Update the Chat Web App web.config](#task-3-update-the-chat-web-app-webconfig)
     - [Task 4: Re-publish web app](#task-4-re-publish-web-app)
@@ -597,7 +597,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     - **Queue name**: Choose **Use existing** and select **awhotelstaffnotifications**
 
-    - **Queue policy name**: Select ChatConsole.
+    - **Queue policy name**: Select **ChatConsole**
 
     - **Event serialization format**: Leave as **JSON**
 
@@ -1168,7 +1168,7 @@ With the App Services projects properly configured, you are now ready to deploy 
 
     ![The Join Chat window displays.](media/image107.png 'Join Chat window')
 
-5. The Live Chat should appear. (Notice it auto-announced you joining to the room; this is the first message. Note, this may take a few seconds to appear. When first using the application, it may take a couple of minutes for all the underlying services to fire up.)
+5. The Live Chat should appear. (Notice it auto-announced you joining to the room; this is the first message. Note, this may take a few seconds to appear. When first using the application, it may take longer, try sending multiple messages to wake up the underlying services.)
 
     ![The Live Chat window displays, showing that it is connected to the chat service.](media/image108.png 'Live Chat window')
 
@@ -1511,9 +1511,9 @@ In this task, you will create a new Logic App, which will use the Twilio connect
 
     - **Location**: Select the location you are using for resources in this hands-on lab.
 
-    - **Log Analytics**: Select Off.
+    - **Log Analytics**: Select **Off**
 
-        ![The Logic App Basics tab is selected with a form populated with the preceding values.](./media/logic-app-create.png "Logic App blade")
+        ![On the Logic App screen, the Basics tab is selected. A form is populated with the preceding values.](./media/logic-app-create.png "Logic App blade")
 
 3. Select **Review + Create**, when the form passes validation, select **Create** to provision the new Logic App.
 
@@ -1521,50 +1521,53 @@ In this task, you will create a new Logic App, which will use the Twilio connect
 
 In this task, you will configure a Logic App to send notifications to hotel guess services employees when a guest is determined to be upset by their Sentiment Analysis score.
 
-1. In the [Azure portal](https://portal.azure.com), navigate to your newly created Logic App, then select **Logic App Designer** under **Development Tools** on the left-hand menu.
+1. In the [Azure portal](https://portal.azure.com), navigate to your newly created Logic App.
 
-    ![AWT-notifications is selected in the resource list.](media/2019-03-21-06-37-05.png "AWT-Notification Selected")
+    ![The Logic App, awt-notifications, is selected in the resource list.](media/2019-03-21-06-37-05.png "AWT-Notification Selected")
 
 2. In the **Logic App Designer**, scroll down to the templates, select **Blank Logic App** under **Templates**.
 
-    ![Blank Logic App is highlighted under Templates in Logic App Designer Templates section.](media/2019-03-21-09-07-19.png "Logic App Designer, Templates section")
+    ![Blank Logic App tile is selected under Templates in the Logic App Designer.](media/2019-03-21-09-07-19.png "Logic App Designer, Templates section")
 
-3. Select **Service Bus** under **Connectors**.
+3. Select the **All** tab and choose **Service Bus**.
 
-    ![Service Bus is highlighted in the Logic App Connectors pane.](media/logic-app-connectors-service-bus.png "Logic App Connectors")
+    ![Beneath the Search for connectors and triggers textbox, the All tab is selected and Service Bus is highlighted results pane.](media/logic-app-connectors-service-bus.png "Logic App Connectors")
 
 4. Select **Service Bus - When a message is received in a queue (auto-complete)**.
 
     ![Service Bus - When a message is received in a queue (auto-complete) is highlighted in the Triggers list.](media/logic-app-triggers-service-bus-queue.png "Service Bus Triggers")
 
-5. On the When a message is received in a queue (auto-complete) dialog, select the **awhotelstaffnotifications** queue from the Queue name drop down.
-    
+5. On the When a message is received in a queue (auto-complete) dialog, select the **awhotel-namespace** from the Service Bus Namespace table.
+
     > **Note**: Remember the **awhotelstaffnotifications** queue you set up earlier in the awhotel Service Bus.
 
     ![Enter the connection name and resource dialog presented.](media/2019-09-07-16-50-22.png "Choose connection and resource group")
 
-    - Enter the **awhotelstaffnotifications** into the connection name input box.
-    - Double select the **awhotel** namespace entry. e.g. awhotel-namepsace-th
+    - Enter `awhotelstaffnotifications` into the connection name input box.
+
+    - Select the **awhotel-namespace** namespace entry. e.g. awhotel-namepsace-th
+
     - Select the **ChatConsole** service bus policy.
+
     - Select the **Create** button.
 
-    ![On the When a message is received in a queue (auto-complete) dialog, **awhotelstaffnotifications** is entered into the connection name input box. Choosing the policy.](media/2019-09-07-16-54-42.png "Queue selection")
+    ![On the When a message is received in a queue (auto-complete) dialog is displayed, the Service Bus Policy Chat Console is selected and the Create button is highlighted.](media/2019-09-07-16-54-42.png "Queue selection")
 
     - Enter 1 minute interval.
 
-    ![On the When a message is received in a queue (auto-complete) dialog, choosing the interval and frequency](media/2019-03-21-09-18-59.png "Select a queue - interval and frequency")
+    ![On the When a message is received in a queue (auto-complete) dialog, the interval is set to one minute.](media/2019-03-21-09-18-59.png "Select a queue - interval and frequency")
 
     - Save your configuration.
 
-    ![Save your configuration in the Logic Apps Designer](media/2019-03-21-09-27-55.png "Save your configuration")
+    ![The Save button on the Logic Apps Designer toolbar is selected.](media/2019-03-21-09-27-55.png "Save your configuration")
 
 6. Select **+ New step**.
 
-    ![Showing the location of the new step button. New step is selected.](media/2019-03-21-09-30-18.png "New step is selected")
+    ![Beneath the current form on the Logic Apps Designer, the + New step button is selected.](media/2019-03-21-09-30-18.png "New step is selected")
 
-7. In the Choose an action pane, search for Data Operations, select **Parse JSON** from the list.
+7. In the Choose an action pane, search for `Parse JSON` and select it from Actions list.
 
-    ![On the Choose an action pane, "Parse" is entered into the search box, and Data Operations - Parse JSON is highlighted in the list.](media/2019-03-21-09-35-19.png "Choose an action")
+    ![On the Choose an action pane, "parse json" is entered into the search box, the Parse JSON item is highlighted in the Actions list.](media/2019-03-21-09-35-19.png "Choose an action")
 
 8. In the **Parse JSON** pane, paste the following expression into the **Content** box:
 
@@ -1572,7 +1575,7 @@ In this task, you will configure a Logic App to send notifications to hotel gues
     @substring(base64ToString(triggerBody()?['ContentData']), indexof(base64ToString(triggerBody()?['ContentData']), '{'), sub(lastindexof(base64ToString(triggerBody()?['ContentData']), '}'),indexof(base64ToString(triggerBody()?['ContentData']), '{')))
     ```
 
-    ![In the Parse JSON pane, Service Bus Message is in the Content box, Add dynamic content is highlighted, and in the Dynamic content pane Service Bus Message is highlighted. The Use sample payload to generate schema link is highlighted.](media/2019-03-21-09-42-51.png "Parse JSON action")
+    ![In the Parse JSON pane, the expression defined above is pasted in the Content box. Below the Schema textbox, the Use sample payload to generate schema link is highlighted.](media/2019-03-21-09-42-51.png "Parse JSON action")
 
 9. Select **Use sample payload to generate schema**, and on the Enter or paste a sample JSON payload dialog, paste the following JSON sample, and then select **Done**.
 
@@ -1592,23 +1595,23 @@ In this task, you will configure a Logic App to send notifications to hotel gues
 
     ![The JSON above is pasted in the sample JSON payload dialog box, and Done is selected below.](media/logic-app-parse-json-sample-payload.png "Sample JSON payload")
 
-10. The Schema box in the Parse JSON pane will now be populated with a reformatted Schema.
+10. The **Schema** box in the **Parse JSON** pane will now be populated with a reformatted Schema.
 
 11. Select **+ New step** button.
 
 12. In the Choose an action pane, enter "Twilio" into the search box, and then select **Twilio - Send Text Message (SMS)** under Actions.
 
-    ![Twilio is highlighted in the Choose an action box, and Twilio -- Send Text Message (SMS) is highlighted under Actions.](./media/logic-app-choose-an-action-twilio-send-text-messages.png "Choose an action box")
+    ![Twilio is the search term in the Choose an action box, and Twilio -- Send Text Message (SMS) is highlighted under Actions.](./media/logic-app-choose-an-action-twilio-send-text-messages.png "Choose an action box")
 
 13. In the **Twilio -- Send Text Message (SMS)** dialog, enter the following (You will need the details from Project Info block on the dashboard of your Twilio account for this step):
 
-    - **Connection Name**: Twilio
+    - **Connection Name**: `Twilio`
 
-    - **Twilio Account Id**: Enter your Twilio account SID.
+    - **Twilio Account Id**: Enter your **Twilio account SID**
 
-    - **Twilio Access Token**: Enter your Twilio auth token.
+    - **Twilio Access Token**: Enter your **Twilio auth token**
 
-        ![The information above is entered in the Twilio -- Send Text Message (SMS) dialog box.](./media/logic-app-choose-an-action-twilio-send-text-messages-config.png "Twilio ??? Send Text Message (SMS) dialog box")
+        ![The Twilio -- Send Text Message (SMS) dialog box is populated with the preceding values.](./media/logic-app-choose-an-action-twilio-send-text-messages-config.png "Twilio ??? Send Text Message (SMS) dialog box")
 
 14. Select **Create**.
 
@@ -1676,27 +1679,27 @@ If you do not already have a Power BI account:
 
 2. Select My Workspace on the left-hand menu, the select the Datasets tab.
 
-    ![In the Power BI window, on the left menu, My Workspace is circled. In the right pane, Datasets is circled.](media/image140.png 'Power BI window')
+    ![In the Power BI window, on the left menu, My Workspace is selected. In the right pane, the Datasets tab is selected.](media/image140.png 'Power BI window')
 
 3. Under the **Datasets** list, select the **Messages** dataset. Search for the Messages dataset, if there a too many items in the dataset list.
 
-    ![On the Datasets tab, under Name, Messages is circled.](media/image141.png 'Datasets tab')
+    ![On the Datasets tab, the Messages dataset is highlighted in the table.](media/image141.png 'Datasets tab')
 
 4. Select the **Create Report** button under the Actions column.
 
-    ![On the Datasets tab, under Actions, the Create Report button is circled.](media/image142.png 'Datasets tab')
+    ![On the Datasets tab, under the Actions column, the Create Report button is selected.](media/image142.png 'Datasets tab')
 
 5. On the Visualizations palette, select **Gauge** to create a semi-circular gauge.
 
-    ![On the Visualizations palette, the Gauge (donut) icon is circled.](media/image143.png 'Visualizations palette')
+    ![On the Visualizations palette, the Gauge icon is highlighted.](media/image143.png 'Visualizations palette')
 
 6. In the Fields listing, select and drag the **score** field and drop it onto the **Value** field.
 
-    ![The Visualizations and Fields listings display. In the Fields listing, under Messages, the score check box is selected. An arrow points from this to the Value field in the Visualizations listing, where score is now listed.](media/image144.png 'Visualizations and Fields listings')
+    ![In the Visualizations blade, the Gauge is selected. From the Fields blade under Messages, the score check box is selected. An arrow points from this to the Value field in the Visualizations pane indicating a drag and drop operation. Score is now listed as the Value in Visualizations.](media/image144.png 'Visualizations and Fields listings')
 
 7. Select the drop-down menu that appears where you dropped score and select **Average**.
 
-    ![Average is selected and a green checkmark displays next to it on the Drop-down menu.](media/image145.png 'Drop-down menu')
+    ![Average is selected from the Value drop down box in the Visualizations blade.](media/image145.png 'Drop-down menu')
 
 8. You now should have a gauge that shows the average sentiment for all the data collected so far, which should look similar to the following:
 
@@ -1704,9 +1707,9 @@ If you do not already have a Power BI account:
 
 9. From the File menu, select Save to save your visualization to a new report.
 
-    ![On the File menu, Save (Save this report) is selected.](media/image147.png 'File menu')
+    ![On the toolbar the File menu is expanded and Save (Save this report) is selected.](media/image147.png 'File menu')
 
-10. Enter **ChatSentiment** for the report name, and select **Save**.
+10. Enter `ChatSentiment` for the report name, and select **Save**.
 
     ![In the Save your report window, ChatSentiment is typed in as the name of the report.](media/image148.png 'Save your report window')
 
@@ -1714,31 +1717,31 @@ If you do not already have a Power BI account:
 
 This gauge is currently a static visualization. You will use the report just created to seed a dashboard whose visualizations update as new messages arrive.
 
-1. Select the Pin Live Page icon located near the top right of the Gauge control.
+1. Select the Pin Live Page icon located on the toolbar.
 
-    ![On the Gauge control menu bar, Pin Live Page is circled.](media/image149.png 'Gauge control menu bar')
+    ![On the toolbar, the Pin Live Page button is selected.](media/image149.png 'Gauge control menu bar')
 
-2. Select New **dashboard**, enter **Real-time Sentiment** as the name, and select **Pin**.
+2. Select New **dashboard**, enter `Real-time Sentiment` as the name, and select **Pin Live**.
 
     ![On the Pin to dashboard dialog box, on the left, a Preview of the ChatSentiment Gauge graph displays. On the right, under Where would you like to pin to, the New dashboard radio button is selected.](media/2019-06-21-09-41-59.png "Pin to dashboard dialog box")
 
 3. Return to the **My Workspace** page, and select your newly created dashboard from the list of dashboards.
 
-    ![My Workspace dashboards with Real-time Sentiment selected](media/image151.png 'My Workspace dashboards')
+    ![My Workspace dashboards list is displayed with the Real-time Sentiment dashboard selected.](media/image151.png 'My Workspace dashboards')
 
-4. Real-time dashboards are created in Power BI using the Q&A feature, by typing in a question to visualize in the space provided. In the "Ask a question about your data" field, enter: "average score created between yesterday and today".
+4. Real-time dashboards are created in Power BI using the Q&A feature, by typing in a question to visualize in the space provided. In the "Ask a question about your data" field, enter: `average score created between yesterday and today`
 
-    ![The input text box Ask a question about your data](media/2019-03-21-10-26-35.png "Ask a question about your data")
+    ![The input text box placeholder texts states Ask a question about your data.](media/2019-03-21-10-26-35.png "Ask a question about your data")
 
-    !["average score created between yesterday and today" is typed in the Ask question about your data field. An average of score (0.62) displays below.](media/image152.png 'Ask question about your data field')
+    ![average score created between yesterday and today is typed in the Ask question about your data textbox. An average of score (0.62) displays below.](media/image152.png 'Ask question about your data field')
 
-5. Next, convert this to a Gauge chart by expanding the Visualizations palette at right, and clicking on the Gauge control.
+5. Next, convert this to a Gauge chart by expanding the Visualizations palette at right, and clicking on the Gauge control. You will need to set the New Q&A experience to **Off** in order to see the Visualizations palette. This switch is on the toolbar on the right-hand side.
 
-    ![Visualizations palette with the Gauge control selected.](media/image153.png 'Visualizations palette')
+    ![The Visualizations palette expand button is selected.](media/image153.png 'Visualizations palette')
 
-6. Format the Gauge control so it ranges between 0.0 and 1.0 and has an indicator at 0.5. To do this, select the brush icon in the Visualization palette, expand the Gauge axis, and for Min enter 0, Max enter 1, and Target enter 0.5.
+6. In the Visualizations palette, select the Gauge control. Select the Format (paint roller icon) and expand the Gauge axis section. Format the Gauge axis so it ranges between 0.0 and 1.0 and has a target (indicator) set at 0.5.
 
-    ![In the Visualizations list, on the Visualizations palette, the Gauge graph icon is selected. Beneath that, the brush icon is selected. Under Gauge axis, the following values are defined: Min, 0. Max, 1.0. Target, 0.5.](media/image154.png 'Visualizations list')
+    ![On the Visualizations palette, the Gauge graph icon is selected. Beneath that, the brush icon is selected. Under Gauge axis, the following values are defined: Min, 0. Max, 1.0. Target, 0.5.](media/image154.png 'Visualizations list')
 
 7. Your gauge should now look similar to the following:
 
@@ -1746,7 +1749,7 @@ This gauge is currently a static visualization. You will use the report just cre
 
 8. In the top-right corner, select **Pin visual**.
 
-    ![Pin visual option](media/image156.png 'Pin visual option')
+    ![Pin visual option from the toolbar.](media/image156.png 'Pin visual option')
 
 9. In the dialog that appears, select the dashboard you recently created and select **Pin**.
 
@@ -1754,7 +1757,7 @@ This gauge is currently a static visualization. You will use the report just cre
 
 10. In the list of dashboards, select your Real-time Sentiment dashboard. Your new gauge should appear next to your original gauge. If the original gauge fills the whole screen, you may need to scroll down to see the new gauge. You can delete the original gauge if you prefer. (Select the top of the visualization, then ellipses that appear, and then, the trash can icon.)
 
-    ![Two Average of score Gauge graphs display, and both are the same.](media/image158.png 'Gauge graphs')
+    ![Two Average of score Gauge graphs display, and both share the same data.](media/image158.png 'Gauge graphs')
 
 11. Navigate to the chat website you deployed and send some messages and observe how the sentiment gauge updates with moments of you sending chat messages.
 
@@ -1764,35 +1767,35 @@ The sentiment visualization you created is great for getting a sense of sentimen
 
 1. While still in Power BI, select **My Workspace** once again, then select the Datasets tab. Search for "Trending". You should see the **TrendingSentiment** dataset dynamically created by Stream Analytics. Select the Create Report action.
 
-    ![Go to My Workspace, then the Datasets tab, search for Trending, then select the Create Report action.](media/power-bi-trendingsentiment-dataset.png "Power BI Datasets")
+    ![Go to My Workspace, then the Datasets tab, the TrendingSentiment dataset is listed, the Create Report icon is selected next to this dataset.](media/power-bi-trendingsentiment-dataset.png "Power BI Datasets")
 
 2. Select the **Line chart** visualization.
 
-    ![Select the Line chart visualization](media/power-bi-line-chart-visualization.png "Power BI Line Chart")
+    ![In the Visualizations palette, the Line chart visualization is selected.](media/power-bi-line-chart-visualization.png "Power BI Line Chart")
 
 3. Drag the **average** field to the **Values** setting, and **snapshot** to **Axis**.
 
-    ![Drag the average field to the Values setting, and snapshot to Axis](media/power-bi-line-chart-settings.png "Power BI Line Chart")
+    ![Arrows indicating drag and drop operations show average in the Values field and snapshot in the Axis field.](media/power-bi-line-chart-settings.png "Power BI Line Chart")
 
 4. Resize the line chart and observe how the average sentiment is tracked over time.
 
-    ![Screenshot of the line chart displaying trending sentiment over time](media/power-bi-trending-sentiment-chart.png "Power BI Line Chart")
+    ![Screenshot of the line chart displaying trending sentiment over time.](media/power-bi-trending-sentiment-chart.png "Power BI Line Chart")
 
 5. Select **Save this report** on the top of the page. Name the report "Trending Sentiment" when prompted..
 
-    ![Select Save this report](media/power-bi-save-report.png "Save this report")
+    ![The Save icon is selected from the toolbar.](media/power-bi-save-report.png "Save this report")
 
 6. Next, select **Pin Live Page**.
 
-    ![Select Pin Live Page](media/power-bi-pin-live-page.png "Pin Live Page")
+    ![The Pin Live Page button is selected from the toolbar.](media/power-bi-pin-live-page.png "Pin Live Page")
 
 7. In the Pin to dashboard dialog, select **Existing dashboard**, select the dashboard you created previously, then select **Pin live**.
 
-    ![Pin to dashboard dialog](media/power-bi-pin-to-dashboard.png "Pin to dashboard")
+    ![The Pin to dashboard dialog shows the report will be pinned to an existing dashboard and has the Real-time Sentiment dashboard selected in a drop down list.](media/power-bi-pin-to-dashboard.png "Pin to dashboard")
 
 8. Position the Trending Sentiment line chart beneath the average score gauge.
 
-    ![Power BI dashboard showing the average score gauges and trending sentiment](media/power-bi-dashboard-with-trending-sentiment.png "Power BI Dashboard")
+    ![Power BI dashboard showing the average score gauges and trending sentiment.](media/power-bi-dashboard-with-trending-sentiment.png "Power BI Dashboard")
 
 9. Try building out the rest of the real-time dashboard that should look as follows. We provide the following Q&A questions you can use to get started.
 
@@ -1812,7 +1815,7 @@ Duration: 30 minutes
 
 Now that you have primed the system with some messages, you will create a Search Index and an Indexer in Azure Search upon the messages that are collected in Azure Cosmos DB.
 
-### Task 1: Verifying message archival
+### Task 1: Verifying message archive
 
 Before going further, a good thing to check is whether messages are being written to Azure Cosmos DB from the Stream Analytics Job.
 
@@ -1820,87 +1823,83 @@ Before going further, a good thing to check is whether messages are being writte
 
 2. On the left-hand menu, select **Data Explorer**.
 
-    ![The Data Explorer sections from within the Cosmos DB has been selected.](media/image160.png 'Data explorer menu')
+    ![The Data Explorer icon from the Cosmos DB left menu.](media/image160.png 'Data explorer menu')
 
 3. Under the **awhotels** Cosmos DB, select **messagestore**, then **Items**. You should see some data here.
 
-    ![Documents has been selected from within the Data Explorer.](media/2019-06-21-10-07-14.png "Documents selected in Data Explorer")
+    ![In Data Explorer, the awhotels, and messagestore items are expanded. The Items item below messagestore is selected.](media/2019-06-21-10-07-14.png "Documents selected in Data Explorer")
 
 4. If you want to peek at the message contents, select any item in the listing.
 
-    ![One of the messages select in the left list.  JSON message displayed](media/2019-06-21-10-09-45.png "CosmosDB Item Contents")
+    ![A list of messages is displayed with one selected, the JSON message displayed to the right.](media/2019-06-21-10-09-45.png "Cosmos DB Item Contents")
 
-    >**Note**: If you don't see messages, then check for errors in MessageLogger, Outputs, Cosmos DB.  If you have to delete the collection and recreate them, make sure to stop and start the MessageLogger.  Test the connection. 
+    > **Note**: If you don't see messages, then check for errors in MessageLogger, Outputs, Cosmos DB.  If you have to delete the collection and recreate them, make sure to stop and start the MessageLogger.  Test the connection.
 
-    ![Displaying CosmoDB output details error.](media/2019-03-21-13-45-17.png "CosmoDB output details error")
+    ![The output details of a Cosmos DB error is shown.](media/2019-03-21-13-45-17.png "CosmoDB output details error")
 
 ### Task 2: Creating the index and indexer
 
 1. Select Resource Groups from the left menu, then select the **intelligent-analytics** resource group.
 
-2. Select your **Search** **service** instance from the list.
+2. Select your **Search service** instance from the list.
 
-    ![ChatSearchApi icon and sample name](media/2019-03-21-13-59-10.png "ChatSearchApi icon")
+    ![The conciergeplusapp search service icon is displayed.](media/2019-03-21-13-59-10.png "ChatSearchApi icon")
 
 3. Select **Import data**.
 
-    ![Intelligent-analytics resource group search service instance with Import data selected. ](media/image163.png 'Intelligent-analytics resource group')
+    ![The Search Service toolbar has the Import data item selected.](media/image163.png 'Intelligent-analytics resource group')
 
 4. On the Import data blade, select **Connect to your data**.
 
     ![The import data blade is shown with the Connect to your data selected.](media/2019-03-21-14-00-40.png "Import data blade")
 
-5. Select **Cosmos DB** from the dropdown.
+5. For **Data Source**, select **Cosmos DB** from the dropdown.
 
-6. Enter **messagestore** for the name of the Data Source.
+6. Enter `messagestore` for the **Data Source Name**.
 
-7. **Cosmo DB account**: Enter your account connection string.
+7. **Cosmo DB account**: Select the **Choose an existing connection**, and select the **awhotelcosmosdb-namespace** database. This will auto-populate the connection string.
 
-    >Note: You find your connection string here:
+8. For **Database**, select your **awhotels** database.
 
-    ![awhotelcosmodb -keys primary connection string copied to the clipboard](media/2019-03-21-14-09-21.png "primary connection string")
+9. For **Collection**, choose your **messagestore** collection.
 
-8. Choose your **awhotels** database.
+    ![Import data form is displayed populated with the preceding values.](media/2019-03-21-14-12-53.png "Display all of the fields")
 
-9. Choose your **messagestore** collection.
+10. Select the **Next:Add cognitive search** button.
 
-    ![Import data blade. Display all of the fields for configuration.](media/2019-03-21-14-12-53.png "Display all of the fields")
+    ![The Next:Add cognitive search button.](media/2019-03-21-14-17-35.png "Next button")
 
-10. Select the **Next** button.
+    Select **Skip to:Customize target index**
 
-    ![Next button](media/2019-03-21-14-17-35.png "Next button")
-
-    Select **Skip to Customize target index**
-
-    ![Skip to Customize target index](media/2019-03-21-14-20-45.png "Skip to Customize target index")
+    ![The Skip to:Customize target index button.](media/2019-03-21-14-20-45.png "Skip to Customize target index")
 
 11. Select **Customize target index**, and observe that the field list has been pre-populated for you based on data in the collection.
 
-12. Enter **chatmessages** for the name of the index.
+12. Enter `chatmessages` for the name of the index.
 
-13. Leave the Key set to id.
+13. Set the Key to **id**
 
-    ![Screenshot of the Key ID field.](media/image167.png 'Key ID field')
+    ![The Key field is set to id.](media/image167.png 'Key ID field')
 
-14. Select the Retrievable check box for the following fields: **message, createDate**, **and username** (id will be selected automatically). Only these fields will be returned in query results.
+14. Select the Retrievable check box for the following fields: **message, createDate**, and **username** (id will be selected automatically). Only these fields will be returned in query results.
 
-15. Select the Filterable check box for **createDate, username**, **and sessionId**. These fields can be used with the filter clause only (not used by this Tutorial, but useful to have).
+15. Select the Filterable check box for **createDate, username**, and **sessionId**. These fields can be used with the filter clause only (not used by this Tutorial, but useful to have).
 
 16. Select the Sortable check box for **createDate**, **username**, and **sessionId**. These fields can be used to sort the results of a query.
 
-17. Select the Searchable check box for message. Only these fields are indexed for full text search.
+17. Select the Searchable check box for **message**. Only this field will be indexed for full text search.
 
 18. Confirm your grid looks similar to the following, and select **Next: Create an Indexer**.
 
-    ![On the Import data blade, Customize target index is selected. The Index blade fields and check boxes are set to previously mentioned settings.](media/2019-03-21-14-26-25.png "Import data and Index blades")
+    ![On the Import data blade, the Customize target index tab is selected. The Index blade fields and check boxes are set to previously mentioned settings.](media/2019-03-21-14-26-25.png "Import data and Index blades")
 
-19. On the Create an Indexer blade, enter **messages-indexer** as the name.
+19. On the Create an Indexer blade, enter `messages-indexer` as the name.
 
 20. Set the Schedule toggle to **Custom**.
 
 21. Enter an interval of **5** minutes (the minimum allowed).
 
-22. Set the Start time to **today's date**.
+22. Keep the Start time to the default value of **today's date**.
 
 23. The description and other fields can be ignored.
 
@@ -1912,30 +1911,26 @@ Before going further, a good thing to check is whether messages are being writte
 
     You should see your messages indexed.
 
-    !["conciergeplusapp search indexes.  chatmessages displays number of documents indexed."](media/2019-03-21-16-22-06.png "Documents Indexed")
+    ![In the Search service Overview screen, the Indexes tab is selected. The chatmessages index is listed and displays number of documents indexed.](media/2019-03-21-16-22-06.png "Documents Indexed")
 
-    Select the index name.  You can test the searches by entering values in the **Query string** text box.
+    Select the **chatmessages** index.  You can test the searches by entering values in the **Query string** text box. Enter `search=test` into the Query string box and select **Search**.
 
-    !["Testing the chat message search.  Show results of search. Indexes work."](media/2019-03-21-16-24-18.png "Testing Search Indexes")
+    ![Testing the chat message search, the term search=test is entered in the Query string textbox and the results of the search are shown in JSON format."](media/2019-03-21-16-24-18.png "Testing Search Indexes")
 
     Select the **CORS** tab. Select **All** for the option. Press the Save button.
 
-    ![Index options for CORS are displayed.  The All options is selected.](media/2019-06-22-17-59-36.png "CORS Options")
+    ![On the Index screen, the CORS tab is selected. The Allowed origin type is set to All.](media/2019-06-22-17-59-36.png "CORS Options")
 
-    >**Note**: The **All** setting allows search requests from other client applications to successfully execute. For a production application, you would choose the **Custom** option and enter the domain you will be receiving requests from.
+    > **Note**: The **All** setting allows search requests from other client applications to successfully execute. For a production application, you would choose the **Custom** option and enter the domain you will be receiving requests from.
 
 26. We need to capture the index query api key for the web.config files in the Visual Studio solution.
     - On the Search service blade, select Keys on the left-hand menu.
 
       ![On the Search Service blade, Settings section, under Settings, Keys is selected.](media/image176.png 'Search Service blade, Settings section')
 
-    - Select **Manage query keys**.
+    - In the Manage query keys section, copy the \<empty\> key value. You don't want to use the admin keys.
 
-      ![Manage query keys selected.](media/image177.png 'Manage query keys ')
-
-    - On the Manage query keys blade, copy the \<empty\> key value. You don't want to use the admin keys.
-
-      ![On the Manage query keys blade, the value in the Key field is circled.](media/image178.png 'Manage query keys blade')
+      ![On the Manage query keys section, the value in the Key field is selected.](media/image178.png 'Manage query keys blade')
 
 ### Task 3: Update the Chat Web App web.config
 
@@ -1947,7 +1942,7 @@ Before going further, a good thing to check is whether messages are being writte
 
     - You can find this by going to Resource Groups, selecting the **intelligent-analytics** resource group, and selecting your search app service from the list.
 
-    ![The Azure Search Service overivew is displayed. On the right hand side, the Url value is circeled.](media/2019-09-08-15-35-46.png "Search Service URL Displayed")
+    ![The Azure Search Service overview is displayed. On the right hand side, the Url value is highlighted.](media/2019-09-08-15-35-46.png "Search Service URL Displayed")
 
 4. Enter the index values.
    - Copy the URL value, and paste it into the value setting for the **chatSearchApiBase** key.
@@ -1960,7 +1955,7 @@ Before going further, a good thing to check is whether messages are being writte
 
 ### Task 4: Re-publish web app
 
-1. Publish the updated **ChatWebApp** using Visual Studio, as was shown previously in [Exercise 4, Task 2](#task-2-publish-the-chatwebapp).
+1. Publish the updated **ChatWebApp** using Visual Studio, as was shown previously in [Exercise 4, Task 3](#task-3-publish-the-chatwebapp).
 
 2. When the publishing is complete, a browser window should appear.
 
@@ -1980,114 +1975,115 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
 1. In a new web browser window, navigate to <https://www.qnamaker.ai>.
 
-2. On the home page, select **Sign In** on the top of the page. Sign in with the same credentials you use for the [Azure portal](https://portal.azure.com).
+2. On the home page, select **Sign In** on the top right of the page. Sign in with the same credentials you use for the [Azure portal](https://portal.azure.com).
 
-    ![Microsoft QnA Maker home page](media/qna-maker-home.png "QnA Maker home page")
+    ![Microsoft QnA Maker home page is displayed, the Sign In link in the upper right corner of the screen is highlighted.](media/qna-maker-home.png "QnA Maker home page")
 
 3. Select **Create a knowledge base**.
 
-    ![The screenshot shows a QnA dashboard. Select create a knowledge base menu item is circled.](media/qna-maker-create-kb-link.png "Select create a knowledge base")
+    ![The QnA Maker dashboard is displayed. It indicates that there are no knowledge bases. The Create a knowledge base item is selected from the toolbar menu.](media/qna-maker-create-kb-link.png "Select create a knowledge base")
 
 4. Within the knowledge base creation page, select **Create a QnA service** under Step 1.
 
-    ![Select Create a QnA service](media/qna-maker-create-service.png "Knowledge base creation page")
+    ![Step 1 indicates to Create a QnA service in Microsoft Azure. There is a button labeled Create a QnA service.](media/qna-maker-create-service.png "Knowledge base creation page")
 
-5. Within the Create QnA Maker blade, provide the following:
+5. Within the Create QnA Maker form in Azure, provide the following:
 
-    - **Name**: Provide a **unique name** for the QnA Maker Service (e.g., awhotel-qna).
+    - **Name**: Provide a **unique name** for the QnA Maker Service (e.g., `awhotel-qna`).
 
     - **Subscription**: Choose the same subscription you used previously.
 
-    - **Management pricing tier**: Choose **F0**.
+    - **Pricing tier**: Choose **F0 (3 managed documents per month ...**
 
     - **Resource Group**: Choose the **intelligent-analytics** resource group.
 
-    - **Search pricing tier**: Choose **F**.
+    - **Azure Search pricing tier**: Choose **F (3 Indexes)**.
 
-    - **Search location**: Choose the **same location** you used previously. If the region you've been using isn't available, select a different location for this resource.
+    - **Azure Search location**: Choose the **same location** you used previously. If the region you've been using isn't available, select a different location for this resource.
 
-    - **App name**: Provide a **unique name** for the QnA Maker Service (e.g., awhotel-qna).
+    - **App name**: Provide a **unique name** for the QnA Maker Service (e.g., `awhotel-qna`).
 
     - **Website location**: Choose the **same location** you used previously. If the region you've been using isn't available, select a different location for this resource.
 
-    - **App insight**s: Select **Disable**.
+    - **App insights**: Select **Disable**.
 
-    ![QnA Maker form](media/create-qna-maker.png "Create QnA Maker")
+    ![The Create QnA Maker form is shown populated with the preceding values.](media/create-qna-maker.png "Create QnA Maker")
 
 6. Select **Create**.
 
-7. Once the service has been created, switch back to the browser tab with the QnA Maker knowledge base creation page and select the **Refresh** button in the Step 2 section.
+7. Once the service has been created, switch back to the browser tab with the QnA Maker knowledge base creation page and select the **Refresh** button in the **Step 2** section.
 
-8. Underneath Step 2, select your Microsoft Azure Directory ID under which you created the QnA Maker service, select the Azure subscription name, and finally select the **Azure QnA service**.
+8. Underneath Step 2, select your Microsoft Azure Directory ID under which you created the QnA Maker service, select the Azure subscription name, select the **Azure QnA service**, and **English** as the **Language**.
 
-    ![Connect your QnA service to your KB](media/qna-maker-connect-qna-service.png "Azure QnA service")
+    ![Connect your QnA service to your KB form is displayed populated with the preceding values.](media/qna-maker-connect-qna-service.png "Azure QnA service")
 
-9. Underneath Step 3 (Name your KB), provide a unique name, such as "ConciergePlus".
+9. Underneath Step 3 (Name your KB), provide a unique name, such as `ConciergePlus`
 
-10. Underneath Step 4 (Populate your KB), select **+ Add file** [Download this file](lab-files/faq.xlsx) and select it from the file browser.
+10. Underneath Step 4 (Populate your KB), select **+ Add file**. [Download this file](lab-files/faq.xlsx) then select it from the file browser.
 
-    ![Select Add file](media/create-qna-maker-add-file.png "Knowledge base creation page")
+    ![On STEP 4 Populate your KB, the +Add file button is selected.](media/create-qna-maker-add-file.png "Knowledge base creation page")
 
 11. Finally, underneath Step 5 (Create your KB), select **Create your KB**.
 
-    ![The uploaded file is highlighted. Select Create your KB.](media/qna-maker-create-kb.png "Knowledge base creation page")
+    ![The uploaded file from the previous step is highlighted in the File Name section of Step 4. Step 5, Create your KB, has the Create your KB button selected.](media/qna-maker-create-kb.png "Knowledge base creation page")
 
-12. When the KB is being created, you will see the popup window. It takes a few minutes for the extraction process to read the Excel document and identify questions and answers.
+12. When the KB is being created, the Knowledge base will be displayed in the window. It takes a few seconds for the extraction process to read the Excel document and identify questions and answers.
 
-    ![The screenshot displays a sample QnA question. Are pets allowed?](media/2019-11-25-05-37-13.png "Sample QnA Question")
+    ![The Knowledge base screen displays a sample QnA question. Are pets allowed?](media/2019-11-25-05-37-13.png "Sample QnA Question")
 
-13. Once the KB is successfully created, it opens the 'Knowledge Base' page where you can edit the contents of the knowledge base.
+13. Select **+ Add QnA pair** in the toolbar to add a new row in the Editorial section of the Knowledge Base. Enter `Hi` into the **Question** field and `Hello. Ask me questions about the hotel.` into the **Answer** field of the new row you created.
 
-14. Select **Add QnA pair** in the top right to add a new row in the Editorial section of the Knowledge Base. Enter 'Hi' into the 'Question' field and 'Hello. Ask me questions about the hotel.' into the 'Answer' field of the new row you created.
+    ![On the Knowledge base screen, + Add QnA pair is selected from the toolbar. In the Source: Editorial context section, the question Hi that has the answer Hello. Ask me questions about the hotel. is highlighted.](media/qna-maker-created-kb.png "Knowledge base")
 
-    ![Select Add QnA pair, then enter original content](media/qna-maker-created-kb.png "Knowledge base")
+14. Choose **Save and train** button on top taskbar of the page. This will save your changes and train the bot how to respond to questions, given the information you imported.
 
-15. Choose **Save and train** button on top of the page. This will save your changes and train the bot how to respond to questions, given the information you imported.
+15. Once your changes have been saved, select **Test** at the top of the page. Try typing `hi` and press enter. You should see the **Hello. Ask me questions about the hotel.** response. Experiment with asking different questions.
 
-16. Once your changes have been saved, select **Test** at the top of the page. Try typing 'hi there' and press enter. You should see the 'Hello. Ask me questions about the hotel.' response. Experiment with asking different questions.
+    ![A test session is displayed with sample messages and responses.](media/qna-maker-test.png "QnA Maker Test")
 
-    ![Screenshot showing testing the QnA maker](media/qna-maker-test.png "QnA Maker Test")
+16. Select **Inspect** underneath one of your test questions. The Inspect pane will appear, showing the question you typed, the answer, and a confidence score. This pane provides you an easy way to add alternate phrasing or change the answer. Choose **Save and train**. Select the **Test** button to hide the testing pane.
 
-17. Select **Inspect** underneath one of your test questions. The Inspect pane will appear, showing the question you typed, the answer, and a confidence score. This pane provides you an easy way to add alternate phrasing or change the answer. Choose **Save and train**. Select the **Test** button to hide the testing pane.
+    ![The inspect link from one of the QnA test responses is selected. The Inspect blade is displays a Question pane with the question and the ability to add alternate phrasing and an Answer pane that shows the appropriate answer and Confidence score. There is also the ability to enter a new answer on this pane.](media/qna-maker-inspect.png "QnA Maker Inspect")
 
-    ![Screenshot of the Inspect pane](media/qna-maker-inspect.png "QnA Maker Inspect")
+17. Select **Publish** on top of the page. In the publish page that appears, select the **Publish** button.
 
-18. Select **Publish** on top of the page. In the publish page that appears, select the **Publish** button.
-
-    ![Screenshot of the Publish page](media/qna-maker-publish.png "QnA Maker Publish")
+    ![The Concierge Plus Publish screen is displayed with the Publish button selected.](media/qna-maker-publish.png "QnA Maker Publish")
 
 ### Task 2: Create a QnA bot
 
 1. Select the **Create Bot** button.
 
-    ![Successful deployment. QnA maker. The Create Bot button is circled.](media/2019-09-09-14-34-41.png "Success")
+    ![On the Successful deployment screen, the Create Bot button is selected.](media/2019-09-09-14-34-41.png "Success")
 
 2. Enter the Web App Bot configuration.
 
-    - Enter the Bot name.  e.g. awhotel-qna-bot.
-    - Select your subscription.
-    - Select your resource group.
-    - Select your location.
-    - Select your pricing tier.
-    - Turn Application Insights off.
+    - **Bot handle**: Enter the Bot name.  e.g. `awhotel-qna-bot`
+    - **Subscription**: Select your subscription.
+    - **Resource Group**: Select **intelligent-analytics**
+    - **Location**: Select the region you've been using throughout this lab.
+    - **Pricing tier**: Select **F0 (10K Premium Messages)**
+    - **App name**: This will be defaulted to the same name as the **Bot handle**
+    - **Application Insights**: Set to **Off**
 
-    >Note: Do not change the QnA Auth Key.
+    > **Note**: Do not change the QnA Auth Key.
 
-    ![Entering the bot configuration information into the blade.](media/2019-09-09-14-40-26.png "Web App Bot Configuration")
+    > **Note**: You may receive a message that the **Resource provider 'Microsoft.BotService' is not registered from the subscription. If this is the case, it can be rectified by following [one of these solutions (choose 1)](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/error-register-resource-provider).
+
+    ![The Web App Bot form is displayed and is populated with the values described above.](media/2019-09-09-14-40-26.png "Web App Bot Configuration")
 
     Select the **Create** button.
 
-3. Choose your new QnA bot from the resource group.
+3. Choose your new QnA Web App Bot from the resource group.
 
-    ![Resouce group selected. QnA bot resource is circeled](media/2019-09-09-14-49-19.png "QnA bot resource")
+    ![The Web App Bot resource is selected in the intelligent-analytics resource group.](media/2019-09-09-14-49-19.png "QnA bot resource")
 
 4. Test out the bot by selecting **Test in Web Chat** on the left-hand menu (it may take a couple minutes to appear the first time). Type in a few questions to make sure it responds as expected.
 
-    ![Type in a few questions to test the bot](media/function-bot-test.png "Function Bot Test")
+    ![In the Web App Bot screen, Test in Web Chat is selected from the left menu. In the Test blade, messages and responses are displayed. The Type your message textbox is highlighted at the bottom of the Test blade.](media/function-bot-test.png "Function Bot Test")
 
 5. Select **Settings** from the left-hand menu. Change the display name to something like "Concierge+ Bot", then select **Save**.
 
-    ![Change the display name for the bot](media/function-bot-settings.png "Function Bot Settings")
+    ![In the Web App Bot screen, Settings is selected from the left menu. In the Bot profile form the display name shows Concierge+ Bot. The Save button is highlighted in the top toolbar.](media/function-bot-settings.png "Function Bot Settings")
 
 6. Select **Channels** from the left-hand menu, then select **Get bot embed codes** underneath the Web Chat channel.
 
@@ -2095,32 +2091,32 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
 7. A dialog will appear for the embed codes. Select the **Click here to open the Web Chat configuration page** option.
 
-8. Select **Copy** underneath the Embed code. Paste that value to notepad or other text application. Select **Show** underneath the first Secret key. Copy the value and replace YOUR_SECRET_HERE within the embed code with that secret value. Example: `<iframe src='https://webchat.botframework.com/embed/concierge-plus-bot?s=XEYx9upcGtc.cwA.Ku8.hAL6pCxFWfxIjOE9WM48qxkPNtsy4BkT_LST5y0FxEQ'></iframe>`.
+8. Select **Copy** next to the Embed code textbox. Paste that value to notepad or other text application. Select **Show** beside the first Secret key. Copy the value and replace YOUR_SECRET_HERE within the embed code with that secret value. Example: `<iframe src='https://webchat.botframework.com/embed/concierge-plus-bot?s=XEYx9upcGtc.cwA.Ku8.hAL6pCxFWfxIjOE9WM48qxkPNtsy4BkT_LST5y0FxEQ'></iframe>`.
 
-    ![Copy the embed code and secret key](media/function-bot-embed.png "Function Bot Embed")
+    ![The Configure Web Chat screen is displayed. The Embed code is located in a textbox with the Copy button next to it selected. In the Secret keys section, the Show button next to the first textbox is highlighted.](media/function-bot-embed.png "Function Bot Embed")
 
 ### Task 3: Embed the bot into your web app
 
 1. Open Visual Studio and open **Bot.cshtml** located within the Views\Home folder of the **ChatWebApp**.
 
-    ![Open Bot.cshtml](media/vs-bot.png "Visual Studio")
+    ![In Visual Studio Solution Explorer, the ChatWebApp project is expanded. The Views and Home folders are expanded and the Bot.cshtml is selected.](media/vs-bot.png "Visual Studio")
 
 2. Find `<!-- PASTE YOUR BOT EMBED CODE HERE -->` within the page and paste your iframe embed code on a new line beneath.
 
-3. Modify the iframe code to add `width` and `height` values. The iframe code should look like:
+3. Modify the iframe style values to match as follows. The iframe code should look like:
 
     ```html
     <!-- PASTE YOUR BOT EMBED CODE HERE -->
-    <iframe width="100%" height="300" src='YOUR_SOURCE'></iframe>
+    <iframe src='YOUR_SOURCE' style='min-width: 400px; width: 100%; height: 300px;'></iframe>
     ```
 
-    ![Bot.cshtml page with embed code](media/vs-bot-embed.png "Visual Studio")
+    ![In Visual Studio, the contents of the Bot.cshtml page is displayed with the embed code highlighted.](media/vs-bot-embed.png "Visual Studio")
 
 4. **Publish** your web app.
 
-5. After the web app has been published, navigate to it and select the **Bot** menu item. Type in a few questions to ensure the bot is functioning correctly.
+5. After the web app has been published, navigate to it by selecting the **Bot** menu item. Type in a few questions to ensure the bot is functioning correctly.
 
-    ![Type in a few questions on the bot page](media/bot-service-embedded.png "Bot page")
+    ![The Bot page of the web app is displayed with a chat interface where messages can be answered. Sample questions and responses are displayed.](media/bot-service-embedded.png "Bot page")
 
 ## After the hands-on lab
 
@@ -2142,6 +2138,6 @@ In this exercise, attendees will deprovision any Azure resources that were creat
 
 5. Power BI - Delete **Real-time Sentiment** workspace.
 
-6. LUIS - https://www.luis.ai/applications.  Delete the **awchat** app.
+6. LUIS - <https://www.luis.ai/applications>.  Delete the **awchat** app.
 
 You should follow all steps provided _after_ attending the Hands-on lab.
