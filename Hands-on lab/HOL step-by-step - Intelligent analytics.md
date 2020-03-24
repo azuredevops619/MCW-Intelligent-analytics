@@ -55,9 +55,10 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
     - [Task 3: Service Bus connection String](#task-3-service-bus-connection-string)
     - [Task 4: Chat topic path and chat request topic path](#task-4-chat-topic-path-and-chat-request-topic-path)
   - [Exercise 4: Deploying the App Services](#exercise-4-deploying-the-app-services)
-    - [Task 1: Publish the ChatMessageSentimentProcessor Function App](#task-1-publish-the-chatmessagesentimentprocessor-function-app)
-    - [Task 2: Publish the ChatWebApp](#task-2-publish-the-chatwebapp)
-    - [Task 3: Testing hotel lobby chat](#task-3-testing-hotel-lobby-chat)
+    - [Task 1: Restore NuGet Packages for the solution](#task-1-restore-nuget-packages-for-the-solution)
+    - [Task 2: Publish the ChatMessageSentimentProcessor Function App](#task-2-publish-the-chatmessagesentimentprocessor-function-app)
+    - [Task 3: Publish the ChatWebApp](#task-3-publish-the-chatwebapp)
+    - [Task 4: Testing hotel lobby chat](#task-4-testing-hotel-lobby-chat)
   - [Exercise 5: Add intelligence](#exercise-5-add-intelligence)
     - [Task 1: Implement sentiment analysis](#task-1-implement-sentiment-analysis)
     - [Task 2: Implement linguistic understanding](#task-2-implement-linguistic-understanding)
@@ -1029,7 +1030,7 @@ The namespace, and therefore connection string, for the service bus is different
 
     ![The textAnalyticsBaseUrl application setting is shown with the value westus2.](media/2019-11-24-09-41-40.png "Text Analytics Region Value")
 
-    The region value will be used in a call to https://westus2.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment in the Function code.
+    The region value will be used in a call to <https://westus2.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment> in the Function code.
 
 2. On the left-hand menu of the Text API blade, select **Keys and Endpoint**.
 
@@ -1047,7 +1048,7 @@ The namespace, and therefore connection string, for the service bus is different
 
 Duration: 10 minutes
 
-Within Visual Studio Solution Explorer, expand the `ChatWebApp` project and open `Web.Config`. You will update the settings in this file. The following sections walk you through the process of retrieving the values for the following settings:
+Within Visual Studio Solution Explorer, expand the **ChatWebApp** project and open the **Web.Config** file. You will update the settings in this file to match the Function App Application Settings that you've already entered.
 
 ```csharp
 <add key="eventHubConnectionString" value=" "/>
@@ -1057,11 +1058,11 @@ Within Visual Studio Solution Explorer, expand the `ChatWebApp` project and open
 <add key="chatTopicPath" value=" "/>
 ```
 
->**Note**: These will be the same setting values you entered for the Function Application settings.
+> **Note**: These will be the same values you entered for the Function Application settings (Task 2 of the previous exercise). You can copy these values by editing the Application Settings key, and copying the Value from the Add/Edit application setting form.
 
 ### Task 1: Event Hub connection String
 
-1. Enter the **eventHubConnectionString**.
+1. Enter the value for **eventHubConnectionString**.
 
 ### Task 2: Event Hub name
 
@@ -1077,7 +1078,7 @@ Within Visual Studio Solution Explorer, expand the `ChatWebApp` project and open
 
 2. The **web.config** should resemble the following. Select Save in Visual Studio.
 
-    ![A web.config code window displays. ](media/image93.png 'web.config code window ')
+    ![A web.config code window displays populated with the key values defined above. ](media/image93.png 'web.config code window ')
 
 ## Exercise 4: Deploying the App Services
 
@@ -1085,7 +1086,13 @@ Duration: 15 minutes
 
 With the App Services projects properly configured, you are now ready to deploy them to their pre-created services in Azure.
 
-### Task 1: Publish the ChatMessageSentimentProcessor Function App
+### Task 1: Restore NuGet Packages for the solution
+
+1. In Visual Studio Solution Explorer, right-click on the Solution at the top of the tree, and select **Restore NuGet Packages** from the context menu.
+
+   ![Visual Studio Solution Explorer is shown with the context menu displaying for the solution file and the Restore NuGet Packages option selected from the context menu.](media/restorenugetpackages.png)
+
+### Task 2: Publish the ChatMessageSentimentProcessor Function App
 
 1. Within Visual Studio Solution Explorer, right-click the `ChatMessageSentimentProcessorFunction` project in the Solution Explorer, and select **Publish...**
 
@@ -1093,21 +1100,21 @@ With the App Services projects properly configured, you are now ready to deploy 
 
 2. In the Publish dialog, choose **Select Existing** beneath Azure App Service as the publish target.
 
-    ![In the Publish dialog box, select existing Azure App Service.](media/2019-11-16-13-22-55.png "Publish dialog box")
+    ![In the Pick a publish target dialog, Select Existing is selected for the Azure App Service Plan.](media/2019-11-16-13-22-55.png "Publish dialog box")
 
-3. Select **Publish**.
+3. Select **Create Profile**.
 
 4. In the App Service dialog, choose the Subscription that contains your Function App you provisioned earlier. Expand your Resource Group (e.g., **intelligent-analytics**), then select the node for your Function App in the tree view to select it.
 
-    ![In the App Service dialog box, the tree view is expanded to: intelligent-analyticsth\chatprocessorth.](media/2019-09-03-15-40-04.png "App Service dialog box")
+    ![In the App Service dialog box, the resource group is expanded and the function app chatprocessor is selected.](media/2019-09-03-15-40-04.png "App Service dialog box")
 
-5. Select **OK**.  If asked to update the Azure functions, select the Yes button.
-
-    ![A dialog explains the Azure functions will be updated to the next version automatically.](media/2019-03-20-20-13-37.png "Functions Version on Azure")
-
-6. Select Publish. The publish should immediately begin. If not, select the Publish button on the Publish step.
+5. Select **Publish**.
 
     ![The Azure Function publish dialog box is displayed.](media/vs-publish-function-publish.png "Publish dialog box")
+
+6. If asked to update the Azure functions, select the **Yes** button.
+
+    ![A dialog explains the Azure functions will be updated to the next version automatically.](media/2019-03-20-20-13-37.png "Functions Version on Azure")
 
 7. When the publish completes, the Output window should indicate success similar to the following:
 
@@ -1117,13 +1124,13 @@ With the App Services projects properly configured, you are now ready to deploy 
 
 8. Repeat steps 1-5 to publish.
 
-### Task 2: Publish the ChatWebApp
+### Task 3: Publish the ChatWebApp
 
 1. Within Visual Studio Solution Explorer, right-click the ChatWebApp project and select **Publish...**
 
     ![In the Visual Studio Solution Explorer ChatWebApp sub-menu, Publish is selected.](media/image100.png 'Visual Studio Solution Explorer')
 
-2. In the Publish blade, select **App Service**, and choose the **Select Existing** radio button. Select **Publish**.
+2. In the Publish blade, select **App Service**, and choose the **Select Existing** radio button. Select **Create Profile**.
 
     ![In the Publish window, the Microsoft Azure App Service option is selected, as is the Select Existing radio button.](media/vs-webapp-publish-target.png "Publish window")
 
@@ -1137,19 +1144,19 @@ With the App Services projects properly configured, you are now ready to deploy 
 
 5. When the publishing is complete, a browser window should appear with content like the following:
 
-    ![The Browser window displays the Contoso Hotels webpage, with a Join Chat window open below.](media/image104.png 'Browser window')
+    ![The Browser window displays the Contoso Hotels webpage with a Join Chat section that has a username textbox and a chat room selection drop down list.](media/image104.png 'Browser window')
 
-    > **Note**: It may take a couple of minutes for the browser to render. You must use a modern browser like Chrome or Edge.
+    > **Note**: It may take a couple of minutes for the browser to render. You must use a modern browser like Chrome or Edge. If the site is opened in Internet Explorer, copy the URL from the address bar, open Chrome (that you installed earlier), and navigate to the site with Chrome instead.
 
-### Task 3: Testing hotel lobby chat
+### Task 4: Testing hotel lobby chat
 
 1. Open a browser instance (Chrome is recommended for this web app), and navigate to the deployment URL for your Web App.
 
     - If you are unsure what this URL is, it can be found in two places:
 
-      - First, you can find it on the ChatWebApp document in Visual Studio, that was opened when you published the Web App 
+      - First, you can find it on the ChatWebApp document in Visual Studio, that was opened when you published the Web App.
 
-        ![In the Visual Studio ChatWebbApp tab, under Summary, the Site URL.](media/2019-06-20-17-53-33.png "Visual Studio ChatWebbApp tab")
+        ![In the Visual Studio ChatWebbApp tab, under Summary, the Site URL is displayed.](media/2019-06-20-17-53-33.png "Visual Studio ChatWebbApp tab")
 
       - Alternatively, this can be found in the [Azure portal](https://portal.azure.com) on the Overview blade for your Web App.
 
@@ -1161,7 +1168,7 @@ With the App Services projects properly configured, you are now ready to deploy 
 
     ![The Join Chat window displays.](media/image107.png 'Join Chat window')
 
-5. The Live Chat should appear. (Notice it auto-announced you joining to the room; this is the first message. Note, this may take a few seconds to appear.)
+5. The Live Chat should appear. (Notice it auto-announced you joining to the room; this is the first message. Note, this may take a few seconds to appear. When first using the application, it may take a couple of minutes for all the underlying services to fire up.)
 
     ![The Live Chat window displays, showing that it is connected to the chat service.](media/image108.png 'Live Chat window')
 
@@ -1175,9 +1182,9 @@ With the App Services projects properly configured, you are now ready to deploy 
 
 9. You can join with as many sessions as you want (The Hotel Lobby is basically a public chat room).
 
-    >**Debugging Tips**: If you don't see your messages showing up in the Live Chat window, double check your Azure Event Hub activity. Open the Metrics screen. Make sure incoming and outgoing messages are being processed.  Validate the WebChat web.config values match your Azure service configurations exactly. Also, if you navigate to the Azure Function Monitor, you can get more clues to any problems. Below is example of the log output. It can take up to 5 minutes for log entries to display.
+    > **Note**: _Debugging Tips_: If you don't see your messages showing up in the Live Chat window, double check your Azure Event Hub activity. Open the Metrics screen. Make sure incoming and outgoing messages are being processed.  Validate the WebChat web.config values match your Azure service configurations exactly. Also, if you navigate to the Azure Function Monitor, you can get more clues to any problems. Below is example of the log output. It can take up to 5 minutes for log entries to display.
 
-    ![The screenshot shows an example of Azure Function log items. An error output is displayed.](media/2019-11-24-07-23-56.png "Azure Function Monitor Log Example")
+    ![The Azure Function log is shown with the output of an error displayed.](media/2019-11-24-07-23-56.png "Azure Function Monitor Log Example")
 
 ## Exercise 5: Add intelligence
 
@@ -1262,21 +1269,21 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 1. Using a browser, navigate to <http://www.luis.ai>.  
 
-    >**Note**: If in Exercise 1, Step 12 you created your Luis account in Azure in an European region (e.g. West Europe), user <http://eu.luis.ai> instead. If you selected an Australian region use <http://au.luis.ai>.
+    > **Note**: If in Exercise 1, Step 12 you created your Luis account in Azure in an European region (e.g. West Europe), user <http://eu.luis.ai> instead. If you selected an Australian region use <http://au.luis.ai>.
 
 2. Select **Sign in** **or create an account**.
 
     ![The Language Understanding Intelligent Service webpage with a Sign in or create an account button displays.](media/image110.png 'Language Understanding Intelligent Service webpage')
 
-3. Sign in using your Microsoft account (or \@Microsoft.com account if that is appropriate to you). The new account startup process may take a few minutes.
+3. Sign in using your Microsoft account (or \@Microsoft.com account if that is appropriate to you). The new account startup process may take a few minutes. If you are prompted to migrate to the Preview version of the LUIS portal, select **Migrate Later**.
 
 4. Select **Accept**.
 
     ![The Accept button is clicked to agree to the LUIS Service App being connected to your account.](media/image111.png 'Accept button')
 
-5. You should be redirected to the LUIS Welcome page at <https://www.luis.ai/welcome>. Scroll down and select **Create LUIS app**.
+5. You should be redirected to the **My Apps** list page. In the toolbar, select **+Create new app**.
 
-    ![The Create LUIS app botton is clicked form the Welcome page of the LUIS AI Service.](media/image112.png 'Create LUIS app')
+    ![The My Apps table is displayed with the + Create new app button highlighted in the toolbar.](media/image112.png 'Create LUIS app')
 
 6. Complete the additional info and terms of use form and select **Continue**.
 
@@ -1290,9 +1297,9 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 9. In a moment, your new app will appear. Select the app to see the details.
 
-10. In the menu bar, select **Train** and then **Publish**.
+10. In the toolbar, select **Train** and then **Publish**. Select the option to publish to the Production Environment.
 
-    ![The Publish dialog is shown with the region selected and the Add Key button clicked.](media/image115.png "Publish dialog")
+    ![The Publish dialog is shown with the Production environment selected.](media/image115.png "Publish dialog")
 
     You should see a success message at the top of the screen.
 
@@ -1300,23 +1307,23 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 12. Choose the top **Build** menu. Select **Create new intent**.
 
-    ![The top menu bar is displayed. The Build menu item is circled.](media/2019-06-20-19-55-55.png "Build Menu Item")
+    ![The top toolbar is displayed. The Build menu item is selected.](media/2019-06-20-19-55-55.png "Build Menu Item")
 
 13. In the Intents dialog, for the Intent Name enter **OrderIn** and select **Done**.
 
-    ![The OrderIn intent has been entered into the Create new intent dialog and the Done button is clicked.](media/image118.png 'Create a new intent')
+    ![The OrderIn intent has been entered into the Create new intent dialog and the Done button is selected.](media/image118.png 'Create a new intent')
 
 14. Select Entities from the menu on the left.
 
-    ![The Entities menu item has been selected for the awchat application.](media/image120.png "Entities menu")
+    ![The Entities menu item is selected in the left menu.](media/image120.png "Entities menu")
 
 15. Select Create new entity.
 
-    ![The Create new entity has been clicked for the awchat application. Create new entity circled.](media/2019-06-20-20-00-05.png "Create new entity")
+    ![On the Entities screen, the Create new entity button is selected on the toolbar.](media/2019-06-20-20-00-05.png "Create new entity")
 
 16. For the Entity name specify "**RoomService**" and set the Entity Type to **Simple**.
 
-    ![The Add Entity dialog is displayed. Name and Entity Type configurations are available.](media/2019-06-21-06-29-04.png "Add Entity dialog box")
+    ![The Add Entity dialog is displayed. Name and Entity Type are set to the preceding values.](media/2019-06-21-06-29-04.png "Add Entity dialog box")
 
 17. Select the newly created **RoomService** entity.
 
@@ -1326,31 +1333,29 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
   
 19. Repeat steps 14 to 18 to create a **Housekeeping** entity with its associated **RoomItem** role.
 
-    ![The screenshot shows the finished entities list.](media/2019-11-24-10-56-53.png "LUIS Entity List")
+    ![Housekeeping and Room Service are displayed in the list of available Entities.](media/2019-11-24-10-56-53.png "LUIS Entity List")
 
 20. Select **Intents** from the menu on the left and select the **OrderIn** intent you created.
 
     ![The screenshot shows the OrderIn intent that was created.](media/2019-11-24-10-59-26.png "OrderIn Entity")
 
-21. Enter an utterance for this intent and match it with an entity and role.
+21. Enter an utterance for this intent and match it with an entity and role. Type in `order a pizza`, and press **Enter**.
 
     ![The pizza order example is entered into the utterance text box.](media/2019-11-24-11-06-18.png "Order a Pizza")
 
 22. In the pizza utterance, select the word pizza so it becomes highlighted.  Under Entities select **RoomService**, then select **FoodItem**.
 
-    ![In the Utterances (1) section, order a [pizza] is selected, and below that, RoomService displays with a chevron next to it.](media/2019-06-21-06-44-45.png "Utterances order a pizza")
+    ![In the Utterances section, order a [pizza] is selected a context menu displays with RoomService then Food Item selected.](media/2019-06-21-06-44-45.png "Utterances order a pizza")
 
-23. Type a new utterance in the text box.  
-
-    ![The screenshot displays the sample value entered into the utterance text box.](media/2019-11-18-18-39-15.png "New Utterance")
-
-    Enter the following utterance:
+23. Enter the following utterance:
 
     - Utterance: **bring me toothpaste**
 
     - Text to select: **toothpaste**
 
     - Entity: **Housekeeping:RoomItem**
+
+    ![The screenshot displays the sample value entered into the utterance text box.](media/2019-11-18-18-39-15.png "New Utterance")
 
 24. Repeat this process for the following phrases (text to select is in bold):
 
@@ -1362,11 +1367,11 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     - **Order me a hamburger \| RoomService:FoodItem**
 
-      ![The utterances after they have been entered and aligned to the proper entities.](media/2019-06-21-06-51-43.png "Utterance list of room service items")
+      ![The utterances list after they have been entered and aligned to the proper entities.](media/2019-06-21-06-51-43.png "Utterance list of room service items")
 
 25. Select Train from the menu bar.
 
-    ![Train menu bar selected/](media/image128.png 'Train menu bar')
+    ![The Train button on the toolbar is selected.](media/image128.png 'Train menu bar')
 
 26. Choose Test and experiment by writing some utterances and pressing enter to see the interpretation.
 
@@ -1374,11 +1379,11 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 27. Select Publish App from the menu on the top.
 
-28. When the publish completes, Refer to Keys and Endpoints under Manage in menu bar for an Example Query URL.
+28. When the publish completes, select Manage from the toolbar, then select **Azure Resources** from the left menu. In the Starter_Key section, the URL is available in the **Example Query** textbox.
 
-    ![The application settings menu is displayed. The Azure resources menu item is selected. The LUIS key information is displayed.](media/2019-11-18-18-58-03.png "LUIS Key Information")
+    ![The Azure Resources menu item is selected from the left menu and the Example Query URL is shown in a textbox.](media/2019-11-18-18-58-03.png "LUIS Key Information")
 
-29. Open a new tab in your browser. Paste the Example Query URL into the address bar and modify the end of the URL (the text following q= ) so it contains the phrase "bring me towels," and press ENTER. You should receive output similar to the following. Observe that it correctly identified the intent as OrderIn (in this case with a confidence of 0.9999995 or nearly 100%) and the entity as pizza having an entity type of Housekeeping:RoomItem (in this case with a confidence score of 96.9%).
+29. Open a new tab in your browser. Paste the **Example Query** URL into the address bar and modify the end of the URL (the text following q= ) so it contains the phrase `bring me towels` and press **ENTER**. You should receive output similar to the following. Observe that it correctly identified the intent as **OrderIn** (in this case with a confidence of 0.969854355 or nearly 100%) and the entity as **towels** having an entity type of **Housekeeping:RoomItem** (in this case with a confidence score of 98.9%).
 
     ![An example of the LUIS call JSON result is displayed.](media/2019-11-24-11-14-17.png "Sample LUIS Response")
 
@@ -1388,55 +1393,53 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
   
     ![The LUIS base URL is displayed.](media/2019-11-18-19-10-10.png "LUIS Base URL")
 
-    - The GUID following apps/GUID/, _highlighted_. This is your App ID and you will need to use it in configuration later. It looks like the following:
+    - The GUID following apps/GUID/, _highlighted_. This is your **App ID** and you will need to use it in configuration later. It looks like the following:
 
     ![The screenshot displays a sample LUIS Url. The app id is highlighted.](media/2019-11-18-19-07-41.png "LUIS App ID")
 
-      You can also find your App ID by going to the **Application Settings** tab.
-
-    - The subscription-key value is the luis-api key value.
-
 31. You can add more utterances as desired by repeating the above steps to add new utterances, indicate the entity, train the model, and then update the publish application using the button in the Publish App screen.
 
-32. When you are ready to integrate LUIS into your app, go to the Manage option in menu bar, and locate the luis key under Resources and Keys. Copy the Key String. Paste this to your notepad.
+32. When you are ready to integrate LUIS into your app, select Manage in the toolbar, and locate the Primary key in the Azure Resources section. Copy the Key String and paste it in Notepad.
 
-    ![The luis-api key in the Publish App screen is selected.](media/luis-copy-key-string.png 'Resources and keys')
+    ![The Primary key in the Azure Resources screen is highlighted.](media/luis-copy-key-string.png 'Resources and keys')
 
 33. You will enter this into the configuration of the Event Processor Function App.
 
-34. Select the Configuration link. Navigate to the Application Settings for your Event Processor Function App in the [Azure portal](https://portal.azure.com).
+34. In the [Azure portal](https://portal.azure.com), open your **chatprocessor-namespace** Function App and select the Configuration link on the Overview screen.
 
 35. Set the LUIS Application Settings.
 
-- For the key **luisAppId** set the text of the value attribute to the App ID of your LUIS App (this value should be a GUID you obtained from the URL and not the name of your LUIS app).
-- For the key **luisKey**, set the text of the value attribute to the subscription key used by your LUIS app.
-- Set the **luisBaseUrl** to the LUIS base URL captured earlier.
+    - Create a new Application Setting with the **Name** `luisAppId` set the **Value**  to the App ID of your LUIS App (this value should be a GUID you obtained from the URL and not the name of your LUIS app).
+  
+    - Create a new Application Setting with the **Name** `luisKey`, set the **Value** to the Primary key of your your LUIS app.
+  
+    - Create a new Application Setting with the **Name** `luisBaseUrl` to the LUIS base URL you captured earlier.
 
-    ![Set the luisAppId and luisKey values within the function app's app settings](media/2019-09-07-08-55-02.png "Function App application settings for LUIS")
+    ![The LUIS Application Settings are displayed in the Application Settings list of the Function App.](media/2019-09-07-08-55-02.png "Function App application settings for LUIS")
 
-1. **Save** your Application Settings. The Event Processor is pre-configured to invoke the LUIS API using the provided App ID and key.
+36. **Save** your Application Settings. The Event Processor is pre-configured to invoke the LUIS API using the provided App ID and key.
 
-2. Open Visual Studio then open `ProcessChatMessage.cs` within the `ChatMessageSentimentProcessorFunction` project, and navigate to the Run method.
+37. Open Visual Studio then open **ProcessChatMessage.cs** within the **ChatMessageSentimentProcessorFunction** project, and navigate to the Run method.
 
-3. Locate TODO: 14 and replace it with the following:
+38. Locate TODO: 13 and replace it with the following:
 
     ```csharp
-    //TODO: 14.Respond to chat message intent if appropriate
+    //TODO: 13.Respond to chat message intent if appropriate
     var intent = await GetIntentAndEntities(msgObj.message);
     await HandleIntent(intent, msgObj, outputServiceBus);
     ```
 
-4. Take a look at the implementation of both methods if you are curious how the entity and intent information is used to generate an automatic chat message response from a bot.
+39. Take a look at the implementation of both methods if you are curious how the entity and intent information is used to generate an automatic chat message response from a bot.
 
-5. Save the file.
+40. Save the file.
 
 ### Task 3: Re-deploy and test
 
 Now that you have added sentiment analysis and language understanding to the solution, you need to re-deploy the apps so you can test out the new functionality.
 
-1. Publish the `ChatMessageSentimentProcessorFunction` Function App using Visual Studio just as you did in [Exercise 4, Task 1](#task-1-publish-the-chatmessagesentimentprocessor-function-app).
+1. Publish the **ChatMessageSentimentProcessorFunction** Function App using Visual Studio just as you did in [Exercise 4, Task 2](#task-2-publish-the-chatmessagesentimentprocessor-function-app).
 
-2. Publish the `ChatWebApp` just as you did in [Exercise 4, Task 2](#task-2-publish-the-chatwebapp).
+2. Publish the **ChatWebApp** just as you did in [Exercise 4, Task 3](#task-3-publish-the-chatwebapp).
 
 3. Join a chat with the Hotel Lobby.
 
@@ -1444,7 +1447,7 @@ Now that you have added sentiment analysis and language understanding to the sol
 
     ![In the Live Chat window, callouts point to the thumbs-up and thumbs-down icons. The 'love this weather' statement produces a thumbs-up icon. Thumbs down for the 'I have this weather'.](media/2019-09-10-12-31-51.png "Live Chat window")
 
-5. Next, try ordering some items from room service, like "bring me towels" and "order a pizza." Observe that you get a response from the ConciergeBot, and that the reply indicates whether your request was sent to Housekeeping or Room Service, depending on whether the item ordered was a room or food item.
+5. Next, try ordering some items from room service, like `bring me towels` and `order a pizza`. Observe that you get a response from the ConciergeBot, and that the reply indicates whether your request was sent to Housekeeping or Room Service, depending on whether the item ordered was a room or food item.
 
     ![In the chat window, Tim is having a conversation with a ConciergeBot. He asks for towels, and the ConciergeBot says they are forwarding the request to Housekeeping.](media/2019-09-10-12-33-18.png "Live Chat window")
 
@@ -1458,85 +1461,61 @@ In this exercise, you will create a Logic App for sending SMS or email messages.
 
 In this task, you will create a free Twilio account that will be used to send SMS notifications.
 
-1. If you do not have a Twilio account, sign up for one for free at by going to <https://www.twilio.com/try-twilio>.
+1. If you do not have a Twilio account, sign up for one for free at by going to <https://www.twilio.com/try-twilio>. Fill out the registration form and confirm your account.
 
-2. On the **Sign up for free** page:
+2. In setting up your Twilio account, if you are prompted to customize your experience, select **Node.js** as your preferred language, and **Explore Twilio** as your goal.
 
-    - Enter your personal info, email address, and a 14+ character password.
+3. From your account dashboard, select the **All Products & Services icon**.
 
-    - Select SMS under **Which product do you plan to use first?**
+    ![The All Products and Services icon is selected in the left menu.](media/2019-03-21-06-20-56.png "Products & Services icon")
 
-    - Select **Order Notifications** under **What are you building?**
+4. Select **#Phone Numbers** under **Super Network**.
 
-    - Select **JavaScript** under **Choose your language**.
+    ![Phone Numbers is highlighted under Super Network in the All Products and Services menu.](media/2019-03-21-06-28-07.png "Super Network section")
 
-    - Select **Not a Production App** under **Potential monthly interactions**.
-
-    - Check the box next to **I'm not a robot**.
-
-    - Select **Get Started**.
-
-        ![The information above is entered on the Sign up for free page.](./media/twilio-sign-up-free.png "Sign up for free Twilio")
-
-3. Enter your **cell phone number** on the We need to verify you're a human screen, check the box if you do not wish to be contacted at the number you enter, and select **Verify** via SMS.
-
-    ![An obscured cell phone number is entered next to the Verify via SMS button on the We need to verify you're a human screen.](./media/twilio-verify.png "Verify your human screen")
-
-4. Enter the verification code received via text into the box and select **Submit**.
-
-    ![A verification code is entered on the We need to verify you're a human screen.](./media/twilio-verify-enter-code.png "We need to verify you???re a human screen")
-
-5. From your account dashboard, select the **All Products & Services icon**.
-
-    ![All Products & Services icon is shown.](media/2019-03-21-06-20-56.png "Products & Services icon")
-
-6. Select **#Phone Numbers** under **Super Network**.
-
-    ![\#Phone Numbers is highlighted under Super Network.](media/2019-03-21-06-28-07.png "Super Network section")
-
-7. Select **Get Started**.
+5. Select **Get Started**.
 
     ![Get Started is highlighted on the Phone Numbers Dashboard screen.](media/2019-03-21-06-25-12.png "Phone Numbers Dashboard screen")
 
-8. Select **Get your first Twilio phone number**.
+6. Select **Get your first Twilio phone number**.
 
     ![Get your first Twilio phone number is highlighted on the Get Started with Phone Numbers screen.](./media/twilio-phone-numbers-get-started.png "Get Started with Phone Numbers screen")
 
-9. Select **Choose this Number** (or search for a different number if you want something different).
+7. Select **Choose this Number** (or search for a different number if you want something different).
 
     ![Choose this Number is highlighted on the Your first Twilio Phone Number screen.](./media/twilio-phone-numbers-first-phone-number.png "Your first Twilio Phone Number screen")
 
-10. Select **Done** on the Congratulations dialog.
+8. Select **Done** on the Congratulations dialog.
 
     ![Done is highlighted on the Congratulations! screen.](./media/twilio-phone-numbers-congrats.png "Congratulations screen")
 
-11. Select **Home** on your **Account Dashboard**, and leave this page up, as you will be referencing the **Account SID** and **Auth Token** in the next task to configure the Twilio Connector.
+9. Select **Home** on your **Account Dashboard**, and leave this page up, as you will be referencing the **Account SID** and **Auth Token** in the next task to configure the Twilio Connector.
 
-    ![The Home icon is highlighted on your Account Dashboard.](./media/twilio-account-dashboard.png "Account dashboard")
+    ![The Home icon is highlighted on your Account Dashboard. The Account SID and Auth token fields are displayed.](./media/twilio-account-dashboard.png "Account dashboard")
 
 ### Task 2: Provision Logic App
 
 In this task, you will create a new Logic App, which will use the Twilio connector to send SMS notifications to hotel guest services employees.
 
-1. In the [Azure portal](https://portal.azure.com), select **+Create a resource**, enter "logic app" into the Search the Marketplace box, select **Logic App** from the results, and then select **Create**.
+1. In the [Azure portal](https://portal.azure.com), select **+Create a resource**, enter `logic app` into the search box, select **Logic App** from the results, and then select **Create**.
 
-    ![In the Azure portal, + Create a resource is highlighted in the navigation pane, "logic app" is entered into the Search the Marketplace box, and Logic App is in the results.](./media/create-resource-logic-app.png "Create Logic App")
+    ![In the Azure portal, + Create a resource is highlighted in the navigation pane, "logic app" is entered into the search box, and Logic App is highlighted in the suggested search results.](./media/create-resource-logic-app.png "Create Logic App")
 
 2. In the **Create logic app** blade, enter the following:
 
-    - **Name**: Enter awt-notifications.
+    - **Name**: Enter `awt-notifications`.
 
     - **Subscription**: Select the subscription you are using for this hands-on lab.
 
-    - **Resource group**: Select **Use existing** and choose the **hands-on-lab-SUFFIX** resource group.
+    - **Resource group**: Select the **intelligent-analytics** resource group.
 
     - **Location**: Select the location you are using for resources in this hands-on lab.
 
     - **Log Analytics**: Select Off.
 
-        ![The information above is entered on the Create logic app blade.](./media/logic-app-create.png "Logic App blade")
+        ![The Logic App Basics tab is selected with a form populated with the preceding values.](./media/logic-app-create.png "Logic App blade")
 
-3. Select **Create** to provision the new Logic App.
+3. Select **Review + Create**, when the form passes validation, select **Create** to provision the new Logic App.
 
 ### Task 3: Configure staff notifications
 
@@ -1559,7 +1538,8 @@ In this task, you will configure a Logic App to send notifications to hotel gues
     ![Service Bus - When a message is received in a queue (auto-complete) is highlighted in the Triggers list.](media/logic-app-triggers-service-bus-queue.png "Service Bus Triggers")
 
 5. On the When a message is received in a queue (auto-complete) dialog, select the **awhotelstaffnotifications** queue from the Queue name drop down.
-    >**Note**: Remember the **awhotelstaffnotifications** queue you set up earlier in the awhotel Service Bus.
+    
+    > **Note**: Remember the **awhotelstaffnotifications** queue you set up earlier in the awhotel Service Bus.
 
     ![Enter the connection name and resource dialog presented.](media/2019-09-07-16-50-22.png "Choose connection and resource group")
 

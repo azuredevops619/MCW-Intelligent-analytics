@@ -79,7 +79,7 @@ namespace ChatMessageSentimentProcessorFunction
                     //await outputEventHub.AddAsync(//Complete this...);
                     //Console.WriteLine("Forwarded message to event hub.");
 
-                    //TODO: 14.Respond to chat message intent if appropriate
+                    //TODO: 13.Respond to chat message intent if appropriate
                     //var intent = await GetIntentAndEntities(//Complete with the message object message property);
                     //await HandleIntent(//Complete with passing the intent, message object, and outputServiceBus collection);
                 }
