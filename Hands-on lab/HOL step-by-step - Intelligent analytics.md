@@ -1319,7 +1319,7 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     ![On the Entities screen, the Create new entity button is selected on the toolbar.](media/2019-06-20-20-00-05.png "Create new entity")
 
-16. For the **Entity name** specify `**RoomService**` and set the **Entity Type** to **Simple**.
+16. For the **Entity name** specify **'RoomService'** and set the **Entity Type** to **Simple**.
 
     ![The Add Entity dialog is displayed. Name and Entity Type are set to the preceding values.](media/2019-06-21-06-29-04.png "Add Entity dialog box")
 
@@ -1409,7 +1409,7 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     - Create a new Application Setting with the **Name** `luisAppId` set the **Value**  to the App ID of your LUIS App (this value should be a GUID you obtained from the URL and not the name of your LUIS app).
   
-    - Create a new Application Setting with the **Name** `luisKey`, set the **Value** to the Primary key of your your LUIS app.
+    - Create a new Application Setting with the **Name** `luisKey`, set the **Value** to the Primary key of your LUIS app.
   
     - Create a new Application Setting with the **Name** `luisBaseUrl` to the LUIS base URL you captured earlier.
 
