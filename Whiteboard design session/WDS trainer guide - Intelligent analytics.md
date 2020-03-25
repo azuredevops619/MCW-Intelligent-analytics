@@ -36,7 +36,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
     - [Customer needs](#customer-needs)
     - [Customer objections](#customer-objections)
     - [Infographic of common scenarios](#infographic-of-common-scenarios)
-    - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
+  - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
   - [Step 3: Present the solution](#step-3-present-the-solution)
   - [Wrap-up](#wrap-up)
     - [Additional references](#additional-references)
@@ -238,7 +238,7 @@ Finally, to help them reflect on chats that occur in public chat rooms, they wou
 
 ![A sample Internet of Things workflow, which is broken into on-premises and Azure services. On-premises show multiple devices communicating data to the cloud being ingested via Event Hubs or IoT Hubs. Stream processing is made available via HDInsight Storm, HDInsight Spark, or Stream Analytics. Batch Storage may take place via Data Lake or Storage blocks. Batch Processing is made available via HDInsight, Batch, SQL Data Warehouse and Machine Learning. Batch View Serving is made available via HDInsight HBase, SQL Data Warehouse, and Search. Speed Serving is made available via Redis Cache, Cosmos DB and SQL Database. The Analytics client may take the form of Power BI, a Web App, or an API App.](media/image2.png 'Internet of Things workflow')
 
-### Step 2: Design a proof of concept solution
+## Step 2: Design a proof of concept solution
 
 **Outcome**
 

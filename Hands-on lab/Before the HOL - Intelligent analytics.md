@@ -50,7 +50,7 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 
 ### Task: Setup a lab virtual machine
 
-1. In the [Azure Portal](https://portal.azure.com/), select +Create a resource, then type "Visual Studio Latest" into the search bar. Select Visual Studio Community 2019 **(latest release)** on Windows Server 2016 (x64) from the results.
+1. In the [Azure Portal](https://portal.azure.com/), select **+Create a resource** from the left menu, then type `Visual Studio Latest` into the search bar. Select **Visual Studio Community 2019(latest release) on Windows Server 2016 (x64)** from the results.
 
     ![In the Azure Portal, Visual Studio 2019 Latest is entered into the search textbox. Visual Studio 2019 Latest is displayed in the Search suggestions.](media/2019-06-19-15-05-08.png "Visual Studio 2019 Latest option is displayed")
 
