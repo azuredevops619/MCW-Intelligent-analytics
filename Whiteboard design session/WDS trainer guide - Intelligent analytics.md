@@ -24,33 +24,35 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
 
 **Contents**
 
+<!-- TOC -->
+
 - [Trainer information](#trainer-information)
-  - [Role of the trainer](#role-of-the-trainer)
-  - [Whiteboard design session flow](#whiteboard-design-session-flow)
-  - [Before the whiteboard design session: How to prepare](#before-the-whiteboard-design-session-how-to-prepare)
-  - [During the whiteboard design session: Tips for an effective whiteboard design session](#during-the-whiteboard-design-session-tips-for-an-effective-whiteboard-design-session)
+    - [Role of the trainer](#role-of-the-trainer)
+    - [Whiteboard design session flow](#whiteboard-design-session-flow)
+    - [Before the whiteboard design session: How to prepare](#before-the-whiteboard-design-session-how-to-prepare)
+    - [During the whiteboard design session: Tips for an effective whiteboard design session](#during-the-whiteboard-design-session-tips-for-an-effective-whiteboard-design-session)
 - [Intelligent analytics whiteboard design session student guide](#intelligent-analytics-whiteboard-design-session-student-guide)
-  - [Abstract and learning objectives](#abstract-and-learning-objectives)
-  - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
-    - [Customer situation](#customer-situation)
-    - [Customer needs](#customer-needs)
-    - [Customer objections](#customer-objections)
-    - [Infographic of common scenarios](#infographic-of-common-scenarios)
-  - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
-  - [Step 3: Present the solution](#step-3-present-the-solution)
-  - [Wrap-up](#wrap-up)
+    - [Abstract and learning objectives](#abstract-and-learning-objectives)
+    - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
+        - [Customer situation](#customer-situation)
+        - [Customer needs](#customer-needs)
+        - [Customer objections](#customer-objections)
+        - [Infographic for common scenarios](#infographic-for-common-scenarios)
+    - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
+    - [Step 3: Present the solution](#step-3-present-the-solution)
+    - [Wrap-up](#wrap-up)
     - [Additional references](#additional-references)
 - [Intelligent analytics whiteboard design session trainer guide](#intelligent-analytics-whiteboard-design-session-trainer-guide)
-  - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study-1)
-  - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution-1)
-  - [Step 3: Present the solution](#step-3-present-the-solution-1)
-  - [Wrap-up](#wrap-up-1)
-  - [Preferred target audience](#preferred-target-audience)
-  - [Preferred solution](#preferred-solution)
-  - [Checklist of preferred objection handling](#checklist-of-preferred-objection-handling)
-  - [Customer quote (to be read back to the attendees at the end)](#customer-quote-to-be-read-back-to-the-attendees-at-the-end)
-  
-  <!-- /TOC -->
+    - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study-1)
+    - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution-1)
+    - [Step 3: Present the solution](#step-3-present-the-solution-1)
+    - [Wrap-up](#wrap-up-1)
+    - [Preferred target audience](#preferred-target-audience)
+    - [Preferred solution](#preferred-solution)
+    - [Checklist of preferred objection handling](#checklist-of-preferred-objection-handling)
+    - [Customer quote (to be read back to the attendees at the end)](#customer-quote-to-be-read-back-to-the-attendees-at-the-end)
+
+<!-- /TOC -->
 
 # Trainer information
 
@@ -477,7 +479,7 @@ The primary audience is the business decision makers and technology decision mak
 
 2. How would you implement or configure this service?
 
-    First Up Consultants would need to provision a Cognitive Services account with the API type of LUIS using the Azure Portal and copy the Key from the Manage Keys blade. Then they can use the website at [https://www.luis.ai/](https://docs.microsoft.com/azure/cosmos-db/) to create a new app. Once they have created an empty new app, that should update the App Settings with the key they acquired from the Azure Portal. They use the LUIS website to define their intents and entities. In their case, they might define two intents: one for ordering room service for the delivery of food, and another intent for the requesting the delivery of room items. They then would define the entities, food items like pizza, pasta or wine and room items like toothpaste or pillows. They can improve LUIS's model by providing utterances that are examples tagged with desired intent and entities. Once ready, they can publish the model at which point it can be accessed using a GET request to the provided endpoint, where the request to process is passed in via the q querystring parameter (e.g., [https://api.projectoxford.ai/luis/v1/application?id=e49d5497&subscription-key=617800&q=send%20some%20pizza)](https://azure.microsoft.com/documentation/articles/service-bus-quotas/?id=e49d5497&subscription-key=617800&q=send%20some%20pizza)).
+    First Up Consultants would need to provision a Cognitive Services account with the API type of LUIS using the Azure Portal and copy the Key from the Manage Keys blade. Then they can use the website at [https://www.luis.ai/](https://docs.microsoft.com/azure/cosmos-db/) to create a new app. Once they have created an empty new app, that should update the App Settings with the key they acquired from the Azure Portal. They use the LUIS website to define their intents and entities. In their case, they might define two intents: one for ordering room service for the delivery of food, and another intent for the requesting the delivery of room items. They then would define the entities, food items like pizza, pasta or wine and room items like toothpaste or pillows. They can improve LUIS's model by providing utterances that are examples tagged with desired intent and entities. Once ready, they can publish the model at which point it can be accessed using a GET request to the provided endpoint, where the request to process is passed in via the q querystring parameter (e.g., [https://api.projectoxford.ai/luis/v1/application?id=e49d5497&subscription-key=617800&q=send%20some%20pizza)](https://azure.microsoft.com/documentation/articles/service-bus-quotas/?id=e49d5497&subscription-key=617800&q=send%20some%20pizza).
 
 3. How would you integrate this service into your chat message processing flow?
 
