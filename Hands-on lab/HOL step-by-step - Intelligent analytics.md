@@ -243,9 +243,9 @@ In this section, you will provision a Function App that will be used as the Even
 
     - **Publish**: **Code**
   
-    - **Runtime Stack**:  Select **.NET Core**
+    - **Runtime Stack**:  Select **.NET Core**.
   
-    - **Version**: Select **3.1**
+    - **Version**: Select **3.1**.
 
     - **Region**: Select the location you used for the resource group created previously.
 
@@ -267,7 +267,7 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
     - **Name**: Provide a unique name for the namespace (e.g., `awhotel-namespace`). Namespace could be your initials.
 
-    - **Pricing tier**: Select **Standard**
+    - **Pricing tier**: Select **Standard**.
 
     - **Subscription**: Select the subscription you are using for this hands-on lab.
 
@@ -311,7 +311,7 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
     - **Name**: `awhotelstaffnotifications`
   
-    - **Max topic size**: Leave set to **1 GB**
+    - **Max topic size**: Leave set to **1 GB**.
   
     - **Message time to live**: Set to `1` day.
   
@@ -321,7 +321,7 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
 12. Select **Create**.
 
-13. Navigate back to the **Service Bus namespace** in the Azure Portal
+13. Navigate back to the **Service Bus namespace** in the Azure Portal.
 
     - Select **Shared access policies** within the left menu, under Settings.
 
@@ -341,7 +341,7 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
 In this task, you will create a new Event Hubs namespace and instance.
 
-1. In the [Azure portal](https://portal.azure.com) left menu, select **+Create a resource**, then search for `Event Hubs`
+1. In the [Azure portal](https://portal.azure.com) left menu, select **+Create a resource**, then search for `Event Hubs`.
 
     ![The Event Hubs resource overview page is displayed with a Create button.](media/2019-06-19-16-52-46.png "Event Hubs is selected. Click Create button")
 
@@ -349,7 +349,7 @@ In this task, you will create a new Event Hubs namespace and instance.
 
     - **Name**: Provide a unique name for the namespace (e.g., `awhotel-events-namespace`).
 
-    - **Pricing tier**: Select **Standard (20 Consumer groups, 1000 brokered connections)**
+    - **Pricing tier**: Select **Standard (20 Consumer groups, 1000 brokered connections)**.
 
     - **Subscription**: Select the subscription you are using for this hands-on lab.
 
@@ -357,9 +357,9 @@ In this task, you will create a new Event Hubs namespace and instance.
 
     - **Location**: Select the location you are using for resources in this hands-on lab.
 
-    - **Throughput Units**: Leave at `1`
+    - **Throughput Units**: Leave at `1`.
 
-    - **Enable auto-inflate**: **Unchecked**
+    - **Enable auto-inflate**: **Unchecked**.
 
     - Select **Create** to provision the Event Hubs namespace.
 
@@ -381,7 +381,7 @@ In this task, you will create a new Event Hubs namespace and instance.
 
     - **Message Retention**: Leave set to `1`
 
-    - **Capture**: Leave set to **Off**
+    - **Capture**: Leave set to **Off**.
 
     - Leave the remaining values as their defaults.
 
@@ -409,21 +409,21 @@ In this section, you will provision an Azure Cosmos DB account, a database, and 
 
     - **Account Name**: Provide a unique name for the Azure Cosmos DB account (e.g., `awhotelcosmosdb + namespace`).
 
-    - **API**: Select **Core(SQL)**
+    - **API**: Select **Core(SQL)**.
 
-    - **Notebooks (Preview): Keep this set to **Off**
+    - **Notebooks (Preview)**: Keep this set to **Off**.
 
     - **Apply Free Tier Discount**: There is a limit to one free tier Cosmos DB discount per account. If you still have this available, feel free to apply it here.
 
     - **Location**: Select the region you are using for resources in this hands-on lab.
 
-    - **Account Type**: Keep this set to **Non-Production**
+    - **Account Type**: Keep this set to **Non-Production**.
   
-    - **Enable geo-redundancy**: Ensure this is set to **Enable**
+    - **Enable geo-redundancy**: Ensure this is set to **Enable**.
 
-    - **Multi-region Writes**: Ensure this is set to **Disable**
+    - **Multi-region Writes**: Ensure this is set to **Disable**.
 
-    - **Availability Zones**: Ensure this is set to **Disable**
+    - **Availability Zones**: Ensure this is set to **Disable**.
 
     - Select **Review + Create**, then **Create** to provision the Azure Cosmos DB instance.
 
@@ -461,7 +461,7 @@ In this section, you will provision an Azure Cosmos DB account, a database, and 
 
     - **Partition Key**: Enter a partition key such as `/username`
 
-    - **Throughput**: Set to `400`
+    - **Throughput**: Set to `400`.
 
     - Select **OK** to add the container.
 
@@ -485,7 +485,7 @@ In this section, you will create an Azure Search instance.
 
     - **Location**: Select the location you are using for resources in this hands-on lab, or the next closest location if your location is unavailable in the list.
 
-    - **Pricing Tier**: Select **Change Pricing Tier** and choose **Basic**
+    - **Pricing Tier**: Select **Change Pricing Tier** and choose **Basic**.
 
     - Select **Review + Create**, and once validation has passed, select **Create**.
 
@@ -507,7 +507,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     - **Location**: Select the location you are using for resources in this hands-on lab.
 
-    - **Hosting environment**: Select **Cloud**
+    - **Hosting environment**: Select **Cloud**.
 
     - Select **Create** to provision the new Stream Analytics job.
 
@@ -529,7 +529,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     - **Input Alias**: Set the value to `eventhub`
 
-    - Choose **Select Event Hub from your subscriptions**
+    - Choose **Select Event Hub from your subscriptions**.
 
     - **Subscription**: Choose the same subscription you have been using thus far.
 
@@ -537,17 +537,17 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     - **Event hub name**: Choose **awchathub2**, the second Event Hub instance you created.
 
-    - **Event hub policy name**: Select **Use existing**, and choose **RootManageSharedAccessKey**
+    - **Event hub policy name**: Select **Use existing**, and choose **RootManageSharedAccessKey**.
 
-    - **Event hub consumer group**: Select **Use existing**, and select **$Default**
+    - **Event hub consumer group**: Select **Use existing**, and select **$Default**.
 
-    - **Event serialization format**: Leave as **JSON**
+    - **Event serialization format**: Leave as **JSON**.
 
-    - **Encoding**: Leave as **UTF-8**
+    - **Encoding**: Leave as **UTF-8**.
 
-    - **Event compression type**: Leave set to **None**
+    - **Event compression type**: Leave set to **None**.
 
-    - Select **Save**
+    - Select **Save**.
 
       ![The Event Hub New input form fields display the previously mentioned settings. ](media/image53.png 'Event Hub New input')
 
@@ -563,7 +563,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     - **Output alias**: Enter `cosmosdb`
 
-    - Choose **Select Cosmos DB from your subscriptions**
+    - Choose **Select Cosmos DB from your subscriptions**.
 
     - **Subscription**: Choose the same subscription you have been using thus far.
 
@@ -571,7 +571,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     - **Database**: Select your database, **awhotels**
 
-    - **Container name**: Set to the name of your messages collection, `messagestore`
+    - **Container name**: Set to the name of your messages collection, `messagestore`.
 
     - **Document id**: Set to **messageid** (all lowercase).
 
@@ -593,13 +593,13 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     - **Service Bus namespace**: Select the **awhotel-namespace** namespace.
 
-    - **Queue name**: Choose **Use existing** and select **awhotelstaffnotifications**
+    - **Queue name**: Choose **Use existing** and select **awhotelstaffnotifications**.
 
-    - **Queue policy name**: Select **ChatConsole**
+    - **Queue policy name**: Select **ChatConsole**.
 
-    - **Event serialization format**: Leave as **JSON**
+    - **Event serialization format**: Leave as **JSON**.
 
-    - **Encoding**: Leave as **UTF-8**
+    - **Encoding**: Leave as **UTF-8**.
 
     - **Format**: Leave set to Line separated.
 
@@ -617,7 +617,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     - **Output alias**: Enter `powerbi`
 
-    - **Group workspace**: Select **My workspace**
+    - **Group workspace**: Select **My workspace**.
 
     - **Dataset Name**: Set to `Messages`
 
@@ -639,13 +639,13 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     - **Output alias**: Enter `trendingsentiment`
 
-    - **Group workspace**: **My workspace**
+    - **Group workspace**: **My workspace**.
 
     - **Dataset Name**: Set to `TrendingSentiment`
 
     - **Table Name**: Set to `TrendingSentiment`
 
-    - **Authentication Mode**: Select **User token**
+    - **Authentication Mode**: Select **User token**.
 
     ![The Power BI New output form is shown populated with the preceding values.](media/2019-09-03-14-41-07.png "Power BI new output")
 
@@ -767,11 +767,11 @@ The EventProcessorHost requires an Azure Storage account that it will use to man
 
     - **Location**: Select the location you are using for resources in this hands-on lab.
 
-    - **Performance**: Set to **Standard**
+    - **Performance**: Set to **Standard**.
 
-    - **Account kind**: **StorageV2 (general purpose v2)**
+    - **Account kind**: **StorageV2 (general purpose v2)**.
   
-    - **Replication**: Set to **Locally Redundant Storage (LRS)**
+    - **Replication**: Set to **Locally Redundant Storage (LRS)**.
 
     - **Access tier**: **Hot**
 
@@ -799,7 +799,7 @@ To provision access to the Text Analytics API (which provides sentiment analysis
 
     - **Location**: Select the location you are using for resources in this hands-on lab.
 
-    - **Pricing tier**: Choose **F0 (5K Transactions per 30 days)**
+    - **Pricing tier**: Choose **F0 (5K Transactions per 30 days)**.
 
     - **Resource Group**: Select the **intelligent-analytics** resource group.
 
@@ -831,11 +831,11 @@ To provision access to the Text Analytics API (which provides sentiment analysis
   
     - **Authoring Resource: Authoring Location**: Select a region closest to you.
   
-    - **Authoring Resource: Authoring pricing tier**: Select **F0 (5 Calls per second, 1M Calls per month)**
+    - **Authoring Resource: Authoring pricing tier**: Select **F0 (5 Calls per second, 1M Calls per month)**.
   
     - **Prediction Resource: Prediction Location**: Select the location you are using for resources in this hands-on lab.
 
-    - **Prediction Resource: Prediction Pricing Tier**: Select **F0 (5 Calls per second, 1M Calls per month)**
+    - **Prediction Resource: Prediction Pricing Tier**: Select **F0 (5 Calls per second, 1M Calls per month)**.
 
      ![The Create Cognitive Services screen is displayed with the Basics tab selected and the form is populated with the preceding values.](media/luis-basics.png)
 
@@ -980,7 +980,7 @@ Your event hubs can be found by going to your Event Hub overview blade, and sele
 
 ![Event hubs overview blade](media/image81.png 'Event hubs')
 
-1. Create a new application setting with the **Name** `sourceEventHubName`. For the Value, enter the name of your first Event Hub, `awchathub`
+1. Create a new application setting with the **Name** `sourceEventHubName`. For the Value, enter the name of your first Event Hub, `awchathub`.
 
 2. Create a new application setting with the **Name** `destinationEventHubName`, enter the name of your second Event Hub, `awchathub2`, as the **Value**.
 
@@ -1024,7 +1024,7 @@ The namespace, and therefore connection string, for the service bus is different
 
    ![In the Cognitive Services resource, Properties is selected from the left menu. The location value is highlighted.](media/2019-11-24-09-37-48.png)
 
-    Create a new application setting with the **Name** `textAnalyticsBaseUrl` and enter the location as the **Value**. **Use all lower case alpha characters with no spaces.**
+    Create a new application setting with the **Name** `textAnalyticsBaseUrl` and enter the location as the **Value**. **Use all lower case alpha characters with no spaces**.
 
     ![The textAnalyticsBaseUrl application setting is shown with the value westus2.](media/2019-11-24-09-41-40.png "Text Analytics Region Value")
 
@@ -1501,7 +1501,7 @@ In this task, you will create a new Logic App, which will use the Twilio connect
 
 2. In the **Create logic app** blade, enter the following:
 
-    - **Name**: Enter `awt-notifications`.
+    - **Name**: Enter `awt-notifications`
 
     - **Subscription**: Select the subscription you are using for this hands-on lab.
 
@@ -1509,7 +1509,7 @@ In this task, you will create a new Logic App, which will use the Twilio connect
 
     - **Location**: Select the location you are using for resources in this hands-on lab.
 
-    - **Log Analytics**: Select **Off**
+    - **Log Analytics**: Select **Off**.
 
         ![On the Logic App screen, the Basics tab is selected. A form is populated with the preceding values.](./media/logic-app-create.png "Logic App blade")
 
@@ -1543,9 +1543,9 @@ In this task, you will configure a Logic App to send notifications to hotel gues
 
     - Enter `awhotelstaffnotifications` into the **Connection name** input box.
 
-    - Select the **awhotel-namespace** namespace entry. e.g. **awhotel-namepsace-th**
+    - Select the **awhotel-namespace** namespace entry, e.g. **awhotel-namepsace-th**.
 
-    - Select the **ChatConsole** **Service bus policy**
+    - Select the **ChatConsole** **Service bus policy**.
 
     - Select the **Create** button.
 
@@ -1605,9 +1605,9 @@ In this task, you will configure a Logic App to send notifications to hotel gues
 
     - **Connection Name**: `Twilio`
 
-    - **Twilio Account Id**: Enter your **Twilio account SID**
+    - **Twilio Account Id**: Enter your **Twilio account SID**.
 
-    - **Twilio Access Token**: Enter your **Twilio auth token**
+    - **Twilio Access Token**: Enter your **Twilio auth token**.
 
         ![The Twilio -- Send Text Message (SMS) dialog box is populated with the preceding values.](./media/logic-app-choose-an-action-twilio-send-text-messages-config.png "Twilio ??? Send Text Message (SMS) dialog box")
 
@@ -1867,7 +1867,7 @@ Before going further, a good thing to check is whether messages are being writte
 
     ![The Next:Add cognitive search button.](media/2019-03-21-14-17-35.png "Next button")
 
-    Select **Skip to:Customize target index**
+    Select **Skip to:Customize target index**.
 
     ![The Skip to:Customize target index button.](media/2019-03-21-14-20-45.png "Skip to Customize target index")
 
@@ -1944,7 +1944,7 @@ Before going further, a good thing to check is whether messages are being writte
 
 4. Enter the index values.
    - Copy the URL value, and paste it into the value setting for the **chatSearchApiBase** key.
-   - Enter the **chatSearchApiIndexName** value.  e.g. `chatmessages`
+   - Enter the **chatSearchApiIndexName** value, e.g. `chatmessages`.
    - Enter the **chatSearchApiKey** value.
 
     ![Web.config appSettings are displayed.  Chat search settings are highlighted.](media/2019-06-22-18-10-03.png "Chat Search Settings")
@@ -2055,13 +2055,13 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
 2. Enter the **Web App Bot** configuration as follows:
 
-    - **Bot handle**: Enter the Bot name.  e.g. `awhotel-qna-bot`
+    - **Bot handle**: Enter the Bot name, e.g. `awhotel-qna-bot`.
     - **Subscription**: Select your subscription.
-    - **Resource Group**: Select **intelligent-analytics**
+    - **Resource Group**: Select **intelligent-analytics**.
     - **Location**: Select the region you've been using throughout this lab.
-    - **Pricing tier**: Select **F0 (10K Premium Messages)**
-    - **App name**: This will be defaulted to the same name as the **Bot handle**
-    - **Application Insights**: Set to **Off**
+    - **Pricing tier**: Select **F0 (10K Premium Messages)**.
+    - **App name**: This will be defaulted to the same name as the **Bot handle**.
+    - **Application Insights**: Set to **Off**.
 
     > **Note**: Do not change the QnA Auth Key.
 
