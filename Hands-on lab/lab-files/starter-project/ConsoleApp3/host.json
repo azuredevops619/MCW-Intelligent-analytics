@@ -1,0 +1,9 @@
+{
+  "logging": {
+    "fileLoggingMode": "debugOnly",
+    "logLevel": {
+      "default": "Debug"
+    }
+  }
+
+}
