@@ -63,13 +63,13 @@ namespace ChatMessageSentimentProcessFunction31
                     //TODO: 1.Extract the JSON payload from the binary message
                     string sourceEventHubEventBody = Encoding.UTF8.GetString(eventData.Body);
                     var sentimentMessage = JsonConvert.DeserializeObject<MessageType>(sourceEventHubEventBody);
-                    
-                    //TODO: 12 Append sentiment score to chat message object
-                    //if (sentimentMessage.messageType.Equals("chat", StringComparison.OrdinalIgnoreCase))
-                    //{
-                    //    sentimentMessage.score = await GetSentimentScore(sentimentMessage);
-                    //    log.LogInformation("SentimentScore: " + sentimentMessage.score);
-                    //}
+
+                    //TODO: 7 Append sentiment score to chat message object
+                    if (sentimentMessage.messageType.Equals("chat", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sentimentMessage.score = await GetSentimentScore(sentimentMessage);
+                        log.LogInformation("SentimentScore: " + sentimentMessage.score);
+                    }
 
                     //TODO: 3.Create a Message (for Service Bus) and EventData instance (for EventHubs) from source message body
                     var updatedMessage = JsonConvert.SerializeObject(sentimentMessage);
@@ -94,14 +94,14 @@ namespace ChatMessageSentimentProcessFunction31
 
                     eventBatch.TryAdd(updatedEventData);
                     await archiveEventHubClient.SendAsync(eventBatch);
-                    Console.WriteLine("Forwarded message to event hub.");
+                    log.LogInformation("Forwarded message to event hub.");
 
-                    //TODO: 13.Respond to chat message intent if appropriate
-                    //var updatedMessageObject = JsonConvert.DeserializeObject<MessageType>(updatedMessage);
+                    //TODO: 8.Respond to chat message intent if appropriate
+                    var updatedMessageObject = JsonConvert.DeserializeObject<MessageType>(updatedMessage);
 
                     // Get your most likely intent based on your message.
-                    //var intent = await GetIntentAndEntities(updatedMessageObject.message);
-                    //await HandleIntent(intent, updatedMessageObject, topicClient);
+                    var intent = await GetIntentAndEntities(updatedMessageObject.message);
+                    await HandleIntent(intent, updatedMessageObject, topicClient);
                 }
                 catch (Exception ex)
                 {
@@ -122,6 +122,7 @@ namespace ChatMessageSentimentProcessFunction31
         {
             var config = new ConfigurationBuilder()
                 .SetBasePath(AppContext.BaseDirectory)
+                // For local development
                 .AddJsonFile("local.settings.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables()
                 .Build();
@@ -143,7 +144,7 @@ namespace ChatMessageSentimentProcessFunction31
             if (!chatMessage.messageType.Equals("chat")) return -1;
             double sentimentScore = -1;
 
-            //TODO: 8.Construct a sentiment request object 
+            //Construct a sentiment request object 
             var req = new SentimentRequest()
             {
                 documents = new SentimentDocument[]
@@ -152,11 +153,11 @@ namespace ChatMessageSentimentProcessFunction31
                 }
             };
 
-            //TODO: 9.Serialize the request object to a JSON encoded in a byte array
+            //Serialize the request object to a JSON encoded in a byte array
             var jsonReq = JsonConvert.SerializeObject(req);
             byte[] byteData = Encoding.UTF8.GetBytes(jsonReq);
 
-            //TODO: 10.Post the request to the /sentiment endpoint
+            //Post the request to the /sentiment endpoint
             string uri = $"{_textAnalyticsBaseUrl}/text/analytics/v2.1/sentiment";
             string jsonResponse = "";
 
@@ -167,9 +168,6 @@ namespace ChatMessageSentimentProcessFunction31
                 jsonResponse = await sentimentResponse.Content.ReadAsStringAsync();
             }
 
-            Console.WriteLine("\nDetect sentiment response:\n" + jsonResponse);
-
-            //TODO: 11.Deserialize sentiment response and extract the score
             var result = JsonConvert.DeserializeObject<SentimentResponse>(jsonResponse);
             sentimentScore = result.documents[0].score;
 
@@ -228,7 +226,6 @@ namespace ChatMessageSentimentProcessFunction31
             var botMessage = new Message(generatedMessageBytes);
             botMessage.UserProperties.Add("SessionId", msgObj.sessionId);
             await outputServiceBus.SendAsync(botMessage);
-            Console.WriteLine("Sent bot message to topic.");
         }
 
 

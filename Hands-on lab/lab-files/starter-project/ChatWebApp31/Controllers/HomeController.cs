@@ -23,6 +23,11 @@ namespace ChatWebApp31.Controllers
             return View();
         }
 
+        public ActionResult Bot()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

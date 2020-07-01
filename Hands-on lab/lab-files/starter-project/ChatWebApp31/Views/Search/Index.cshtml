@@ -5,14 +5,14 @@
 <div class="row"><p><h2>&nbsp;</h2></p></div>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-8">
 
         <div class="bs-component">
 
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title panel-title-large">
-                        <span class="fa-search"></span>&nbsp;&nbsp; Search Messages
+                        <span class="fas fa-search p-3" style="color:white;"></span><span class="ml-2" style="color:white;">Search Messages</span>
                     </h3>
                 </div>
                 <div class="panel-body">
@@ -22,7 +22,7 @@
                             <input id="searchText" type="text" class="form-control" value="">
                             <span class="input-group-btn">
                                 <button type="submit" id="btnSendSearch" class="btn btn-info">
-                                    <span class="fas fa-search"></span>
+                                    <span class="fas fa-search" style="color:white;"></span>
                                 </button>
                             </span>
                         </div>
@@ -57,9 +57,9 @@
 
 <script>
     //This global is used to pass the configuration setting to searchClient.js.
-    var chatSearchApiBase = "@ViewBag["ChatSearchApiBase"]";
-    var chatSearchApiIndexName = "@ViewBag["ChatSearchApiIndexName"]";
-    var chatSearchApiKey= "@ViewBag["ChatSearchApiKey"]";
+    var chatSearchApiBase = '@ViewBag.ChatSearchApiBase';
+    var chatSearchApiIndexName = '@ViewBag.ChatSearchApiIndexName';
+    var chatSearchApiKey= '@ViewBag.ChatSearchApiKey';
 </script>
 
 <script src="~/js/searchClient.js"></script>

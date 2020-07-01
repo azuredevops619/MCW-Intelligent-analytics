@@ -1,5 +1,7 @@
 ﻿
 $(document).ready(function () {
+    var avatarColors = ['00A600', '55C1E7', 'F2B509', 'FF5300'];
+    var uniqueUsers = [];
 
     $("#btnSendSearch").click(function () {
         var searchText = encodeURIComponent($("#searchText").val());
@@ -27,7 +29,7 @@ $(document).ready(function () {
                 var items = [], searchResultsDiv = $("div.search-results");
                 var searchResults = JSON.parse(JSON.stringify(data)).value;
                 if (searchResults && searchResults.length > 0) {
-                    com.contoso.concierge.findUniqueSearchUsers(searchResults);
+                    findUniqueSearchUsers(searchResults);
 
                     $.each(searchResults, function (key, searchResult) {
                         items.push(createChatEntry(searchResult));
@@ -52,17 +54,40 @@ $(document).ready(function () {
     function createChatEntry(searchResult) {
         var chatEntry = "", createDate, initial;
         createDate = new Date(searchResult.createDate);
-        initial = searchResult.username.substring(0, searchResult.username.length > 1 ? 2 : 1).toUpperCase();
+        initial = searchResult.userName.substring(0, searchResult.userName.length > 1 ? 2 : 1).toUpperCase();
 
         chatEntry = '<li class="chatBubbleOtherUser left clearfix"><span class="chat-img pull-left">';
-        chatEntry += '<img src="https://placehold.it/50/' + com.contoso.concierge.getAvatarColor(searchResult.username) + '/fff&text=' + initial + '" alt="' + searchResult.username + '" class="img-circle" /></span>';
+        //chatEntry += '<img src="https://placehold.it/50/' + getAvatarColor(searchResult.userName) + '/fff&text=' + initial + '" alt="' + searchResult.userName + '" class="img-circle" /></span>';
         chatEntry += '<div class="chat-body clearfix"><div class="header">';
-        chatEntry += '<strong class="primary-font">' + searchResult.username + '</strong><small class="pull-right search-time text-muted">';
-        chatEntry += '<span class="glyphicon glyphicon-time"></span>&nbsp;' + createDate.toLocaleDateString() + ' ' + createDate.toLocaleTimeString() + '</small></div>';
+        chatEntry += '<strong class="primary-font">' + searchResult.userName + '</strong><small class="pull-right search-time text-muted">';
+        chatEntry += '<span class="fas fa-time"></span>&nbsp;' + createDate.toLocaleDateString() + ' ' + createDate.toLocaleTimeString() + '</small></div>';
         chatEntry += '<p>' + searchResult.message + '</p>';
         chatEntry += '</div></li>';
 
         return chatEntry;
     }
 
+
+    function getAvatarColor(userName) {
+        var idx = uniqueUsers.findIndex(function (n) { return n == userName; });
+        return avatarColors[idx % 4];
+    }
+
+
+    function findUniqueSearchUsers(searchResults) {
+        var results = searchResults.length;
+        var flags = [], l = results, i;
+        for (i = 0; i < l; i++) {
+            if (flags[searchResults[i].userName]) continue;
+            flags[searchResults[i].userName] = true;
+            uniqueUsers.push(searchResults[i].userName);
+        }
+    }
+
+    function addUserIfNeeded(userName) {
+        var idx = uniqueUsers.findIndex(function (n) { return n == userName; });
+        if (idx < 0) {
+            uniqueUsers.push(userName);
+        }
+    }
 });

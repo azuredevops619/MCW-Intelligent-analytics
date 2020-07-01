@@ -17,9 +17,9 @@ namespace ChatWebApp31.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.ChatSearchApiBase = configuration["AppSetting.ChatSearchApiBase"];
-            ViewBag.ChatSearchApiIndexName = configuration["AppSettings:ChatSearchApiIndexName"];
-            ViewBag.ChatSearchApiKey = configuration["AppSettings:ChatSearchApiKey"];
+            ViewBag.ChatSearchApiBase = configuration["ChatSearchApiBase"];
+            ViewBag.ChatSearchApiIndexName = configuration["ChatSearchApiIndexName"];
+            ViewBag.ChatSearchApiKey = configuration["ChatSearchApiKey"];
             return View();
         }
     }

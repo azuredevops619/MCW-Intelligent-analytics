@@ -67,7 +67,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
   - [Exercise 8: Enabling search indexing](#exercise-8-enabling-search-indexing)
     - [Task 1: Verifying message archive](#task-1-verifying-message-archive)
     - [Task 2: Creating the index and indexer](#task-2-creating-the-index-and-indexer)
-    - [Task 3: Update the Chat Web App web.config](#task-3-update-the-chat-web-app-webconfig)
+    - [Task 3: Update the Chat Web App Configuration](#task-3-update-the-chat-web-app-configuration)
     - [Task 4: Re-publish web app](#task-4-re-publish-web-app)
   - [Exercise 9: Add a bot using Bot service and QnA Maker](#exercise-9-add-a-bot-using-bot-service-and-qna-maker)
     - [Task 1: Create a QnA service instance in Azure](#task-1-create-a-qna-service-instance-in-azure)
@@ -297,14 +297,14 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 9. Select **Create**.
 10. Create a subscription to the topic you just created. Enter these configurations:
 
+    ![The screenshot shows the Subscription button highlighted.](media/2020-06-30-20-09-57.png "Create the topic subscription.")
+
     - Enter **ChatMessageSub** has the name.
     - Max delivery count: 10
     - Auto-delete after idle: 1 day
     - Message time to live and dead-lettering: 1 day
   
     Select the **Create** button.
-
-    !["The screenshot shows Subscriptions on the left hand side menu is highlighted. ChatMessageSub has been entered."](media/2020-06-28-19-18-22.png "Create the topic subscription.")
 
 11. Next, select **Queues** under Entities on the Service Bus Namespace left-hand menu, and then select **+Queue**.
 
@@ -588,7 +588,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
       ![The Cosmos DB New Output form fields display the previously mentioned settings.](media/image56.png 'CosmosDB New Output')
 
-10. **Optional**: Test your connection. Select the Output link on the left-hand side.  Your new `cosmosdb` connection should be listed.  Select the test connection icon. Below is an example of a problem with your Cosmos DB configuration.
+10. **Optional**: Test your connection. Select the Output link on the left-hand side.  Your new `cosmosdb` connection should be listed.  Select the test connection icon. Below is an example of a problem with a Cosmos DB configuration.
 
     ![Screen shows how to test the cosmosdb output connection for the correct configuration.](media/2020-06-29-17-53-13.png "Test Cosmos DB Connection")
 
@@ -623,11 +623,55 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
 13. Select **Save**.
 
-14. Next, select **Query** from the left-hand menu, under **Job Topology**.
+14. Create another Output, this time for **Power BI**.
+
+    ![The Add New Outputs is shown with the Power BI option selected.](media/image57.png 'Add New Outputs')
+
+    A blade will open asking to authorize your Power BI account, select **Authorize**. When prompted in the popup window, enter the account credentials you used to create your Power BI account in the Before the Hands-on Lab exercise. You may have to enter your Username and Password.
+
+15. On the **New output** blade, enter the following:
+
+    - **Output alias**: Enter `powerbi`
+
+    - **Group workspace**: Select **My workspace**.
+
+    - **Dataset Name**: Set to `Messages`
+
+    - **Table Name**: Set to `Messages`
+  
+    - **Authentication Mode**: Select **User token**.
+
+      ![The Power BI New output form is shown and is populated with the preceding values.](media/2019-11-16-06-02-09.png "Power BI new output")
+
+    - Select the **Save** button.
+
+16. Create one final Output for **Power BI**.
+
+    ![The Add New Outputs is shown with the Power BI option selected.](media/image57.png 'Add New Outputs')
+
+    Select **Authorize** (if not already authorized). This will authorize the connection to your Power BI account. When prompted in the popup window, enter the account credentials you used to create your Power BI account in the Before the Hands-on Lab exercise. You may have to enter your Username and Password.
+
+17. On the **New output** blade, enter the following:
+
+    - **Output alias**: Enter `trendingsentiment`
+
+    - **Group workspace**: **My workspace**.
+
+    - **Dataset Name**: Set to `TrendingSentiment`
+
+    - **Table Name**: Set to `TrendingSentiment`
+
+    - **Authentication Mode**: Select **User token**.
+
+    ![The Power BI New output form is shown populated with the preceding values.](media/2019-09-03-14-41-07.png "Power BI new output")
+
+18. Select **Save**.
+
+19. Next, select **Query** from the left-hand menu, under **Job Topology**.
 
     ![In the Stream Analytics job left menu, under the Job topology section the Query menu item is highlighted.](media/image59.png 'Job Topology section')
 
-15. Paste the following text into the query window:
+20. Paste the following text into the query window:
 
     ```sql
     SELECT
@@ -642,6 +686,13 @@ In this section, you will create the Stream Analytics Job that will be used to r
     FROM eventhub
     WHERE score < 0.1 AND score > 0
 
+    SELECT
+    *
+    INTO
+    powerbi
+    FROM
+    eventhub
+
     SELECT AVG(score) AS Average, System.TimeStamp AS Snapshot
     INTO trendingsentiment
     FROM eventhub
@@ -649,7 +700,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
     GROUP BY TumblingWindow(minute, 2)
     ```
 
-16. Select **Save** again.
+21. Select **Save** again.
 
     ![The query editor toolbar is displayed with the Save button selected.](media/image60.png 'Save option')
 
@@ -924,8 +975,6 @@ The namespace, and therefore connection string, for the service bus is different
 
     ![The screen shows the service bus Shared access policies.  The ChatConsole policy is listed.](media/2019-11-16-12-53-19.png "Service Bus - Shared access policies")
 
-    ![In the SAS Policy: ChatConsole blade, the Primary Connection String value and its corresponding copy button are highlighted.](media/image88.png "SAS Policy: ChatConsole blade")
-
 2. Return to the Function App's Application Settings and create a new setting with the **Name** `ServiceBusConnectionString` and paste this connection string as the **Value**.
 
 #### Chat topic
@@ -956,7 +1005,8 @@ The namespace, and therefore connection string, for the service bus is different
 
 5. Scroll to the top of **Application Settings** and select **Save** from the toolbar. Your application settings should now resemble the following (to see the hidden values, select the eye icon in the Value column):
 
-    ![The Application Settings listing for the Function App is shown.](media/2019-11-24-09-48-15.png "Function Application settings")
+
+    ![The Application Settings listing for the Function App is shown.](media/2020-06-30-19-52-53.png "Function Application settings")
 
 ## Exercise 3: Configure the Chat Web App settings
 
@@ -1103,67 +1153,15 @@ In this task, you will add code that enables the Event Processor to invoke the T
 3. Replace the code for **TODO: 7** with the following:
 
     ```csharp
-    //TODO: 7.Configure the HTTPClient base URL and request headers
-    _sentimentClient.DefaultRequestHeaders.Clear();
-    _sentimentClient.DefaultRequestHeaders.Accept.Clear();
-    _sentimentClient.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", _textAnalyticsAccountKey);
-    _sentimentClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-    ```
-
-4. Scroll down to the **GetSentimentScore** method and replace the code for **TODO: 8** with the following:
-
-    ```csharp
-    //TODO: 8.Construct a sentiment request object
-    var req = new SentimentRequest()
+    //TODO: 7 Append sentiment score to chat message object
+    if (sentimentMessage.messageType.Equals("chat", StringComparison.OrdinalIgnoreCase))
     {
-        documents = new SentimentDocument[]
-        {
-            new SentimentDocument() { id = "1", text = messageText, language = "en" }
-        }
-    };
-    ```
-
-5. Replace the code at **TODO: 9** with the following:
-
-    ```csharp
-    //TODO: 9.Serialize the request object to a JSON encoded in a byte array
-    var jsonReq = JsonConvert.SerializeObject(req);
-    byte[] byteData = Encoding.UTF8.GetBytes(jsonReq);
-    ```
-
-6. Replace the code at **TODO: 10** with the following:
-
-    ```csharp
-    //TODO: 10.Post the request to the /sentiment endpoint
-    // You need to enter the region.
-    string uri = $"https://{_textAnalyticsBaseUrl}.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment";
-    string jsonResponse = "";
-    using (var content = new ByteArrayContent(byteData))
-    {
-        content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-        var sentimentResponse = await _sentimentClient.PostAsync(uri, content);
-        jsonResponse = await sentimentResponse.Content.ReadAsStringAsync();
+        sentimentMessage.score = await GetSentimentScore(sentimentMessage);
+        log.LogInformation("SentimentScore: " + sentimentMessage.score);
     }
-    Console.WriteLine("\nDetect sentiment response:\n" + jsonResponse);
     ```
 
-7. Replace the code at **TODO: 11** with the following:
-
-    ```csharp
-    //TODO: 11.Deserialize sentiment response and extract the score
-    var result = JsonConvert.DeserializeObject<SentimentResponse>(jsonResponse);
-    sentimentScore = result.documents[0].score;
-    ```
-
-8. Navigate to the **Run** method and replace the line at **TODO: 12** with the following code:
-
-    ```csharp
-    //TODO: 12 Append sentiment score to chat message object
-    msgObj.score = await GetSentimentScore(msgObj.message);
-    log.Info("SentimentScore: " + msgObj.score);
-    ```
-
-9. Test your sentiment query by selecting the sentiment query and selecting the `Test selected query` button.  Check your results.  You should have all of the negative chat messages.
+4. Test your sentiment query by selecting the sentiment query and selecting the `Test selected query` button.  Check your results.  You should have all of the negative chat messages.
 
     ![The screen shows the ability to test your queries before saving them.](media/2020-06-29-19-54-32.png "Test your queries")
 
@@ -1269,7 +1267,7 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     !["The screenshot shows the new machine learning prediction for the utterance. The user did not have to select the phrase and associated it with the entity."](media/2020-06-28-10-03-57.png "Machine learning entity prediction")
 
-26. Select **Publish App** from the toolbar.
+26. Right-click on the **ChatMessageSentimentFunction** project. Select **Publish App** from the Visual Studio menu.
 
 27. When the publish process completes, select **Manage** from the toolbar, then select **Azure Resources** from the left menu. In the **Starter_Key** section, the URL is available in the **Example Query** textbox.
 
@@ -1293,10 +1291,10 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 31. Open **Visual Studio** then open **ProcessChatMessage.cs** within the **ChatMessageSentimentProcessorFunction** project, and navigate to the Run method.
 
-32. Locate **TODO: 13** and uncomment the code:
+32. Locate **TODO: 8** and uncomment the code:
 
     ```csharp
-    //TODO: 13.Respond to chat message intent if appropriate
+    //TODO: 8.Respond to chat message intent if appropriate
     var updatedMessageObject = JsonConvert.DeserializeObject<MessageType>(updatedMessage);
 
     // Get your most likely intent based on your message.
@@ -1325,6 +1323,7 @@ Now that you have added sentiment analysis and language understanding to the sol
 5. Next, try ordering some items from room service, like `bring me towels` and `order a pizza`. Observe that you get a response from the **ConciergeBot**, and that the reply indicates whether your request was sent to **Housekeeping** or **Room Service**, depending on whether the item ordered was a room or food item.
 
     ![In the chat window, Tim is having a conversation with a ConciergeBot. He asks for towels, and the ConciergeBot says they are forwarding the request to Housekeeping.](media/2020-06-29-05-47-15.png "Live Chat window")
+
 ## Exercise 7: Building the Power BI dashboard
 
 Duration: 30 minutes
@@ -1501,11 +1500,11 @@ Before going further, a good thing to check is whether messages are being writte
 
 3. Under the **awhotels** Cosmos DB, select **messagestore**, then **Items**. You should see some data here.
 
-    ![In Data Explorer, the awhotels, and messagestore items are expanded. The Items item below messagestore is selected.](media/2019-06-21-10-07-14.png "Documents selected in Data Explorer")
+    ![In Data Explorer, the awhotels, and messagestore items are expanded. The Items item below messagestore is selected.](media/2020-06-30-19-31-44.png "Documents selected in Data Explorer")
 
 4. If you want to peek at the message contents, select any item in the listing.
 
-    ![A list of messages is displayed with one selected, the JSON message displayed to the right.](media/2019-06-21-10-09-45.png "Cosmos DB Item Contents")
+    ![A list of messages is displayed with one selected, the JSON message displayed to the right.](media/2020-06-30-15-56-18.png "Cosmos DB Item Contents")
 
     > **Note**: If you don't see messages, then check for errors in MessageLogger, Outputs, Cosmos DB.  If you have to delete the collection and recreate them, make sure to stop and start the MessageLogger.  Test the connection.
 
@@ -1549,7 +1548,7 @@ Before going further, a good thing to check is whether messages are being writte
 
 11. Select **Customize target index**, and observe that the field list has been pre-populated for you based on data in the collection.
 
-12. Enter `chatmessages` for the name of the index.
+12. Enter `chatmessages` for the name of the index. Capture this value for later web application configuration.
 
 13. Set the Key to **id**
 
@@ -1597,35 +1596,30 @@ Before going further, a good thing to check is whether messages are being writte
 
     > **Note**: The **All** setting allows search requests from other client applications to successfully execute. For a production application, you would choose the **Custom** option and enter the domain you will be receiving requests from.
 
-26. We need to capture the index query api key for the web.config files in the Visual Studio solution.
-    - On the **Search service** blade, select **Keys** on the left-hand menu.
+26. We need to capture the index query api key for the Azure Web App configuration.
+    - On the **Search service** blade, select **Keys** on the left-hand menu. Capture the **Primary admin key**. The value will be used for the ChatSearchApiKey.
 
-      ![On the Search Service blade, Settings section, under Settings, Keys is selected.](media/image176.png 'Search Service blade, Settings section')
+    ![The Azure Cognitive Search Service key configuration screen is displayed.](media/2020-06-30-16-12-38.png "Display Search Keys")
 
-    - In the **Manage query keys** section, copy the \<empty\> key value. You don't want to use the admin keys.
+### Task 3: Update the Chat Web App Configuration
 
-      ![On the Manage query keys section, the value in the Key field is selected.](media/image178.png 'Manage query keys blade')
+1. Navigate to your web app.
 
-### Task 3: Update the Chat Web App web.config
+2. Select the configuration blade. We are going to add the following values:
 
-1. On your **Lab VM**, within **Visual Studio Solution Explorer**, expand the **ChatWebApp** project.
+    ```text
+    ChatSearchApiBase
+    ChatSearchApiIndexName
+    ChatSearchApiKey
+    ```
 
-2. Open **Web.config**.
-
-3. For the `chatSearchApiBase` key, enter the URI of the Search App (e.g., <https://conciergeplusappsearchth.search.windows.net)>.
+3. For the `ChatSearchApiBase` key, enter the URI of the Search App (e.g., <https://conciergeplusappsearchth.search.windows.net)>.
 
     - You can find this by going to **Resource Groups**, selecting the **intelligent-analytics** resource group, and selecting your **search app service** from the list.
 
     ![The Azure Search Service overview is displayed. On the right hand side, the Url value is highlighted.](media/2019-09-08-15-35-46.png "Search Service URL Displayed")
 
-4. Enter the index values.
-   - Copy the URL value, and paste it into the value setting for the **chatSearchApiBase** key.
-   - Enter the **chatSearchApiIndexName** value, e.g. `chatmessages`.
-   - Enter the **chatSearchApiKey** value.
-
-    ![Web.config appSettings are displayed.  Chat search settings are highlighted.](media/2019-06-22-18-10-03.png "Chat Search Settings")
-
-5. Save **Web.config**.
+4. Save the web application configuration.
 
 ### Task 4: Re-publish web app
 
@@ -1635,7 +1629,7 @@ Before going further, a good thing to check is whether messages are being writte
 
 3. Navigate to the **Search** tab on the deployed Web App and try searching for chat messages.
 
-    ![In the Search Messages box, in the Search messages for text box, Hi is typed. Below that, 32 results have been found.](media/2019-09-09-08-15-39.png "Search Messages box")
+    ![In the Search Messages box, in the Search messages for text box, Hi is typed. Below that, 32 results have been found.](media/2020-06-30-18-55-16.png "Search Messages box")
 
 ## Exercise 9: Add a bot using Bot service and QnA Maker
 
@@ -1773,7 +1767,7 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
 1. Open **Visual Studio** and open **Bot.cshtml** located within the **Views\Home** folder of the **ChatWebApp**.
 
-    ![In Visual Studio Solution Explorer, the ChatWebApp project is expanded. The Views and Home folders are expanded and the Bot.cshtml is selected.](media/vs-bot.png "Visual Studio")
+    ![In Visual Studio Solution Explorer, the ChatWebApp project is expanded. The Views and Home folders are expanded and the Bot.cshtml is selected.](media/2020-06-30-18-58-47.png "Visual Studio")
 
 2. Find `<!-- PASTE YOUR BOT EMBED CODE HERE -->` within the page and paste your iframe embed code on a new line beneath.
 
@@ -1806,12 +1800,8 @@ In this exercise, attendees will deprovision any Azure resources that were creat
 
 3. Select Delete in the command bar and confirm the deletion by re-typing the Resource group name and selecting Delete.
 
-4. Log into Twilio and release your phone number.
+4. Power BI - Delete **Real-time Sentiment** workspace.
 
-    ![Twilio - release this number.](media/2019-03-21-17-57-37.png "Twilio - release this number")
-
-5. Power BI - Delete **Real-time Sentiment** workspace.
-
-6. LUIS - <https://www.luis.ai/applications>.  Delete the **awchat** app.
+5. LUIS - <https://www.luis.ai/applications>.  Delete the **awchat** app.
 
 You should follow all steps provided _after_ attending the Hands-on lab.
