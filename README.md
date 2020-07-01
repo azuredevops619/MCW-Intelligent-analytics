@@ -2,7 +2,7 @@
 
 First Up Consultants specializes in building software solutions for the hospitality industry. Their latest product is an enterprise mobile/social chat product called Concierge+ (aka ConciergePlus). The mobile web app enables guests to easily stay in touch with the concierge and other guests, enabling greater personalization and improving their experience during their stay. Sentiment analysis is performed on top of chat messages as they occur, enabling hotel operators to keep tabs on guest sentiments in real-time.
 
-March 2020
+June 2020
 
 ## Target audience
 
@@ -15,7 +15,7 @@ March 2020
 
 In this workshop you will learn real-time analytics without IoT.  You'll enable intelligent conversation in a machine learning enabled, real-time chat pipeline, and apply analytics to visualize customer sentiment in real time for hotel guests, allowing them to chat with one another, and to communicate directly with the concierge. You'll apply analytics to visualize customer sentiment in real-time, as well as view trending sentiment over time and create a bot that can answer questions and embed it in the custom web app.
 
-At the end of this workshop, you will better understand how to leverage Cognitive Services (LUIS & Text Analytics API), process events with Azure functions, index with Search Archive and Cosmos DB, visualize with Power BI Q&A, use Bot Framework for questions and answers, and send notifications with Logic App. You will be able to implement a lambda architecture, and enable web-based, real-time messaging through Web Sockets, Event Hubs, and Services Bus.
+At the end of this workshop, you will better understand how to leverage Cognitive Services (LUIS & Text Analytics API), process events with Azure functions, index with Search Archive and Cosmos DB, visualize with Power BI Q&A, and use Bot Framework for questions and answers. You will be able to implement a lambda architecture, and enable web-based, real-time messaging through SignalR, Event Hubs, and Services Bus.
 
 ### Whiteboard Design Session
 
@@ -41,6 +41,8 @@ By the end of the hands-on lab, you will be more confident in the various servic
 - Azure Service Bus
 - Azure Storage
 - Azure Stream Analytics
+- SignalR
+- Language Understanding (LUIS)
 - Microsoft Bot Framework
 - Power BI
 - Visual Studio

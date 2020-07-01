@@ -9,7 +9,7 @@ Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
-March 2020
+June 2020
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -92,9 +92,9 @@ First Up Consultants specialize in building software solutions for the hospitali
 
 Below is a diagram of the solution architecture you will build in this lab. Please study this carefully so you understand the whole of the solution as you are working on the various components.
 
-![The preferred solution is shown to meet the customer requirements. From right to left there is an architecture diagram which shows the connections from a mobile device to a Web Application. The Web Application is shown setting data to an Event Hub which is connected to a Web Job. From there Event Hub and Service Bus work together with Stream Analytics, Power BI and Cosmos DB to provide the full solution.](media/preferred-solution-architecture2.png "Solution architecture")
+![The preferred solution is shown to meet the customer requirements. From right to left there is an architecture diagram which shows the connections from a mobile device to a Web Application. The Web Application is shown setting data to an Event Hub which is connected to a Web Job. From there Event Hub and Service Bus work together with Stream Analytics, Power BI and Cosmos DB to provide the full solution.](media/preferred-solution-architecture3.png "Solution architecture")
 
-Messages are sent from browsers running within laptop or mobile clients via Web Sockets to an endpoint running in an Azure Web App. Chat messages received by the Web App are sent to an Event Hub where they are temporarily stored. An Azure Function picks up the chat messages and applies sentiment analysis to the message text (using the Text Analytics API), as well as contextual understanding (using LUIS). The function forwards the chat message to an Event Hub used to store messages for archival purposes, and to a Service Bus Topic which is used to deliver the message to the intended recipients. A Stream Analytics Job provides a simple mechanism for pulling the chat messages from the second Event Hub and writing them to Cosmos DB for archiving, a Service Bus queue for negative sentiment notifications, and to Power BI for visualization of sentiment in real-time as well as trending sentiment. A Logic App is triggered when messages are added to a Service Bus queue, and sends SMS messages to hotel staff when negative guest sentiment is detected in the chat. An indexer runs atop Cosmos DB that updates the Azure Search index which provides full text search capability. Messages in the Service Bus Topic are pulled by Subscriptions created in the Web App and running on behalf of each client device connected by Web Sockets. When the Subscription receives a message, it is pushed via Web Sockets down to the browser-based app and displayed in a web page. Bot Services hosts a bot created using QnA maker, which automatically answers simple questions asked by site visitors.
+Messages are sent from browsers running within laptop or mobile clients via Web Sockets to an endpoint running in an Azure Web App. Chat messages received by the Web App are sent to an Event Hub where they are temporarily stored. An Azure Function picks up the chat messages and applies sentiment analysis to the message text (using the Text Analytics API), as well as contextual understanding (using LUIS). The function forwards the chat message to an Event Hub used to store messages for archival purposes, and to a Service Bus Topic which is used to deliver the message to the intended recipients. A Stream Analytics Job provides a simple mechanism for pulling the chat messages from the second Event Hub and writing them to Cosmos DB for archiving, and to Power BI for visualization of sentiment in real-time as well as trending sentiment. An indexer runs atop Cosmos DB that updates the Azure Search index which provides full text search capability. Messages in the Service Bus Topic are pulled by Subscriptions created in the Web App and running on behalf of each client device connected by Web Sockets. When the Subscription receives a message, it is pushed via Web Sockets down to the browser-based app and displayed in a web page. Bot Services hosts a bot created using QnA maker, which automatically answers simple questions asked by site visitors.
 
 ## Requirements
 
@@ -134,9 +134,7 @@ The following section walks you through the manual steps to provision the servic
 
     - **Username**: `demouser`
 
-    - **Password**: `Password.1!!`
-
-    ![The Windows Security window asks you to enter the credentials for demouser.](media/image14.png 'Windows Security window')
+    - **Password**: (your password)
 
 7. Select Yes to connect, if prompted that the identity of the remote computer cannot be verified.
 
@@ -295,36 +293,18 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
       ![The Create topic blade fields display the previously mentioned settings. In addition, the following fields are highlighted: Name, which is set to awhotel, Message time to live in Days, which is set to 1, and the Enable partitioning check box.](media/image36.png 'Create topic blade')
 
 9. Select **Create**.
-10. Create a subscription to the topic you just created. Enter these configurations:
+10. Create a subscription to the topic you just created. The web application will use the subscription to retrieve messages and send them messages to the browser client. Enter these configurations:
 
     ![The screenshot shows the Subscription button highlighted.](media/2020-06-30-20-09-57.png "Create the topic subscription.")
 
-    - Enter **ChatMessageSub** has the name.
+    - Enter `ChatMessageSub` has the name.
     - Max delivery count: 10
     - Auto-delete after idle: 1 day
     - Message time to live and dead-lettering: 1 day
   
     Select the **Create** button.
-
-11. Next, select **Queues** under Entities on the Service Bus Namespace left-hand menu, and then select **+Queue**.
-
-12. In the Create queue dialog, enter the following:
-
-    - **Name**: `awhotelstaffnotifications`
   
-    - **Max topic size**: Leave set to **1 GB**.
-  
-    - **Message time to live**: Set to `1` day.
-  
-    - **Enable partitioning**: Ensure this checkbox remains unchecked.
-
-        ![On the Create queue dialog, awhotelstaffnotifications is entered into the Name field, Message time to live is set to 1 day, and Enable partitioning is unchecked.](media/logic-app-create-queue.png "Create queue")
-
-        This queue will be used by the Azure Logic App to send messages to staff about unhappy hotel guests.
-
-13. Select **Create**.
-
-14. Navigate back to the **Service Bus namespace** in the Azure Portal.
+11. Navigate back to the **Service Bus namespace** in the Azure Portal.
 
     - Select **Shared access policies** within the left menu, under Settings.
 
@@ -397,7 +377,7 @@ In this task, you will create a new Event Hubs namespace and instance.
       ![The Create Event Hub blade fields display with the previously mentioned settings.](media/2020-06-29-13-44-07.png "Create Event Hub blade")
 
 6. Repeat steps listed 5 to create another Event Hub. This one will store messages for archival and be processed by Stream Analytics. Stream Analytics forwards the message to Cogntive Search.
-   
+
    Name it `awchathub2`. If you select the **Event Hubs** menu item from the left menu, this will display the list of event hubs, you should see the following:
 
     ![A list of Event Hubs is displayed, awchathub and awchathub2 are shown in this list.](media/2019-03-20-17-01-42.png "Event Hubs created")
@@ -586,50 +566,25 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     - Select **Save**.
 
-      ![The Cosmos DB New Output form fields display the previously mentioned settings.](media/image56.png 'CosmosDB New Output')
+    ![The Cosmos DB New Output form fields display the previously mentioned settings.](media/2020-07-01-09-45-19.png "CosmosDB New Output")
 
 10. **Optional**: Test your connection. Select the Output link on the left-hand side.  Your new `cosmosdb` connection should be listed.  Select the test connection icon. Below is an example of a problem with a Cosmos DB configuration.
 
     ![Screen shows how to test the cosmosdb output connection for the correct configuration.](media/2020-06-29-17-53-13.png "Test Cosmos DB Connection")
 
     You should get this success message if the configuration is correct.
+
     ![Screen shows successful Cosmos DB test message.](media/2020-06-29-17-50-13.png "Successful Cosmos DB connection")
 
-11. Create another Output, this time for **Service Bus queue**.
+11. Select **Save**.
 
-    ![Add New Outputs is shown with the Service Bus queue option highlighted.](media/stream-analytics-add-output-service-bus-queue.png "Add Service Bus queue output")
-
-12. On the **Service Bus queue New output** blade, enter the following:
-
-    - **Output alias**: Enter `staffnotificationqueue`
-
-    - Choose **Select queue from your subscriptions**.
-
-    - **Subscription**: Select the subscription you are using for this hands-on lab.
-
-    - **Service Bus namespace**: Select the **awhotel-namespace** namespace.
-
-    - **Queue name**: Choose **Use existing** and select **awhotelstaffnotifications**.
-
-    - **Queue policy name**: Select **ChatConsole**.
-
-    - **Event serialization format**: Leave as **JSON**.
-
-    - **Encoding**: Leave as **UTF-8**.
-
-    - **Format**: Leave set to Line separated.
-
-        ![On the Service Bus queue New output blade, the values specified above are entered into the appropriate fields.](media/2020-06-29-15-14-26.png "Add new Service Bus queue output")
-
-13. Select **Save**.
-
-14. Create another Output, this time for **Power BI**.
+12. Create another Output, this time for **Power BI**.
 
     ![The Add New Outputs is shown with the Power BI option selected.](media/image57.png 'Add New Outputs')
 
     A blade will open asking to authorize your Power BI account, select **Authorize**. When prompted in the popup window, enter the account credentials you used to create your Power BI account in the Before the Hands-on Lab exercise. You may have to enter your Username and Password.
 
-15. On the **New output** blade, enter the following:
+13. On the **New output** blade, enter the following:
 
     - **Output alias**: Enter `powerbi`
 
@@ -645,13 +600,13 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     - Select the **Save** button.
 
-16. Create one final Output for **Power BI**.
+14. Create one final Output for **Power BI**.
 
     ![The Add New Outputs is shown with the Power BI option selected.](media/image57.png 'Add New Outputs')
 
     Select **Authorize** (if not already authorized). This will authorize the connection to your Power BI account. When prompted in the popup window, enter the account credentials you used to create your Power BI account in the Before the Hands-on Lab exercise. You may have to enter your Username and Password.
 
-17. On the **New output** blade, enter the following:
+15. On the **New output** blade, enter the following:
 
     - **Output alias**: Enter `trendingsentiment`
 
@@ -665,13 +620,13 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     ![The Power BI New output form is shown populated with the preceding values.](media/2019-09-03-14-41-07.png "Power BI new output")
 
-18. Select **Save**.
+16. Select **Save**.
 
-19. Next, select **Query** from the left-hand menu, under **Job Topology**.
+17. Next, select **Query** from the left-hand menu, under **Job Topology**.
 
     ![In the Stream Analytics job left menu, under the Job topology section the Query menu item is highlighted.](media/image59.png 'Job Topology section')
 
-20. Paste the following text into the query window:
+18. Paste the following text into the query window:
 
     ```sql
     SELECT
@@ -680,11 +635,6 @@ In this section, you will create the Stream Analytics Job that will be used to r
     cosmosdb
     FROM
     eventhub
-
-    SELECT *
-    INTO [staffnotificationqueue]
-    FROM eventhub
-    WHERE score < 0.1 AND score > 0
 
     SELECT
     *
@@ -700,7 +650,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
     GROUP BY TumblingWindow(minute, 2)
     ```
 
-21. Select **Save** again.
+19. Select **Save** again.
 
     ![The query editor toolbar is displayed with the Save button selected.](media/image60.png 'Save option')
 
@@ -836,7 +786,7 @@ In this section, you will implement the message forwarding from the ingest Event
 
     ![A Visual Studio source code window is displayed with the method signature of the Run method shown.](media/2020-06-30-14-37-10.png "Run method")
 
-4. Locate **TODO: 1** through **TODO: 6** and uncomment the code:
+4. Locate **TODO: 1** through **TODO: 6** comments and uncomment the code:
 
     ```csharp
     //TODO: 1.Extract the JSON payload from the binary message
@@ -876,7 +826,7 @@ In this section, you will implement the message forwarding from the ingest Event
     Console.WriteLine("Forwarded message to event hub.");
     ```
 
-5.  Save the file.
+5. Save the file.
 
 ### Task 2: Configure the Chat Message Processor Function App
 
@@ -927,11 +877,9 @@ The connection string required by the ChatMessageSentimentProcessor is different
 
 5. In the list of Claims, select **Send** and **Listen**. Select the **Create** button.
 
-    ![In the Add SAS Policy dialog box, Policy name is set to ChatConsole. Two check boxes are checked for Send and Listen.](media/2020-06-29-08-20-06.png "Add SAS Policy dialog box")
-
 6. After the **ChatConsole** shared access policy is created, select it from the list of policies, and then copy the **Connection string--primary key** value.
 
-    ![Two panes display: Shared access policies, and SAS Policy: Chat Console. In the Shared access policies pane, ChatConsole is selected. In the SAS Policy: ChatConsole pane, the Connection string-primary key is selected.](media/2020-06-30-14-48-44.png "Shared access policies, and SAS Policy: Chat Console panes")
+    ![In the SAS Policy: ChatConsole pane, the Connection string-primary key is selected.](media/2020-06-30-14-48-44.png "Shared access policies, and SAS Policy: Chat Console pane")
 
 7. Return to the **Application Settings** for the Function App in the [Azure portal](https://portal.azure.com) by selecting the **Configuration** link on the Overview pane. Select **+ New application setting** in the toolbar menu of the Application Settings section.
 
@@ -1005,7 +953,6 @@ The namespace, and therefore connection string, for the service bus is different
 
 5. Scroll to the top of **Application Settings** and select **Save** from the toolbar. Your application settings should now resemble the following (to see the hidden values, select the eye icon in the Value column):
 
-
     ![The Application Settings listing for the Function App is shown.](media/2020-06-30-19-52-53.png "Function Application settings")
 
 ## Exercise 3: Configure the Chat Web App settings
@@ -1025,14 +972,14 @@ Duration: 15 minutes
     SourceEventHubName
     ServiceBusConnectionString
     ```
-    ![](media/2020-06-29-10-27-36.png)
 
+    ![The screenshot shows the web application configuration settings.](media/2020-06-29-10-27-36.png "Web application configuration settings")
 
 With the App Services projects properly configured, you are now ready to deploy them to their pre-created services in Azure.
 
 ### Task 1: Restore NuGet Packages for the solution
 
-1. In **Visual Studio Solution Explorer**, right-click on the Solution at the top of the tree, and select **Restore NuGet Packages** from the context menu.
+1. In **Visual Studio Solution Explorer**, right-click on the Solution at the top of the tree, and select **Restore NuGet Packages** from the context menu. Build the Solution.
 
    ![Visual Studio Solution Explorer is shown with the context menu displaying for the solution file and the Restore NuGet Packages option selected from the context menu.](media/restorenugetpackages.png)
 
@@ -1056,17 +1003,13 @@ With the App Services projects properly configured, you are now ready to deploy 
 
     ![The Azure Function publish dialog box is displayed.](media/vs-publish-function-publish.png "Publish dialog box")
 
-6. If asked to update the Azure functions, select the **Yes** button.
-
-    ![A dialog explains the Azure functions will be updated to the next version automatically.](media/2019-03-20-20-13-37.png "Functions Version on Azure")
-
-7. When the publish completes, the Output window should indicate success similar to the following:
+6. When the publish completes, the Output window should indicate success similar to the following:
 
     ![The Output window is set to show output from Build. Output indicates it is updating files, and that Publish Succeeded.](media/vs-publish-function-output.png "Output window")
 
     > **Note**: If you receive an error in the Output window, as a result of the publish process failing (The target "MSDeployPublish" does not exist in the project), expand the Properties folder within the Visual Studio project, then delete the PublishProfiles folder.
 
-8. Repeat steps 1-5 to publish.
+7. Repeat steps 1-5 to publish.
 
 ### Task 3: Publish the ChatWebApp
 
@@ -1108,15 +1051,19 @@ With the App Services projects properly configured, you are now ready to deploy 
 
 3. Leave **Hotel Lobby** selected.
 
-4. Select **Join**.
+4. Select the **Join** button.
 
-5. The Live Chat should appear. (Notice it auto-announced you joining to the room; this is the first message. Note, this may take a few seconds to appear. When first using the application, it may take longer, try sending multiple messages to wake up the underlying services.)
+5. The Live Chat should appear. Wait for a 1 minute. The first message warms up the system. You should see a message stating you have connected to the chat service and you have joined the session.
+
+   The **connected** message means you have connected to the web application via SignalR.  The **join** message means you have sent a message to the event hub and the function app Event Hub Trigger copied the message to the service bus topic. Also, the web application has received the message using the topic subscription and pushed it the browser client.
+
+   >**Warning**: Failure to see these messages means your configuration could be incorrect and will cause problems in the next exercises.
 
     ![The Live Chat window displays, showing that it is connected to the chat service.](media/2020-06-29-10-15-14.png "Live Chat window")
 
 6. Open another browser instance (You could try this from your mobile device).
 
-7. Enter `HotelLobby`, and select **Join**.
+7. Enter `HotelLobby` (no spaces), and select **Join**.
 
 8. From either session, fill in the Chat text box and select **Send**. You can try using @ and \# too, just to seed some text for search.
 
@@ -1124,7 +1071,7 @@ With the App Services projects properly configured, you are now ready to deploy 
 
 9. You can join with as many sessions as you want (The Hotel Lobby is basically a public chat room).
 
-    > **Note**: _Debugging Tips_: If you don't see your messages showing up in the Live Chat window, double check your Azure Event Hub and Service Bus activity. Open the Metrics screen. Make sure incoming and outgoing messages are being processed.  Validate the WebChat application settings values. Also, if you navigate to the Azure Function Monitor, you can get more clues to any problems. Below is example of the log output. It can take up to 5 minutes for log entries to display.
+    > **Note**: _Debugging Tips_: If you don't see your messages showing up in the Live Chat window, double check your Azure Event Hub and Service Bus activity. Open the Metrics screen. Make sure incoming and outgoing messages are being processed.  Validate the web and function application settings values. Also, if you navigate to the Azure Function Monitor, you can get more clues to any problems. Below is example of the log output. It can take up to 5 minutes for log entries to display.
 
     ![The Azure Function log is shown with the output of an error displayed.](media/2019-11-24-07-23-56.png "Azure Function Monitor Log Example")
 
@@ -1150,7 +1097,7 @@ In this task, you will add code that enables the Event Processor to invoke the T
 
 2. Scroll down to the method **Run**.
 
-3. Replace the code for **TODO: 7** with the following:
+3. Uncomment the code for **TODO: 7**. It should look like:
 
     ```csharp
     //TODO: 7 Append sentiment score to chat message object
@@ -1163,7 +1110,7 @@ In this task, you will add code that enables the Event Processor to invoke the T
 
 4. Test your sentiment query by selecting the sentiment query and selecting the `Test selected query` button.  Check your results.  You should have all of the negative chat messages.
 
-    ![The screen shows the ability to test your queries before saving them.](media/2020-06-29-19-54-32.png "Test your queries")
+    ![The screen shows the ability to test your queries before saving them.](media/2020-07-01-06-41-53.png "Test your queries")
 
 ### Task 2: Implement linguistic understanding
 
@@ -1263,11 +1210,11 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
     - I am too hot
 
 24. Train and test your model.  Did you get the expected test results?
-25. Enter one more utterance, "room needs vacuuming". There is some new functionality. Notice the predicted label/entity was suggested for you.  Confirm the **Housekeeping** entity. Train and test your model.
+25. Enter one more utterance, `room needs vacuuming`. There is some new functionality. Notice the predicted label/entity was suggested for you.  Confirm the **Housekeeping** entity. Train and test your model.
 
     !["The screenshot shows the new machine learning prediction for the utterance. The user did not have to select the phrase and associated it with the entity."](media/2020-06-28-10-03-57.png "Machine learning entity prediction")
 
-26. Right-click on the **ChatMessageSentimentFunction** project. Select **Publish App** from the Visual Studio menu.
+26. Right-click on the **ChatMessageSentimentFunction** project in Visual Studio. Select **Publish App** from the Visual Studio menu.
 
 27. When the publish process completes, select **Manage** from the toolbar, then select **Azure Resources** from the left menu. In the **Starter_Key** section, the URL is available in the **Example Query** textbox.
 
