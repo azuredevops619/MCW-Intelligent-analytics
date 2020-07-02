@@ -94,7 +94,7 @@ Below is a diagram of the solution architecture you will build in this lab. Plea
 
 ![The preferred solution is shown to meet the customer requirements. From right to left there is an architecture diagram which shows the connections from a mobile device to a Web Application. The Web Application is shown setting data to an Event Hub which is connected to a Web Job. From there Event Hub and Service Bus work together with Stream Analytics, Power BI and Cosmos DB to provide the full solution.](media/preferred-solution-architecture3.png "Solution architecture")
 
-Messages are sent from browsers running within laptop or mobile clients via Web Sockets to an endpoint running in an Azure Web App. Chat messages received by the Web App are sent to an Event Hub where they are temporarily stored. An Azure Function picks up the chat messages and applies sentiment analysis to the message text (using the Text Analytics API), as well as contextual understanding (using LUIS). The function forwards the chat message to an Event Hub used to store messages for archival purposes, and to a Service Bus Topic which is used to deliver the message to the intended recipients. A Stream Analytics Job provides a simple mechanism for pulling the chat messages from the second Event Hub and writing them to Cosmos DB for archiving, and to Power BI for visualization of sentiment in real-time as well as trending sentiment. An indexer runs atop Cosmos DB that updates the Azure Search index which provides full text search capability. Messages in the Service Bus Topic are pulled by Subscriptions created in the Web App and running on behalf of each client device connected by Web Sockets. When the Subscription receives a message, it is pushed via Web Sockets down to the browser-based app and displayed in a web page. Bot Services hosts a bot created using QnA maker, which automatically answers simple questions asked by site visitors.
+Messages are sent from browsers running within laptop or mobile clients via SignalR to an endpoint running in an Azure Web App. Chat messages received by the Web App are sent to an Event Hub where they are temporarily stored. An Azure Function picks up the chat messages and applies sentiment analysis to the message text (using the Text Analytics API), as well as contextual understanding (using LUIS). The function forwards the chat message to an Event Hub used to store messages for archival purposes, and to a Service Bus Topic which is used to deliver the message to the intended recipients. A Stream Analytics Job provides a simple mechanism for pulling the chat messages from the second Event Hub and writing them to Cosmos DB for archiving, and to Power BI for visualization of sentiment in real-time as well as trending sentiment. An indexer runs atop Cosmos DB that updates the Azure Search index which provides full text search capability. Messages in the Service Bus Topic are pulled by Subscriptions created in the Web App and running on behalf of each client device connected by SignalR. When the Subscription receives a message, it is pushed via SignalR down to the browser-based app and displayed in a web page. Bot Services hosts a bot created using QnA maker, which automatically answers simple questions asked by site visitors.
 
 ## Requirements
 
@@ -118,7 +118,7 @@ The following section walks you through the manual steps to provision the servic
 
 2. Next, select **LabVM** from the list of available resources.
 
-    ![In the List of available resources, LabVM is selected.](media/image11.png 'List of available resources')
+    ![In the List of available resources, LabVM is selected.](media/image11.png "List of available resources")
 
 3. On the LabVM blade, select **Connect** from the top menu, which will download an RDP file.
 
@@ -138,7 +138,7 @@ The following section walks you through the manual steps to provision the servic
 
 7. Select Yes to connect, if prompted that the identity of the remote computer cannot be verified.
 
-    ![The Remote Desktop Connection window states that the identity of the remote computer can't be identified, and asks if you want to connect anyway. The Yes button is selected.](media/image15.png 'Remote Desktop Connection window ')
+    ![The Remote Desktop Connection window states that the identity of the remote computer can't be identified, and asks if you want to connect anyway. The Yes button is selected.](media/image15.png "Remote Desktop Connection window")
 
 8. Open **Internet Explorer**, then download and install [Google Chrome](https://www.google.com/chrome).
 
@@ -156,7 +156,7 @@ The following section walks you through the manual steps to provision the servic
 
    >**Note**: Make sure to extract to this exact path. If you extract to a longer directory path, you will hit a Windows max 260 character path limit when you try to build the Visual Studio solution. You will not be able to download the NuGet packages. Keep the solution directory path short.
 
-    ![In the Extract Compressed (Zipped) Folders window, files will be extracted to C:\ConciergePlus.](media/image18.png 'Extract Compressed (Zipped) Folders window')
+    ![In the Extract Compressed (Zipped) Folders window, files will be extracted to C:\ConciergePlus.](media/image18.png "Extract Compressed (Zipped) Folders window")
 
 5. Open **ConciergePlusSentiment.sln** in the `C:\ConciergePlus\MCW-Intelligent-analytics-master\Hands-on lab\lab-files\starter-project` folder with Visual Studio 2019.
 
@@ -164,7 +164,7 @@ The following section walks you through the manual steps to provision the servic
 
 7. If presented with the Start with a familiar environment dialog, select Visual C\# from the Development Settings drop down list, and select Start Visual Studio.
 
-    ![Development Settings is set to Visual C# in the Visual Studio Start with a familiar environment dialog box.](media/image19.png 'Visual Studio Start with a familiar environment dialog box')
+    ![Development Settings is set to Visual C# in the Visual Studio Start with a familiar environment dialog box.](media/image19.png "Visual Studio Start with a familiar environment dialog box")
 
 8. If the Security Warning window appears, uncheck Ask me for every project in this solution, and select OK.
 
@@ -210,7 +210,7 @@ In these steps, you will provision a Web App within a single App Service Plan.
 
 6. Select the toggle for **Web Sockets** to **On**.
 
-   > **Note**: Failure to complete this step will not allow the Javascript client to communicate with the web application and receive continuous data exchange.
+   > **Note**: Failure to complete this step will not allow the JavaScript client to communicate with the web application and receive continuous data exchange.
 
 7. Select **Save**.
 
@@ -274,11 +274,11 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
 6. On the Overview blade, select on Topic under Entities on the left-hand side of the blade.
 
-    ![In the Entities section of the resource left menu, the Topics item is selected from within the Entities section.](media/image34.png 'Overview blade Entities section')
+    ![In the Entities section of the resource left menu, the Topics item is selected from within the Entities section.](media/image34.png "Overview blade Entities section")
 
 7. Add a new Topic by selecting +Topic.
 
-    ![The Topic toolbar is shown with the +Topic button selected.](media/image35.png 'Topic option')
+    ![The Topic toolbar is shown with the +Topic button selected.](media/image35.png "Topic option")
 
 8. On the Create topic blade, enter the following:
 
@@ -290,7 +290,7 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
     - **Enable partitioning**: Ensure this checkbox remains unchecked. Chat will not function properly if this is checked.
 
-      ![The Create topic blade fields display the previously mentioned settings. In addition, the following fields are highlighted: Name, which is set to awhotel, Message time to live in Days, which is set to 1, and the Enable partitioning check box.](media/image36.png 'Create topic blade')
+      ![The Create topic blade fields display the previously mentioned settings. In addition, the following fields are highlighted: Name, which is set to awhotel, Message time to live in Days, which is set to 1, and the Enable partitioning check box.](media/image36.png "Create topic blade")
 
 9. Select **Create**.
 10. Create a subscription to the topic you just created. The web application will use the subscription to retrieve messages and send them messages to the browser client. Enter these configurations:
@@ -310,7 +310,7 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
     - In the **Shared access policies**, you are going to create a new policy that the **ChatConsole** can use to retrieve messages. Select **+Add**.
 
-    ![On the Service Bus namespace screen, Shared Access polices is selected from the left menu and the + Add button is highlighted in the toolbar.](media/image85.png 'Azure Shared Access policies blade')
+    ![On the Service Bus namespace screen, Shared Access polices is selected from the left menu and the + Add button is highlighted in the toolbar.](media/image85.png "Azure Shared Access policies blade")
 
     - For the New Policy Name, enter `ChatConsole`
 
@@ -330,7 +330,7 @@ In this task, you will create a new Event Hubs namespace and instance.
 
 1. In the [Azure portal](https://portal.azure.com) left menu, select **+Create a resource**, then search for `Event Hubs`.
 
-    ![The Event Hubs resource overview page is displayed with a Create button.](media/2019-06-19-16-52-46.png "Event Hubs is selected. Click Create button")
+    ![The Event Hubs resource overview page is displayed with a Create button.](media/2019-06-19-16-52-46.png "Event Hubs is selected. Select Create button")
 
 2. On the **Create namespace** blade enter the following:
 
@@ -358,7 +358,7 @@ In this task, you will create a new Event Hubs namespace and instance.
 
 4. On the **Overview** blade, select **+Event Hub** to add a new Event Hub.
 
-    ![The add Event Hub is shown](media/image40.png 'Add event hub')
+    ![The add Event Hub is shown](media/image40.png "Add event hub")
 
 5. On the **Create Event Hub** blade, enter the following:
 
@@ -500,19 +500,19 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     - Select **Create** to provision the new Stream Analytics job.
 
-      ![The New Stream Analytics Job form fields display the previously mentioned settings. ](media/image49.png 'New Stream Analytics Job blade')
+      ![The New Stream Analytics Job form fields display the previously mentioned settings. ](media/image49.png "New Stream Analytics Job blade")
 
 3. When provisioning completes, navigate to your new Stream Analytics job in the portal by selecting **Resource Groups** in the left menu, and selecting the **intelligent-analytics** resource group, then selecting your **Stream Analytics Job**.
 
-    ![In the resource group resources listing, the MessageLogger Stream Analytics job is selected.](media/image50.png 'Azure Portal Resource Groups pane')
+    ![In the resource group resources listing, the MessageLogger Stream Analytics job is selected.](media/image50.png "Azure Portal Resource Groups pane")
 
 4. From the **Stream Analytics job** left menu, beneath **Job topology**, select the **Inputs** menu item.
 
-    ![In the Job Topology section of the menu, the Inputs item is selected.](media/image51.png 'Job Topology section')
+    ![In the Job Topology section of the menu, the Inputs item is selected.](media/image51.png "Job Topology section")
 
 5. On the **Inputs** blade, select **+Add stream input** and then select **Event Hub**.
 
-    ![The Add Stream Input is shown, and the Event Hub has been selected from the options.](media/image52.png 'Add stream input')
+    ![The Add Stream Input is shown, and the Event Hub has been selected from the options.](media/image52.png "Add stream input")
 
 6. On the **New Input** blade, enter the following:
 
@@ -546,7 +546,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
 8. In the **Outputs** blade, select **+Add**, then select **Cosmos DB**.
 
-    ![The +Add button on the Outputs screen is expanded with Cosmos DB selected from the list.](media/image55.png 'Add New Outputs')
+    ![The +Add button on the Outputs screen is expanded with Cosmos DB selected from the list.](media/image55.png "Add New Outputs")
 
 9. On the **Cosmos DB New output** blade, enter the following:
 
@@ -580,7 +580,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
 12. Create another Output, this time for **Power BI**.
 
-    ![The Add New Outputs is shown with the Power BI option selected.](media/image57.png 'Add New Outputs')
+    ![The Add New Outputs is shown with the Power BI option selected.](media/image57.png "Add New Outputs")
 
     A blade will open asking to authorize your Power BI account, select **Authorize**. When prompted in the popup window, enter the account credentials you used to create your Power BI account in the Before the Hands-on Lab exercise. You may have to enter your Username and Password.
 
@@ -602,7 +602,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
 14. Create one final Output for **Power BI**.
 
-    ![The Add New Outputs is shown with the Power BI option selected.](media/image57.png 'Add New Outputs')
+    ![The Add New Outputs is shown with the Power BI option selected.](media/image57.png "Add New Outputs")
 
     Select **Authorize** (if not already authorized). This will authorize the connection to your Power BI account. When prompted in the popup window, enter the account credentials you used to create your Power BI account in the Before the Hands-on Lab exercise. You may have to enter your Username and Password.
 
@@ -624,7 +624,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
 17. Next, select **Query** from the left-hand menu, under **Job Topology**.
 
-    ![In the Stream Analytics job left menu, under the Job topology section the Query menu item is highlighted.](media/image59.png 'Job Topology section')
+    ![In the Stream Analytics job left menu, under the Job topology section the Query menu item is highlighted.](media/image59.png "Job Topology section")
 
 18. Paste the following text into the query window:
 
@@ -652,21 +652,21 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
 19. Select **Save** again.
 
-    ![The query editor toolbar is displayed with the Save button selected.](media/image60.png 'Save option')
+    ![The query editor toolbar is displayed with the Save button selected.](media/image60.png "Save option")
 
 ### Task 10: Start the Stream Analytics job
 
 1. Navigate to your Stream Analytics job in the portal by selecting Resource Groups in the left menu, and selecting **intelligent-analytics**, then selecting your **Stream Analytics Job**.
 
-    ![In the list of resources, the MessageLogger Stream Analytics Job is selected.](media/image50.png 'Azure Portal, Resource Groups pane')
+    ![In the list of resources, the MessageLogger Stream Analytics Job is selected.](media/image50.png "Azure Portal, Resource Groups pane")
 
 2. From the **Overview** blade, select **Start**.
 
-    ![The toolbar from the Stream Analytics Overview screen is displayed with the Start button highlighted.](media/image62.png 'Now button')
+    ![The toolbar from the Stream Analytics Overview screen is displayed with the Start button highlighted.](media/image62.png "Now button")
 
 3. In the **Start job** blade, select **Now** (the job will start processing messages from the current point in time onward).
 
-    ![In the Start job blade the Job output start time field is set to Now.](media/image63.png 'Start job blade, Now button')
+    ![In the Start job blade the Job output start time field is set to Now.](media/image63.png "Start job blade, Now button")
 
 4. Select **Start**.
 
@@ -704,7 +704,7 @@ The EventProcessorHost requires an Azure Storage account that it will use to man
 
     - Select **Review + create**.  Select **Create**.
 
-      ![The Create storage account Basics tab fields display the previously mentioned settings. ](media/image66.png 'Create storage account blade')
+      ![The Create storage account Basics tab fields display the previously mentioned settings. ](media/image66.png "Create storage account blade")
 
 ### Task 12: Provision Cognitive Services
 
@@ -726,23 +726,23 @@ To provision access to the Text Analytics API (which provides sentiment analysis
 
     - **Resource Group**: Select the **intelligent-analytics** resource group.
 
-    ![The Create Text Analytics from is shown populated with the preceding values.](media/image68.png 'Create Text Analytics')
+    ![The Create Text Analytics from is shown populated with the preceding values.](media/image68.png "Create Text Analytics")
 
-3. Select **Create**.
+3. Select the **Create** button.
 
 4. When it finishes provisioning, browse to the newly created cognitive service by selecting **Resource Groups** in the left menu, then selecting  the **intelligent-analytics** resource group, and selecting the Cognitive Service, **awhotels-sentiment**.
 
 5. Acquire the key for the API by selecting **Keys and Endpoint** on the left-hand menu.
 
-    ![The Resource Management section of the Cognitive Services left menu is displayed, the Keys and Endpoint item is selected.](media/image69.png 'Resource Management section')
+    ![The Resource Management section of the Cognitive Services left menu is displayed, the Keys and Endpoint item is selected.](media/image69.png "Resource Management section")
 
 6. Copy the value for **Key 1**, and paste it into a text editor, such as Notepad, for later reference in the ConciergePlusSentiment solution in Visual Studio.
 
-    ![In the Keys pane, the Key 1 value is highlighted, and the copy button next to this key is selected.](media/image70.png 'Keys pane')
+    ![In the Keys pane, the Key 1 value is highlighted, and the copy button next to this key is selected.](media/image70.png "Keys pane")
 
 7. Select **+Create a resource**, select **Language Understanding**, and **Create**.
 
-     ![The Language Understanding icon is displayed.](media/image72.png 'Language Understanding')
+     ![The Language Understanding icon is displayed.](media/image72.png "Language Understanding")
 
 8. On the **Basics** tab of the **Create Cognitive Services** screen, populate the form fields as follows:
 
@@ -865,13 +865,13 @@ The connection string required by the ChatMessageSentimentProcessor is different
 
 1. To get the **EventHubConnectionString**, navigate to the Event Hub namespace in the Azure Portal by selecting **Resource Groups** on the left menu, then selecting the **intelligent-analytics** resource group, and selecting your **Event Hubs Namespace** from the list of resources.
 
-    ![In the list of resources, the awhotel-events-namespace Event Hub Namespace is selected.](media/image39.png 'Azure Portal, Resource Groups pane')
+    ![In the list of resources, the awhotel-events-namespace Event Hub Namespace is selected.](media/image39.png "Azure Portal, Resource Groups pane")
 
 2. Select **Shared access policies**, under **Settings**, within the left-hand menu.
 
 3. In the **Shared access policies**, you are going to create a new policy that the **ChatConsole** can use to retrieve messages. Select **+Add**.
 
-    ![The +Add button is selected in the Shared access policies toolbar menu.](media/image78.png 'Shared access policies pane')
+    ![The +Add button is selected in the Shared access policies toolbar menu.](media/image78.png "Shared access policies pane")
 
 4. For the **New Policy Name**, enter `ChatConsole`
 
@@ -1057,7 +1057,7 @@ With the App Services projects properly configured, you are now ready to deploy 
 
    The **connected** message means you have connected to the web application via SignalR.  The **join** message means you have sent a message to the event hub and the function app Event Hub Trigger copied the message to the service bus topic. Also, the web application has received the message using the topic subscription and pushed it the browser client.
 
-   >**Warning**: Failure to see these messages means your configuration could be incorrect and will cause problems in the next exercises.
+   > **Warning**: Failure to see these messages means your configuration could be incorrect and will cause problems in the next exercises.
 
     ![The Live Chat window displays, showing that it is connected to the chat service.](media/2020-06-29-10-15-14.png "Live Chat window")
 
@@ -1116,7 +1116,7 @@ In this task, you will add code that enables the Event Processor to invoke the T
 
 What is the hotel guest's intention?
 
-In this task, you will create a LUIS app, publish it, and then enable the Event Processor to invoke LUIS using the `Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime` NuGet package. You will be setting up the LUIS model hierarchy and execute these steps.
+In this task, you will create a LUIS app, publish it, and then enable the Event Processor to invoke LUIS using the `Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime` NuGet package. You will be setting up the LUIS model hierarchy and executing these steps.
 
 ![The diagram depicts the exercise steps. Create model, train model, test model, publish.](media/2020-06-30-14-22-42.png "LUIS workflow")
 
@@ -1355,7 +1355,7 @@ This gauge is currently a static visualization. You will use the report just cre
 
     ![average score created between yesterday and today is typed in the Ask question about your data textbox. An average of score (0.62) displays below.](media/image152.png 'Ask question about your data field')
 
-5. Next, convert this to a Gauge chart by expanding the **Visualizations** palette at right, and clicking on the **Gauge** control. You will need to set the **New Q&A experience** to **Off** in order to see the **Visualizations** palette. This switch is on the toolbar on the right-hand side.
+5. Next, convert this to a Gauge chart by expanding the **Visualizations** palette at right, and selecting on the **Gauge** control. You will need to set the **New Q&A experience** to **Off** in order to see the **Visualizations** palette. This switch is on the toolbar on the right-hand side.
 
     ![The Visualizations palette expand button is selected.](media/image153.png 'Visualizations palette')
 
@@ -1704,7 +1704,7 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
     ![Select Get bot embed codes](media/function-bot-channels.png "Function Bot Channels")
 
-7. A dialog will appear for the embed codes. Select the **Click here to open the Web Chat configuration page** option.
+7. A dialog will appear for the embed codes. Select the **Select here to open the Web Chat configuration page** option.
 
 8. Select **Copy** next to the **Embed code** textbox. Paste that value to notepad or other text application. Select **Show** beside the first Secret key. Copy the value and replace **YOUR_SECRET_HERE** within the embed code with that secret value. Example: `<iframe src='https://webchat.botframework.com/embed/concierge-plus-bot?s=XEYx9upcGtc.cwA.Ku8.hAL6pCxFWfxIjOE9WM48qxkPNtsy4BkT_LST5y0FxEQ'></iframe>`.
 

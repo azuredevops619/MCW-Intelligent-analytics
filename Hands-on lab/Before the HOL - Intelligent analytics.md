@@ -76,7 +76,7 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 
     - **Username**: `demouser`
 
-    - **Password**: `Password.1!!`
+    - **Password**: (your password)
 
     - **Public inbound ports**: **Allow selected ports**
 
