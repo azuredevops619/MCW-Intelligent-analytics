@@ -430,11 +430,11 @@ In this section, you will provision an Azure Cosmos DB account, a database, and 
 
     - **Container Id**: Enter `messagestore`
 
-    - **Partition Key**: Enter a partition key such as `/userName`
+    - **Partition Key**: Enter a partition key such as `/username`
 
         > **Note**: Pick a field in this schema.  Otherwise, you will have no documents in the Cosmo DB container. Below is a sample of the messages stored in the Cosmo DB at a later part in the lab.
 
-        ![A sample document in Json format is shown displaying all of the fields available to use as a partition key. The userName field is highlighted.](media/2019-03-21-13-18-47.png "Possible fields to partition on.")
+        ![A sample document in Json format is shown displaying all of the fields available to use as a partition key. The username field is highlighted.](media/2019-03-21-13-18-47.png "Possible fields to partition on.")
 
     - **Throughput**: Set to `400`
 
@@ -1031,7 +1031,7 @@ With the App Services projects properly configured, you are now ready to deploy 
 
 5. When the publishing is complete, a browser window should appear with content like the following:
 
-    ![The Browser window displays the Contoso Hotels webpage with a Join Chat section that has a userName textbox and a chat room selection drop down list.](media/2020-06-29-10-10-20.png "Join chat landing page")
+    ![The Browser window displays the Contoso Hotels webpage with a Join Chat section that has a username textbox and a chat room selection drop down list.](media/2020-06-29-10-10-20.png "Join chat landing page")
 
     > **Note**: It may take a couple of minutes for the browser to render. You must use a modern browser like Chrome or Edge. If the site is opened in Internet Explorer, copy the URL from the address bar, open Chrome (that you installed earlier), and navigate to the site with Chrome instead.
 
@@ -1047,7 +1047,7 @@ With the App Services projects properly configured, you are now ready to deploy 
 
       - Alternatively, this can be found in the [Azure portal](https://portal.azure.com) on the **Overview** blade for your **Web App**.
 
-2. Under the **Join Chat** area, enter your userName (anything will do).
+2. Under the **Join Chat** area, enter your username (anything will do).
 
 3. Leave **Hotel Lobby** selected.
 
@@ -1081,7 +1081,7 @@ With the App Services projects properly configured, you are now ready to deploy 
     - Select the Query item on the left-hand side.
     - Review the Event Hub `Input preview` and the Stream Analytics `Test results`.
 
-    ![The screen shows how to test your Stream Analytics queries. The arrows point to the Query menu item and Test query button.](media/2020-06-29-17-32-38.png "Test your query")
+    ![The screen shows how to test your Stream Analytics queries. The arrows point to the Query menu item and Test query button.](media/2020-07-02-16-53-08.png "Test your query")
 
 ## Exercise 5: Add intelligence
 
@@ -1110,7 +1110,7 @@ In this task, you will add code that enables the Event Processor to invoke the T
 
 4. Test your sentiment query by selecting the sentiment query and selecting the `Test selected query` button.  Check your results.  You should have all of the negative chat messages.
 
-    ![The screen shows the ability to test your queries before saving them.](media/2020-07-01-06-41-53.png "Test your queries")
+    ![The screen shows the ability to test your queries before saving them.](media/2020-07-02-17-01-33.png "Test your queries")
 
 ### Task 2: Implement linguistic understanding
 
@@ -1501,11 +1501,11 @@ Before going further, a good thing to check is whether messages are being writte
 
     ![The Key field is set to id.](media/image167.png 'Key ID field')
 
-14. Select the **Retrievable** check box for the following fields: **message, createDate**, and **userName** (id will be selected automatically). Only these fields will be returned in query results.
+14. Select the **Retrievable** check box for the following fields: **message, createDate**, and **username** (id will be selected automatically). Only these fields will be returned in query results.
 
-15. Select the **Filterable** check box for **createDate, userName**, and **sessionId**. These fields can be used with the filter clause only (not used by this Tutorial, but useful to have).
+15. Select the **Filterable** check box for **createDate, username**, and **sessionId**. These fields can be used with the filter clause only (not used by this Tutorial, but useful to have).
 
-16. Select the **Sortable** check box for **createDate**, **userName**, and **sessionId**. These fields can be used to sort the results of a query.
+16. Select the **Sortable** check box for **createDate**, **username**, and **sessionId**. These fields can be used to sort the results of a query.
 
 17. Select the **Searchable** check box for **message**. Only this field will be indexed for full text search.
 

@@ -127,7 +127,7 @@ namespace ChatWebApp31.Hubs
 
             public string message;
             public DateTime createDate = new DateTime();
-            public string userName = String.Empty;
+            public string username = String.Empty;
             public string sessionId = String.Empty;
             public string messageId = Guid.NewGuid().ToString();
             public string messageType = String.Empty;

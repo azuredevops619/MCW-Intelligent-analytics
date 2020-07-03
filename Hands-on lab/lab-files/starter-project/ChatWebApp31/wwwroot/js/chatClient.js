@@ -9,12 +9,12 @@ $(document).ready(function () {
 
     var connection;
     var sessionId = '';
-    var userName = '';
+    var username = '';
 
     $("#btnJoin").click(function () {
-        userName = $("#username").val();
+        username = $("#username").val();
 
-        if (userName.length > 0) {
+        if (username.length > 0) {
             $("#joinChatPanel").fadeOut();
             $("#chatPanel").fadeIn();
             $("#divHistory").empty();
@@ -23,7 +23,7 @@ $(document).ready(function () {
             openConnection();
         }
         else {
-            alert('Please enter a userName');
+            alert('Please enter a username');
         }
 
     });
@@ -70,19 +70,19 @@ $(document).ready(function () {
     function joinChatSession() {
         $("#chat-room").text($("#listChatRooms").children(':selected').text());
         sessionId = $("#listChatRooms").val();
-        userName = $("#username").val();
+        username = $("#username").val();
 
-        sendMessage(sessionId, userName, userName + ' joined chat session.', messageType.JOIN);
+        sendMessage(sessionId, username, username + ' joined chat session.', messageType.JOIN);
         connection.invoke('RecieveMessage').catch(err => console.error(err));
     }
 
 
-    function sendMessage(sessionId, userName, message, messageType) {
+    function sendMessage(sessionId, username, message, messageType) {
 
         // This class has to match the JS client type, ChatHub message type, and function message type.
         var chatMessage = {
             'message': message,
-            'userName': userName,
+            'username': username,
             'sessionId': sessionId,
             'messageType': messageType,
             'createDate': '',
@@ -100,10 +100,10 @@ $(document).ready(function () {
     document.getElementById("btnSend").addEventListener("click", function (event) {
         var message = document.getElementById("txtMsg").value;
 
-        if (userName.toLocaleLowerCase() === 'hotellobby') {
-            sendMessage(sessionId, userName, message, messageType.ACK);
+        if (username.toLocaleLowerCase() === 'hotellobby') {
+            sendMessage(sessionId, username, message, messageType.ACK);
         } else {
-            sendMessage(sessionId, userName, message, messageType.CHAT);
+            sendMessage(sessionId, username, message, messageType.CHAT);
         }
         
         event.preventDefault();
@@ -129,7 +129,7 @@ $(document).ready(function () {
         }
 
         if (chatMessage.messageType !== messageType.JOIN) {
-            htmlChatBubble += '<span class="font-weight-bold">' + chatMessage.userName + '</span> says: ';
+            htmlChatBubble += '<span class="font-weight-bold">' + chatMessage.username + '</span> says: ';
         }
 
         htmlChatBubble += chatMessage.message + '</p>';

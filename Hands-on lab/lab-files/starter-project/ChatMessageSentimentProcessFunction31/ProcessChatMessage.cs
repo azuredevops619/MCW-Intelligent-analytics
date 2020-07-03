@@ -50,7 +50,6 @@ namespace ChatMessageSentimentProcessFunction31
             _sentimentClient = _sentimentClient ?? new HttpClient();
             _intentClient = _intentClient ?? new HttpClient();
 
-            //TODO: 7.Configure the HTTPClient base URL and request headers
             _sentimentClient.DefaultRequestHeaders.Clear();
             _sentimentClient.DefaultRequestHeaders.Accept.Clear();
             _sentimentClient.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", _textAnalyticsAccountKey);
@@ -61,47 +60,47 @@ namespace ChatMessageSentimentProcessFunction31
                 try
                 {
                     //TODO: 1.Extract the JSON payload from the binary message
-                    //string sourceEventHubEventBody = Encoding.UTF8.GetString(eventData.Body);
-                    //var sentimentMessage = JsonConvert.DeserializeObject<MessageType>(sourceEventHubEventBody);
+                    string sourceEventHubEventBody = Encoding.UTF8.GetString(eventData.Body);
+                    var sentimentMessage = JsonConvert.DeserializeObject<MessageType>(sourceEventHubEventBody);
 
                     //TODO: 7 Append sentiment score to chat message object
-                    //if (sentimentMessage.messageType.Equals("chat", StringComparison.OrdinalIgnoreCase))
-                    //{
-                    //    sentimentMessage.score = await GetSentimentScore(sentimentMessage);
-                    //    log.LogInformation("SentimentScore: " + sentimentMessage.score);
-                    //}
+                    if (sentimentMessage.messageType.Equals("chat", StringComparison.OrdinalIgnoreCase))
+                    {
+                        sentimentMessage.score = await GetSentimentScore(sentimentMessage);
+                        log.LogInformation("SentimentScore: " + sentimentMessage.score);
+                    }
 
                     //TODO: 3.Create a Message (for Service Bus) and EventData instance (for EventHubs) from source message body
-                    //var updatedMessage = JsonConvert.SerializeObject(sentimentMessage);
-                    //var chatMessage  = new Message(Encoding.UTF8.GetBytes(updatedMessage));
+                    var updatedMessage = JsonConvert.SerializeObject(sentimentMessage);
+                    var chatMessage = new Message(Encoding.UTF8.GetBytes(updatedMessage));
 
                     // Write the body of the message to the console.
-                    //log.LogInformation($"Sending message: {updatedMessage}");
+                    log.LogInformation($"Sending message: {updatedMessage}");
 
                     //TODO: 4.Copy the message properties from source to the outgoing message instances
-                    //foreach (var prop in eventData.Properties)
-                    //{
-                    //    chatMessage.UserProperties.Add(prop.Key, prop.Value);
-                    //}
+                    foreach (var prop in eventData.Properties)
+                    {
+                        chatMessage.UserProperties.Add(prop.Key, prop.Value);
+                    }
 
                     //TODO: 5.Send chat message to Topic
                     // Send the message to the topic which will be eventually picked up by ChatHub.cs in the web app.
-                    //await topicClient.SendAsync(chatMessage);
+                    await topicClient.SendAsync(chatMessage);
 
                     //TODO: 6.Send chat message to next EventHub (for archival)
-                    //using var eventBatch = archiveEventHubClient.CreateBatch();
-                    //EventData updatedEventData = new EventData(Encoding.UTF8.GetBytes(updatedMessage));
+                    using var eventBatch = archiveEventHubClient.CreateBatch();
+                    EventData updatedEventData = new EventData(Encoding.UTF8.GetBytes(updatedMessage));
 
-                    //eventBatch.TryAdd(updatedEventData);
-                    //await archiveEventHubClient.SendAsync(eventBatch);
-                    //log.LogInformation("Forwarded message to event hub.");
+                    eventBatch.TryAdd(updatedEventData);
+                    await archiveEventHubClient.SendAsync(eventBatch);
+                    log.LogInformation("Forwarded message to event hub.");
 
                     //TODO: 8.Respond to chat message intent if appropriate
-                    //var updatedMessageObject = JsonConvert.DeserializeObject<MessageType>(updatedMessage);
+                    var updatedMessageObject = JsonConvert.DeserializeObject<MessageType>(updatedMessage);
 
                     // Get your most likely intent based on your message.
-                    //var intent = await GetIntentAndEntities(updatedMessageObject.message);
-                    //await HandleIntent(intent, updatedMessageObject, topicClient);
+                    var intent = await GetIntentAndEntities(updatedMessageObject.message);
+                    await HandleIntent(intent, updatedMessageObject, topicClient);
                 }
                 catch (Exception ex)
                 {
@@ -217,7 +216,7 @@ namespace ChatMessageSentimentProcessFunction31
                 messageId = Guid.NewGuid().ToString(),
                 score = 0.5,
                 sessionId = msgObj.sessionId,
-                userName = "ConciergeBot",
+                username = "ConciergeBot",
                 messageType = "bot"
 
             };
@@ -268,7 +267,7 @@ namespace ChatMessageSentimentProcessFunction31
         {
             public string message;
             public DateTime createDate;
-            public string userName;
+            public string username;
             public string sessionId;
             public string messageId;
             public string messageType;
