@@ -550,7 +550,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
 9. On the **Cosmos DB New output** blade, enter the following:
 
-    - **Output alias**: Enter `cosmosdb`
+    - **Output alias**: `cosmosdb`
 
     - Choose **Select Cosmos DB from your subscriptions**.
 
@@ -558,7 +558,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     - **Account Id**: Select your Account id (e.g., **awhotel-cosmosdb**).
 
-    - **Database**: Select your database, **awhotels**
+    - **Database**: `awhotels`
 
     - **Container name**: Set to the name of your messages collection, `messagestore`.
 
