@@ -37,7 +37,6 @@ By the end of the hands-on lab, you will be more confident in the various servic
 - Azure Event Hubs
 - Azure App Services
 - Azure Functions
-- Azure Logic App
 - Azure Service Bus
 - Azure Storage
 - Azure Stream Analytics
