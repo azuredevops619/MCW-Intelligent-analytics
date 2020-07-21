@@ -608,15 +608,15 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
 15. On the **New output** blade, enter the following:
 
-    - **Output alias**: Enter `trendingsentiment`
+    - **Output alias**: `trendingsentiment`
 
-    - **Group workspace**: **My workspace**.
+    - **Group workspace**: `My workspace`
 
-    - **Dataset Name**: Set to `TrendingSentiment`
+    - **Dataset Name**: `TrendingSentiment`
 
-    - **Table Name**: Set to `TrendingSentiment`
+    - **Table Name**: `TrendingSentiment`
 
-    - **Authentication Mode**: Select **User token**.
+    - **Authentication Mode**: `User token`
 
     ![The Power BI New output form is shown populated with the preceding values.](media/2019-09-03-14-41-07.png "Power BI new output")
 
