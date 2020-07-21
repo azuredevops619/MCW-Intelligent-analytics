@@ -375,7 +375,7 @@ In this task, you will create a new Event Hubs namespace and instance.
 
       ![The Create Event Hub blade fields display with the previously mentioned settings.](media/2020-06-29-13-44-07.png "Create Event Hub blade")
 
-6. Repeat steps listed 5 to create another Event Hub. This one will store messages for archival and be processed by Stream Analytics. Stream Analytics forwards the message to Cogntive Search.
+6. Repeat steps listed 5 to create another Event Hub. This one will store messages for archival and be processed by Stream Analytics. Stream Analytics forwards the message to Cognitive Search.
 
    Name it `awchathub2`. If you select the **Event Hubs** menu item from the left menu, this will display the list of event hubs, you should see the following:
 
