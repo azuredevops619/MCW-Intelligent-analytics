@@ -49,27 +49,26 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
       - [Service Bus connection string](#service-bus-connection-string)
       - [Chat topic](#chat-topic)
       - [Text Analytics API settings](#text-analytics-api-settings)
-  - [Exercise 3: Configure the Chat Web App settings](#exercise-3-configure-the-chat-web-app-settings)
-  - [Exercise 4: Deploying the App Services](#exercise-4-deploying-the-app-services)
+  - [Exercise 3: Deploying the App Services](#exercise-3-deploying-the-app-services)
     - [Task 1: Restore NuGet Packages for the solution](#task-1-restore-nuget-packages-for-the-solution)
     - [Task 2: Publish the ChatMessageSentimentProcessor Function App](#task-2-publish-the-chatmessagesentimentprocessor-function-app)
     - [Task 3: Publish the ChatWebApp](#task-3-publish-the-chatwebapp)
     - [Task 4: Testing hotel lobby chat](#task-4-testing-hotel-lobby-chat)
-  - [Exercise 5: Add intelligence](#exercise-5-add-intelligence)
+  - [Exercise 4: Add intelligence](#exercise-4-add-intelligence)
     - [Task 1: Implement sentiment analysis](#task-1-implement-sentiment-analysis)
     - [Task 2: Implement linguistic understanding](#task-2-implement-linguistic-understanding)
     - [Task 3: Re-deploy the function application and test](#task-3-re-deploy-the-function-application-and-test)
-  - [Exercise 7: Building the Power BI dashboard](#exercise-7-building-the-power-bi-dashboard)
+  - [Exercise 5: Building the Power BI dashboard](#exercise-5-building-the-power-bi-dashboard)
     - [Task 1: Provision Power BI](#task-1-provision-power-bi)
     - [Task 2: Create the static dashboard](#task-2-create-the-static-dashboard)
     - [Task 3: Create the real-time dashboard](#task-3-create-the-real-time-dashboard)
     - [Task 4: Add a trending sentiment chart to the dashboard](#task-4-add-a-trending-sentiment-chart-to-the-dashboard)
-  - [Exercise 8: Enabling search indexing](#exercise-8-enabling-search-indexing)
+  - [Exercise 6: Enabling search indexing](#exercise-6-enabling-search-indexing)
     - [Task 1: Verifying message archive](#task-1-verifying-message-archive)
     - [Task 2: Creating the index and indexer](#task-2-creating-the-index-and-indexer)
     - [Task 3: Update the Chat Web App Configuration](#task-3-update-the-chat-web-app-configuration)
     - [Task 4: Re-publish web app](#task-4-re-publish-web-app)
-  - [Exercise 9: Add a bot using Bot service and QnA Maker](#exercise-9-add-a-bot-using-bot-service-and-qna-maker)
+  - [Exercise 7: Add a bot using Bot service and QnA Maker](#exercise-7-add-a-bot-using-bot-service-and-qna-maker)
     - [Task 1: Create a QnA service instance in Azure](#task-1-create-a-qna-service-instance-in-azure)
     - [Task 2: Create a QnA bot](#task-2-create-a-qna-bot)
     - [Task 3: Embed the bot into your web app](#task-3-embed-the-bot-into-your-web-app)
@@ -955,11 +954,7 @@ The namespace, and therefore connection string, for the service bus is different
 
     ![The Application Settings listing for the Function App is shown.](media/2020-06-30-19-52-53.png "Function Application settings")
 
-## Exercise 3: Configure the Chat Web App settings
-
-Duration: 10 minutes
-
-## Exercise 4: Deploying the App Services
+## Exercise 3: Deploying the App Services
 
 Duration: 15 minutes
 
@@ -1083,7 +1078,7 @@ With the App Services projects properly configured, you are now ready to deploy 
 
     ![The screen shows how to test your Stream Analytics queries. The arrows point to the Query menu item and Test query button.](media/2020-07-02-16-53-08.png "Test your query")
 
-## Exercise 5: Add intelligence
+## Exercise 4: Add intelligence
 
 Duration: 60 minutes
 
@@ -1271,7 +1266,7 @@ Now that you have added sentiment analysis and language understanding to the sol
 
     ![In the chat window, Tim is having a conversation with a ConciergeBot. He asks for towels, and the ConciergeBot says they are forwarding the request to Housekeeping.](media/2020-06-29-05-47-15.png "Live Chat window")
 
-## Exercise 7: Building the Power BI dashboard
+## Exercise 5: Building the Power BI dashboard
 
 Duration: 30 minutes
 
@@ -1429,7 +1424,7 @@ The sentiment visualization you created is great for getting a sense of sentimen
 
 10. Invite some peers to chat and monitor the sentiments using your new, real-time dashboard.
 
-## Exercise 8: Enabling search indexing
+## Exercise 6: Enabling search indexing
 
 Duration: 30 minutes
 
@@ -1578,7 +1573,7 @@ Before going further, a good thing to check is whether messages are being writte
 
     ![In the Search Messages box, in the Search messages for text box, Hi is typed. Below that, 32 results have been found.](media/2020-06-30-18-55-16.png "Search Messages box")
 
-## Exercise 9: Add a bot using Bot service and QnA Maker
+## Exercise 7: Add a bot using Bot service and QnA Maker
 
 Duration: 30 minutes
 
@@ -1626,7 +1621,7 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
 6. Select **Create**.
 
-7. Once the service has been created, switch back to the browser tab with the** QnA Maker knowledge base creation** page and select the **Refresh** button in the **Step 2** section.
+7. Once the service has been created, switch back to the browser tab with the **QnA Maker knowledge base creation** page and select the **Refresh** button in the **Step 2** section.
 
 8. Underneath Step 2, select your **Microsoft Azure Directory ID** under which you created the QnA Maker service, select the **Azure subscription name**, select the **Azure QnA service**, and **English** as the **Language**.
 
@@ -1681,7 +1676,6 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
     - **Application Insights**: Set to **Off**.
 
     > **Note**: Do not change the QnA Auth Key.
-
     > **Note**: You may receive a message that the **Resource provider 'Microsoft.BotService' is not registered from the subscription. If this is the case, it can be rectified by following [one of these solutions (choose 1)](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/error-register-resource-provider).
 
     ![The Web App Bot form is displayed and is populated with the values described above.](media/2019-09-09-14-40-26.png "Web App Bot Configuration")

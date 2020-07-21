@@ -361,7 +361,6 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 | QnA Maker | <https://docs.microsoft.com/azure/cognitive-services/QnAMaker/overview/overview> |
 | Azure Bot Service | <https://docs.microsoft.com/azure/bot-service/bot-service-scenario-enterprise-productivity?view=azure-bot-service-3.0> |
 | Azure Functions | <https://docs.microsoft.com/azure/azure-functions/functions-overview> |
-| Logic Apps | <https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-overview> |
 
 # Intelligent analytics whiteboard design session trainer guide
 
