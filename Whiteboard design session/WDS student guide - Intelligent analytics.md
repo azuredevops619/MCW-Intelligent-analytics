@@ -9,7 +9,7 @@ Whiteboard design session student guide
 </div>
 
 <div class="MCWHeader3">
-March 2020
+June 2020
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -160,12 +160,6 @@ Directions: With all participants at your table, respond to the following questi
 
 3. How would you integrate this service into your chat message processing flow?
 
-*SMS messaging*
-
-1. What Azure service would you recommend First Up Consultants use for sending email or SMS messages to guest services employees indicating the detection of an upset guest via sentiment analysis in the chat?
-
-2. How could you integrate this service into your chat message processing flow?
-
 *Q&A Bot*
 
 1. What Azure services would you recommend First Up Consultants use for creating a Q&A bot?
@@ -240,4 +234,3 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 | QnA Maker | <https://docs.microsoft.com/azure/cognitive-services/QnAMaker/overview/overview> |
 | Azure Bot Service | <https://docs.microsoft.com/azure/bot-service/bot-service-scenario-enterprise-productivity?view=azure-bot-service-3.0> |
 | Azure Functions | <https://docs.microsoft.com/azure/azure-functions/functions-overview> |
-| Logic Apps | <https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-overview> |

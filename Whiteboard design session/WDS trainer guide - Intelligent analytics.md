@@ -9,7 +9,7 @@ Whiteboard design session trainer guide
 </div>
 
 <div class="MCWHeader3">
-March 2020
+June 2020
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -27,30 +27,30 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
 <!-- TOC -->
 
 - [Trainer information](#trainer-information)
-    - [Role of the trainer](#role-of-the-trainer)
-    - [Whiteboard design session flow](#whiteboard-design-session-flow)
-    - [Before the whiteboard design session: How to prepare](#before-the-whiteboard-design-session-how-to-prepare)
-    - [During the whiteboard design session: Tips for an effective whiteboard design session](#during-the-whiteboard-design-session-tips-for-an-effective-whiteboard-design-session)
+  - [Role of the trainer](#role-of-the-trainer)
+  - [Whiteboard design session flow](#whiteboard-design-session-flow)
+  - [Before the whiteboard design session: How to prepare](#before-the-whiteboard-design-session-how-to-prepare)
+  - [During the whiteboard design session: Tips for an effective whiteboard design session](#during-the-whiteboard-design-session-tips-for-an-effective-whiteboard-design-session)
 - [Intelligent analytics whiteboard design session student guide](#intelligent-analytics-whiteboard-design-session-student-guide)
-    - [Abstract and learning objectives](#abstract-and-learning-objectives)
-    - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
-        - [Customer situation](#customer-situation)
-        - [Customer needs](#customer-needs)
-        - [Customer objections](#customer-objections)
-        - [Infographic for common scenarios](#infographic-for-common-scenarios)
-    - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
-    - [Step 3: Present the solution](#step-3-present-the-solution)
-    - [Wrap-up](#wrap-up)
+  - [Abstract and learning objectives](#abstract-and-learning-objectives)
+  - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
+    - [Customer situation](#customer-situation)
+    - [Customer needs](#customer-needs)
+    - [Customer objections](#customer-objections)
+    - [Infographic of common scenarios](#infographic-of-common-scenarios)
+  - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
+  - [Step 3: Present the solution](#step-3-present-the-solution)
+  - [Wrap-up](#wrap-up)
     - [Additional references](#additional-references)
 - [Intelligent analytics whiteboard design session trainer guide](#intelligent-analytics-whiteboard-design-session-trainer-guide)
-    - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study-1)
-    - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution-1)
-    - [Step 3: Present the solution](#step-3-present-the-solution-1)
-    - [Wrap-up](#wrap-up-1)
-    - [Preferred target audience](#preferred-target-audience)
-    - [Preferred solution](#preferred-solution)
-    - [Checklist of preferred objection handling](#checklist-of-preferred-objection-handling)
-    - [Customer quote (to be read back to the attendees at the end)](#customer-quote-to-be-read-back-to-the-attendees-at-the-end)
+  - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study-1)
+  - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution-1)
+  - [Step 3: Present the solution](#step-3-present-the-solution-1)
+  - [Wrap-up](#wrap-up-1)
+  - [Preferred target audience](#preferred-target-audience)
+  - [Preferred solution](#preferred-solution)
+  - [Checklist of preferred objection handling](#checklist-of-preferred-objection-handling)
+  - [Customer quote (to be read back to the attendees at the end)](#customer-quote-to-be-read-back-to-the-attendees-at-the-end)
 
 <!-- /TOC -->
 
@@ -290,12 +290,6 @@ Directions: With all participants at your table, respond to the following questi
 
 3. How would you integrate this service into your chat message processing flow?
 
-*SMS messaging*
-
-1. What Azure service would you recommend First Up Consultants use for sending email or SMS messages to guest services employees indicating the detection of an upset guest via sentiment analysis in the chat?
-
-2. How could you integrate this service into your chat message processing flow?
-
 *Q&A Bot*
 
 1. What Azure services would you recommend First Up Consultants use for creating a Q&A bot?
@@ -367,7 +361,6 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 | QnA Maker | <https://docs.microsoft.com/azure/cognitive-services/QnAMaker/overview/overview> |
 | Azure Bot Service | <https://docs.microsoft.com/azure/bot-service/bot-service-scenario-enterprise-productivity?view=azure-bot-service-3.0> |
 | Azure Functions | <https://docs.microsoft.com/azure/azure-functions/functions-overview> |
-| Logic Apps | <https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-overview> |
 
 # Intelligent analytics whiteboard design session trainer guide
 
@@ -423,9 +416,9 @@ The primary audience is the business decision makers and technology decision mak
 
 1. Without getting into the details (the following sections will address the particular details), diagram your initial vision for handling the top-level requirements for handling the baseline chat, sentiment analysis and request forwarding.
 
-    ![Preferred solution high-level architecture. Shows data flowing in from user devices, like mobile phones and laptops, to an Azure Web App. Those messages are sent to Event Hub, which are then processed by an Azure Function running an Event Processor Host. This is responsible for executing Azure Cognitive Services for sentiment analysis and language understanding. Data is sent to Service Bus and another Event Hub for processing.](media/preferred-solution-architecture2.png "Preferred Solution")
+    ![Preferred solution high-level architecture. Shows data flowing in from user devices, like mobile phones and laptops, to an Azure Web App. Those messages are sent to Event Hub, which are then processed by an Azure Function running an Event Processor Host. This is responsible for executing Azure Cognitive Services for sentiment analysis and language understanding. Data is sent to Service Bus and another Event Hub for processing.](media/preferred-solution-architecture3.png "Preferred Solution")
 
-    Messages are sent from browsers running within laptop or mobile clients via Web Sockets to an endpoint running in an Azure Web App. Chat messages received by the Web App are sent to an Event Hub where they are temporarily stored. An Azure Function picks up the chat messages and applies sentiment analysis to the message text (using the Text Analytics API), as well as contextual understanding (using LUIS). The function forwards the chat message to an Event Hub used to store messages for archival purposes, and to a Service Bus Topic which is used to deliver the message to the intended recipients. A Stream Analytics Job provides a simple mechanism for pulling the chat messages from the second Event Hub and writing them to Cosmos DB for archiving, a Service Bus queue for negative sentiment notifications, and to Power BI for visualization of sentiment in real-time as well as trending sentiment. A Logic App is triggered when messages are added to a Service Bus queue, and sends SMS messages to hotel staff when negative guest sentiment is detected in the chat. An indexer runs atop Cosmos DB that updates the Azure Search index which provides full text search capability. Messages in the Service Bus Topic are pulled by Subscriptions created in the Web App and running on behalf of each client device connected by Web Sockets. When the Subscription receives a message, it is pushed via Web Sockets down to the browser-based app and displayed in a web page. Bot Services hosts a bot created using QnA maker, which automatically answers simple questions asked by site visitors.
+    Messages are sent from browsers running within laptop or mobile clients via SignalR to an endpoint running in an Azure Web App. Chat messages received by the Web App are sent to an Event Hub where they are temporarily stored. An Azure Function picks up the chat messages and applies sentiment analysis to the message text (using the Text Analytics API), as well as contextual understanding (using LUIS). The function forwards the chat message to an Event Hub used to store messages for archival purposes, and to a Service Bus Topic which is used to deliver the message to the intended recipients. A Stream Analytics Job provides a simple mechanism for pulling the chat messages from the second Event Hub and writing them to Cosmos DB for archiving, a Service Bus queue for negative sentiment notifications, and to Power BI for visualization of sentiment in real-time as well as trending sentiment. An indexer runs atop Cosmos DB that updates the Azure Search index which provides full text search capability. Messages in the Service Bus Topic are pulled by Subscriptions created in the Web App and running on behalf of each client device connected by SignalR. When the Subscription receives a message, it is pushed via SignalR down to the browser-based app and displayed in a web page. Bot Services hosts a bot created using QnA maker, which automatically answers simple questions asked by site visitors.
 
     > **Note**: The preferred solution is only one of many possible, viable approaches.
 
@@ -457,7 +450,7 @@ The primary audience is the business decision makers and technology decision mak
 
     In either case, the "connection" is made when messages are sent that have the same value for the SessionID property because the message will be picked up by the Subscriptions that are listening for messages with that SessionID and ultimately delivered to related client.
 
-    ![The Chat request diagram begins with the Devices that are sending chat requests to the concierge, using Web Sockets (Message send). The chat request then flow through Web App (Messaging Endpoint), then on to a Service Bus (Topic & Subscriptions), where they are distributed to the Concierges' devices that are receiving the chat requests.](media/image4.png 'Chat request diagram')
+    ![The Chat request diagram begins with the Devices that are sending chat requests to the concierge, using SignalR (Message send). The chat request then flow through Web App (Messaging Endpoint), then on to a Service Bus (Topic & Subscriptions), where they are distributed to the Concierges' devices that are receiving the chat requests.](media/image4.png 'Chat request diagram')
 
     The one-on-one session (and its corresponding session ID) are established dynamically. The guest to concierge pattern is a lot like it works with the telephone---a guest dials the concierge, a bank of phones ring at the concierge desk and one of them is answered by a concierge. In this case, the hotel guest uses the web app to send a message to a subscription that is listening for messages with a particular username (e.g., "concierge"). Each instance of the concierge app, which is a console client, is effectively a competing consumer against that subscription, and only one of the concierge apps will take the message and join a chat session with the user. This chat request message contains the Session ID that the concierge app should join to in order to speak "privately" with the guest, which the concierge app automatically does following the pattern previously described for the chat message flow. The key distinction is that the Session ID to which the chat client creates Service Bus Subscriptions in this case are dynamically created.
 
@@ -484,18 +477,6 @@ The primary audience is the business decision makers and technology decision mak
 3. How would you integrate this service into your chat message processing flow?
 
     The Event Processor logic should be extended to support the processing of requests. As messages are scored for sentiment, they can also be sent to the LUIS web service endpoint. The JSON response that LUIS provides will indicate if the message matches one of the configured intents or no intent. If it matches an intent, then Event Processor logic could forward the message on to the Service Bus Topic appropriate for room service or housekeeping, from which they could then respond to the guest as appropriate. If it does not match an intent, the message would be forwarded on to the intended Topic with the expectation that hotel staff would respond to it.
-
-*SMS messaging*
-
-1. What Azure service would you recommend First Up Consultants use for sending email or SMS messages to guest services employees indicating the detection of an upset guest via sentiment analysis in the chat?
-
-    Logic App could be used to send email or SMS messages (with the Twilio connector) to hotel staff when negative guest sentiment is detected in the chat application. This would also meet First Up Consultants' desire to use a serverless architecture in Azure.
-
-2. How could you integrate this service into your chat message processing flow?
-
-    The Stream Analytics job could contain a query to send all messages with a sentiment score below a specified threshold, such as 0.1, to a Service Bus queue. The Logic App would implement a Service Bus Message added to queue trigger to launch the workflow, and send message to hotel guest services employees.
-
-    Another alternative would be to have the Event Processor logic could forward messages whose sentiment score is below the threshold on to the Service Bus Queue appropriate for hotel staff notifications. From there, the Logic App could be triggered to send an email or SMS message to hotel guest services using a Service Bus connector for Logic App.
 
 *Q&A Bot*
 

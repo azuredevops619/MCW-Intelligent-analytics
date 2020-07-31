@@ -1,0 +1,95 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+    <link href="~/css/chat.css" rel="stylesheet" />
+@section header {
+    <div class="hero-unit">
+        <div class="container p-0">
+            <div class="col-md-6">
+                <p>&nbsp;</p>
+                <div class="panel panel-transparent no-bd ">
+                    <div class="panel-body bg-dark p-3">
+                        <h1>Contoso Hotels</h1>
+                        <p class="lead">Welcome to the Contoso Hotels.</p>
+                        <p>Please use our in-house chat system to stay in touch with us during your stay.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="row"><p>&nbsp;</p></div>
+
+<div class="row" id="joinChatPanel">
+    <div class="col-md-4">
+        <div class="bs-component">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title panel-title-large p-3">
+                        <span class="fas fa-user"></span><span class="ml-2" style="color: white">Join Chat</span>
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <form class="mb-1">
+                        <div class="form-group">
+                            <label for="username">Enter your username</label>
+                            <input type="text" class="form-control" id="username" aria-describedby="userNameHelp" placeholder="e.g. (Guest Name)">
+                            <small id="userNameHelp" class="form-text text-muted">We need a unique name for you.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="listChatRooms" class="control-label">With whom would you like to chat?</label>
+                            <select id="listChatRooms" class="form-control">
+                                <option value="hotellobby">Hotel Lobby</option>
+                            </select>
+                        </div>
+                    </form>
+                    <button type="button" id="btnJoin" class="btn btn-primary">Join</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row" id="chatPanel">
+
+    <div class="col-md-12">
+        <h2 id="chat-room"></h2>
+
+        <div class="col-md-6">
+            <div class="bs-component">
+
+                <div class="card mb-2">
+                    <div class="card-header">
+                        <h5 class="card-title">
+                            <span class="fas fa-comment"></span>&nbsp;&nbsp; Live Chat
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="divHistory"></div>
+                        <ul class="list-group" id="chat" class="chat"></ul>
+                    </div>
+                    <div class="card-footer">
+                        <div class="input-group">
+                            <input id="txtMsg" type="text" class="form-control" placeholder="Type your message here...">
+                            <span class="input-group-btn">
+                                <button type="button" id="btnSend" class="btn btn-primary">Send</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="row"><p>&nbsp;</p></div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<script src="~/lib/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/common.js"></script>
+<script src="~/js/chatClient.js"></script>
