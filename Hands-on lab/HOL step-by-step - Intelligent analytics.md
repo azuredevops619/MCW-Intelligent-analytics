@@ -43,6 +43,12 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
   - [Exercise 2: Implement message forwarding](#exercise-2-implement-message-forwarding)
     - [Task 1: Implement the event processor](#task-1-implement-the-event-processor)
     - [Task 2: Configure the Chat Message Processor Function App](#task-2-configure-the-chat-message-processor-function-app)
+      - [Event Hub connection string](#event-hub-connection-string)
+      - [Event Hub name](#event-hub-name)
+      - [Storage account](#storage-account)
+      - [Service Bus connection string](#service-bus-connection-string)
+      - [Chat topic](#chat-topic)
+      - [Text Analytics API settings](#text-analytics-api-settings)
   - [Exercise 3: Deploying the App Services](#exercise-3-deploying-the-app-services)
     - [Task 1: Restore NuGet Packages for the solution](#task-1-restore-nuget-packages-for-the-solution)
     - [Task 2: Publish the ChatMessageSentimentProcessor Function App](#task-2-publish-the-chatmessagesentimentprocessor-function-app)
@@ -133,7 +139,7 @@ The following section walks you through the manual steps to provision the servic
 
     ![The Remote Desktop Connection window states that the identity of the remote computer can't be identified, and asks if you want to connect anyway. The Yes button is selected.](media/image15.png "Remote Desktop Connection window")
 
-8. Open **Internet Explorer**, then download and install [Google Chrome](https://www.google.com/chrome).
+8. Open **Internet Explorer**, then download and install Edge.
 
 ### Task 2: Download and open the ConciergePlus starter solution
 
@@ -163,7 +169,7 @@ The following section walks you through the manual steps to provision the servic
 
     ![In the Security Warning window, under the Would you like to open this project? prompt, the Ask me for every project in this solution checkbox is highlighted and unchecked.](media/image20.png 'Security Warning window')
 
-    ![The Visual Studio Solution explorer displays with the initial solution folder and files.](media/2019-03-20-15-58-31.png "Initial solution folder and files")
+    ![The Visual Studio Solution explorer displays with the initial solution folder and files.](media/2020-08-16-17-20-03.png "Initial solution folder and files")
 
 > **Note**: If you attempt to build the solution at this point, you will see many build errors. This is intentional. You will correct these in the exercises that follow.
 
@@ -188,7 +194,7 @@ In these steps, you will provision a Web App within a single App Service Plan.
     - **Runtime stack**: **.NET Core 3.1**
     - **OS**: **Windows**
     - **Region**: Choose a region close to you.
-    - **App Service plan**: Leave as the default - this will create a new App Service Plan.
+    - **App Service plan**: Create a new App Service Plan.
     - **Sku and Size**: **Standard S1**
 
     - Select **Review and Create** to provision both Web App and the App Service Plan. Select the **Create** button.
@@ -287,7 +293,12 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
 9. Select **Create**.
 
-10. Create a subscription to the topic you just created. The web application will use the subscription to retrieve messages and send them messages to the browser client. Enter these configurations:
+10. Create a subscription to the Service Bus topic you just created. The web application will use the subscription to retrieve messages and send them messages to the browser client. Enter these configurations:
+
+    - Select the topic you just created.
+    - Select the Subscription menu item on the left-hand menu.
+  
+    ![The topic menu is displayed. The Subscriptions link is highlighted.](media/2020-08-15-06-06-18.png "Select the subscription")
 
     ![The screenshot shows the Subscription button highlighted.](media/2020-06-30-20-09-57.png "Create the topic subscription.")
 
@@ -299,6 +310,10 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
     Select the **Create** button.
   
 11. Navigate back to the **Service Bus namespace** in the Azure Portal.
+
+    ![The screenshot shows current context is at the Service Bus Namespace.](media/2020-08-16-07-21-59.png "Service Bus Namespace")
+
+    >**Note:** Do not create the policy at the topic level for this lab. Create it at the Namespace.
 
     - Select **Shared access policies** within the left menu, under Settings.
 
@@ -350,7 +365,7 @@ In this task, you will create a new Event Hubs namespace and instance.
 
     ![In the list of resources, the Event Hub Namespace is selected.](media/image39.png "Azure Portal Resource pane")
 
-4. On the **Overview** blade, select **+Event Hub** to add a new Event Hub.
+4. On the **Overview** blade, select **+Event Hub** to add a new Event Hub. This event hub will receive chat messages from the web application.
 
     ![The add Event Hub is shown](media/image40.png "Add event hub")
 
@@ -370,15 +385,31 @@ In this task, you will create a new Event Hubs namespace and instance.
 
       ![The Create Event Hub blade fields display with the previously mentioned settings.](media/2020-06-29-13-44-07.png "Create Event Hub blade")
 
-6. Repeat steps listed 5 to create another Event Hub. This one will store messages for archival and be processed by Stream Analytics. Stream Analytics forwards the message to Cognitive Search.
+6. Repeat steps listed 5 to create another Event Hub. Name the event hub `awchathub2`.This one will store messages for archival and be processed by Stream Analytics. Stream Analytics forwards the message to Cognitive Search.
 
-   Name it `awchathub2`. If you select the **Event Hubs** menu item from the left menu, this will display the list of event hubs, you should see the following:
+    If you select the **Event Hubs** menu item from the left menu, this will display the list of event hubs, you should see the following:
 
     ![A list of Event Hubs is displayed, awchathub and awchathub2 are shown in this list.](media/2019-03-20-17-01-42.png "Event Hubs created")
 
+7. You will create the `ChatConsole` Event Hub shared policy.  Select **Shared access policies**, under **Settings**, within the left-hand menu.
+
+8. In the **Shared access policies**, you are going to create a new policy that the **ChatConsole** can use to retrieve messages. Select **+Add**.
+
+    ![The +Add button is selected in the Shared access policies toolbar menu.](media/image78.png "Shared access policies pane")
+
+9. For the **New Policy Name**, enter `ChatConsole`.
+
+10. In the list of Claims, select **Send** and **Listen**. Select the **Create** button.
+
+11. Select the **ChatConsole** policy you just created. Open Notepad and save the primary connection string value for the **EventHubConnectionString**.  Later, you will use it for the Application Settings.
+
+    ![The screenshot highlights ChatConsole primary connection string used for the EventHubConnectionString.](media/2020-08-16-07-40-01.png "EventHubConnectionString")
+
 ### Task 7: Provision Azure Cosmos DB
 
-In this section, you will provision an Azure Cosmos DB account, a database, and a collection that will be used to collect all the chat messages.
+Duration: 15 minutes
+
+In this section, you will provision an Azure Cosmos DB account, a database, and a collection that will be used to collect all the chat messages. Cognitive Search will index this data later. Power BI will use the data for visualizations.
 
 1. In the [Azure portal](https://portal.azure.com), select **+Create a resource**.  Search for **Azure Cosmos DB**.
 
@@ -582,7 +613,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     - **Output alias**: Enter `powerbi`.
 
-    - **Group workspace**: Select **My workspace**.
+    - **Group workspace**: Select **My workspace** or your corporate workspace.
 
     - **Dataset Name**: Set to `Messages`.
 
@@ -730,9 +761,13 @@ To provision access to the Text Analytics API (which provides sentiment analysis
 
     ![The Resource Management section of the Cognitive Services left menu is displayed, the Keys and Endpoint item is selected.](media/image69.png "Resource Management section")
 
-6. Copy the value for **Key 1**, and paste it into a text editor, such as Notepad, for later reference in the ConciergePlusSentiment solution in Visual Studio.
+6. Capture the configuration settings and paste them into Notepad. You will create Application Settings later. Capture:
 
-    ![In the Keys pane, the Key 1 value is highlighted, and the copy button next to this key is selected.](media/image70.png "Keys pane")
+   - TextAnalyticsAccountName = NAME
+   - TextAnalyticsBaseUrl = ENDPOINT
+   - TextAnalyticsAccountKey = KEY 1
+
+    ![The screenshot shows the Text Analytics configuration settings highlighted.](media/2020-08-16-07-13-30.png "Text Analytics Configuration Settings")
 
 7. Select **+Create a resource**, select **Language Understanding**, and **Create**.
 
@@ -758,7 +793,7 @@ To provision access to the Text Analytics API (which provides sentiment analysis
 
 9. Select **Review + create**, then select **Create**.
 
-10. Repeat steps 4 and 5 to retrieve the **Key 1** value for the **luis-api-namespace** Cognitive Service.
+10. Select the **Keys and Endpoint** link under Resource Management to  retrieve the **Key 1** value for the **luis-api-namespace** Cognitive Service.
 
 11. Verify that you have captured the two API keys for later reference in this lab.
 
@@ -780,7 +815,7 @@ In this section, you will implement the message forwarding from the ingest Event
 
     ![A Visual Studio source code window is displayed with the method signature of the Run method shown.](media/2020-06-30-14-37-10.png "Run method")
 
-4. Locate **TODO: 1** through **TODO: 6** comments and uncomment the code:
+4. Locate **TODO: 1** through **TODO: 5** comments and uncomment the code:
 
     ```csharp
     //TODO: 1.Extract the JSON payload from the binary message
@@ -794,24 +829,24 @@ In this section, you will implement the message forwarding from the ingest Event
     //    log.LogInformation("SentimentScore: " + sentimentMessage.score);
     //}
 
-    //TODO: 3.Create a Message (for Service Bus) and EventData instance (for EventHubs) from source message body
+    //TODO: 2.Create a Message (for Service Bus) and EventData instance (for EventHubs) from source message body
     var updatedMessage = JsonConvert.SerializeObject(sentimentMessage);
     var chatMessage  = new Message(Encoding.UTF8.GetBytes(updatedMessage));
 
     // Write the body of the message to the console.
     log.LogInformation($"Sending message: {updatedMessage}");
 
-    //TODO: 4.Copy the message properties from source to the outgoing message instances
+    //TODO: 3.Copy the message properties from source to the outgoing message instances
     foreach (var prop in eventData.Properties)
     {
         chatMessage.UserProperties.Add(prop.Key, prop.Value);
     }
 
-    //TODO: 5.Send chat message to Topic
+    //TODO: 4.Send chat message to Topic
     // Send the message to the topic which will be eventually picked up by ChatHub.cs in the web app.
     await topicClient.SendAsync(chatMessage);
 
-    //TODO: 6.Send chat message to next EventHub (for archival)
+    //TODO: 5.Send chat message to next EventHub (for archival)
     using var eventBatch = archiveEventHubClient.CreateBatch();
     EventData updatedEventData = new EventData(Encoding.UTF8.GetBytes(updatedMessage));
 
@@ -828,21 +863,17 @@ In this section, you will implement the message forwarding from the ingest Event
 
 2. Select the **Configuration** link in the **Overview** blade of the **Function App**. Choose the **Application settings** link.
 
-    ![The Overview tab is selected in the Function App. The Configuration link is highlighted in the Configured features section.](media/2019-06-20-16-09-02.png "Configuration Link")
+    ![The Overview tab is selected in the Function App. The Configuration link is highlighted in the Configured features section.](media/2020-08-16-16-44-35.png "Configuration Link")
 
-3. You will add the following application settings. The following sections walk you through the process of retrieving the values for these settings:
+3. You will add the following application settings. The following sections walk you through the process of retrieving the values for the Application settings.  If you have already captured these values, you can skip ahead to the adding the **New application setting**.
 
     ```text
-    ChatTopicPath
-    DestinationEventHubName
+    ChatTopicPath  (e.g. awhotel)
+    DestinationEventHubName  (e.g. awchathub2)
     EventHubConnectionString
 
-    LuisAppId
-    LuisBaseUrl
-    LuisPredictionKey
-
     ServiceBusConnectionString
-    SourceEventHubName
+    SourceEventHubName   (e.g. awchathub)
     StorageAccountKey
     StorageAccountName
 
@@ -863,23 +894,15 @@ The connection string required by the ChatMessageSentimentProcessor is different
 
 2. Select **Shared access policies**, under **Settings**, within the left-hand menu.
 
-3. In the **Shared access policies**, you are going to create a new policy that the **ChatConsole** can use to retrieve messages. Select **+Add**.
-
-    ![The +Add button is selected in the Shared access policies toolbar menu.](media/image78.png "Shared access policies pane")
-
-4. For the **New Policy Name**, enter `ChatConsole`.
-
-5. In the list of Claims, select **Send** and **Listen**. Select the **Create** button.
-
-6. After the **ChatConsole** shared access policy is created, select it from the list of policies, and then copy the **Connection string--primary key** value.
+3. Select the **ChatConsole** from the list of policies, and then copy the **Connection string--primary key** value.
 
     ![In the SAS Policy: ChatConsole pane, the Connection string-primary key is selected.](media/2020-06-30-14-48-44.png "Shared access policies, and SAS Policy: Chat Console pane")
 
-7. Return to the **Application Settings** for the Function App in the [Azure portal](https://portal.azure.com) by selecting the **Configuration** link on the Overview pane. Select **+ New application setting** in the toolbar menu of the Application Settings section.
+4. Return to the **Application Settings** for the Function App in the [Azure portal](https://portal.azure.com) by selecting the **Configuration** link on the Overview pane. Select **+ New application setting** in the toolbar menu of the Application Settings section.
 
     ![The Application settings tab is selected and the + New application setting button is selected in the toolbar menu located in the Application settings section of the page.](media/2019-11-16-12-39-18.png "Add new application setting.")
 
-8. Enter `EventHubConnectionString` into the **Name** field, and paste the copied connection string value from step 6 into the **Value** field. Select the **OK** button.
+5. Enter `EventHubConnectionString` into the **Name** field, and paste the copied connection string value from step 6 into the **Value** field. Select the **OK** button.
 
     ![EventHubConnectionString is shown in the list of application settings.](media/function-app-eventhubconnectionstring.png "Application setting value")
 
@@ -911,8 +934,6 @@ Your storage accounts can be found by going to the intelligent-analytics resourc
 
 #### Service Bus connection string
 
-The namespace, and therefore connection string, for the service bus is different from the one for the event hub. We need to retrieve the shared access policy to grant the **ChatMessageSentimentProcessorFunction** the **ChatConsole** permissions that was created earlier.
-
 1. Navigate to the **Service Bus Namespace Overview** page. From the left menu, select the **Shared Access policies** link in the **Settings** section. Select the **ChatConsole** from the list of policies and copy the **Primary Connection String** value and paste into your text file.
 
     ![The screen shows the service bus Shared access policies.  The ChatConsole policy is listed.](media/2019-11-16-12-53-19.png "Service Bus - Shared access policies")
@@ -927,27 +948,19 @@ The namespace, and therefore connection string, for the service bus is different
 
 #### Text Analytics API settings
 
-1. In the [Azure portal](https://portal.azure.com), open the Cognitive Service Text API (e.g. **awhotels-sentiment**). Locate the location the service was created in the Text Analytics Properties menu item.
+1. In the [Azure portal](https://portal.azure.com), open the Cognitive Service Text API (e.g. **awhotels-sentiment**) in your resource group.
 
-   ![In the Cognitive Services resource, Properties is selected from the left menu. The location value is highlighted.](media/2019-11-24-09-37-48.png "Cognitive Service Text API")
+2. On the left-hand menu of the Text API blade, select **Keys and Endpoint**. You will use these configuration values for creating Function Application settings. 
 
-    Create a new application setting with the **Name** `TextAnalyticsBaseUrl` and enter the location as the **Value**. **Use all lower case alpha characters with no spaces**.
+3. Create a new application setting with the **Name** `TextAnalyticsBaseUrl` and enter the **ENDPOINT** as the **Value**. **Use all lower case alpha characters with no spaces**.
 
-    ![The textAnalyticsBaseUrl application setting is shown with the value westus2.](media/2019-11-24-09-41-40.png "Text Analytics Region Value")
+4. Create a new application setting with the **Name** `TextAnalyticsAccountName` and paste the value of the Cognitive Service **Name** into the **Value** field.
 
-    The region value will be used in a call to <https://westus2.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment> in the Function code.
+5. Create a new application setting with the **Name** `TextAnalyticsAccountKey` and paste the value of **KEY 1** of the Cognitive Service into the **Value** field.
 
-2. On the left-hand menu of the Text API blade, select **Keys and Endpoint**.
+6. Scroll to the top of the function **Application Settings** and select **Save** from the toolbar. Your application settings should now resemble the following (to see the hidden values, select the eye icon in the Value column)
 
-    ![On the Cognitive Service account blade, the Name value (awhotels-sentiment) and its copy button are circled, as is the Key 1 value and its copy button.](media/image91.png "Cognitive Service account blade")
-
-3. Create a new application setting with the **Name** `TextAnalyticsAccountName` and paste the value of the Cognitive Service **Name** into the **Value** field.
-
-4. Create a new application setting with the **Name** `TextAnalyticsAccountKey` and paste the value of **Key 1** of the Cognitive Service into the **Value** field.
-
-5. Scroll to the top of **Application Settings** and select **Save** from the toolbar. Your application settings should now resemble the following (to see the hidden values, select the eye icon in the Value column):
-
-    ![The Application Settings listing for the Function App is shown.](media/2020-06-30-19-52-53.png "Function Application settings")
+    ![The Application Settings listing for the Function App is shown.](media/2020-08-16-10-07-23.png "Function Application settings")
 
 ## Exercise 3: Deploying the App Services
 
@@ -956,10 +969,10 @@ Duration: 15 minutes
 1. Navigate to the web application and then select the **Configuration** menu item on the left hand side. Add these new application settings:  
 
     ```config
-    ChatMessageSubscriptionName
-    ChatTopic
+    ChatMessageSubscriptionName  (e.g. ChatMessageSub)
+    ChatTopicPath  (e.g. awhotel)
     EventHubConnectionString
-    SourceEventHubName
+    SourceEventHubName  (e.g. awchathub)
     ServiceBusConnectionString
     ```
 
@@ -1010,7 +1023,7 @@ With the App Services projects properly configured, you are now ready to deploy 
 2. In the **Publish blade**, select **App Service**, and choose the **Select Existing** radio button. Select **Create Profile**.
 
     ![In the Publish window, the Microsoft Azure App Service option is selected, as is the Select Existing radio button.](media/vs-webapp-publish-target.png "Publish window")
-    
+
     > **Note**: You may see a different dialog than what is shown above. If so, select Microsoft Azure App Service:
 
     ![The screen shows the publish folder options. The web app is selected.](media/2019-11-16-13-31-12.png "Azure Web App Publish Options")
@@ -1023,11 +1036,11 @@ With the App Services projects properly configured, you are now ready to deploy 
 
     ![The Browser window displays the Contoso Hotels webpage with a Join Chat section that has a username textbox and a chat room selection drop down list.](media/2020-06-29-10-10-20.png "Join chat landing page")
 
-    > **Note**: It may take a couple of minutes for the browser to render. You must use a modern browser like Chrome or Edge. If the site is opened in Internet Explorer, copy the URL from the address bar, open Chrome (that you installed earlier), and navigate to the site with Chrome instead.
+    > **Note**: It may take a couple of minutes for the browser to render. You must use a modern browser like Edge. If the site is opened in Internet Explorer, copy the URL from the address bar, open Edge (that you installed earlier), and navigate to the site with Edge instead.
 
 ### Task 4: Testing hotel lobby chat
 
-1. Open a browser instance (Chrome is recommended for this web app), and navigate to the deployment URL for your Web App.
+1. Open a browser instance (Edge is recommended for this web app), and navigate to the deployment URL for your Web App.
 
     - If you are unsure what this URL is, it can be found in two places:
 
@@ -1051,7 +1064,11 @@ With the App Services projects properly configured, you are now ready to deploy 
 
     ![The Live Chat window displays, showing that it is connected to the chat service.](media/2020-06-29-10-15-14.png "Live Chat window")
 
-6. Open another browser instance (You could try this from your mobile device).
+    - Open the browser console. You should see similar SignalR messages.
+
+    ![The screenshot shows SignalR debug messages.](media/2020-08-17-08-58-40.png "SignalR Debug Messages")
+
+6. Open another browser tab and navigate to the web site.
 
 7. Enter `HotelLobby` (no spaces), and select **Join**.
 
@@ -1059,11 +1076,40 @@ With the App Services projects properly configured, you are now ready to deploy 
 
     ![The Live Chat window shows a chat going on between two users.](media/2020-06-29-10-17-13.png "Live Chat window")
 
-9. You can join with as many sessions as you want (The Hotel Lobby is basically a public chat room).
+9. Debugging Chat Messages
 
-    > **Note**: _Debugging Tips_: If you don't see your messages showing up in the Live Chat window, double check your Azure Event Hub and Service Bus activity. Open the Metrics screen. Make sure incoming and outgoing messages are being processed.  Validate the web and function application settings values. Also, if you navigate to the Azure Function Monitor, you can get more clues to any problems. Below is example of the log output. It can take up to 5 minutes for log entries to display.
+    - Event Hub Message Debugging.
+      - Navigate back to the Azure Portal and select your resource group.
+      - Select the event hub.
+      - Select the your event hub link.  e.g. awchathub.
+      - Select the **Process Data** in the left-hand menu item.
+      - Select the **Explore** button.
+
+        ![The screenshot shows how to process event hub data.](media/2020-08-16-15-29-27.png "Process Event Hub Data")
+
+      - Select the **Test query** link.  You may have to grant permissions.
+        ![The image shows the Test query link highlighted](media/2020-08-16-15-33-01.png "Test query")
+
+        Your chat messages should appear here.  This means your web application and event hub configuration settings are correct. If messages do not show, go back and check your Application Settings. Notice your messages are spread across the different partitions.
+
+        ![The image shows test messages in the event hub.](media/2020-08-16-15-37-22.png "Event hub test messages")
+
+    - Check your function app.
+
+        > **Note**: _Debugging Tips_: If you navigate to the Azure Function Monitor, you can get more clues to any problems. Below is example of the log output. It can take up to 5 minutes for log entries to display.
+
+        - Select your **ProcessChatMessage** function from the list of functions.
+
+        - Select **Monitor** from the left-hand menu.
+
+        ![The image shows the Function App Monitor link highlighted.](media/2020-08-16-16-12-48.png "Function App Monitor Link")
 
     ![The Azure Function log is shown with the output of an error displayed.](media/2019-11-24-07-23-56.png "Azure Function Monitor Log Example")
+
+    - Check your Service Bus Subscription activity.
+      - Navigate back to your service bus overview.  You should see the message count greater than zero. The web application is going to pull these messages and display them in the browser.
+
+    ![The image shows the service bus activity. Message counts are greater than zero.](media/2020-08-16-16-28-44.png "Service bus activity")
 
 10. Test your Stream Analytics Query.
 
@@ -1087,10 +1133,10 @@ In this task, you will add code that enables the Event Processor to invoke the T
 
 2. Scroll down to the method **Run**.
 
-3. Uncomment the code for **TODO: 7**. It should look like:
+3. Uncomment the code for **TODO: 6**. It should look like:
 
     ```csharp
-    //TODO: 7 Append sentiment score to chat message object
+    //TODO: 6 Append sentiment score to chat message object
     if (sentimentMessage.messageType.Equals("chat", StringComparison.OrdinalIgnoreCase))
     {
         sentimentMessage.score = await GetSentimentScore(sentimentMessage);
@@ -1098,7 +1144,9 @@ In this task, you will add code that enables the Event Processor to invoke the T
     }
     ```
 
-4. Test your sentiment query by selecting the sentiment query and selecting the `Test selected query` button.  Check your results.  You should have all of the negative chat messages.
+4. Build your **ChatMessageSentimentProcessFunction** project.
+5. Publish your **ChatMessageSentimentProcessFunction** project to Azure.
+6. Test your sentiment query by selecting the sentiment query and selecting the `Test selected query` button.  Check your results.  Look at the **score** column. You should have all of the negative chat messages. Sentiment analysis has not been applied just yet. The sentiment analysis will be tested after the Language Understanding configuration has been completed.
 
     ![The screen shows the ability to test your queries before saving them.](media/2020-07-02-17-01-33.png "Test your queries")
 
@@ -1177,7 +1225,7 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     ![The screen shows the original test phrase and the test results.](media/2020-06-28-08-55-50.png "Inspecting the test results")
 
-    It is important to see a high correlation and a resulting ML entity because the chat application needs it in order send the message to the correct hotel department. Below is the code from the function application that determines if there is an utterance match.
+    It is important to see a high correlation and a resulting ML entity because the chat application needs it in order to send the message to the correct hotel department. Below is the code from the function application that determines if there is an utterance match.
 
     ![The screen shows the chat processing code and the reason for making sure the entity and intent is returned.](media/2020-06-29-05-10-51.png "Code sample of intent handler")
 
@@ -1208,9 +1256,9 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     ![The screenshot shows the new machine learning prediction for the utterance. The user did not have to select the phrase and associated it with the entity.](media/2020-06-28-10-03-57.png "Machine learning entity prediction")
 
-26. Right-click on the **ChatMessageSentimentFunction** project in Visual Studio. Select **Publish App** from the Visual Studio menu.
+26. Right-click on the **ChatMessageSentimentFunction** project in Visual Studio. Build the project. Select **Publish App** from the Visual Studio menu.
 
-27. When the publish process completes, select **Manage** from the toolbar, then select **Azure Resources** from the left menu. In the **Starter_Key** section, the URL is available in the **Example Query** textbox.
+27. When the publish process completes, go back to the LUIS web page. Select **Manage** from the toolbar, then select **Azure Resources** from the left menu. In the **Starter_Key** section, the URL is available in the **Example Query** textbox.
 
     ![The Azure Resources menu item is selected from the left menu and the Example Query URL is shown in a textbox.](media/2019-11-18-18-58-03.png "LUIS Key Information")
 
@@ -1232,10 +1280,10 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 31. Open **Visual Studio** then open **ProcessChatMessage.cs** within the **ChatMessageSentimentProcessorFunction** project, and navigate to the Run method.
 
-32. Locate **TODO: 8** and uncomment the code:
+32. Locate **TODO: 7** and uncomment the code:
 
     ```csharp
-    //TODO: 8.Respond to chat message intent if appropriate
+    //TODO: 7.Respond to chat message intent if appropriate
     var updatedMessageObject = JsonConvert.DeserializeObject<MessageType>(updatedMessage);
 
     // Get your most likely intent based on your message.
@@ -1253,15 +1301,13 @@ Now that you have added sentiment analysis and language understanding to the sol
 
 1. Publish the **ChatMessageSentimentProcessorFunction** Function App using **Visual Studio** just as you did in [Exercise 4, Task 2](#task-2-publish-the-chatmessagesentimentprocessor-function-app).
 
-2. Publish the **ChatWebApp** just as you did in [Exercise 4, Task 3](#task-3-publish-the-chatwebapp).
+2. Open the Hotel Lobby web page. Join a chat in the **Hotel Lobby**.
 
-3. Join a chat in the **Hotel Lobby**.
-
-4. Type a message with a positive sentiment, like `I love this weather`. Observe the **thumbs-up** icon that appears next to the chat message you sent. Next, types something like, `I hate this weather` and observe the **thumbs-down** icon. These are indicators of sentiment (as applied by your solution in real-time).
+3. Type a message with a positive sentiment, like `I love this weather`. Observe the **thumbs-up** icon that appears next to the chat message you sent. Next, types something like, `I hate this weather` and observe the **thumbs-down** icon. These are indicators of sentiment (as applied by your solution in real-time).
 
     ![In the Live Chat window, callouts point to the thumbs-up and thumbs-down icons. The 'love this weather' statement produces a thumbs-up icon. Thumbs down for the 'I have this weather'](media/2020-06-29-05-44-34.png "Live Chat window")
 
-5. Next, try ordering some items from room service, like `bring me towels` and `order a pizza`. Observe that you get a response from the **ConciergeBot**, and that the reply indicates whether your request was sent to **Housekeeping** or **Room Service**, depending on whether the item ordered was a room or food item.
+4. Next, try ordering some items from room service, like `bring me towels` and `order a pizza`. Observe that you get a response from the **ConciergeBot**, and that the reply indicates whether your request was sent to **Housekeeping** or **Room Service**, depending on whether the item ordered was a room or food item.
 
     ![In the chat window, Tim is having a conversation with a ConciergeBot. He asks for towels, and the ConciergeBot says they are forwarding the request to Housekeeping.](media/2020-06-29-05-47-15.png "Live Chat window")
 

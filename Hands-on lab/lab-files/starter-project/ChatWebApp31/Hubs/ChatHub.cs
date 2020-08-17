@@ -32,7 +32,7 @@ namespace ChatWebApp31.Hubs
             this.hubContext = hubContext;
 
             serviceBusConnectionString = configuration["ServiceBusConnectionString"];
-            topicName = configuration["ChatTopic"];
+            topicName = configuration["ChatTopicPath"];
             subscriptionName = configuration["ChatMessageSubscriptionName"];
 
             connectionString = configuration["EventHubConnectionString"];
