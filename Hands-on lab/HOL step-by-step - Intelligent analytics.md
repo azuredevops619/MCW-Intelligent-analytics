@@ -948,23 +948,17 @@ Your storage accounts can be found by going to the intelligent-analytics resourc
 
 #### Text Analytics API settings
 
-1. In the [Azure portal](https://portal.azure.com), open the Cognitive Service Text API (e.g. **awhotels-sentiment**). Locate the location the service was created in the Text Analytics Properties menu item.
+1. In the [Azure portal](https://portal.azure.com), open the Cognitive Service Text API (e.g. **awhotels-sentiment**) in your resource group.
 
-   ![In the Cognitive Services resource, Properties is selected from the left menu. The location value is highlighted.](media/2019-11-24-09-37-48.png "Cognitive Service Text API")
+2. On the left-hand menu of the Text API blade, select **Keys and Endpoint**. You will use these configuration values for creating Function Application settings. 
 
-    Create a new application setting with the **Name** `TextAnalyticsBaseUrl` and enter the location as the **Value**. **Use all lower case alpha characters with no spaces**.
+3. Create a new application setting with the **Name** `TextAnalyticsBaseUrl` and enter the **ENDPOINT** as the **Value**. **Use all lower case alpha characters with no spaces**.
 
-    ![The textAnalyticsBaseUrl application setting is shown with the value westus2.](media/2019-11-24-09-41-40.png "Text Analytics Region Value")
+4. Create a new application setting with the **Name** `TextAnalyticsAccountName` and paste the value of the Cognitive Service **Name** into the **Value** field.
 
-    The region value will be used in a call to <https://westus2.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment> in the Function code.
+5. Create a new application setting with the **Name** `TextAnalyticsAccountKey` and paste the value of **KEY 1** of the Cognitive Service into the **Value** field.
 
-2. On the left-hand menu of the Text API blade, select **Keys and Endpoint**.
-
-3. Create a new application setting with the **Name** `TextAnalyticsAccountName` and paste the value of the Cognitive Service **Name** into the **Value** field.
-
-4. Create a new application setting with the **Name** `TextAnalyticsAccountKey` and paste the value of **Key 1** of the Cognitive Service into the **Value** field.
-
-5. Scroll to the top of the function **Application Settings** and select **Save** from the toolbar. Your application settings should now resemble the following (to see the hidden values, select the eye icon in the Value column)
+6. Scroll to the top of the function **Application Settings** and select **Save** from the toolbar. Your application settings should now resemble the following (to see the hidden values, select the eye icon in the Value column)
 
     ![The Application Settings listing for the Function App is shown.](media/2020-08-16-10-07-23.png "Function Application settings")
 
@@ -1070,7 +1064,11 @@ With the App Services projects properly configured, you are now ready to deploy 
 
     ![The Live Chat window displays, showing that it is connected to the chat service.](media/2020-06-29-10-15-14.png "Live Chat window")
 
-6. Open another browser instance (You could try this from your mobile device).
+    - Open the browser console. You should see similar SignalR messages.
+
+    ![The screenshot shows SignalR debug messages.](media/2020-08-17-08-58-40.png "SignalR Debug Messages")
+
+6. Open another browser tab and navigate to the web site.
 
 7. Enter `HotelLobby` (no spaces), and select **Join**.
 
@@ -1227,7 +1225,7 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     ![The screen shows the original test phrase and the test results.](media/2020-06-28-08-55-50.png "Inspecting the test results")
 
-    It is important to see a high correlation and a resulting ML entity because the chat application needs it in order send the message to the correct hotel department. Below is the code from the function application that determines if there is an utterance match.
+    It is important to see a high correlation and a resulting ML entity because the chat application needs it in order to send the message to the correct hotel department. Below is the code from the function application that determines if there is an utterance match.
 
     ![The screen shows the chat processing code and the reason for making sure the entity and intent is returned.](media/2020-06-29-05-10-51.png "Code sample of intent handler")
 
