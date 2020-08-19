@@ -1194,8 +1194,6 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 12. Select **+Create**.
 
-    ![On the Entities screen, the Create new entity button is selected on the toolbar.](media/2019-06-20-20-00-05.png "Create new entity")
-
     ![On the Entities screen, the Create new entity button is selected on the toolbar.](media/2020-08-18-17-59-38.png "Create new entity")
 
 13. For the **Entity name**, enter **RoomService**.  Select the **Create** button.
