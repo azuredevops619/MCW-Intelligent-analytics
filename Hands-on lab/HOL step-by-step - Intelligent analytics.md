@@ -1170,66 +1170,64 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 5. You should be redirected to the **My Apps** list page. In the toolbar, select **+Create new app**.
 
-    ![The My Apps table is displayed with the + Create new app button highlighted in the toolbar.](media/image112.png "Create LUIS app")
+    ![The My Apps table is displayed with the + Create new app button highlighted in the toolbar.](media/2020-08-18-17-39-36.png "Create LUIS app")
 
-6. Complete the additional info and terms of use form and select **Continue**.
+6. Complete the **Create a new app** form by providing `awchat` as the name for your LUIS app, and selecting the **English** culture then select **Done**.
 
-7. Under My Apps, select **Create New App**.
+    ![In the Create a new app dialog box, the Name field is set to awchat, and Culture is set to English.](media/2020-08-18-17-46-45.png "Create new app")
 
-8. Complete the **Create a new app** form by providing `awchat` as the name for your LUIS app, and selecting the **English** culture then select **Done**.
+7. Scroll through the examples of how to create the intents and utterances. Close the dialog.
 
-    ![In the Create a new app dialog box, the Name field is set to awchat, and Culture is set to English.](media/image114.png "Create new app")
+8. In a moment, your new `awchat` app will appear.
 
-9. In a moment, your new app will appear. Select the app to see the details.
-
-10. Select **My Apps** from the menu bar and choose your app from the list.
-
-11. Choose **Build** from the toolbar. Select **Create new intent**.
+9. Choose **Build** from the toolbar. In the **Intents** pane, select **+ Create** link.
 
     ![The top toolbar is displayed. The Build menu item is selected.](media/2019-06-20-19-55-55.png "Build Menu Item")
 
-12. In the **Intents** dialog, for the **Intent Name** enter `OrderIn` and select **Done**.
+10. In the **Intents** dialog, for the **Intent Name** enter `OrderIn` and select **Done**.
 
     ![The OrderIn intent has been entered into the Create new intent dialog and the Done button is selected.](media/image118.png "Create a new intent")
 
-13. Select **Entities** from the menu on the left.
+11. Select **Entities** from the menu on the left.
 
     ![The Entities menu item is selected in the left menu.](media/2020-06-28-10-09-17.png "Entities menu")
 
-14. Select **Create new entity**.
+12. Select **+Create**.
 
     ![On the Entities screen, the Create new entity button is selected on the toolbar.](media/2019-06-20-20-00-05.png "Create new entity")
 
-15. For the **Entity name** specify **RoomService** and set the **Type** to **Machine learned**.  Select the **Create** button.
+    ![On the Entities screen, the Create new entity button is selected on the toolbar.](media/2020-08-18-17-59-38.png "Create new entity")
+
+13. For the **Entity name**, enter **RoomService**.  Select the **Create** button.
 
     ![The Add Entity dialog is displayed. Name and Entity Type are set to the preceding values.](media/2020-06-28-08-18-43.png "Add Entity dialog box")
 
-16. Return to the **OrderIn** intent screen to enter `utterances`.
+14. Return to the **OrderIn** intent screen to enter `utterances`.
 
     ![The OrderIn intent item is selected.](media/2020-06-28-08-31-26.png "Return to OrderIn Intent")
 
-17. In the example input text box, enter the "order a pizza" utterance and **press the Enter key to save your work**.
+15. In the example input text box, enter the "order a pizza" utterance and **press the Enter key to save your work**.
 
-18. Your newly created pizza utterance is shown below. Select the utterance with your mouse and associate it with the RoomService entity in the dropdown. Upon entity selection, your work will be saved.
+16. Your newly created pizza utterance is shown below. Select the utterance with your mouse and associate it with the RoomService entity in the dropdown. Upon entity selection, your work will be saved.
 
     ![The screen shows the order a pizza utterance highlighted and a dropdown menu displaying RoomService entity.](media/2020-06-28-08-36-52.png "Associate the entity")
 
-    Your saved work.
+    Your work is saved automatically.
 
     ![The order pizza utterance is displayed with associated RoomService entity.](media/2020-06-28-08-40-56.png "Example of saved utterance")
-19. Time to train your model.  Select the Train button in the upper right.  You should see the following result:
+17. Time to train your model.  Select the Train button in the upper right.  You should see the following result:
 
     ![The picture shows the Train button with a green circle and a message of 'Predictions loaded' displayed.](media/2020-06-28-08-45-49.png "Prediction loaded confirmation")
-    
-20. Now, it is time to test your model.  Select the Test button. Type in, "I would like to order a pizza" into the text box and select the `Enter` key. Select the **Inspect** link. You should see a correlation result above to 90% as well as the associated ML entity.
+
+18. Now, it is time to test your model.  Select the Test button. Type in, "I would like to order a pizza" into the text box and select the `Enter` key. Select the **Inspect** link. You should see a correlation result above to 90% as well as the associated ML entity.
 
     ![The screen shows the original test phrase and the test results.](media/2020-06-28-08-55-50.png "Inspecting the test results")
 
-    It is important to see a high correlation and a resulting ML entity because the chat application needs it in order to send the message to the correct hotel department. Below is the code from the function application that determines if there is an utterance match.
+    It is important to see a high correlation (above .75) and a resulting ML entity because the chat application needs it in order to send the message to the correct hotel department. Below is the code from the function application that determines if there is an utterance match.
 
     ![The screen shows the chat processing code and the reason for making sure the entity and intent is returned.](media/2020-06-29-05-10-51.png "Code sample of intent handler")
 
-21. Repeat this process for the following phrases and associate them with the **RoomService** entity:
+19. Repeat this process for the following phrases and associate them with the **RoomService** entity:
 
     - I am hungry
     - order food
@@ -1239,9 +1237,9 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
     - order breakfast
     - order a drink
 
-22. Create a **Housekeeping** entity.
+20. Create a **Housekeeping** entity.
 
-23. Create the following utterances and associate them with the Housekeeping entity:
+21. Create the following utterances and associate them with the Housekeeping entity:
 
     - more towels
     - more blankets
@@ -1250,23 +1248,25 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
     - I am cold
     - I am too hot
 
-24. Train and test your model.  Did you get the expected test results?
+22. Train and test your model.  Did you get the expected test results?
 
-25. Enter one more utterance, `room needs vacuuming`. There is some new functionality. Notice the predicted label/entity was suggested for you.  Confirm the **Housekeeping** entity. Train and test your model.
+23. Enter one more utterance, `order a hotdog`. There is some new functionality in LUIS. Notice the predicted label/entity was suggested for you.  Confirm the **RoomService** entity. Train and test your model.
 
-    ![The screenshot shows the new machine learning prediction for the utterance. The user did not have to select the phrase and associated it with the entity.](media/2020-06-28-10-03-57.png "Machine learning entity prediction")
+    ![The screenshot shows the new machine learning prediction for the utterance. The user did not have to select the phrase and associated it with the entity.](media/2020-08-18-19-02-58.png "Machine learning entity prediction")
 
-26. Right-click on the **ChatMessageSentimentFunction** project in Visual Studio. Build the project. Select **Publish App** from the Visual Studio menu.
+    ![The screenshot shows the Confirm RoomService option highlighted](media/2020-08-18-19-04-47.png "Confirm RoomService")
 
-27. When the publish process completes, go back to the LUIS web page. Select **Manage** from the toolbar, then select **Azure Resources** from the left menu. In the **Starter_Key** section, the URL is available in the **Example Query** textbox.
+24. Right-click on the **ChatMessageSentimentFunction** project in Visual Studio. Build the project. Select **Publish App** from the Visual Studio menu.
 
-    ![The Azure Resources menu item is selected from the left menu and the Example Query URL is shown in a textbox.](media/2019-11-18-18-58-03.png "LUIS Key Information")
+25. When the publish process completes, go back to the LUIS web page. Select **Manage** from the toolbar, then select **Azure Resources** from the left menu. In the **luis-api-namespace** section, the URL is available in the **Example Query** textbox.
 
-28. Open a new tab in your browser. Paste the **Example Query** URL into the address bar and modify the end of the URL (the text following q= ) so it contains the phrase `bring me towels` and press **ENTER**. You should receive output similar to the following. Observe that it correctly identified the intent as **OrderIn** (in this case with a confidence of 0.969854355 or nearly 100%) and the entity as **towels** having an entity type of **Housekeeping:RoomItem** (in this case with a confidence score of 98.9%).
+    ![The Azure Resources menu item is selected from the left menu and the Example Query URL is shown in a textbox.](media/2020-08-18-19-27-46.png "LUIS Key Information")
+
+26. Open a new tab in your browser. Paste the **Example Query** URL into the address bar and modify the end of the URL (the text following q= ) so it contains the phrase `bring me towels` and press **ENTER**. You should receive output similar to the following. Observe that it correctly identified the intent as **OrderIn** (in this case with a confidence of 0.969854355 or nearly 100%) and the entity as **towels** having an entity type of **Housekeeping:RoomItem** (in this case with a confidence score of 98.9%).
 
     ![An example of the LUIS call JSON result is displayed.](media/2019-11-24-11-14-17.png "Sample LUIS Response")
 
-29. Go back to the **Starter_Key** screen. Capture three LUIS values and add them to the Azure Function application settings.
+27. Go back to the **luis-api-namespace** screen. Capture three LUIS values and add them to the Azure Function application settings.
 
     ```text
     LuisPredictionKey
@@ -1274,7 +1274,15 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
     LuisAppId
     ```
 
-    !["The screenshot shows the LUIS Starter_Key settings. Three application settings are highlighted. LuisPredictionKey, LuisBaseUrl, and LuisAppId"](media/2020-06-29-05-23-42.png "LUIS Application Settings")
+    !["The screenshot shows the LUIS Starter_Key settings. Three application settings are highlighted. LuisPredictionKey, LuisBaseUrl, and LuisAppId"](media/2020-08-18-19-32-28.png "LUIS Application Settings")
+
+28. In the LUIS web page, select the **Publish** button.
+
+    ![The screenshot shows the Publish button highlighted.](media/2020-08-18-20-08-05.png "Publish Slot Button")
+
+29. Select the **Production Slot** setting.  Select the **Done** button.
+
+    ![The screenshot shows the publishing slot settings. The Production Slot is selected.](media/2020-08-18-20-05-23.png "Production Slot")
 
 30. **Save** your Application Settings. The Event Processor is pre-configured to invoke the LUIS API using the provided App ID and key.
 
