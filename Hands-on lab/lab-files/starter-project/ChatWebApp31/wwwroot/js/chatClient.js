@@ -41,7 +41,11 @@ $(document).ready(function () {
         connection = new signalR.HubConnectionBuilder()
             .withUrl('/chatHub')
             .configureLogging(signalR.LogLevel.Debug)
-            .withAutomaticReconnect()
+            .withAutomaticReconnect({
+                nextRetryDelayInMilliseconds: retryContext => {
+                    return 3000;
+                }
+            })
             .build();
 
         // Set up the client-side SignalR event handlers
