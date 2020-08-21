@@ -886,7 +886,7 @@ In this section, you will implement the message forwarding from the ingest Event
 
 #### Event Hub connection string
 
-The connection string required by the ChatMessageSentimentProcessor is different from the typical Event Hub consumer, because not only does it need Listen permissions, but it also needs Send and Manage permissions on the Service Bus Namespace (because it receives messages, as well as creates Subscriptions).
+Capture the Event Hub connection string.
 
 1. To get the **EventHubConnectionString**, navigate to the Event Hub namespace in the Azure Portal by selecting **Resource Groups** on the left menu, then selecting the **intelligent-analytics** resource group, and selecting your **Event Hubs Namespace** from the list of resources.
 
@@ -1060,11 +1060,13 @@ With the App Services projects properly configured, you are now ready to deploy 
 
    The **connected** message means you have connected to the web application via SignalR.  The **join** message means you have sent a message to the event hub and the function app Event Hub Trigger copied the message to the service bus topic. Also, the web application has received the message using the topic subscription and pushed it the browser client.
 
-   > **Warning**: Failure to see these messages means your configuration could be incorrect and will cause problems in the next exercises.
+   > **Warning**: Failure to see these messages means your configuration could be incorrect and will cause problems in the next exercises. Debugging steps are listed below.
 
     ![The Live Chat window displays, showing that it is connected to the chat service.](media/2020-06-29-10-15-14.png "Live Chat window")
 
-    - Open the browser console. You should see similar SignalR messages.
+    - Optional: Open the browser console. You should see similar SignalR debug messages.  Check for:
+      - A WebSocket message (wss://). If you do not see this message, configure web sockets in your web application.
+      - "ReceivedMessage was called." This means the event listener was set up correctly for the Service Bus topic subscription `ChatMessageSub`.
 
     ![The screenshot shows SignalR debug messages.](media/2020-08-17-08-58-40.png "SignalR Debug Messages")
 
@@ -1076,7 +1078,7 @@ With the App Services projects properly configured, you are now ready to deploy 
 
     ![The Live Chat window shows a chat going on between two users.](media/2020-06-29-10-17-13.png "Live Chat window")
 
-9. Debugging Chat Messages
+9. Optional: Debugging Chat Messages
 
     - Event Hub Message Debugging.
       - Navigate back to the Azure Portal and select your resource group.
@@ -1248,23 +1250,20 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 22. Train and test your model.  Did you get the expected test results?
 
-23. Enter one more utterance, `order a hotdog`. There is some new functionality in LUIS. Notice the predicted label/entity was suggested for you.  Confirm the **RoomService** entity. Train and test your model.
+23. Enter one more utterance, `order a hotdog`. There is some new functionality in LUIS. Notice the predicted label/entity may be suggested for you.  Confirm the **RoomService** entity. Train and test your model.
 
     ![The screenshot shows the new machine learning prediction for the utterance. The user did not have to select the phrase and associated it with the entity.](media/2020-08-18-19-02-58.png "Machine learning entity prediction")
 
     ![The screenshot shows the Confirm RoomService option highlighted](media/2020-08-18-19-04-47.png "Confirm RoomService")
 
-24. Right-click on the **ChatMessageSentimentFunction** project in Visual Studio. Build the project. Select **Publish App** from the Visual Studio menu.
-
-25. When the publish process completes, go back to the LUIS web page. Select **Manage** from the toolbar, then select **Azure Resources** from the left menu. In the **luis-api-namespace** section, the URL is available in the **Example Query** textbox.
-
+24. Select **Manage** from the toolbar, then select **Azure Resources** from the left menu. In the **luis-api-namespace** section, the URL is available in the **Example Query** textbox
     ![The Azure Resources menu item is selected from the left menu and the Example Query URL is shown in a textbox.](media/2020-08-18-19-27-46.png "LUIS Key Information")
 
-26. Open a new tab in your browser. Paste the **Example Query** URL into the address bar and modify the end of the URL (the text following q= ) so it contains the phrase `bring me towels` and press **ENTER**. You should receive output similar to the following. Observe that it correctly identified the intent as **OrderIn** (in this case with a confidence of 0.969854355 or nearly 100%) and the entity as **towels** having an entity type of **Housekeeping:RoomItem** (in this case with a confidence score of 98.9%).
+25. Open a new tab in your browser. Paste the **Example Query** URL into the address bar and modify the end of the URL (the text following q= ) so it contains the phrase `bring me towels` and press **ENTER**. You should receive output similar to the following. Observe that it correctly identified the intent as **OrderIn** (in this case with a confidence of 0.969854355 or nearly 100%) and the entity as **towels** having an entity type of **Housekeeping:RoomItem** (in this case with a confidence score of 98.9%).
 
     ![An example of the LUIS call JSON result is displayed.](media/2019-11-24-11-14-17.png "Sample LUIS Response")
 
-27. Go back to the **luis-api-namespace** screen. Capture three LUIS values and add them to the Azure Function application settings.
+26. Go back to the **luis-api-namespace** screen. Capture three LUIS values and add them to the Azure Function application settings.
 
     ```text
     LuisPredictionKey
@@ -1274,19 +1273,19 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     !["The screenshot shows the LUIS Starter_Key settings. Three application settings are highlighted. LuisPredictionKey, LuisBaseUrl, and LuisAppId"](media/2020-08-18-19-32-28.png "LUIS Application Settings")
 
-28. In the LUIS web page, select the **Publish** button.
+27. In the LUIS web page, select the **Publish** button.
 
     ![The screenshot shows the Publish button highlighted.](media/2020-08-18-20-08-05.png "Publish Slot Button")
 
-29. Select the **Production Slot** setting.  Select the **Done** button.
+28. Select the **Production Slot** setting.  Select the **Done** button.
 
     ![The screenshot shows the publishing slot settings. The Production Slot is selected.](media/2020-08-18-20-05-23.png "Production Slot")
 
-30. **Save** your Application Settings. The Event Processor is pre-configured to invoke the LUIS API using the provided App ID and key.
+29. **Save** your Application Settings. The Event Processor is pre-configured to invoke the LUIS API using the provided App ID and key.
 
-31. Open **Visual Studio** then open **ProcessChatMessage.cs** within the **ChatMessageSentimentProcessorFunction** project, and navigate to the Run method.
+30. Open **Visual Studio** then open **ProcessChatMessage.cs** within the **ChatMessageSentimentProcessorFunction** project, and navigate to the Run method.
 
-32. Locate **TODO: 7** and uncomment the code:
+31. Locate **TODO: 7** and uncomment the code:
 
     ```csharp
     //TODO: 7.Respond to chat message intent if appropriate
@@ -1297,15 +1296,15 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
     await HandleIntent(intent, updatedMessageObject, topicClient);
     ```
 
-33. Take a look at the implementation of both methods if you are curious how the entity and intent information is used to generate an automatic chat message response from a bot.
+32. Take a look at the implementation of both methods if you are curious how the entity and intent information is used to generate an automatic chat message response from a bot.
 
-34. Save the file.
+33. Save the file.
 
 ### Task 3: Re-deploy the function application and test
 
 Now that you have added sentiment analysis and language understanding to the solution, you need to re-deploy the apps so you can test out the new functionality.
 
-1. Publish the **ChatMessageSentimentProcessorFunction** Function App using **Visual Studio** just as you did in [Exercise 4, Task 2](#task-2-publish-the-chatmessagesentimentprocessor-function-app).
+1. Build and Publish the **ChatMessageSentimentProcessorFunction** Function App using **Visual Studio**.
 
 2. Open the Hotel Lobby web page. Join a chat in the **Hotel Lobby**.
 

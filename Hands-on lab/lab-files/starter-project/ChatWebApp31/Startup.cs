@@ -30,7 +30,7 @@ namespace ChatWebApp31
             services.AddSignalR().AddHubOptions<ChatHub>(options =>
             {
                 options.EnableDetailedErrors = true;
-                options.KeepAliveInterval = TimeSpan.FromMinutes(1);
+                options.ClientTimeoutInterval = TimeSpan.FromSeconds(120);
             });
         }
 
