@@ -822,7 +822,7 @@ In this section, you will implement the message forwarding from the ingest Event
     string sourceEventHubEventBody = Encoding.UTF8.GetString(eventData.Body);
     var sentimentMessage = JsonConvert.DeserializeObject<MessageType>(sourceEventHubEventBody);
 
-    //TODO: 12 Append sentiment score to chat message object
+    //TODO: 6 Append sentiment score to chat message object
     //if (sentimentMessage.messageType.Equals("chat", StringComparison.OrdinalIgnoreCase))
     //{
     //    sentimentMessage.score = await GetSentimentScore(sentimentMessage);
