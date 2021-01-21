@@ -157,7 +157,7 @@ The following section walks you through the manual steps to provision the servic
 
     ![In the Extract Compressed (Zipped) Folders window, files will be extracted to C:\ConciergePlus.](media/image18.png "Extract Compressed (Zipped) Folders window")
 
-5. Open **ConciergePlusSentiment.sln** in the `C:\ConciergePlus\MCW-Intelligent-analytics-master\Hands-on lab\lab-files\starter-project` folder with Visual Studio 2019.
+5. Open **ConciergePlusSentiment.sln** in the `C:\ConciergePlus\MCW-Intelligent-analytics-main\Hands-on lab\lab-files\starter-project` folder with Visual Studio 2019.
 
 6. Sign in to Visual Studio or select create account, if prompted.
 
@@ -385,13 +385,15 @@ In this task, you will create a new Event Hubs namespace and instance.
 
       ![The Create Event Hub blade fields display with the previously mentioned settings.](media/2020-06-29-13-44-07.png "Create Event Hub blade")
 
-6. Repeat steps listed 5 to create another Event Hub. Name the event hub `awchathub2`.This one will store messages for archival and be processed by Stream Analytics. Stream Analytics forwards the message to Cognitive Search.
+6. Repeat step 5 to create another Event Hub in the same namespace. Name the event hub `awchathub2`.This one will store messages for archival and be processed by Stream Analytics. Stream Analytics forwards the message to Cognitive Search.
 
     If you select the **Event Hubs** menu item from the left menu, this will display the list of event hubs, you should see the following:
 
     ![A list of Event Hubs is displayed, awchathub and awchathub2 are shown in this list.](media/2019-03-20-17-01-42.png "Event Hubs created")
 
 7. You will create the `ChatConsole` Event Hub shared policy.  Select **Shared access policies**, under **Settings**, within the left-hand menu.
+
+    >**Note**: Scope this policy to the Namespace level.
 
 8. In the **Shared access policies**, you are going to create a new policy that the **ChatConsole** can use to retrieve messages. Select **+Add**.
 
@@ -430,6 +432,8 @@ In this section, you will provision an Azure Cosmos DB account, a database, and 
     - **Apply Free Tier Discount**: There is a limit to one free tier Cosmos DB discount per account. If you still have this available, feel free to apply it here.
 
     - **Location**: Select the region you are using for resources in this hands-on lab.
+
+    - **Capacity mode**: Keep this set to **Provisioned throughput**.
 
     - **Account Type**: Keep this set to **Non-Production**.
   
@@ -550,6 +554,8 @@ In this section, you will create the Stream Analytics Job that will be used to r
     - **Event Hub namespace**: Choose the Namespace which contains **your Event Hubs instance** (e.g., `awhotel-events-namespace`).
 
     - **Event hub name**: Choose `awchathub2`, the second Event Hub instance you created. awchathub2 is the archiving event hub.  Messages are pushed there from the ChatMessageSentimentProcessFunction Azure function.
+
+    - **Authentication mode**: Choose **Connection string**, rather than **Managed Identity (Preview)**.
 
     - **Event hub policy name**: Select **Use existing**, and choose **ChatConsole**.
 
@@ -787,7 +793,7 @@ To provision access to the Text Analytics API (which provides sentiment analysis
   
     - **Prediction Resource: Prediction Location**: Select the location you are using for resources in this hands-on lab.
 
-    - **Prediction Resource: Prediction Pricing Tier**: Select **F0 (5 Calls per second, 1M Calls per month)**.
+    - **Prediction Resource: Prediction Pricing Tier**: Select **F0 (5 Calls per second, 10K Calls per month)**.
 
      ![The Create Cognitive Services screen is displayed with the Basics tab selected and the form is populated with the preceding values.](media/luis-basics.png "Create Cognitive Services")
 
@@ -966,14 +972,13 @@ Your storage accounts can be found by going to the intelligent-analytics resourc
 
 Duration: 15 minutes
 
-1. Navigate to the web application and then select the **Configuration** menu item on the left hand side. Add these new application settings:  
+1. Navigate to the web application and then select the **Configuration** menu item on the left hand side. Add this new application setting:  
 
     ```config
     ChatMessageSubscriptionName  (e.g. ChatMessageSub)
-    ChatTopicPath  (e.g. awhotel)
     EventHubConnectionString
-    SourceEventHubName  (e.g. awchathub)
     ServiceBusConnectionString
+    SourceEventHubName   (e.g. awchathub)
     ```
 
     ![The screenshot shows the web application configuration settings.](media/2020-06-29-10-27-36.png "Web application configuration settings")
@@ -992,17 +997,17 @@ With the App Services projects properly configured, you are now ready to deploy 
 
     ![In Solution Explorer, the sub-menu for ChatMessageSentimentProcessorFunction displays, with Publish... selected.](media/vs-publish-function-menu.png "Solution Explorer")
 
-2. In the **Publish** dialog, choose **Select Existing** beneath Azure App Service as the publish target.
+2. In the **Publish** dialog, choose **Azure** as the publish target. Then, select **Next**.
 
-    ![In the Pick a publish target dialog, Select Existing is selected for the Azure App Service Plan.](media/2019-11-16-13-22-55.png "Publish dialog box")
+    ![In the Pick a publish target dialog, Azure is selected.](media/azure-publish-target.png "Publish dialog box")
 
-3. Select **Create Profile**.
+3. Select **Azure Function App (Windows)** as the specific target. Select **Next**.
 
-4. In the **App Service** dialog, choose the **Subscription** that contains your Function App you provisioned earlier. Expand your **Resource Group** (e.g., **intelligent-analytics**), then select the node for your **Function App** in the tree view to select it.
+4. In the **Functions instance** tab, choose the **Subscription** that contains your Function App you provisioned earlier. Expand your **Resource Group** (e.g., **intelligent-analytics**), then select the node for your **Function App** in the tree view to select it.
 
-    ![In the App Service dialog box, the resource group is expanded and the function app chatprocessor is selected.](media/2019-09-03-15-40-04.png "App Service dialog box")
+    ![In the App Service dialog box, the resource group is expanded and the function app chatprocessor is selected.](media/choose-function-app-blur.png "App Service dialog box")
 
-5. Select **Publish**.
+5. Select **Finish** and then **Publish**.
 
     ![The Azure Function publish dialog box is displayed.](media/vs-publish-function-publish.png "Publish dialog box")
 
@@ -1030,7 +1035,7 @@ With the App Services projects properly configured, you are now ready to deploy 
 
 3. In the **App Service** dialog, choose your **Subscription** that contains your Web App you provisioned earlier. Expand your **Resource Group**, **intelligent-analytics**, then select the node for your **Web App** in the tree view to select it.
 
-4. Select **OK**.
+4. Select **OK** (or **Finish**). Then, publish the app.
 
 5. When the publishing is complete, a browser window should appear with content like the following:
 
@@ -1167,6 +1172,8 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 2. Select **Sign in** **or create an account**.
 
 3. Sign in using your Microsoft account (or \@Microsoft.com account if that is appropriate to you). The new account startup process may take a few minutes. If you are prompted to migrate to the Preview version of the LUIS portal, select **Migrate Later**.
+
+    >**Note**: If you are prompted to **Choose an Authoring resource**, select the **luis-api-namespace-Authoring** resource and select **Done**.
 
 4. Select **Accept** terms button.
 
