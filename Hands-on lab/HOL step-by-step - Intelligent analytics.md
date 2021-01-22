@@ -1270,6 +1270,10 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     ![An example of the LUIS call JSON result is displayed.](media/2019-11-24-11-14-17.png "Sample LUIS Response")
 
+    >**Note**: You may need to **Publish** the endpoint for this to work. Select **Publish** from the tool bar and publish to the staging slot.
+    >
+    > ![Publishing the awchat app LUIS endpoint to the staging slot.](./media/publish-luis-to-staging-slot.png "Staging slot deployment")
+
 26. Go back to the **luis-api-namespace** screen. Capture three LUIS values and add them to the Azure Function application settings.
 
     ```text
@@ -1393,6 +1397,8 @@ This gauge is currently a static visualization. You will use the report just cre
 
     ![On the toolbar, the Pin Live Page button is selected.](media/image149.png "Gauge control menu bar")
 
+    >**Note**: This may be titled **Pin to a dashboard** in Power BI Service.
+
 2. Select New **dashboard**, enter `Real-time Sentiment` as the name, and select **Pin Live**.
 
     ![On the Pin to dashboard dialog box, on the left, a Preview of the ChatSentiment Gauge graph displays. On the right, under Where would you like to pin to, the New dashboard radio button is selected.](media/2019-06-21-09-41-59.png "Pin to dashboard dialog box")
@@ -1407,11 +1413,9 @@ This gauge is currently a static visualization. You will use the report just cre
 
     ![average score created between yesterday and today is typed in the Ask question about your data textbox. An average of score (0.62) displays below.](media/image152.png "Ask question about your data field")
 
-5. Next, convert this to a Gauge chart by expanding the **Visualizations** palette at right, and selecting on the **Gauge** control. You will need to set the **New Q&A experience** to **Off** in order to see the **Visualizations** palette. This switch is on the toolbar on the right-hand side.
+5. Navigate to the **ChatSentiment** report. Click **Edit** in the top tool bar. 
 
-    ![The Visualizations palette expand button is selected.](media/image153.png "Visualizations palette")
-
-6. In the **Visualizations** palette, select the **Gauge** control. Select the **Format** (paint roller) icon and expand the **Gauge axis** section. Format the Gauge axis so it ranges between **0.0** and **1.0** and has a **target** (indicator) set at **0.5**.
+6. In the **Visualizations** palette, select the **Gauge** control. Select the **Format** (paint roller) icon and expand the **Gauge axis** section. Format the Gauge axis so it ranges between **0.0** and **1.0** and has a **target** (indicator) set at **0.5**. **Save** the report and navigate back to the **Real-time Sentiment** dashboard.
 
     ![On the Visualizations palette, the Gauge graph icon is selected. Beneath that, the brush icon is selected. Under Gauge axis, the following values are defined: Min, 0. Max, 1.0. Target, 0.5.](media/image154.png "Visualizations list")
 
@@ -1457,9 +1461,9 @@ The sentiment visualization you created is great for getting a sense of sentimen
 
     ![The Save icon is selected from the toolbar.](media/power-bi-save-report.png "Save this report")
 
-6. Next, select **Pin Live Page**.
+6. Next, select **Pin to a dashboard**.
 
-    ![The Pin Live Page button is selected from the toolbar.](media/power-bi-pin-live-page.png "Pin Live Page")
+    ![The Pin to a dashboard button is selected from the toolbar.](media/pin-to-dashboard.png "Pin to a dashboard")
 
 7. In the **Pin to dashboard** dialog, select **Existing dashboard**, select the dashboard you created previously, then select **Pin live**.
 
@@ -1537,9 +1541,9 @@ Before going further, a good thing to check is whether messages are being writte
 
     ![Import data form is displayed populated with the preceding values.](media/2019-03-21-14-12-53.png "Display all of the fields")
 
-10. Select the **Next: Add cognitive search** button.
+10. Select the **Next: Add cognitive skills (Optional)** button.
 
-    ![The Next: Add cognitive search button.](media/2019-03-21-14-17-35.png "Next button")
+    ![The Next: Add cognitive skills button.](media/add-cognitive-skills.png "Next button")
 
     Select **Skip to: Customize target index**.
 
@@ -1691,7 +1695,7 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
     ![On STEP 4 Populate your KB, the +Add file button is selected.](media/create-qna-maker-add-file.png "Knowledge base creation page")
 
-11. Finally, underneath Step 5 (Create your KB), select **Create your KB**.
+11. Finally, underneath Step 5 (Create your KB), select **Create your KB** (keep **Chit-chat** at its default, **None**).
 
     ![The uploaded file from the previous step is highlighted in the File Name section of Step 4. Step 5, Create your KB, has the Create your KB button selected.](media/qna-maker-create-kb.png "Knowledge base creation page")
 
