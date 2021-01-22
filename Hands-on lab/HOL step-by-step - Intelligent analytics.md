@@ -1413,7 +1413,9 @@ This gauge is currently a static visualization. You will use the report just cre
 
     ![average score created between yesterday and today is typed in the Ask question about your data textbox. An average of score (0.62) displays below.](media/image152.png "Ask question about your data field")
 
-5. Navigate to the **ChatSentiment** report. Click **Edit** in the top tool bar. 
+5. Next, convert this to a Gauge chart by expanding the **Visualizations** palette at right, and selecting on the **Gauge** control. You will need to set the **New Q&A experience** to **Off** in order to see the **Visualizations** palette. This switch is on the toolbar on the right-hand side.
+
+    ![The Visualizations palette expand button is selected.](media/image153.png "Visualizations palette")
 
 6. In the **Visualizations** palette, select the **Gauge** control. Select the **Format** (paint roller) icon and expand the **Gauge axis** section. Format the Gauge axis so it ranges between **0.0** and **1.0** and has a **target** (indicator) set at **0.5**. **Save** the report and navigate back to the **Real-time Sentiment** dashboard.
 
@@ -1434,6 +1436,8 @@ This gauge is currently a static visualization. You will use the report just cre
 10. In the list of dashboards, select your **Real-time Sentiment** dashboard. Your new gauge should appear next to your original gauge. If the original gauge fills the whole screen, you may need to scroll down to see the new gauge. You can delete the original gauge if you prefer. (Select the top of the visualization, then ellipses that appear, and then, the trash can icon.)
 
     ![Two Average of score Gauge graphs display, and both share the same data.](media/image158.png "Gauge graphs")
+
+    >**Note**: You may need to create a copy of the **ChatSentiment** report and edit the gauge there and pin that copy to have both visuals show up on the **Real-time Sentiment** dashboard.
 
 11. Navigate to the chat website you deployed and send some messages and observe how the sentiment gauge updates with moments of you sending chat messages.
 
