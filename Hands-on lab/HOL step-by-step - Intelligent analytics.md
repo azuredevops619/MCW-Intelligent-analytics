@@ -972,10 +972,11 @@ Your storage accounts can be found by going to the intelligent-analytics resourc
 
 Duration: 15 minutes
 
-1. Navigate to the web application and then select the **Configuration** menu item on the left hand side. Add this new application setting:  
+1. Navigate to the web application and then select the **Configuration** menu item on the left hand side. Add these new application settings:  
 
     ```config
     ChatMessageSubscriptionName  (e.g. ChatMessageSub)
+    ChatTopicPath (e.g. awhotel)
     EventHubConnectionString
     ServiceBusConnectionString
     SourceEventHubName   (e.g. awchathub)
