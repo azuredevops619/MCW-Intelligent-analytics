@@ -157,7 +157,7 @@ The following section walks you through the manual steps to provision the servic
 
     ![In the Extract Compressed (Zipped) Folders window, files will be extracted to C:\ConciergePlus.](media/image18.png "Extract Compressed (Zipped) Folders window")
 
-5. Open **ConciergePlusSentiment.sln** in the `C:\ConciergePlus\MCW-Intelligent-analytics-master\Hands-on lab\lab-files\starter-project` folder with Visual Studio 2019.
+5. Open **ConciergePlusSentiment.sln** in the `C:\ConciergePlus\MCW-Intelligent-analytics-main\Hands-on lab\lab-files\starter-project` folder with Visual Studio 2019.
 
 6. Sign in to Visual Studio or select create account, if prompted.
 
@@ -385,13 +385,15 @@ In this task, you will create a new Event Hubs namespace and instance.
 
       ![The Create Event Hub blade fields display with the previously mentioned settings.](media/2020-06-29-13-44-07.png "Create Event Hub blade")
 
-6. Repeat steps listed 5 to create another Event Hub. Name the event hub `awchathub2`.This one will store messages for archival and be processed by Stream Analytics. Stream Analytics forwards the message to Cognitive Search.
+6. Repeat step 5 to create another Event Hub in the same namespace. Name the event hub `awchathub2`.This one will store messages for archival and be processed by Stream Analytics. Stream Analytics forwards the message to Cognitive Search.
 
     If you select the **Event Hubs** menu item from the left menu, this will display the list of event hubs, you should see the following:
 
     ![A list of Event Hubs is displayed, awchathub and awchathub2 are shown in this list.](media/2019-03-20-17-01-42.png "Event Hubs created")
 
 7. You will create the `ChatConsole` Event Hub shared policy.  Select **Shared access policies**, under **Settings**, within the left-hand menu.
+
+    >**Note**: Scope this policy to the Namespace level.
 
 8. In the **Shared access policies**, you are going to create a new policy that the **ChatConsole** can use to retrieve messages. Select **+Add**.
 
@@ -430,6 +432,8 @@ In this section, you will provision an Azure Cosmos DB account, a database, and 
     - **Apply Free Tier Discount**: There is a limit to one free tier Cosmos DB discount per account. If you still have this available, feel free to apply it here.
 
     - **Location**: Select the region you are using for resources in this hands-on lab.
+
+    - **Capacity mode**: Keep this set to **Provisioned throughput**.
 
     - **Account Type**: Keep this set to **Non-Production**.
   
@@ -550,6 +554,8 @@ In this section, you will create the Stream Analytics Job that will be used to r
     - **Event Hub namespace**: Choose the Namespace which contains **your Event Hubs instance** (e.g., `awhotel-events-namespace`).
 
     - **Event hub name**: Choose `awchathub2`, the second Event Hub instance you created. awchathub2 is the archiving event hub.  Messages are pushed there from the ChatMessageSentimentProcessFunction Azure function.
+
+    - **Authentication mode**: Choose **Connection string**, rather than **Managed Identity (Preview)**.
 
     - **Event hub policy name**: Select **Use existing**, and choose **ChatConsole**.
 
@@ -787,7 +793,7 @@ To provision access to the Text Analytics API (which provides sentiment analysis
   
     - **Prediction Resource: Prediction Location**: Select the location you are using for resources in this hands-on lab.
 
-    - **Prediction Resource: Prediction Pricing Tier**: Select **F0 (5 Calls per second, 1M Calls per month)**.
+    - **Prediction Resource: Prediction Pricing Tier**: Select **F0 (5 Calls per second, 10K Calls per month)**.
 
      ![The Create Cognitive Services screen is displayed with the Basics tab selected and the form is populated with the preceding values.](media/luis-basics.png "Create Cognitive Services")
 
@@ -970,10 +976,10 @@ Duration: 15 minutes
 
     ```config
     ChatMessageSubscriptionName  (e.g. ChatMessageSub)
-    ChatTopicPath  (e.g. awhotel)
+    ChatTopicPath (e.g. awhotel)
     EventHubConnectionString
-    SourceEventHubName  (e.g. awchathub)
     ServiceBusConnectionString
+    SourceEventHubName   (e.g. awchathub)
     ```
 
     ![The screenshot shows the web application configuration settings.](media/2020-06-29-10-27-36.png "Web application configuration settings")
@@ -992,17 +998,17 @@ With the App Services projects properly configured, you are now ready to deploy 
 
     ![In Solution Explorer, the sub-menu for ChatMessageSentimentProcessorFunction displays, with Publish... selected.](media/vs-publish-function-menu.png "Solution Explorer")
 
-2. In the **Publish** dialog, choose **Select Existing** beneath Azure App Service as the publish target.
+2. In the **Publish** dialog, choose **Azure** as the publish target. Then, select **Next**.
 
-    ![In the Pick a publish target dialog, Select Existing is selected for the Azure App Service Plan.](media/2019-11-16-13-22-55.png "Publish dialog box")
+    ![In the Pick a publish target dialog, Azure is selected.](media/azure-publish-target.png "Publish dialog box")
 
-3. Select **Create Profile**.
+3. Select **Azure Function App (Windows)** as the specific target. Select **Next**.
 
-4. In the **App Service** dialog, choose the **Subscription** that contains your Function App you provisioned earlier. Expand your **Resource Group** (e.g., **intelligent-analytics**), then select the node for your **Function App** in the tree view to select it.
+4. In the **Functions instance** tab, choose the **Subscription** that contains your Function App you provisioned earlier. Expand your **Resource Group** (e.g., **intelligent-analytics**), then select the node for your **Function App** in the tree view to select it.
 
-    ![In the App Service dialog box, the resource group is expanded and the function app chatprocessor is selected.](media/2019-09-03-15-40-04.png "App Service dialog box")
+    ![In the App Service dialog box, the resource group is expanded and the function app chatprocessor is selected.](media/choose-function-app-blur.png "App Service dialog box")
 
-5. Select **Publish**.
+5. Select **Finish** and then **Publish**.
 
     ![The Azure Function publish dialog box is displayed.](media/vs-publish-function-publish.png "Publish dialog box")
 
@@ -1030,7 +1036,7 @@ With the App Services projects properly configured, you are now ready to deploy 
 
 3. In the **App Service** dialog, choose your **Subscription** that contains your Web App you provisioned earlier. Expand your **Resource Group**, **intelligent-analytics**, then select the node for your **Web App** in the tree view to select it.
 
-4. Select **OK**.
+4. Select **OK** (or **Finish**). Then, publish the app.
 
 5. When the publishing is complete, a browser window should appear with content like the following:
 
@@ -1168,6 +1174,8 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 3. Sign in using your Microsoft account (or \@Microsoft.com account if that is appropriate to you). The new account startup process may take a few minutes. If you are prompted to migrate to the Preview version of the LUIS portal, select **Migrate Later**.
 
+    >**Note**: If you are prompted to **Choose an Authoring resource**, select the **luis-api-namespace-Authoring** resource and select **Done**.
+
 4. Select **Accept** terms button.
 
 5. You should be redirected to the **My Apps** list page. In the toolbar, select **+Create new app**.
@@ -1262,6 +1270,10 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 25. Open a new tab in your browser. Paste the **Example Query** URL into the address bar and modify the end of the URL (the text following q= ) so it contains the phrase `bring me towels` and press **ENTER**. You should receive output similar to the following. Observe that it correctly identified the intent as **OrderIn** (in this case with a confidence of 0.969854355 or nearly 100%) and the entity as **towels** having an entity type of **Housekeeping:RoomItem** (in this case with a confidence score of 98.9%).
 
     ![An example of the LUIS call JSON result is displayed.](media/2019-11-24-11-14-17.png "Sample LUIS Response")
+
+    >**Note**: You may need to **Publish** the endpoint for this to work. Select **Publish** from the tool bar and publish to the staging slot.
+    >
+    > ![Publishing the awchat app LUIS endpoint to the staging slot.](./media/publish-luis-to-staging-slot.png "Staging slot deployment")
 
 26. Go back to the **luis-api-namespace** screen. Capture three LUIS values and add them to the Azure Function application settings.
 
@@ -1386,6 +1398,8 @@ This gauge is currently a static visualization. You will use the report just cre
 
     ![On the toolbar, the Pin Live Page button is selected.](media/image149.png "Gauge control menu bar")
 
+    >**Note**: This may be titled **Pin to a dashboard** in Power BI Service.
+
 2. Select New **dashboard**, enter `Real-time Sentiment` as the name, and select **Pin Live**.
 
     ![On the Pin to dashboard dialog box, on the left, a Preview of the ChatSentiment Gauge graph displays. On the right, under Where would you like to pin to, the New dashboard radio button is selected.](media/2019-06-21-09-41-59.png "Pin to dashboard dialog box")
@@ -1404,7 +1418,7 @@ This gauge is currently a static visualization. You will use the report just cre
 
     ![The Visualizations palette expand button is selected.](media/image153.png "Visualizations palette")
 
-6. In the **Visualizations** palette, select the **Gauge** control. Select the **Format** (paint roller) icon and expand the **Gauge axis** section. Format the Gauge axis so it ranges between **0.0** and **1.0** and has a **target** (indicator) set at **0.5**.
+6. In the **Visualizations** palette, select the **Gauge** control. Select the **Format** (paint roller) icon and expand the **Gauge axis** section. Format the Gauge axis so it ranges between **0.0** and **1.0** and has a **target** (indicator) set at **0.5**. **Save** the report and navigate back to the **Real-time Sentiment** dashboard.
 
     ![On the Visualizations palette, the Gauge graph icon is selected. Beneath that, the brush icon is selected. Under Gauge axis, the following values are defined: Min, 0. Max, 1.0. Target, 0.5.](media/image154.png "Visualizations list")
 
@@ -1423,6 +1437,8 @@ This gauge is currently a static visualization. You will use the report just cre
 10. In the list of dashboards, select your **Real-time Sentiment** dashboard. Your new gauge should appear next to your original gauge. If the original gauge fills the whole screen, you may need to scroll down to see the new gauge. You can delete the original gauge if you prefer. (Select the top of the visualization, then ellipses that appear, and then, the trash can icon.)
 
     ![Two Average of score Gauge graphs display, and both share the same data.](media/image158.png "Gauge graphs")
+
+    >**Note**: You may need to create a copy of the **ChatSentiment** report and edit the gauge there and pin that copy to have both visuals show up on the **Real-time Sentiment** dashboard.
 
 11. Navigate to the chat website you deployed and send some messages and observe how the sentiment gauge updates with moments of you sending chat messages.
 
@@ -1450,9 +1466,9 @@ The sentiment visualization you created is great for getting a sense of sentimen
 
     ![The Save icon is selected from the toolbar.](media/power-bi-save-report.png "Save this report")
 
-6. Next, select **Pin Live Page**.
+6. Next, select **Pin to a dashboard**.
 
-    ![The Pin Live Page button is selected from the toolbar.](media/power-bi-pin-live-page.png "Pin Live Page")
+    ![The Pin to a dashboard button is selected from the toolbar.](media/pin-to-dashboard.png "Pin to a dashboard")
 
 7. In the **Pin to dashboard** dialog, select **Existing dashboard**, select the dashboard you created previously, then select **Pin live**.
 
@@ -1530,9 +1546,9 @@ Before going further, a good thing to check is whether messages are being writte
 
     ![Import data form is displayed populated with the preceding values.](media/2019-03-21-14-12-53.png "Display all of the fields")
 
-10. Select the **Next: Add cognitive search** button.
+10. Select the **Next: Add cognitive skills (Optional)** button.
 
-    ![The Next: Add cognitive search button.](media/2019-03-21-14-17-35.png "Next button")
+    ![The Next: Add cognitive skills button.](media/add-cognitive-skills.png "Next button")
 
     Select **Skip to: Customize target index**.
 
@@ -1684,7 +1700,7 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
     ![On STEP 4 Populate your KB, the +Add file button is selected.](media/create-qna-maker-add-file.png "Knowledge base creation page")
 
-11. Finally, underneath Step 5 (Create your KB), select **Create your KB**.
+11. Finally, underneath Step 5 (Create your KB), select **Create your KB** (keep **Chit-chat** at its default, **None**).
 
     ![The uploaded file from the previous step is highlighted in the File Name section of Step 4. Step 5, Create your KB, has the Create your KB button selected.](media/qna-maker-create-kb.png "Knowledge base creation page")
 
