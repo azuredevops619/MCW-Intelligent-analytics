@@ -419,7 +419,11 @@ In this section, you will provision an Azure Cosmos DB account, a database, and 
 
     ![The Azure Cosmos DB resource overview screen shows the Azure Cosmos DB icon as well as the create button.](media/2019-11-13-15-27-32.png "Create the Azure Cosmos DB")
 
-2. On the **Azure Cosmos DB** blade, enter the following:
+2. On the **Select API option** page, select **Create** below **Core (SQL) - Recommended**.
+
+    ![Selecting the SQL Cosmos DB offering in the Azure portal.](./media/cosmosdb-core-sql.png 'Selecting SQL offering for Cosmos DB')
+
+3. On the **Basics** blade, enter the following:
 
     - **Subscription**: Select the subscription you are using for this hands-on lab.
 
@@ -427,35 +431,31 @@ In this section, you will provision an Azure Cosmos DB account, a database, and 
 
     - **Account Name**: Provide a unique name for the Azure Cosmos DB account (e.g., `awhotelcosmosdb + namespace`).
 
-    - **API**: Select **Core(SQL)**.
-
-    - **Notebooks (Preview)**: Keep this set to **Off**.
-
-    - **Apply Free Tier Discount**: There is a limit to one free tier Cosmos DB discount per account. If you still have this available, feel free to apply it here.
-
     - **Location**: Select the region you are using for resources in this hands-on lab.
 
     - **Capacity mode**: Keep this set to **Provisioned throughput**.
 
-    - **Account Type**: Keep this set to **Non-Production**.
-  
+    - **Apply Free Tier Discount**: There is a limit to one free tier Cosmos DB discount per account. If you still have this available, feel free to apply it here.
+
+        ![Populating the Basics blade of the Cosmos DB provisioning UI in Azure portal.](./media/cosmos-db-basics.png 'Cosmos DB provisioning Basics blade')
+
+4. Navigate to the **Global Distribution** blade by selecting **Next: Global Distribution**. Enter the following.
+
     - **Enable geo-redundancy**: Ensure this is set to **Enable**.
 
     - **Multi-region Writes**: Ensure this is set to **Disable**.
 
     - **Availability Zones**: Ensure this is set to **Disable**.
 
-    - Select **Review + Create**, then **Create** to provision the Azure Cosmos DB instance.
+5. Select **Review + create**. After validation passes, select **Create**.
 
-      ![The Azure Cosmos DB blade fields display the previously mentioned settings.](media/image43.png "Azure Cosmos DB blade")
+6. When the provisioning completes, navigate to your new Azure Cosmos DB account in the portal.
 
-3. When the provisioning completes, navigate to your new Azure Cosmos DB account in the portal.
-
-4. On the **Overview screen**, select **+Add Container**.
+7. On the **Overview screen**, select **+Add Container**.
 
     ![The screen shows the Cosmos DB name the user chose and the add new container button is circled.](media/2019-11-13-16-10-38.png "Add New Container")
 
-5. On the **Add Container** blade, enter the following:
+8. On the **Add Container** blade, enter the following:
 
     - **Database id**: Create new. Enter `awhotels`.
 
@@ -471,9 +471,9 @@ In this section, you will provision an Azure Cosmos DB account, a database, and 
 
     - Select **OK** to add the container.
 
-    ![The Add Container form is displayed and is populated with the preceding values.](media/2020-06-29-15-01-20.png "Add New Container")
+    ![The Add Container form is displayed and is populated with the preceding values.](media/create-messagestore-container.png "Add New Container")
 
-6. Add another container with the following:
+9. Add another container with the following:
 
     - **Database id**: Enter existing database id `awhotels`.
 
@@ -501,7 +501,7 @@ In this section, you will create an Azure Search instance.
   
     - **Resource Group**: Select the **intelligent-analytics** resource group.
 
-    - **URL**: Provide a **unique name** for the search service (e.g., `conciergeplusapp`).
+    - **Service name**: Provide a **unique name** for the search service (e.g., `conciergeplusapp`).
 
     - **Location**: Select the location you are using for resources in this hands-on lab, or the next closest location if your location is unavailable in the list.
 
@@ -509,7 +509,7 @@ In this section, you will create an Azure Search instance.
 
     - Select **Review + Create**, and once validation has passed, select **Create**.
 
-      ![The New Search Service form is shown populated with the previously mentioned settings.](media/2019-06-19-17-27-13.png "New Search Service blade fields")
+      ![The New Search Service form is shown populated with the previously mentioned settings.](media/provision-search-service.png "New Search Service blade fields")
 
 ### Task 9: Create Stream Analytics job
 
@@ -609,13 +609,11 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     ![Screen shows successful Cosmos DB test message.](media/2020-06-29-17-50-13.png "Successful Cosmos DB connection")
 
-11. Select **Save**.
-
-12. Create another Output, this time for **Power BI**.
+11. Create another Output, this time for **Power BI**.
 
     ![The Add New Outputs is shown with the Power BI option selected.](media/image57.png "Add New Outputs")
 
-    A blade will open asking to authorize your Power BI account, select **Authorize**. When prompted in the popup window, enter the account credentials you used to create your Power BI account in the Before the Hands-on Lab exercise. You may have to enter your Username and Password.
+12. Select **Authorize** on the **New output** blade to allow Stream Analytics to connect to Power BI.
 
 13. On the **New output** blade, enter the following:
 
@@ -637,9 +635,9 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     ![The Add New Outputs is shown with the Power BI option selected.](media/image57.png "Add New Outputs")
 
-    Select **Authorize** (if not already authorized). This will authorize the connection to your Power BI account. When prompted in the popup window, enter the account credentials you used to create your Power BI account in the Before the Hands-on Lab exercise. You may have to enter your Username and Password.
+15. If Stream Analytics is not already authorized, select **Authorize** on the **New output** blade to allow Stream Analytics to connect to Power BI. 
 
-15. On the **New output** blade, enter the following:
+16. On the **New output** blade, enter the following:
 
     - **Output alias**: `trendingsentiment`
 
@@ -653,13 +651,13 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     ![The Power BI New output form is shown populated with the preceding values.](media/2019-09-03-14-41-07.png "Power BI new output")
 
-16. Select **Save**.
+17. Select **Save**.
 
-17. Next, select **Query** from the left-hand menu, under **Job Topology**.
+18. Next, select **Query** from the left-hand menu, under **Job Topology**.
 
     ![In the Stream Analytics job left menu, under the Job topology section the Query menu item is highlighted.](media/image59.png "Job Topology section")
 
-18. Paste the following text into the query window:
+19. Paste the following text into the query window:
 
     ```sql
     SELECT
@@ -683,7 +681,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
     GROUP BY TumblingWindow(minute, 2)
     ```
 
-19. Select **Save** again.
+20. Select **Save** again.
 
     ![The query editor toolbar is displayed with the Save button selected.](media/image60.png "Save option")
 
@@ -711,7 +709,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
 The EventProcessorHost requires an Azure Storage account that it will use to manage its state among multiple instances. In this section, you create that Storage account.
 
-1. In the [Azure portal](https://portal.azure.com) left menu, select **+Create a resource**, search for `Storage account`, then select **Storage account - blob, file, table, queue**.  Select the Create button on the resource overview page.
+1. In the [Azure portal](https://portal.azure.com) left menu, select **+Create a resource**, search for `Storage account`, then select **Storage account**.  Select the Create button on the resource overview page.
 
 2. In the **Create storage account** form, **Basics** tab, enter the following:
 
@@ -721,23 +719,21 @@ The EventProcessorHost requires an Azure Storage account that it will use to man
 
     - **Storage account name**: Provide a unique name for the account e.g., `awhotelchatstore + (namespace)`.
 
-    - **Location**: Select the location you are using for resources in this hands-on lab.
+    - **Region**: Select the location you are using for resources in this hands-on lab.
 
     - **Performance**: Set to **Standard**.
-
-    - **Account kind**: **StorageV2 (general purpose v2)**.
   
-    - **Replication**: Set to **Locally Redundant Storage (LRS)**.
-
-    - **Access tier**: **Hot**
+    - **Redundancy**: Set to **Locally Redundant Storage (LRS)**.
 
     Go to the **Advanced** tab.
 
-    - **Secure transfer required**: Select Disabled.
+    - **Enable secure transfer**: Uncheck the box.
+
+    - **Access tier**: **Hot**
 
     - Select **Review + create**.  Select **Create**.
 
-      ![The Create storage account Basics tab fields display the previously mentioned settings. ](media/image66.png "Create storage account blade")
+      ![The Create storage account Basics tab fields display the previously mentioned settings. ](media/create-storage-account.png "Create storage account blade")
 
 ### Task 12: Provision Cognitive Services
 
@@ -747,29 +743,33 @@ To provision access to the Text Analytics API (which provides sentiment analysis
 
     ![The Text Analytics resource overview screen is displayed with a Create button.](media/2019-11-16-06-18-06.png "Azure Text Analytics Search")
 
-2. On the **Create** blade, enter the following:
+2. On the **Select additional features** page, if you are asked to enable **Custom question answering (preview)**, then select **Continue to create your resource**.
 
-    - **Name**: Enter a unique name like `awhotels-sentiment`.
-
+3. On the **Create** blade, enter the following:
+    
     - **Subscription**: Select the subscription you are using for this hands-on lab.
 
-    - **Location**: Select the location you are using for resources in this hands-on lab.
-
-    - **Pricing tier**: Choose **F0 (5K Transactions per 30 days)**.
-
     - **Resource Group**: Select the **intelligent-analytics** resource group.
+    
+    - **Region**: Select the location you are using for resources in this hands-on lab.
+    
+    - **Name**: Enter a unique name like `awhotels-sentiment`.
 
-    ![The Create Text Analytics from is shown populated with the preceding values.](media/image68.png "Create Text Analytics")
+    - **Pricing tier**: Choose **Free F0 (5K Transactions per 30 days)**.
 
-3. Select the **Create** button.
+    - Acknowledge the Responsible AI notice 
 
-4. When it finishes provisioning, browse to the newly created cognitive service by selecting **Resource Groups** in the left menu, then selecting  the **intelligent-analytics** resource group, and selecting the Cognitive Service, **awhotels-sentiment**.
+    ![The Create Text Analytics from is shown populated with the preceding values.](media/create-text-analytics.png "Create Text Analytics")
 
-5. Acquire the key for the API by selecting **Keys and Endpoint** on the left-hand menu.
+4. Select the **Review + create** button, and then select **Create**.
+
+5. When it finishes provisioning, browse to the newly created cognitive service by selecting **Resource Groups** in the left menu, then selecting  the **intelligent-analytics** resource group, and selecting the Cognitive Service, **awhotels-sentiment**.
+
+6. Acquire the key for the API by selecting **Keys and Endpoint** on the left-hand menu.
 
     ![The Resource Management section of the Cognitive Services left menu is displayed, the Keys and Endpoint item is selected.](media/image69.png "Resource Management section")
 
-6. Capture the configuration settings and paste them into Notepad. You will create Application Settings later. Capture:
+7. Capture the configuration settings and paste them into Notepad. You will create Application Settings later. Capture:
 
    - TextAnalyticsAccountName = NAME
    - TextAnalyticsBaseUrl = ENDPOINT
@@ -777,11 +777,11 @@ To provision access to the Text Analytics API (which provides sentiment analysis
 
     ![The screenshot shows the Text Analytics configuration settings highlighted.](media/2020-08-16-07-13-30.png "Text Analytics Configuration Settings")
 
-7. Select **+Create a resource**, select **Language Understanding**, and **Create**.
+8. Select **+Create a resource**, select **Language Understanding**, and **Create**.
 
      ![The Language Understanding icon is displayed.](media/image72.png "Language Understanding")
 
-8. On the **Basics** tab of the **Create Cognitive Services** screen, populate the form fields as follows:
+9. On the **Basics** tab, populate the form fields as follows:
 
     - **Subscription**: Select the subscription you are using for this hands-on lab.
 
@@ -791,19 +791,19 @@ To provision access to the Text Analytics API (which provides sentiment analysis
   
     - **Authoring Resource: Authoring Location**: Select a region closest to you.
   
-    - **Authoring Resource: Authoring pricing tier**: Select **F0 (5 Calls per second, 1M Calls per month)**.
+    - **Authoring Resource: Authoring pricing tier**: Select **Free F0 (5 Calls per second, 1M Calls per month)**.
   
     - **Prediction Resource: Prediction Location**: Select the location you are using for resources in this hands-on lab.
 
-    - **Prediction Resource: Prediction Pricing Tier**: Select **F0 (5 Calls per second, 10K Calls per month)**.
+    - **Prediction Resource: Prediction Pricing Tier**: Select **Free F0 (5 Calls per second, 10K Calls per month)**.
 
      ![The Create Cognitive Services screen is displayed with the Basics tab selected and the form is populated with the preceding values.](media/luis-basics.png "Create Cognitive Services")
 
-9. Select **Review + create**, then select **Create**.
+10. Select **Review + create**, then select **Create**.
 
-10. Select the **Keys and Endpoint** link under Resource Management to  retrieve the **Key 1** value for the **luis-api-namespace** Cognitive Service.
+11. Select the **Keys and Endpoint** link under Resource Management to  retrieve the **Key 1** value for the **luis-api-namespace** Cognitive Service.
 
-11. Verify that you have captured the two API keys for later reference in this lab.
+12. Verify that you have captured the two API keys (for both Cognitive Services resources) for later reference in this lab.
 
 ## Exercise 2: Implement message forwarding
 
