@@ -9,7 +9,7 @@ Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
-June 2020
+June 2021
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -151,6 +151,8 @@ The following section walks you through the manual steps to provision the servic
 
     ![Download .zip containing the Intelligent analytics repository](media/git-hub-download-repo.png "Download ZIP")
 
+    >**Note**: You can alternatively just enter [this](https://github.com/microsoft/MCW-Intelligent-analytics/archive/refs/heads/main.zip) URL into the browser to directly initiate the download.
+
 4. Unzip the contents of the downloaded ZIP file to the folder **C:\\ConciergePlus**\\.
 
    >**Note**: Make sure to extract to this exact path. If you extract to a longer directory path, you will hit a Windows max 260 character path limit when you try to build the Visual Studio solution. You will not be able to download the NuGet packages. Keep the solution directory path short.
@@ -231,7 +233,7 @@ In this section, you will provision a Function App that will be used as the Even
 
     - **Publish**: **Code**
   
-    - **Runtime Stack**:  Select **.NET Core**.
+    - **Runtime Stack**:  Select **.NET**.
   
     - **Version**: Select **3.1**.
 
@@ -239,7 +241,7 @@ In this section, you will provision a Function App that will be used as the Even
 
     - Select **Review + create** to provision the Function App.
 
-    ![The Function App basics tab displays with the form populated with the preceding values.](media/2019-11-13-14-38-10.png "Function App Configuration")
+    ![The Function App basics tab displays with the form populated with the preceding values.](media/new-function-app.png "Function App Configuration")
 
 ### Task 5: Provision Service Bus
 
@@ -265,7 +267,7 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
       ![The Create namespace blade fields display the previously mentioned settings.](media/2019-06-19-16-43-46.png "Create namespace blade")
 
-4. Select **Create**.
+4. Select **Review + Create** and **Create**.
 
 5. Once provisioning completes, navigate to your new Service Bus in the portal by choosing Resource Groups in the left menu, then selecting the **intelligent-analytics** resource group, and selecting your Service Bus Namespace from the list of resources.
 
@@ -343,7 +345,7 @@ In this task, you will create a new Event Hubs namespace and instance.
 
 2. On the **Create namespace** blade enter the following:
 
-    - **Name**: Provide a unique name for the namespace (e.g., `awhotel-events-namespace`).
+    - **Namespace name**: Provide a unique name for the namespace (e.g., `awhotel-events-namespace`).
 
     - **Pricing tier**: Select **Standard (20 Consumer groups, 1000 brokered connections)**.
 
@@ -357,9 +359,9 @@ In this task, you will create a new Event Hubs namespace and instance.
 
     - **Enable auto-inflate**: **Unchecked**.
 
-    - Select **Create** to provision the Event Hubs namespace.
+    - Select **Review + create** and **Create** to provision the Event Hubs namespace.
 
-      ![The Create Namespace blade fields display the previously mentioned settings.](media/image38.png "Create namespace blade")
+      ![The Create Namespace blade fields display the previously mentioned settings.](media/create-event-hubs-namespace.png "Create namespace blade")
 
 3. When provisioning completes, navigate to your new Event Hub namespace in the portal by choosing **Resource Groups** from the Azure Portal left menu. Select the **intelligent-analytics** resource group followed by your Event Hub Namespace.
 
