@@ -64,11 +64,11 @@ namespace ChatMessageSentimentProcessFunction31
                     var sentimentMessage = JsonConvert.DeserializeObject<MessageType>(sourceEventHubEventBody);
 
                     //TODO: 6 Append sentiment score to chat message object
-                    if (sentimentMessage.messageType.Equals("chat", StringComparison.OrdinalIgnoreCase))
-                    {
-                        sentimentMessage.score = await GetSentimentScore(sentimentMessage);
-                        log.LogInformation("SentimentScore: " + sentimentMessage.score);
-                    }
+                    //if (sentimentMessage.messageType.Equals("chat", StringComparison.OrdinalIgnoreCase))
+                    //{
+                    //    sentimentMessage.score = await GetSentimentScore(sentimentMessage);
+                    //    log.LogInformation("SentimentScore: " + sentimentMessage.score);
+                    //}
 
                     //TODO: 2.Create a Message (for Service Bus) and EventData instance (for EventHubs) from source message body
                     var updatedMessage = JsonConvert.SerializeObject(sentimentMessage);
@@ -96,11 +96,11 @@ namespace ChatMessageSentimentProcessFunction31
                     log.LogInformation("Forwarded message to event hub.");
 
                     //TODO: 7.Respond to chat message intent if appropriate
-                    var updatedMessageObject = JsonConvert.DeserializeObject<MessageType>(updatedMessage);
+                    //var updatedMessageObject = JsonConvert.DeserializeObject<MessageType>(updatedMessage);
 
                     // Get your most likely intent based on your message.
-                    var intent = await GetIntentAndEntities(updatedMessageObject.message);
-                    await HandleIntent(intent, updatedMessageObject, topicClient);
+                    //var intent = await GetIntentAndEntities(updatedMessageObject.message);
+                    //await HandleIntent(intent, updatedMessageObject, topicClient);
                 }
                 catch (Exception ex)
                 {
