@@ -932,11 +932,11 @@ Your storage accounts can be found by going to the intelligent-analytics resourc
 
 2. Create a new application setting with the **Name** `StorageAccountKey` and enter the Key for the storage account you created (which you can retrieve from the Portal).
 
-    - From your storage account's blade, select **Access Keys** from the left menu, under **Settings**.
+    - From your storage account's blade, select **Access Keys** from the left menu, under **Security + networking**.
 
-      ![Under Settings section of the Storage Account left menu, the Access Keys menu item is selected.](media/image82.png "Settings section")
+      ![Under Settings section of the Storage Account left menu, the Access Keys menu item is selected.](media/find-storage-account-access-keys.png "Settings section")
 
-    - Copy the Key value for **key1**, and paste that into the value for **StorageAccountKey**.
+    - Copy the Key value for **key1**, and paste that into the value for **StorageAccountKey**. You may need to select **Show keys** first.
 
       ![In the Access Keys section, the value for Key1 and its copy button are selected.](media/2019-03-20-19-39-42.png "Access Keys section")
 
@@ -974,7 +974,7 @@ Your storage accounts can be found by going to the intelligent-analytics resourc
 
 Duration: 15 minutes
 
-1. Navigate to the web application and then select the **Configuration** menu item on the left hand side. Add these new application settings:  
+1. Navigate to the web application and then select the **Configuration** menu item on the left hand side. Add these new application settings, and select **Save** once you are done.  
 
     ```config
     ChatMessageSubscriptionName  (e.g. ChatMessageSub)
@@ -1020,27 +1020,25 @@ With the App Services projects properly configured, you are now ready to deploy 
 
     > **Note**: If you receive an error in the Output window, as a result of the publish process failing (The target "MSDeployPublish" does not exist in the project), expand the Properties folder within the Visual Studio project, then delete the PublishProfiles folder.
 
-7. Repeat steps 1-5 to publish.
-
 ### Task 3: Publish the ChatWebApp
 
 1. Within **Visual Studio Solution Explorer**, right-click the ChatWebApp project and select **Publish...** from the context menu.
 
     ![In the Visual Studio Solution Explorer ChatWebApp sub-menu, Publish is selected.](media/image100.png "Visual Studio Solution Explorer")
 
-2. In the **Publish blade**, select **App Service**, and choose the **Select Existing** radio button. Select **Create Profile**.
+2. In the **Publish** dialog, choose **Azure** as the publish target. Then, select **Next**.
 
-    ![In the Publish window, the Microsoft Azure App Service option is selected, as is the Select Existing radio button.](media/vs-webapp-publish-target.png "Publish window")
+    ![In the Pick a publish target dialog, Azure is selected.](media/azure-publish-target.png "Publish dialog box")
 
-    > **Note**: You may see a different dialog than what is shown above. If so, select Microsoft Azure App Service:
+3. In the **Specific target** blade, select **Azure App Service (Windows)**.
 
-    ![The screen shows the publish folder options. The web app is selected.](media/2019-11-16-13-31-12.png "Azure Web App Publish Options")
+    ![In the Specific target window, the Microsoft Azure App Service (Windows) option is selected.](media/azure-app-service-windows-target.png "Windows App Service target")
 
-3. In the **App Service** dialog, choose your **Subscription** that contains your Web App you provisioned earlier. Expand your **Resource Group**, **intelligent-analytics**, then select the node for your **Web App** in the tree view to select it.
+4. In the **App Service** dialog, choose your **Subscription** that contains your Web App you provisioned earlier. Expand your **Resource Group**, **intelligent-analytics**, then select the node for your **Web App** in the tree view to select it.
 
-4. Select **OK** (or **Finish**). Then, publish the app.
+5. Select **OK** (or **Finish**). Then, publish the app.
 
-5. When the publishing is complete, a browser window should appear with content like the following:
+6. When the publishing is complete, a browser window should appear with content like the following:
 
     ![The Browser window displays the Contoso Hotels webpage with a Join Chat section that has a username textbox and a chat room selection drop down list.](media/2020-06-29-10-10-20.png "Join chat landing page")
 
@@ -1158,7 +1156,7 @@ In this task, you will add code that enables the Event Processor to invoke the T
 5. Publish your **ChatMessageSentimentProcessFunction** project to Azure.
 6. Test your sentiment query by selecting the sentiment query and selecting the `Test selected query` button.  Check your results.  Look at the **score** column. You should have all of the negative chat messages. Sentiment analysis has not been applied just yet. The sentiment analysis will be tested after the Language Understanding configuration has been completed.
 
-    ![The screen shows the ability to test your queries before saving them.](media/2020-07-02-17-01-33.png "Test your queries")
+    ![The screen shows the ability to test your queries before saving them.](media/testing-sentiment.png "Test your queries")
 
 ### Task 2: Implement linguistic understanding
 
@@ -1172,64 +1170,66 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     > **Note**: If in Exercise 1, Step 12 you created your Luis account in Azure in an European region (e.g. West Europe), user <http://eu.luis.ai> instead. If you selected an Australian region use <http://au.luis.ai>.
 
-2. Select **Sign in** **or create an account**.
+2. Select **Login / Sign Up**.
 
 3. Sign in using your Microsoft account (or \@Microsoft.com account if that is appropriate to you). The new account startup process may take a few minutes. If you are prompted to migrate to the Preview version of the LUIS portal, select **Migrate Later**.
 
-    >**Note**: If you are prompted to **Choose an Authoring resource**, select the **luis-api-namespace-Authoring** resource and select **Done**.
+4. On the **Welcome to the Language Understanding Intelligent Service (LUIS)!** window, select the appropriate Azure subscription in your tenant.
 
-4. Select **Accept** terms button.
+5. If you are prompted to **Choose an Authoring resource**, select the **luis-api-namespace-Authoring** resource and select **Done**
 
-5. You should be redirected to the **My Apps** list page. In the toolbar, select **+Create new app**.
+6. Select **Accept** terms button.
 
-    ![The My Apps table is displayed with the + Create new app button highlighted in the toolbar.](media/2020-08-18-17-39-36.png "Create LUIS app")
+7. You should be redirected to the **Conversation apps** list page. In the toolbar, select **+ New app**.
 
-6. Complete the **Create a new app** form by providing `awchat` as the name for your LUIS app, and selecting the **English** culture then select **Done**.
+    ![The My Apps table is displayed with the + New app button highlighted in the toolbar.](media/luis-new-conversation-app.png "Create LUIS app")
+
+8. Complete the **Create a new app** form by providing `awchat` as the name for your LUIS app, selecting the **English** culture, selecting the **luis-api-namespace** prediction resource, and then selecting **Done**.
 
     ![In the Create a new app dialog box, the Name field is set to awchat, and Culture is set to English.](media/2020-08-18-17-46-45.png "Create new app")
 
-7. Scroll through the examples of how to create the intents and utterances. Close the dialog.
+9. Scroll through the examples of how to create the intents and utterances. Close the dialog.
 
-8. In a moment, your new `awchat` app will appear.
+10. In a moment, your new `awchat` app will appear.
 
-9. Choose **Build** from the toolbar. In the **Intents** pane, select **+ Create** link.
+11. Choose **Build** from the toolbar. In the **Intents** pane, select **+ Create** link.
 
     ![The top toolbar is displayed. The Build menu item is selected.](media/2019-06-20-19-55-55.png "Build Menu Item")
 
-10. In the **Intents** dialog, for the **Intent Name** enter `OrderIn` and select **Done**.
+12. In the **Intents** dialog, for the **Intent Name** enter `OrderIn` and select **Done**.
 
     ![The OrderIn intent has been entered into the Create new intent dialog and the Done button is selected.](media/image118.png "Create a new intent")
 
-11. Select **Entities** from the menu on the left.
+13. Select **Entities** from the menu on the left.
 
     ![The Entities menu item is selected in the left menu.](media/2020-06-28-10-09-17.png "Entities menu")
 
-12. Select **+Create**.
+14. Select **+Create**.
 
     ![On the Entities screen, the Create new entity button is selected on the toolbar.](media/2020-08-18-17-59-38.png "Create new entity")
 
-13. For the **Entity name**, enter **RoomService**.  Select the **Create** button.
+15. For the **Entity name**, enter **RoomService**.  Select the **Create** button.
 
     ![The Add Entity dialog is displayed. Name and Entity Type are set to the preceding values.](media/2020-06-28-08-18-43.png "Add Entity dialog box")
 
-14. Return to the **OrderIn** intent screen to enter `utterances`.
+16. Return to the **OrderIn** intent screen to enter `utterances`.
 
     ![The OrderIn intent item is selected.](media/2020-06-28-08-31-26.png "Return to OrderIn Intent")
 
-15. In the example input text box, enter the "order a pizza" utterance and **press the Enter key to save your work**.
+17. In the example input text box, enter the "order a pizza" utterance and **press the Enter key to save your work**.
 
-16. Your newly created pizza utterance is shown below. Select the utterance with your mouse and associate it with the RoomService entity in the dropdown. Upon entity selection, your work will be saved.
+18. Your newly created pizza utterance is shown below. Select the utterance with your mouse and associate it with the RoomService entity in the dropdown. Upon entity selection, your work will be saved.
 
     ![The screen shows the order a pizza utterance highlighted and a dropdown menu displaying RoomService entity.](media/2020-06-28-08-36-52.png "Associate the entity")
 
     Your work is saved automatically.
 
     ![The order pizza utterance is displayed with associated RoomService entity.](media/2020-06-28-08-40-56.png "Example of saved utterance")
-17. Time to train your model.  Select the Train button in the upper right.  You should see the following result:
+19. Time to train your model.  Select the Train button in the upper right.  You should see the following result:
 
     ![The picture shows the Train button with a green circle and a message of 'Predictions loaded' displayed.](media/2020-06-28-08-45-49.png "Prediction loaded confirmation")
 
-18. Now, it is time to test your model.  Select the Test button. Type in, "I would like to order a pizza" into the text box and select the `Enter` key. Select the **Inspect** link. You should see a correlation result above to 90% as well as the associated ML entity.
+20. Now, it is time to test your model.  Select the Test button. Type in, "I would like to order a pizza" into the text box and select the `Enter` key. Select the **Inspect** link. You should see a correlation result above to 90% as well as the associated ML entity.
 
     ![The screen shows the original test phrase and the test results.](media/2020-06-28-08-55-50.png "Inspecting the test results")
 
@@ -1237,7 +1237,7 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     ![The screen shows the chat processing code and the reason for making sure the entity and intent is returned.](media/2020-06-29-05-10-51.png "Code sample of intent handler")
 
-19. Repeat this process for the following phrases and associate them with the **RoomService** entity:
+21. Repeat this process for the following phrases and associate them with the **RoomService** entity:
 
     - I am hungry
     - order food
@@ -1247,9 +1247,9 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
     - order breakfast
     - order a drink
 
-20. Create a **Housekeeping** entity.
+22. Create a **Housekeeping** entity. It is also a **Machine learned** entity.
 
-21. Create the following utterances and associate them with the Housekeeping entity:
+23. Create the following utterances and associate them with the Housekeeping entity. To do this, select **Intents** and **OrderIn**.
 
     - more towels
     - more blankets
@@ -1258,26 +1258,26 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
     - I am cold
     - I am too hot
 
-22. Train and test your model.  Did you get the expected test results?
+24. Train and test your model.  Did you get the expected test results?
 
-23. Enter one more utterance, `order a hotdog`. There is some new functionality in LUIS. Notice the predicted label/entity may be suggested for you.  Confirm the **RoomService** entity. Train and test your model.
+25. Enter one more utterance, `order a hotdog`. There is some new functionality in LUIS. Notice the predicted label/entity may be suggested for you.  Confirm the **RoomService** entity. Train and test your model.
 
     ![The screenshot shows the new machine learning prediction for the utterance. The user did not have to select the phrase and associated it with the entity.](media/2020-08-18-19-02-58.png "Machine learning entity prediction")
 
     ![The screenshot shows the Confirm RoomService option highlighted](media/2020-08-18-19-04-47.png "Confirm RoomService")
 
-24. Select **Manage** from the toolbar, then select **Azure Resources** from the left menu. In the **luis-api-namespace** section, the URL is available in the **Example Query** textbox
+26. Select **Manage** from the toolbar, then select **Azure Resources** from the left menu. In the **luis-api-namespace** section, the URL is available in the **Example Query** textbox
     ![The Azure Resources menu item is selected from the left menu and the Example Query URL is shown in a textbox.](media/2020-08-18-19-27-46.png "LUIS Key Information")
 
-25. Open a new tab in your browser. Paste the **Example Query** URL into the address bar and modify the end of the URL (the text following q= ) so it contains the phrase `bring me towels` and press **ENTER**. You should receive output similar to the following. Observe that it correctly identified the intent as **OrderIn** (in this case with a confidence of 0.969854355 or nearly 100%) and the entity as **towels** having an entity type of **Housekeeping:RoomItem** (in this case with a confidence score of 98.9%).
+27. Select **Publish** at the upper right-hand corner of the page to publish the endpoint. Publish to the **Staging Slot** and select **Done**.
+
+    ![Publishing the awchat app LUIS endpoint to the staging slot.](./media/publish-luis-to-staging-slot.png "Staging slot deployment")
+
+28. Open a new tab in your browser. Paste the **Example Query** URL into the address bar and modify the end of the URL (the text following q= ) so it contains the phrase `bring me towels` and press **ENTER**. You should receive output similar to the following. Observe that it correctly identified the intent as **OrderIn** (in this case with a confidence of 0.969854355 or nearly 100%) and the entity as **towels** having an entity type of **Housekeeping:RoomItem** (in this case with a confidence score of 98.9%).
 
     ![An example of the LUIS call JSON result is displayed.](media/2019-11-24-11-14-17.png "Sample LUIS Response")
 
-    >**Note**: You may need to **Publish** the endpoint for this to work. Select **Publish** from the tool bar and publish to the staging slot.
-    >
-    > ![Publishing the awchat app LUIS endpoint to the staging slot.](./media/publish-luis-to-staging-slot.png "Staging slot deployment")
-
-26. Go back to the **luis-api-namespace** screen. Capture three LUIS values and add them to the Azure Function application settings.
+29. Go back to the **luis-api-namespace** screen. Capture three LUIS values and add them to the Azure Function application settings.
 
     ```text
     LuisPredictionKey
@@ -1287,19 +1287,19 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     !["The screenshot shows the LUIS Starter_Key settings. Three application settings are highlighted. LuisPredictionKey, LuisBaseUrl, and LuisAppId"](media/2020-08-18-19-32-28.png "LUIS Application Settings")
 
-27. In the LUIS web page, select the **Publish** button.
+30. In the LUIS web page, select the **Publish** button.
 
     ![The screenshot shows the Publish button highlighted.](media/2020-08-18-20-08-05.png "Publish Slot Button")
 
-28. Select the **Production Slot** setting.  Select the **Done** button.
+31. Select the **Production Slot** setting.  Select the **Done** button.
 
     ![The screenshot shows the publishing slot settings. The Production Slot is selected.](media/2020-08-18-20-05-23.png "Production Slot")
 
-29. **Save** your Application Settings. The Event Processor is pre-configured to invoke the LUIS API using the provided App ID and key.
+32. **Save** your Application Settings. The Event Processor is pre-configured to invoke the LUIS API using the provided App ID and key.
 
-30. Open **Visual Studio** then open **ProcessChatMessage.cs** within the **ChatMessageSentimentProcessorFunction** project, and navigate to the Run method.
+33. Open **Visual Studio** then open **ProcessChatMessage.cs** within the **ChatMessageSentimentProcessorFunction** project, and navigate to the Run method.
 
-31. Locate **TODO: 7** and uncomment the code:
+34. Locate **TODO: 7** and uncomment the code:
 
     ```csharp
     //TODO: 7.Respond to chat message intent if appropriate
@@ -1310,9 +1310,9 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
     await HandleIntent(intent, updatedMessageObject, topicClient);
     ```
 
-32. Take a look at the implementation of both methods if you are curious how the entity and intent information is used to generate an automatic chat message response from a bot.
+35. Take a look at the implementation of both methods if you are curious how the entity and intent information is used to generate an automatic chat message response from a bot.
 
-33. Save the file.
+36. Save the file.
 
 ### Task 3: Re-deploy the function application and test
 
