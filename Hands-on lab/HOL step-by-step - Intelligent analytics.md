@@ -1271,7 +1271,7 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 27. Select **Publish** at the upper right-hand corner of the page to publish the endpoint. Publish to the **Staging Slot** and select **Done**.
 
-    ![Publishing the awchat app LUIS endpoint to the staging slot.](./media/publish-luis-to-staging-slot.png "Staging slot deployment")
+    ![Publishing the awchat app LUIS endpoint to the staging slot.](./media/publish-luis-to-staging-slot.PNG "Staging slot deployment")
 
 28. Open a new tab in your browser. Paste the **Example Query** URL into the address bar and modify the end of the URL (the text following q= ) so it contains the phrase `bring me towels` and press **ENTER**. You should receive output similar to the following. Observe that it correctly identified the intent as **OrderIn** (in this case with a confidence of nearly 100%) and the entity as having an entity type of **Housekeeping** (in this case with a confidence score of 97.5%).
 
