@@ -1273,11 +1273,51 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     ![Publishing the awchat app LUIS endpoint to the staging slot.](./media/publish-luis-to-staging-slot.png "Staging slot deployment")
 
-28. Open a new tab in your browser. Paste the **Example Query** URL into the address bar and modify the end of the URL (the text following q= ) so it contains the phrase `bring me towels` and press **ENTER**. You should receive output similar to the following. Observe that it correctly identified the intent as **OrderIn** (in this case with a confidence of 0.969854355 or nearly 100%) and the entity as **towels** having an entity type of **Housekeeping:RoomItem** (in this case with a confidence score of 98.9%).
+28. Open a new tab in your browser. Paste the **Example Query** URL into the address bar and modify the end of the URL (the text following q= ) so it contains the phrase `bring me towels` and press **ENTER**. You should receive output similar to the following. Observe that it correctly identified the intent as **OrderIn** (in this case with a confidence of nearly 100%) and the entity as having an entity type of **Housekeeping** (in this case with a confidence score of 97.5%).
 
-    ![An example of the LUIS call JSON result is displayed.](media/2019-11-24-11-14-17.png "Sample LUIS Response")
+    ```json
+    {
+        "query": "bring me towels",
+        "prediction": {
+            "topIntent": "OrderIn",
+            "intents": {
+                "OrderIn": {
+                    "score": 0.98740774
+                },
+                "None": {
+                    "score": 0.008991768
+                }
+            },
+            "entities": {
+                "Housekeeping": [
+                    "bring me towels"
+                ],
+                "$instance": {
+                    "Housekeeping": [
+                        {
+                            "type": "Housekeeping",
+                            "text": "bring me towels",
+                            "startIndex": 0,
+                            "length": 15,
+                            "score": 0.97544956,
+                            "modelTypeId": 1,
+                            "modelType": "Entity Extractor",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    }
+    ```
 
-29. Go back to the **luis-api-namespace** screen. Capture three LUIS values and add them to the Azure Function application settings.
+29. Note that LUIS can learn from challenges it faces when it's deployed. For example, if your LUIS endpoint failed to determine entities for the "bring me towels" query, navigate to **Review endpoint utterances** below **Improve app performance**. Once you ensure that the **Predicted Intent** is **OrderIn**, associate the utterance with the proper entity (such as **Housekeeping**). Select **Save**. Then, select **Train** and **Publish**.
+
+    ![Associating a low-performing utterance with the correct entity.](./media/review-endpoint-utterances-luis.png "Improving LUIS model performance after deployment")
+
+30. Go back to the **luis-api-namespace** screen. Capture three LUIS values and add them to the Azure Function application settings.
 
     ```text
     LuisPredictionKey
@@ -1287,19 +1327,19 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     !["The screenshot shows the LUIS Starter_Key settings. Three application settings are highlighted. LuisPredictionKey, LuisBaseUrl, and LuisAppId"](media/2020-08-18-19-32-28.png "LUIS Application Settings")
 
-30. In the LUIS web page, select the **Publish** button.
+31. In the LUIS web page, select the **Publish** button.
 
     ![The screenshot shows the Publish button highlighted.](media/2020-08-18-20-08-05.png "Publish Slot Button")
 
-31. Select the **Production Slot** setting.  Select the **Done** button.
+32. Select the **Production Slot** setting.  Select the **Done** button.
 
     ![The screenshot shows the publishing slot settings. The Production Slot is selected.](media/2020-08-18-20-05-23.png "Production Slot")
 
-32. **Save** your Application Settings. The Event Processor is pre-configured to invoke the LUIS API using the provided App ID and key.
+33. **Save** your Application Settings. The Event Processor is pre-configured to invoke the LUIS API using the provided App ID and key.
 
-33. Open **Visual Studio** then open **ProcessChatMessage.cs** within the **ChatMessageSentimentProcessorFunction** project, and navigate to the Run method.
+34. Open **Visual Studio** then open **ProcessChatMessage.cs** within the **ChatMessageSentimentProcessorFunction** project, and navigate to the Run method.
 
-34. Locate **TODO: 7** and uncomment the code:
+35. Locate **TODO: 7** and uncomment the code:
 
     ```csharp
     //TODO: 7.Respond to chat message intent if appropriate
@@ -1310,9 +1350,9 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
     await HandleIntent(intent, updatedMessageObject, topicClient);
     ```
 
-35. Take a look at the implementation of both methods if you are curious how the entity and intent information is used to generate an automatic chat message response from a bot.
+36. Take a look at the implementation of both methods if you are curious how the entity and intent information is used to generate an automatic chat message response from a bot.
 
-36. Save the file.
+37. Save the file.
 
 ### Task 3: Re-deploy the function application and test
 
@@ -1322,7 +1362,7 @@ Now that you have added sentiment analysis and language understanding to the sol
 
 2. Open the Hotel Lobby web page. Join a chat in the **Hotel Lobby**.
 
-3. Type a message with a positive sentiment, like `I love this weather`. Observe the **thumbs-up** icon that appears next to the chat message you sent. Next, types something like, `I hate this weather` and observe the **thumbs-down** icon. These are indicators of sentiment (as applied by your solution in real-time).
+3. Type a message with a positive sentiment, like `I love this weather`. Observe the **thumbs-up** icon that appears next to the chat message you sent. Next, type something like, `I hate this weather` and observe the **thumbs-down** icon. These are indicators of sentiment (as applied by your solution in real-time).
 
     ![In the Live Chat window, callouts point to the thumbs-up and thumbs-down icons. The 'love this weather' statement produces a thumbs-up icon. Thumbs down for the 'I have this weather'](media/2020-06-29-05-44-34.png "Live Chat window")
 
@@ -1356,17 +1396,17 @@ If you do not already have a Power BI account:
 
 1. Sign in to your Power BI subscription (<https://app.powerbi.com>).
 
-2. Select **My Workspace** on the left-hand menu, then select the **Datasets** tab.
+2. Select **My Workspace** on the left-hand menu, then select the **Datasets** tab. Depending on your Power BI version, it may read **Datasets + dataflows**.
 
     ![In the Power BI window, on the left menu, My Workspace is selected. In the right pane, the Datasets tab is selected.](media/image140.png "Power BI window")
 
-3. Under the **Datasets** list, select the **Messages** dataset.
+3. Under the **Datasets** (or **Datasets + dataflows**) list, select the **Messages** dataset.
 
     ![On the Datasets tab, the Messages dataset is highlighted in the table.](media/image141.png "Datasets tab")
 
-4. Select the **Create Report** button under the **Actions** column.
+4. Select the **Create report** button after clicking the three dots.
 
-    ![On the Datasets tab, under the Actions column, the Create Report button is selected.](media/image142.png "Datasets tab")
+    ![On the Datasets + dataflows tab, the Create Report button is selected.](media/create-report-from-messages.png "Datasets + dataflows tab")
 
 5. On the **Visualizations** palette, select **Gauge** to create a semi-circular gauge.
 
@@ -1380,7 +1420,7 @@ If you do not already have a Power BI account:
 
     ![Average is selected from the Value drop down box in the Visualizations blade.](media/image145.png "Drop-down menu")
 
-8. You now should have a gauge that shows the average sentiment for all the data collected so far, which should look similar to the following:
+8. You now should have a gauge that shows the average sentiment for all the data collected so far, which should look similar to the following. If you have not sent many messages, the average sentiment may be a negative value, as the chat processor set a sentiment of -1 before you implemented proper Text Analytics sentiment analysis.
 
     ![A semi-circle gauge graph displays for Average of score, which is 0.62.](media/image146.png "Gauge graph")
 
@@ -1396,13 +1436,11 @@ If you do not already have a Power BI account:
 
 This gauge is currently a static visualization. You will use the report just created to seed a dashboard whose visualizations update as new messages arrive.
 
-1. Select the **Pin Live Page** item located on the toolbar.
+1. Select the **Pin to a dashboard** item located on the toolbar. You will need to select the three dots to find this item.
 
-    ![On the toolbar, the Pin Live Page button is selected.](media/image149.png "Gauge control menu bar")
+    ![On the toolbar, the Pin to a dashboard button is selected.](media/pin-gauge-to-dashboard.png "Gauge control menu bar")
 
-    >**Note**: This may be titled **Pin to a dashboard** in Power BI Service.
-
-2. Select New **dashboard**, enter `Real-time Sentiment` as the name, and select **Pin Live**.
+2. Select **New dashboard**, enter `Real-time Sentiment` as the name, and select **Pin Live**.
 
     ![On the Pin to dashboard dialog box, on the left, a Preview of the ChatSentiment Gauge graph displays. On the right, under Where would you like to pin to, the New dashboard radio button is selected.](media/2019-06-21-09-41-59.png "Pin to dashboard dialog box")
 
@@ -1536,11 +1574,11 @@ Before going further, a good thing to check is whether messages are being writte
 
     ![The import data blade is shown with the Connect to your data selected.](media/2019-03-21-14-00-40.png "Import data blade")
 
-5. For **Data Source**, select **Cosmos DB** from the dropdown.
+5. For **Data Source**, select **Azure Cosmos DB** from the dropdown.
 
 6. Enter `messagestore` for the **Data Source Name**.
 
-7. **Cosmo DB account**: Select the **Choose an existing connection**, and select the **awhotelcosmosdb-namespace** database. This will auto-populate the connection string.
+7. **Connection string**: Select the **Choose an existing connection**, and select the **awhotelcosmosdb-namespace** database. This will auto-populate the connection string.
 
 8. For **Database**, select your **awhotels** database.
 
@@ -1582,7 +1620,7 @@ Before going further, a good thing to check is whether messages are being writte
 
 21. Enter an **interval** of **5** minutes (the minimum allowed).
 
-22. Keep the **Start time** to the default value of **today's date**.
+22. Keep **Start time** as the default value, which is the current date and time.
 
 23. The description and other fields can be ignored.
 
@@ -1620,7 +1658,7 @@ Before going further, a good thing to check is whether messages are being writte
 
     ```text
     ChatSearchApiBase
-    ChatSearchApiIndexName
+    ChatSearchApiIndexName (chatmessages)
     ChatSearchApiKey
     ```
 
@@ -1662,23 +1700,23 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
     ![The QnA Maker dashboard is displayed. It indicates that there are no knowledge bases. The Create a knowledge base item is selected from the toolbar menu.](media/qna-maker-create-kb-link.png "Select create a knowledge base")
 
-4. Within the **knowledge base creation** page, select **Create a QnA service** under Step 1.
+4. Within the **knowledge base creation** page, select **Create a QnA Service** under Step 1. Ensure that you configure the **Stable** tier.
 
-    ![Step 1 indicates to Create a QnA service in Microsoft Azure. There is a button labeled Create a QnA service.](media/qna-maker-create-service.png "Knowledge base creation page")
+    ![Step 1 indicates to Create a QnA service in Microsoft Azure. There is a button labeled Create a QnA Service. It is configured with the Stable tier.](media/create-qna-maker-stable.png "Knowledge base creation page")
 
 5. Within the **Create QnA Maker** form in Azure, provide the following:
 
-    - **Name**: Provide a **unique name** for the QnA Maker Service (e.g., `awhotel-qna`).
-
     - **Subscription**: Choose the same subscription you used previously.
-
-    - **Pricing tier**: Choose **F0 (3 managed documents per month ...**
 
     - **Resource Group**: Choose the **intelligent-analytics** resource group.
 
-    - **Azure Search pricing tier**: Choose **F (3 Indexes)**.
+    - **Name**: Provide a **unique name** for the QnA Maker Service (e.g., `awhotel-qna`).
+
+    - **Pricing tier**: Choose **Free F0 (3 managed documents per month ...**
 
     - **Azure Search location**: Choose the **same location** you used previously. If the region you've been using isn't available, select a different location for this resource.
+
+    - **Azure Search pricing tier**: Choose **Free F (3 Indexes)**.
 
     - **App name**: Provide a **unique name** for the QnA Maker Service (e.g., `awhotel-qna`).
 
@@ -1686,9 +1724,9 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
     - **App insights**: Select **Disable**.
 
-    ![The Create QnA Maker form is shown populated with the preceding values.](media/create-qna-maker.png "Create QnA Maker")
+    ![The Create QnA Maker form is shown populated with the preceding values.](media/qna-maker-details.png "Create QnA Maker")
 
-6. Select **Create**.
+6. Select **Review + create** and **Create**.
 
 7. Once the service has been created, switch back to the browser tab with the **QnA Maker knowledge base creation** page and select the **Refresh** button in the **Step 2** section.
 
@@ -1696,9 +1734,9 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
     ![Connect your QnA service to your KB form is displayed populated with the preceding values.](media/qna-maker-connect-qna-service.png "Azure QnA service")
 
-9. Underneath Step 3 (Name your KB), provide a unique name, such as `ConciergePlus`
+9.  Underneath Step 3 (Name your KB), provide a unique name, such as `ConciergePlus`
 
-10. Underneath Step 4 (Populate your KB), select **+ Add file**. [Download this file](lab-files/faq.xlsx) then select it from the file browser.
+10. Underneath Step 4 (Populate your KB), select **+ Add file**. [Upload this file](lab-files/faq.xlsx) to the service.
 
     ![On STEP 4 Populate your KB, the +Add file button is selected.](media/create-qna-maker-add-file.png "Knowledge base creation page")
 
@@ -1746,7 +1784,7 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
     > **Note**: Do not change the QnA Auth Key.
     
-    > **Note**: You may receive a message that the **Resource provider 'Microsoft.BotService' is not registered from the subscription. If this is the case, it can be rectified by following [one of these solutions (choose 1)](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/error-register-resource-provider).
+    > **Note**: You may receive a message that the Resource provider 'Microsoft.BotService' is not registered from the subscription. If this is the case, it can be rectified by following [one of these solutions (choose 1)](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/error-register-resource-provider).
 
     ![The Web App Bot form is displayed and is populated with the values described above.](media/2019-09-09-14-40-26.png "Web App Bot Configuration")
 
@@ -1758,19 +1796,19 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
 5. Test out the bot by selecting **Test in Web Chat** on the left-hand menu (it may take a couple minutes to appear the first time). Type in a few questions to make sure it responds as expected.
 
-    ![In the Web App Bot screen, Test in Web Chat is selected from the left menu. In the Test blade, messages and responses are displayed. The Type your message textbox is highlighted at the bottom of the Test blade.](media/function-bot-test.png "Function Bot Test")
+    ![In the Web App Bot screen, Test in Web Chat is selected from the left menu. In the Test blade, messages and responses are displayed. The Type your message textbox is highlighted at the bottom of the Test blade.](media/test-bot-azure-portal.png "Function Bot Test")
 
-6. Select **Settings** from the left-hand menu. Change the display name to something like `Concierge+ Bot`, then select **Save**.
+6. Select **Bot profile** from the left-hand menu. Change the display name to something like `Concierge+ Bot`, then select **Apply**.
 
-    ![In the Web App Bot screen, Settings is selected from the left menu. In the Bot profile form the display name shows Concierge+ Bot. The Save button is highlighted in the top toolbar.](media/function-bot-settings.png "Function Bot Settings")
+    ![In the Web App Bot screen, Bot profile is selected from the left menu. In the Bot profile form the display name shows Concierge+ Bot.](media/change-bot-display-name.png "Function Bot Profile")
 
 7. Select **Channels** from the left-hand menu, then select **Get bot embed codes** underneath the **Web Chat channel**.
 
     ![Select Get bot embed codes](media/function-bot-channels.png "Function Bot Channels")
 
-8. A dialog will appear for the embed codes. Select the **Select here to open the Web Chat configuration page** option.
+8. A dialog will appear for the embed codes. Select the **Click here to open the Web Chat configuration page** option.
 
-9. Select **Copy** next to the **Embed code** textbox. Paste that value to notepad or other text application. Select **Show** beside the first Secret key. Copy the value and replace **YOUR_SECRET_HERE** within the embed code with that secret value. Example: `<iframe src='https://webchat.botframework.com/embed/concierge-plus-bot?s=XEYx9upcGtc.cwA.Ku8.hAL6pCxFWfxIjOE9WM48qxkPNtsy4BkT_LST5y0FxEQ'></iframe>`.
+9. Select **Copy** next to the **Embed code** textbox. Paste that value to notepad or other text application. Select **Show** beside the first Secret key. Copy the value and replace **YOUR_SECRET_HERE** within the embed code with that secret value. Example: `<iframe src='https://webchat.botframework.com/embed/awhotel-qna-bot-skm?s=EnZZZrVOZjY.KujPgaoTtfxSAMObBCWLTPnvibXExfrXOY3d82nhcMI'  style='min-width: 400px; width: 100%; min-height: 500px;'></iframe>`.
 
     ![The Configure Web Chat screen is displayed. The Embed code is located in a textbox with the Copy button next to it selected. In the Secret keys section, the Show button next to the first textbox is highlighted.](media/function-bot-embed.png "Function Bot Embed")
 
