@@ -1458,7 +1458,7 @@ This gauge is currently a static visualization. You will use the report just cre
 
     ![The Visualizations palette expand button is selected.](media/image153.png "Visualizations palette")
 
-6. In the **Visualizations** palette, select the **Gauge** control. Select the **Format** (paint roller) icon and expand the **Gauge axis** section. Format the Gauge axis so it ranges between **0.0** and **1.0** and has a **target** (indicator) set at **0.5**. **Save** the report and navigate back to the **Real-time Sentiment** dashboard.
+6. In the **Visualizations** palette, select the **Gauge** control. Select the **Format** (paint roller) icon and expand the **Gauge axis** section. Format the Gauge axis so it ranges between **0.0** and **1.0** and has a **target** (indicator) set at **0.5**.
 
     ![On the Visualizations palette, the Gauge graph icon is selected. Beneath that, the brush icon is selected. Under Gauge axis, the following values are defined: Min, 0. Max, 1.0. Target, 0.5.](media/image154.png "Visualizations list")
 
@@ -1478,17 +1478,15 @@ This gauge is currently a static visualization. You will use the report just cre
 
     ![Two Average of score Gauge graphs display, and both share the same data.](media/image158.png "Gauge graphs")
 
-    >**Note**: You may need to create a copy of the **ChatSentiment** report and edit the gauge there and pin that copy to have both visuals show up on the **Real-time Sentiment** dashboard.
-
 11. Navigate to the chat website you deployed and send some messages and observe how the sentiment gauge updates with moments of you sending chat messages.
 
 ### Task 4: Add a trending sentiment chart to the dashboard
 
 The sentiment visualization you created is great for getting a sense of sentiment as of this moment. However, First Up Consultants wishes to view sentiment over time for historical reference and to see whether overall sentiment is trending one way or another. To do this, we will use the tumbling window query output from Stream Analytics to display this data in a line chart.
 
-1. While still in **Power BI**, select **My Workspace** once again, then select the **Datasets** tab. You should see the **TrendingSentiment** dataset dynamically created by Stream Analytics. Select the **Create Report** action.
+1. While still in **Power BI**, select **My Workspace** once again, then select the **Datasets** (or **Datasets + dataflows**) tab. You should see the **TrendingSentiment** dataset dynamically created by Stream Analytics. Select the **Create Report** action.
 
-    ![Go to My Workspace, then the Datasets tab, the TrendingSentiment dataset is listed, the Create Report icon is selected next to this dataset.](media/power-bi-trendingsentiment-dataset.png "Power BI Datasets")
+    ![Go to My Workspace, then the Datasets tab, the TrendingSentiment dataset is listed, the Create Report button is selected next to this dataset.](media/create-report-trending-sentiment-dataset.png "Power BI Datasets")
 
 2. Select the **Line chart** visualization.
 

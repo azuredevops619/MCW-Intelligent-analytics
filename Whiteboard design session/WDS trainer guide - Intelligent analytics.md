@@ -418,7 +418,7 @@ The primary audience is the business decision makers and technology decision mak
 
     ![Preferred solution high-level architecture. Shows data flowing in from user devices, like mobile phones and laptops, to an Azure Web App. Those messages are sent to Event Hub, which are then processed by an Azure Function running an Event Processor Host. This is responsible for executing Azure Cognitive Services for sentiment analysis and language understanding. Data is sent to Service Bus and another Event Hub for processing.](media/preferred-solution-architecture3.png "Preferred Solution")
 
-    Messages are sent from browsers running within laptop or mobile clients via SignalR to an endpoint running in an Azure Web App. Chat messages received by the Web App are sent to an Event Hub where they are temporarily stored. An Azure Function picks up the chat messages and applies sentiment analysis to the message text (using the Text Analytics API), as well as contextual understanding (using LUIS). The function forwards the chat message to an Event Hub used to store messages for archival purposes, and to a Service Bus Topic which is used to deliver the message to the intended recipients. A Stream Analytics Job provides a simple mechanism for pulling the chat messages from the second Event Hub and writing them to Cosmos DB for archiving, a Service Bus queue for negative sentiment notifications, and to Power BI for visualization of sentiment in real-time as well as trending sentiment. An indexer runs atop Cosmos DB that updates the Azure Search index which provides full text search capability. Messages in the Service Bus Topic are pulled by Subscriptions created in the Web App and running on behalf of each client device connected by SignalR. When the Subscription receives a message, it is pushed via SignalR down to the browser-based app and displayed in a web page. Bot Services hosts a bot created using QnA maker, which automatically answers simple questions asked by site visitors.
+    Messages are sent from browsers running within laptop or mobile clients via SignalR to an endpoint running in an Azure Web App. Chat messages received by the Web App are sent to an Event Hub where they are temporarily stored. An Azure Function picks up the chat messages and applies sentiment analysis to the message text (using the Text Analytics API), as well as contextual understanding (using LUIS). The function forwards the chat message to an Event Hub used to store messages for archival purposes, and to a Service Bus Topic which is used to deliver the message to the intended recipients. A Stream Analytics Job provides a simple mechanism for pulling the chat messages from the second Event Hub and writing them to Cosmos DB for archiving and to Power BI for visualization of sentiment in real-time as well as trending sentiment. An indexer runs atop Cosmos DB that updates the Azure Search index which provides full text search capability. Messages in the Service Bus Topic are pulled by Subscriptions created in the Web App and running on behalf of each client device connected by SignalR. When the Subscription receives a message, it is pushed via SignalR down to the browser-based app and displayed in a web page. Bot Services hosts a bot created using QnA maker, which automatically answers simple questions asked by site visitors.
 
     > **Note**: The preferred solution is only one of many possible, viable approaches.
 
@@ -446,7 +446,7 @@ The primary audience is the business decision makers and technology decision mak
 
     A one-on-one chat consists of two Subscriptions (one for each user in the chat), each subscription with a SQL Filter where the filter examines the message property "SessionID".
 
-    A public chat is many Subscriptions (one for each user in the chat) with a SQL Filter with a SQL Filter where the filter examines the message property "SessionID".
+    A public chat is many Subscriptions (one for each user in the chat) with a SQL Filter where the filter examines the message property "SessionID".
 
     In either case, the "connection" is made when messages are sent that have the same value for the SessionID property because the message will be picked up by the Subscriptions that are listening for messages with that SessionID and ultimately delivered to related client.
 
@@ -488,13 +488,13 @@ The primary audience is the business decision makers and technology decision mak
 
     An alternative to using the Bot Service is to use the QnA Maker's REST API endpoints to programmatically send questions and receive answers. This would allow them to integrate it as a separate chat channel of their real-time chat solution.
 
+    QnA Maker, through Web App Bots, allows users to serve their Q&A bots simply by embedding an `iframe` on the site. This is what First Up Consultants will opt for.
+
 *Message search*
 
 1. What Azure services would you use to durably store the messages and enable them for full text search? How would you extend your messaging pipeline so that all messages get archived after they have been tagged with sentiment?
 
-    In order to support the requirements of searchable messaging and long-term extensibility, all chat messages flow through Event Hubs (which gives the solution the ability to "plug in" new forms of downstream message processing) and are stored in CosmosDB. To support the searching of messages, an Azure Search Index is created that is updated every five minutes by an Azure Search Indexer that pulls new message entries from CosmosDB. Once a message is indexed within Azure Search, its properties (such as the username of the user who sent) and its message body become full-text searchable. To perform a search, the browser which loads the search web page on the device makes a cross-origin, XmlHttpRequest to an API App that wraps requests to the Azure Search API, as illustrated by the following diagram:
-
-    ![This is the Preferred solution for Message Fowarding, sending chat messages through Event Hubs. Search implemented through Azure Search. As described in the previous text. Devices (performing searches) on the left feed into API App (Search API) via #Seattle. API App (via #Seattle) then flows into an Azure cloud labeled Search (match text) which then flows back to API App with a collection of message documents with hit highlighting.](media/image5.png 'Azure Services flowchart')
+    In order to support the requirements of searchable messaging and long-term extensibility, all chat messages flow through Event Hubs (which gives the solution the ability to "plug in" new forms of downstream message processing) and are stored in CosmosDB. To support the searching of messages, an Azure Search Index is created that is updated every five minutes by an Azure Search Indexer that pulls new message entries from CosmosDB. Once a message is indexed within Azure Search, its properties (such as the username of the user who sent) and its message body become full-text searchable. To perform a search, the browser which loads the search web page on the device makes a cross-origin, XmlHttpRequest to the Azure Search API.
 
     The messages matching the search are returned, with HTML and CSS formatting embedded so that the particular text that matches the search query is emphasized upon results display.
 
@@ -502,7 +502,7 @@ The primary audience is the business decision makers and technology decision mak
 
 1. What tool would you recommend First Up Consultants utilize for constructing their real-time sentiment dashboard?
 
-    To build a dashboard that updates with sentiments statistics in real-time, First Up Consultants could use Power BI. Note that they would have to use PowerBI.com to build these dashboards, as currently real-time dashboards cannot be built using Power BI Desktop.
+    To build a dashboard that updates with sentiments statistics in real-time, First Up Consultants could use Power BI. Note that they would have to use app.PowerBI.com to build these dashboards, as currently real-time dashboards cannot be built using Power BI Desktop.
 
 2. How would you build this dashboard using the tool you recommended?
 
