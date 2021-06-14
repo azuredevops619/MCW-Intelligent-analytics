@@ -58,6 +58,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
     - [Task 1: Implement sentiment analysis](#task-1-implement-sentiment-analysis)
     - [Task 2: Implement linguistic understanding](#task-2-implement-linguistic-understanding)
     - [Task 3: Re-deploy the function application and test](#task-3-re-deploy-the-function-application-and-test)
+    - [(Optional) Task 4: Improve LUIS Model Performance](#optional-task-4-improve-luis-model-performance)
   - [Exercise 5: Building the Power BI dashboard](#exercise-5-building-the-power-bi-dashboard)
     - [Task 1: Provision Power BI](#task-1-provision-power-bi)
     - [Task 2: Create the static dashboard](#task-2-create-the-static-dashboard)
@@ -1369,6 +1370,28 @@ Now that you have added sentiment analysis and language understanding to the sol
 4. Next, try ordering some items from room service, like `bring me towels` and `order a pizza`. Observe that you get a response from the **ConciergeBot**, and that the reply indicates whether your request was sent to **Housekeeping** or **Room Service**, depending on whether the item ordered was a room or food item.
 
     ![In the chat window, Tim is having a conversation with a ConciergeBot. He asks for towels, and the ConciergeBot says they are forwarding the request to Housekeeping.](media/2020-06-29-05-47-15.png "Live Chat window")
+
+### (Optional) Task 4: Improve LUIS Model Performance
+
+As mentioned previously, LUIS captures challenging queries from production use and allows developers to improve, train, test, and deploy their Language Understanding models. The key component that supports this feature is the `log=true` query parameter that is part of the LUIS endpoint.
+
+1. In [LUIS](luis.ai), select the **awchat** conversation app.
+
+2. Select **Review endpoint utterances** below **Improve app performance**.
+
+    ![LUIS endpoint utterances.](./media/review-endpoint-utterances-after-deploy.png "Utterances from the LUIS production endpoint")
+
+3. Consider the first utterance shown above (`the food was terrible`). As this is not a request, and should thus not be routed to neither the Housekeeping nor RoomService entities, the developer must change the **Predicted Intent** to **None**. Then, they must select **Save utterance**.
+
+4. Same applies to the `hello!` utterance. It is not a request, so the developer will change the predicted intent to **None**.
+
+    >**Note**: Is it possible to define an intent for greetings, given that customers will likely issue a greeting before conversing through the app? Will that add value to the app? What entities could you associate with a greetings intent? Defining a logical schema is a critical part of using LUIS.
+
+5. Move test entries that have incorrectly been classified as requests to the **None** intent. Notice how those utterances are now accessible under the **None** intent.
+
+    ![None intent in LUIS with utterances.](./media/none-intent.png "Utterances properly classified as the None intent")
+
+6. Once you've dealt with the suggested utterances, **Train** and **Test** the LUIS model.
 
 ## Exercise 5: Building the Power BI dashboard
 
