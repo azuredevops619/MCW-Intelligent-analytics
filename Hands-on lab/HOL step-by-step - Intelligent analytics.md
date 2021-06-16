@@ -438,7 +438,7 @@ In this section, you will provision an Azure Cosmos DB account, a database, and 
 
     - **Apply Free Tier Discount**: There is a limit to one free tier Cosmos DB discount per account. If you still have this available, feel free to apply it here.
 
-        ![Populating the Basics blade of the Cosmos DB provisioning UI in Azure portal.](./media/cosmos-db-basics.png 'Cosmos DB provisioning Basics blade')
+        ![Populating the Basics blade of the Cosmos DB provisioning UI in Azure portal.](./media/cosmos-db-basics.png "Cosmos DB provisioning Basics blade")
 
 4. Navigate to the **Global Distribution** blade by selecting **Next: Global Distribution**. Enter the following.
 
@@ -758,7 +758,7 @@ To provision access to the Text Analytics API (which provides sentiment analysis
 
     - **Pricing tier**: Choose **Free F0 (5K Transactions per 30 days)**.
 
-    - Acknowledge the Responsible AI notice 
+    - Acknowledge the Responsible AI notice. 
 
     ![The Create Text Analytics from is shown populated with the preceding values.](media/create-text-analytics.png "Create Text Analytics")
 
@@ -1090,7 +1090,7 @@ With the App Services projects properly configured, you are now ready to deploy 
     - Event Hub Message Debugging.
       - Navigate back to the Azure Portal and select your resource group.
       - Select the event hub.
-      - Select the your event hub link.  e.g. awchathub.
+      - Select your event hub link.  e.g. awchathub.
       - Select the **Process Data** in the left-hand menu item.
       - Select the **Explore** button.
 
@@ -1169,7 +1169,7 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 1. Using a browser, navigate to <http://www.luis.ai>.  
 
-    > **Note**: If in Exercise 1, Step 12 you created your Luis account in Azure in an European region (e.g. West Europe), user <http://eu.luis.ai> instead. If you selected an Australian region use <http://au.luis.ai>.
+    > **Note**: If in Exercise 1, Step 12 you created your Luis account in Azure in a European region (e.g. West Europe), user <http://eu.luis.ai> instead. If you selected an Australian region use <http://au.luis.ai>.
 
 2. Select **Login / Sign Up**.
 
@@ -1267,7 +1267,8 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
     ![The screenshot shows the Confirm RoomService option highlighted](media/2020-08-18-19-04-47.png "Confirm RoomService")
 
-26. Select **Manage** from the toolbar, then select **Azure Resources** from the left menu. In the **luis-api-namespace** section, the URL is available in the **Example Query** textbox
+26. Select **Manage** from the toolbar, then select **Azure Resources** from the left menu. In the **luis-api-namespace** section, the URL is available in the **Example Query** textbox. 
+
     ![The Azure Resources menu item is selected from the left menu and the Example Query URL is shown in a textbox.](media/2020-08-18-19-27-46.png "LUIS Key Information")
 
 27. Select **Publish** at the upper right-hand corner of the page to publish the endpoint. Publish to the **Staging Slot** and select **Done**.
@@ -1755,7 +1756,7 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
     ![Connect your QnA service to your KB form is displayed populated with the preceding values.](media/qna-maker-connect-qna-service.png "Azure QnA service")
 
-9.  Underneath Step 3 (Name your KB), provide a unique name, such as `ConciergePlus`
+9.  Underneath Step 3 (Name your KB), provide a unique name, such as `ConciergePlus`.
 
 10. Underneath Step 4 (Populate your KB), select **+ Add file**. [Upload this file](lab-files/faq.xlsx) to the service.
 
