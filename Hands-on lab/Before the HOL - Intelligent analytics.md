@@ -52,9 +52,9 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 
 1. In the [Azure Portal](https://portal.azure.com/), select **+Create a resource** from the left menu, then type `Visual Studio Latest` into the search bar. Select **Visual Studio Community 2019(latest release) on Windows Server 2016 (x64)** from the results.
 
-    ![In the Azure Portal, Visual Studio 2019 Latest is entered into the search textbox. Visual Studio 2019 Latest is displayed in the Search suggestions.](media-batch/2019-06-19-15-05-08.png "Visual Studio 2019 Latest option is displayed")
+    ![In the Azure Portal, Visual Studio 2019 Latest is entered into the search textbox. Visual Studio 2019 Latest is displayed in the Search suggestions.](media/2019-06-19-15-05-08.png "Visual Studio 2019 Latest option is displayed")
 
-    ![The product page for Visual Studio 2019 Latest is displayed. The Select a software plan dropdown list is expanded showing a list of possible VM images.  Visual Studio Community 2019 (latest release) on Windows 2019 (x64) is highlighted.](media-batch/2019-09-03-12-22-16.png "Visual Studio Community 2019 (latest release) on Windows 2019 (x64) selected")
+    ![The product page for Visual Studio 2019 Latest is displayed. The Select a software plan dropdown list is expanded showing a list of possible VM images.  Visual Studio Community 2019 (latest release) on Windows 2019 (x64) is highlighted.](media/2019-09-03-12-22-16.png "Visual Studio Community 2019 (latest release) on Windows 2019 (x64) selected")
 
 2. Select the **Create** button.
 
@@ -88,23 +88,23 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 
     - **Advanced** - Use managed disks: **Yes**
 
-    ![The Create virtual machine, Disks tab is displayed configured with the settings outlined above.](media-batch/2019-03-20-11-28-25.png "Create a Virtual Machine")
+    ![The Create virtual machine, Disks tab is displayed configured with the settings outlined above.](media/2019-03-20-11-28-25.png "Create a Virtual Machine")
 
 5. Select **Next: Networking**.
 
-    ![The Create virtual machine, Disks tab is displayed with the Next: Networking button selected.](media-batch/2019-03-20-11-18-33.png "Review the next blade - Networking.")
+    ![The Create virtual machine, Disks tab is displayed with the Next: Networking button selected.](media/2019-03-20-11-18-33.png "Review the next blade - Networking.")
 
 6. Leave defaults.
 
-    ![The Networking tab form is displayed with default values, including a new Virtual network, intelligent-analytics-vnet, and a new Subnet, default(10.0.1.0/24). The NIC network security group is set to Basic, and Public inbound ports is set to Allow selected ports. The Select inbound ports is set to RDP. Accelerated networking is set to Off and Load balancing is set to No.](media-batch/2019-03-20-11-20-21.png "Networking tab - Configure Virtual Networks")
+    ![The Networking tab form is displayed with default values, including a new Virtual network, intelligent-analytics-vnet, and a new Subnet, default(10.0.1.0/24). The NIC network security group is set to Basic, and Public inbound ports is set to Allow selected ports. The Select inbound ports is set to RDP. Accelerated networking is set to Off and Load balancing is set to No.](media/2019-03-20-11-20-21.png "Networking tab - Configure Virtual Networks")
 
 7. Select the **Review + create** button.
 
-    ![The Review + create button displayed.](media-batch/2019-03-20-11-23-20.png "Review and create button")
+    ![The Review + create button displayed.](media/2019-03-20-11-23-20.png "Review and create button")
 
 8. Azure will validate your settings.  If everything is valid, then select **Create**.
 
-    ![A Validation passed success message.](media-batch/2019-03-20-15-18-30.png "Validation passed")
+    ![A Validation passed success message.](media/2019-03-20-15-18-30.png "Validation passed")
 
 ### Task: Create a PowerBI account (optional)
 
