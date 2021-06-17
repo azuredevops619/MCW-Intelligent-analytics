@@ -43,12 +43,6 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
   - [Exercise 2: Implement message forwarding](#exercise-2-implement-message-forwarding)
     - [Task 1: Implement the event processor](#task-1-implement-the-event-processor)
     - [Task 2: Configure the Chat Message Processor Function App](#task-2-configure-the-chat-message-processor-function-app)
-      - [Event Hub connection string](#event-hub-connection-string)
-      - [Event Hub name](#event-hub-name)
-      - [Storage account](#storage-account)
-      - [Service Bus connection string](#service-bus-connection-string)
-      - [Chat topic](#chat-topic)
-      - [Text Analytics API settings](#text-analytics-api-settings)
   - [Exercise 3: Deploying the App Services](#exercise-3-deploying-the-app-services)
     - [Task 1: Restore NuGet Packages for the solution](#task-1-restore-nuget-packages-for-the-solution)
     - [Task 2: Publish the ChatMessageSentimentProcessor Function App](#task-2-publish-the-chatmessagesentimentprocessor-function-app)
@@ -1859,7 +1853,7 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
 ## After the hands-on lab
 
-Duration: 10 mins
+Duration: 10 minutes
 
 In this exercise, attendees will deprovision any Azure resources that were created in support of the lab.
 
