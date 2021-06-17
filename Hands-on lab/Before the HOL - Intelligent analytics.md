@@ -9,7 +9,7 @@ Before the hands-on lab setup guide
 </div>
 
 <div class="MCWHeader3">
-June 2020
+June 2021
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -28,7 +28,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
   - [Requirements](#requirements)
   - [Before the hands-on lab](#before-the-hands-on-lab)
     - [Task: Setup a lab virtual machine](#task-setup-a-lab-virtual-machine)
-    - [Task: Create a PowerBI account (optional)](#task-create-a-powerbi-account-optional)
+    - [Task: Create a Power BI account (optional)](#task-create-a-power-bi-account-optional)
 <!-- /TOC -->
 
 # Intelligent analytics before the hands-on lab setup guide
@@ -72,7 +72,7 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 
     - **Image**: Select **Visual Studio 2019 Community (latest release) on Windows Server 2019 (x64)**
 
-    - **Size**: Select the **Change size** link, and choose **Standard D2s v3**
+    - **Size**: Select the **See all sizes** link, and choose **Standard D2s v3**
 
     - **Username**: `demouser`
 
@@ -106,9 +106,9 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 
     ![A Validation passed success message.](media/2019-03-20-15-18-30.png "Validation passed")
 
-### Task: Create a PowerBI account (optional)
+### Task: Create a Power BI account (optional)
 
-1. If you do not have a PowerBI account, navigate to [PowerBI sign up](https://powerbi.microsoft.com/) to create an account.
+1. If you do not have a Power BI account, navigate to [Power BI sign up](https://powerbi.microsoft.com/) to create an account.
 
 It may take 10+ minutes for the virtual machine to complete provisioning.
 
