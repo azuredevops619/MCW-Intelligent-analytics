@@ -1,6 +1,6 @@
-## Microsoft Cloud Workshops - Retirement Survey  
+## Retirement Notice  
 
-As we look to streamline content and improve training, we are considering retiring the Microsoft Cloud Workshop (MCW) program. Please take a moment to fill out the [Microsoft Cloud Workshop Survey](https://forms.office.com/r/834zwtaNtK) and give us your feedback.
+Effective October 1, 2021, this workshop will be retired. Content will be available through September, but the workshop is no longer being maintained or updated.
 
 # Intelligent analytics
 
