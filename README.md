@@ -1,6 +1,4 @@
-## Retirement Notice  
-
-Effective October 1, 2021, this workshop will be retired. Content will be available through September, but the workshop is no longer being maintained or updated.
+## This workshop is archived and is no longer being maintained.  Content is read-only.  
 
 # Intelligent analytics
 
@@ -56,18 +54,5 @@ Modern Business Intelligence
 
 ## Related references
 
-[MCW](https://github.com/Microsoft/MCW)
+[MCW Library](https://microsoftcloudworkshop.com)
 
-## Help & Support
-
-We welcome feedback and comments from Microsoft SMEs & learning partners who deliver MCWs.  
-
-***Having trouble?***
-
-- First, verify you have followed all written lab instructions (including the Before the Hands-on lab document).
-- Next, submit an issue with a detailed description of the problem.
-- Do not submit pull requests. Our content authors will make all changes and submit pull requests for approval.
-
-If you are planning to present a workshop, *review and test the materials early*! We recommend at least two weeks prior.
-
-### Please allow 5 - 10 business days for review and resolution of issues.
