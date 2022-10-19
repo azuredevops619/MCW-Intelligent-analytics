@@ -112,4 +112,4 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 
 It may take 10+ minutes for the virtual machine to complete provisioning.
 
-You should follow all steps provided *before* performing the Hands-on lab.-->
+You should follow all steps provided *before* performing the Hands-on lab.
