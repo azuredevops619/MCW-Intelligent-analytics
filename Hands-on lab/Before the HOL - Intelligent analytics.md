@@ -105,11 +105,11 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 8. Azure will validate your settings.  If everything is valid, then select **Create**.
 
     ![A Validation passed success message.](media/2019-03-20-15-18-30.png "Validation passed")
-
-### Task: Create a Power BI account (optional)
+<--!
+### Task: Create a Power BI account
 
 1. If you do not have a Power BI account, navigate to [Power BI sign up](https://powerbi.microsoft.com/) to create an account.
 
 It may take 10+ minutes for the virtual machine to complete provisioning.
 
-You should follow all steps provided *before* performing the Hands-on lab.
+You should follow all steps provided *before* performing the Hands-on lab.-->
