@@ -140,7 +140,7 @@ The following section walks you through the manual steps to provision the servic
 
 1. From your Lab VM, download the starter project by downloading a .zip copy of the Intelligent analytics GitHub repo.
 
-2. In a web browser, navigate to the [Intelligent analytics MCW repo](https://github.com/Microsoft/MCW-Intelligent-analytics).
+2. In a web browser, navigate to the [Intelligent analytics MCW repo](https://github.com/azuredevops619/MCW-Intelligent-analytics).
 
 3. On the repo page, select **Clone or download**, then select **Download ZIP**.
 
@@ -231,6 +231,8 @@ In this section, you will provision a Function App that will be used as the Even
     - **Runtime Stack**:  Select **.NET**.
   
     - **Version**: Select **3.1**.
+    
+    - **Operating System**: Windows 
 
     - **Region**: Select the location you used for the resource group created previously.
 
@@ -414,7 +416,7 @@ In this section, you will provision an Azure Cosmos DB account, a database, and 
 
     ![The Azure Cosmos DB resource overview screen shows the Azure Cosmos DB icon as well as the create button.](media/2019-11-13-15-27-32.png "Create the Azure Cosmos DB")
 
-2. On the **Select API option** page, select **Create** below **Core (SQL) - Recommended**.
+2. On the **Select API option** page, select **Create** below **Azure Cosmos DB for NoSQL**.
 
     ![Selecting the SQL Cosmos DB offering in the Azure portal.](./media/cosmosdb-core-sql.png 'Selecting SQL offering for Cosmos DB')
 
@@ -734,11 +736,9 @@ The EventProcessorHost requires an Azure Storage account that it will use to man
 
 To provision access to the Text Analytics API (which provides sentiment analysis features), you will need to provision a Cognitive Services account. Based on a phrase, you can tell if a hotel guest is happy or upset.
 
-1. From the [Azure portal](https://portal.azure.com) left menu, select **+Create a resource**, then search for `Text Analytics`
+1. From the [Azure portal](https://portal.azure.com) left menu, select **+Create a resource**, then search for `Cognitive Services`
 
-    ![The Text Analytics resource overview screen is displayed with a Create button.](media/2019-11-16-06-18-06.png "Azure Text Analytics Search")
-
-2. On the **Select additional features** page, if you are asked to enable **Custom question answering (preview)**, then select **Continue to create your resource**.
+2. Click on **Create**.
 
 3. On the **Create** blade, enter the following:
     
@@ -754,7 +754,7 @@ To provision access to the Text Analytics API (which provides sentiment analysis
 
     - Acknowledge the Responsible AI notice. 
 
-    ![The Create Text Analytics from is shown populated with the preceding values.](media/create-text-analytics.png "Create Text Analytics")
+    ![The Text Analytics resource overview screen is displayed with a Create button.](media/2019-11-16-06-18-06.png "Azure Text Analytics Search")
 
 4. Select the **Review + create** button, and then select **Create**.
 
@@ -1079,6 +1079,7 @@ With the App Services projects properly configured, you are now ready to deploy 
 
     ![The Live Chat window shows a chat going on between two users.](media/2020-06-29-10-17-13.png "Live Chat window")
 
+<!--
 9. Optional: Debugging Chat Messages
 
     - Event Hub Message Debugging.
@@ -1122,6 +1123,7 @@ With the App Services projects properly configured, you are now ready to deploy 
 
     ![The screen shows how to test your Stream Analytics queries. The arrows point to the Query menu item and Test query button.](media/2020-07-02-16-53-08.png "Test your query")
 
+-->
 ## Exercise 4: Add intelligence
 
 Duration: 60 minutes
@@ -1162,8 +1164,6 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 ![The diagram depicts the exercise steps. Create model, train model, test model, publish.](media/2020-06-30-14-22-42.png "LUIS workflow")
 
 1. Using a browser, navigate to <http://www.luis.ai>.  
-
-    > **Note**: If in Exercise 1, Step 12 you created your Luis account in Azure in a European region (e.g. West Europe), user <http://eu.luis.ai> instead. If you selected an Australian region use <http://au.luis.ai>.
 
 2. Select **Login / Sign Up**.
 
