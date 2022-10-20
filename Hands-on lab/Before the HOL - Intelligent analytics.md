@@ -106,9 +106,29 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 
     ![A Validation passed success message.](media/2019-03-20-15-18-30.png "Validation passed")
 
+### Task: Create a PowerBI user in Azure AD
+
+1. Goto **Users** in Azure Active Directory.
+2. Click on Add user.
+3. Name the user as **powerbi**
+4. Fill up other necessary information.
+5.  In **Groups and roles** section, Select **Global administrator** role for powerBI user. 
+6.  Don't forget to copy the temp password of your powerbi user.
+7.  Create the user. 
+
+### Task: Give rights to powerBI user on the subscription. 
+
+1. Seach for and goto **Subscriptions** page. Select your subscription. 
+2. Click on Access control (IAM) -> Add -> Add role assignment 
+3. Select Role -> Owner -> Next
+4. On members page click **+ Select members** -> Select powerbi user 
+5. Click on Review & assign until it saves.  
+
 ### Task: Create a Power BI account
 
-1. If you do not have a Power BI account, navigate to [Power BI sign up](https://powerbi.microsoft.com/) to create an account.
+1. Navigate to [Power BI sign up](https://powerbi.microsoft.com/) to create an account.
+2. Use powerBI user to sign in.  
+4. Create a 60 day free powerBI trial.   
 
 It may take 10+ minutes for the virtual machine to complete provisioning.
 
