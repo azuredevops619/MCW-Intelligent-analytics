@@ -1498,6 +1498,7 @@ This gauge is currently a static visualization. You will use the report just cre
 
 11. Navigate to the chat website you deployed and send some messages and observe how the sentiment gauge updates with moments of you sending chat messages.
 
+<!--
 ### Task 4: Add a trending sentiment chart to the dashboard
 
 The sentiment visualization you created is great for getting a sense of sentiment as of this moment. However, First Up Consultants wishes to view sentiment over time for historical reference and to see whether overall sentiment is trending one way or another. To do this, we will use the tumbling window query output from Stream Analytics to display this data in a line chart.
@@ -1533,8 +1534,8 @@ The sentiment visualization you created is great for getting a sense of sentimen
 8. Position the Trending Sentiment line chart beneath the average score gauge.
 
     ![Power BI dashboard showing the average score gauges and trending sentiment.](media/power-bi-dashboard-with-trending-sentiment.png "Power BI Dashboard")
-
-9. Try building out the rest of the real-time dashboard that should look as follows. We provide the following Q&A questions you can use to get started.
+-->
+9. Further visualizations can be added in the dashboard as well. Example below, (You do not have to make them just observe)
 
     ![The Power BI dashboard has four panes: two Count of Messages panes, an Average Sentiment, and Upset Users. The first Count of Messages pane displays a number (18). The second Count of Messages is a pie chart broken out by username. The Average Sentiment is a donut chart displaying the Average Sentiment (0.58) in the past 24 hours. Upset Users chart is a horizontal bar chart displaying the average of upset users (0.25) in the past 24 hours.](media/image159.png "Power BI Dashboard")
 
@@ -1543,8 +1544,6 @@ The sentiment visualization you created is great for getting a sense of sentimen
     - Count of Messages by Username (Pie chart visualization): Count of messages by username between yesterday and today.
 
     - Upset Users (Bar chart visualization): Average score by username between yesterday and today.
-
-10. Invite some peers to chat and monitor the sentiments using your new, real-time dashboard.
 
 ## Exercise 6: Enabling search indexing
 
