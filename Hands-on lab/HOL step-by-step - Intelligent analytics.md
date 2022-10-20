@@ -1697,6 +1697,7 @@ Before going further, a good thing to check is whether messages are being writte
     ![In the Search Messages box, in the Search messages for text box, Hi is typed. Below that, 32 results have been found.](media/2020-06-30-18-55-16.png "Search Messages box")
 
 <!--
+
 ## Exercise 7: Add a bot using Bot service and QnA Maker
 
 Duration: 30 minutes
@@ -1852,7 +1853,7 @@ Microsoft's QnAMaker is a Cognitive Service tool that uses your existing content
 
     ![The Bot page of the web app is displayed with a chat interface where messages can be answered. Sample questions and responses are displayed.](media/bot-service-embedded.png "Bot page")
     
-    -->
+  -->
 
 ## After the hands-on lab
 
