@@ -130,6 +130,8 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 2. Use powerBI user to sign in.  
 4. Create a 60 day free powerBI trial.   
 
+**Note:** Log into Azure with PowerBI user and do all the steps with this new user only. 
+
 It may take 10+ minutes for the virtual machine to complete provisioning.
 
 You should follow all steps provided *before* performing the Hands-on lab.
