@@ -63,10 +63,10 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
     - [Task 2: Creating the index and indexer](#task-2-creating-the-index-and-indexer)
     - [Task 3: Update the Chat Web App Configuration](#task-3-update-the-chat-web-app-configuration)
     - [Task 4: Re-publish web app](#task-4-re-publish-web-app)
-  - [Exercise 7: Add a bot using Bot service and QnA Maker](#exercise-7-add-a-bot-using-bot-service-and-qna-maker)
+  <!--- [Exercise 7: Add a bot using Bot service and QnA Maker](#exercise-7-add-a-bot-using-bot-service-and-qna-maker)
     - [Task 1: Create a QnA service instance in Azure](#task-1-create-a-qna-service-instance-in-azure)
     - [Task 2: Create a QnA bot](#task-2-create-a-qna-bot)
-    - [Task 3: Embed the bot into your web app](#task-3-embed-the-bot-into-your-web-app)
+    - [Task 3: Embed the bot into your web app](#task-3-embed-the-bot-into-your-web-app)-->
   - [After the hands-on lab](#after-the-hands-on-lab)
     - [Task 1: Delete the resource group](#task-1-delete-the-resource-group)
 
