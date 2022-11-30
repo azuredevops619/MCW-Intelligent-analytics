@@ -464,7 +464,7 @@ In this section, you will provision an Azure Cosmos DB account, a database, and 
 
         ![A sample document in Json format is shown displaying all of the fields available to use as a partition key. The username field is highlighted.](media/2019-03-21-13-18-47.png "Possible fields to partition on.")
 
-    - **Throughput**: Set to `400`.
+    - **Throughput**: Set to `1000`.
 
     - Select **OK** to add the container.
 
@@ -477,8 +477,6 @@ In this section, you will provision an Azure Cosmos DB account, a database, and 
     - **Container Id**: Enter `trendingsentiment`.
 
     - **Partition Key**: Enter a partition key such as `/Snapshot`.
-
-    - **Throughput**: Set to `400`.
 
     - Select **OK** to add the container.
 
