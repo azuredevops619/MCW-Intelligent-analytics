@@ -40,7 +40,6 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/legal/intellec
   - You will need rights to create an Azure Active Directory application and service principal and assign roles on your subscription.
 - A virtual machine configured with:
   - Visual Studio Community 2019 (latest release) (<https://www.visualstudio.com/vs/>).
-  - Azure SDK 2.9 or later (Included with Visual Studio 2019).
 
 ## Before the hands-on lab
 
