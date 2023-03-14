@@ -148,9 +148,9 @@ The following section walks you through the manual steps to provision the servic
 
     ![In the Extract Compressed (Zipped) Folders window, files will be extracted to C:\ConciergePlus.](media/image18.png "Extract Compressed (Zipped) Folders window")
 
-5. Open **ConciergePlusSentiment.sln** in the `C:\ConciergePlus\MCW-Intelligent-analytics-main\Hands-on lab\lab-files\starter-project` folder with Visual Studio 2019.
+   >**Note**: Also, install .Net core in your VM using this link: ` https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-3.1.426-windows-x64-installer `
 
-Also, install .Net core in your VM using this link: ` https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-3.1.426-windows-x64-installer `
+5. Open **ConciergePlusSentiment.sln** in the `C:\ConciergePlus\MCW-Intelligent-analytics-main\Hands-on lab\lab-files\starter-project` folder with Visual Studio 2019.
 
 6. Sign in to Visual Studio with PowerBI user that you created earlier.
 
