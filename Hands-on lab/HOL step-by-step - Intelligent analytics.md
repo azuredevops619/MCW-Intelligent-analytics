@@ -90,14 +90,6 @@ Below is a diagram of the solution architecture you will build in this lab. Plea
 
 Messages are sent from browsers running within laptop or mobile clients via SignalR to an endpoint running in an Azure Web App. Chat messages received by the Web App are sent to an Event Hub where they are temporarily stored. An Azure Function picks up the chat messages and applies sentiment analysis to the message text (using the Text Analytics API), as well as contextual understanding (using LUIS). The function forwards the chat message to an Event Hub used to store messages for archival purposes, and to a Service Bus Topic which is used to deliver the message to the intended recipients. A Stream Analytics Job provides a simple mechanism for pulling the chat messages from the second Event Hub and writing them to Cosmos DB for archiving, and to Power BI for visualization of sentiment in real-time as well as trending sentiment. An indexer runs atop Cosmos DB that updates the Azure Search index which provides full text search capability. Messages in the Service Bus Topic are pulled by Subscriptions created in the Web App and running on behalf of each client device connected by SignalR. When the Subscription receives a message, it is pushed via SignalR down to the browser-based app and displayed in a web page. Bot Services hosts a bot created using QnA maker, which automatically answers simple questions asked by site visitors.
 
-## Requirements
-
-- Microsoft Azure subscription must be pay-as-you-go or MSDN.
-  - Trial subscriptions will not work.
-- A virtual machine configured with:
-  - Visual Studio Community 2019 or later.
-  - Azure SDK 2.9 or later (Included with Visual Studio 2019).
-
 ## Exercise 1: Environment setup
 
 Duration: 60 minutes
@@ -110,7 +102,7 @@ The following section walks you through the manual steps to provision the servic
 
     ![On the Resource groups screen, intelligent-analytics is typed in the search field. In the search results, intelligent-analytics is selected.](media/image10.png "Azure Portal Resource groups")
 
-2. Next, select **LabVM** from the list of available resources.
+2. Next, select **LabVM** from the list of available resources. (It is okay if your VM is in any other location as well)
 
     ![In the List of available resources, LabVM is selected.](media/image11.png "List of available resources")
 
@@ -129,6 +121,8 @@ The following section walks you through the manual steps to provision the servic
     - **Username**: `demouser`
 
     - **Password**: (your password)
+
+**Note** If RDP port is blocked in your company network then ask the trainer for the steps to enable Azure Bastion. It will take upto 10-13 min to enable it. Steps to enable Azure Bastion are not added here. Ignore this note otherwise.     
 
 7. Select Yes to connect, if prompted that the identity of the remote computer cannot be verified.
 
@@ -156,7 +150,9 @@ The following section walks you through the manual steps to provision the servic
 
 5. Open **ConciergePlusSentiment.sln** in the `C:\ConciergePlus\MCW-Intelligent-analytics-main\Hands-on lab\lab-files\starter-project` folder with Visual Studio 2019.
 
-6. Sign in to Visual Studio or select create account, if prompted.
+Also, install .Net core in your VM using this link: ` https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-3.1.426-windows-x64-installer `
+
+6. Sign in to Visual Studio with PowerBI user that you created earlier.
 
 7. If presented with the Start with a familiar environment dialog, select Visual C\# from the Development Settings drop down list, and select Start Visual Studio.
 
@@ -188,21 +184,25 @@ In these steps, you will provision a Web App within a single App Service Plan.
     - **Resource Group**: Select Use existing, and select the **intelligent-analytics** resource group created previously.
     - **Name**: Provide **a unique name** that is indicative of this resource being used to host the Concierge+ chat website (e.g., `conciergepluschatapp + (namespace)`).
     - **Publish**: Choose the **Code** option.
-    - **Runtime stack**: **.NET Core 3.1**
+    - **Runtime stack**: **ASP .NET V3.5*
     - **OS**: **Windows**
-    - **Region**: Choose a region close to you.
+    - **Region**: East US or any other suitable location.
     - **App Service plan**: Create a new App Service Plan.
     - **Sku and Size**: **Standard S1**
 
+    ![In the Azure portal, in the App Services screen, the conciergepluschatapp has a status of running and is selected from the list.](update/ScreenShot00964.png "Azure Portal, App Services pane")
+
+    ![In the Azure portal, in the App Services screen, the conciergepluschatapp has a status of running and is selected from the list.](update/ScreenShot00965.png "Azure Portal, App Services pane")
+    
     - Select **Review and Create** to provision both Web App and the App Service Plan. Select the **Create** button.
 
 4. When provisioning completes, navigate to your new Web App in the portal by selecting **App Services** from the left menu, and then selecting your web app from the list.
 
     ![In the Azure portal, in the App Services screen, the conciergepluschatapp has a status of running and is selected from the list.](media/2019-06-19-16-11-06.png "Azure Portal, App Services pane")
 
-5. On the App Service screen, select **Configuration** from the left menu, and then select the **General settings** tab.
+5. On the App Service screen, select **Configuration** from the left menu, and then select the **General settings** tab. Enable Web Sockets. 
 
-    ![In the App Service screen, the Configuration menu item is selected from the left menu. The General Settings tab is selected, and the value of the Web sockets field is highlighted and set to On. The Save button is selected from the toolbar menu.](media/2020-06-29-13-32-43.png "App Services Configuration General Settings")
+    ![In the App Service screen, the Configuration menu item is selected from the left menu. The General Settings tab is selected, and the value of the Web sockets field is highlighted and set to On. The Save button is selected from the toolbar menu.](update/ScreenShot00967.png "App Services Configuration General Settings")
 
 6. Select the toggle for **Web Sockets** to **On**.
 
@@ -230,7 +230,7 @@ In this section, you will provision a Function App that will be used as the Even
   
     - **Runtime Stack**:  Select **.NET**.
   
-    - **Version**: Select **3.1**.
+    - **Version**: Select **4.8**.
     
     - **Operating System**: Windows 
 
@@ -238,7 +238,7 @@ In this section, you will provision a Function App that will be used as the Even
 
     - Select **Review + create** to provision the Function App.
 
-    ![The Function App basics tab displays with the form populated with the preceding values.](media/new-function-app.png "Function App Configuration")
+    ![In the Azure portal, in the App Services screen, the conciergepluschatapp has a status of running and is selected from the list.](update/ScreenShot00968.png "Azure Portal, App Services pane")
 
 ### Task 5: Provision Service Bus
 
@@ -262,7 +262,7 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
     - **Location**: Select the location you are using for resources in this hands-on lab.
 
-      ![The Create namespace blade fields display the previously mentioned settings.](media/2019-06-19-16-43-46.png "Create namespace blade")
+    ![In the Azure portal, in the App Services screen, the conciergepluschatapp has a status of running and is selected from the list.](update/ScreenShot00969.png "Azure Portal, App Services pane")
 
 4. Select **Review + Create** and **Create**.
 
@@ -288,11 +288,11 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
     - **Enable partitioning**: Ensure this checkbox remains unchecked. Chat will not function properly if this is checked.
 
-      ![The Create topic blade fields display the previously mentioned settings. In addition, the following fields are highlighted: Name, which is set to awhotel, Message time to live in Days, which is set to 1, and the Enable partitioning check box.](media/image36.png "Create topic blade")
+      ![The Create topic blade fields display the previously mentioned settings. In addition, the following fields are highlighted: Name, which is set to awhotel, Message time to live in Days, which is set to 1, and the Enable partitioning check box.](update/ScreenShot01006.png "Create topic blade")
 
 9. Select **Create**.
 
-10. Create a subscription to the Service Bus topic you just created. The web application will use the subscription to retrieve messages and send them messages to the browser client. Enter these configurations:
+10. Click on the Topics tab from the left hand side column and select the newly created topic. Now click on subscriptions tab to create a subscription to the Service Bus topic you just created. The web application will use the subscription to retrieve messages and send them messages to the browser client. Enter these configurations:
 
     - Select the topic you just created.
     - Select the Subscription menu item on the left-hand menu.
@@ -301,10 +301,16 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
     ![The screenshot shows the Subscription button highlighted.](media/2020-06-30-20-09-57.png "Create the topic subscription.")
 
+    ![The Create topic blade fields display the previously mentioned settings. In addition, the following fields are highlighted: Name, which is set to awhotel, Message time to live in Days, which is set to 1, and the Enable partitioning check box.](update/ScreenShot01007.png "Create topic blade")
+
     - Enter `ChatMessageSub` as the name.
     - Max delivery count: 10
     - Auto-delete after idle: 1 day.
     - Message time to live and dead-lettering: 1 day.
+
+    ![The Create topic blade fields display the previously mentioned settings. In addition, the following fields are highlighted: Name, which is set to awhotel, Message time to live in Days, which is set to 1, and the Enable partitioning check box.](update/ScreenShot00989.png "Create topic blade")
+
+Leave any other settings to defaults. 
   
     Select the **Create** button.
   
@@ -376,15 +382,15 @@ In this task, you will create a new Event Hubs namespace and instance.
 
     - **Message Retention**: Leave set to `1`.
 
-    - **Capture**: Leave set to **Off**.
+    - **Capture**: Leave set to **Off** on next tab.
 
     - Leave the remaining values as their defaults.
 
     - Select **Create**.
 
-      ![The Create Event Hub blade fields display with the previously mentioned settings.](media/2020-06-29-13-44-07.png "Create Event Hub blade")
+      ![The Create Event Hub blade fields display with the previously mentioned settings.](update/ScreenShot00990.png "Create Event Hub blade")
 
-6. Repeat step 5 to create another Event Hub in the same namespace. Name the event hub `awchathub2`.This one will store messages for archival and be processed by Stream Analytics. Stream Analytics forwards the message to Cognitive Search.
+6. Repeat step 5 to create another Event Hub in the same namespace. Name the event hub **awchathub2**.This one will store messages for archival and be processed by Stream Analytics. Stream Analytics forwards the message to Cognitive Search.
 
     If you select the **Event Hubs** menu item from the left menu, this will display the list of event hubs, you should see the following:
 
@@ -430,11 +436,7 @@ In this section, you will provision an Azure Cosmos DB account, a database, and 
 
     - **Location**: Select the region you are using for resources in this hands-on lab.
 
-    - **Capacity mode**: Keep this set to **Provisioned throughput**.
-
-    - **Apply Free Tier Discount**: There is a limit to one free tier Cosmos DB discount per account. If you still have this available, feel free to apply it here.
-
-        ![Populating the Basics blade of the Cosmos DB provisioning UI in Azure portal.](./media/cosmos-db-basics.png "Cosmos DB provisioning Basics blade")
+    ![Selecting the SQL Cosmos DB offering in the Azure portal.](./update/ScreenShot00971.png 'Selecting SQL offering for Cosmos DB')
 
 4. Navigate to the **Global Distribution** blade by selecting **Next: Global Distribution**. Enter the following.
 
@@ -442,11 +444,13 @@ In this section, you will provision an Azure Cosmos DB account, a database, and 
 
     - **Multi-region Writes**: Ensure this is set to **Disable**.
 
-    - **Availability Zones**: Ensure this is set to **Disable**.
-
 5. Select **Review + create**. After validation passes, select **Create**.
 
 6. When the provisioning completes, navigate to your new Azure Cosmos DB account in the portal.
+
+Now, go to Cost Management and set Total throughput limit setting to **No limit...** then Save 
+
+   ![The screen shows the Cosmos DB name the user chose and the add new container button is circled.](update/ScreenShot01009.png "Add New Container")
 
 7. On the **Overview screen**, select **+Add Container**.
 
@@ -460,15 +464,15 @@ In this section, you will provision an Azure Cosmos DB account, a database, and 
 
     - **Partition Key**: Enter a partition key such as `/username`.
 
-        > **Note**: Pick a field in this schema.  Otherwise, you will have no documents in the Cosmo DB container. Below is a sample of the messages stored in the Cosmo DB at a later part in the lab.
+   ![The screen shows the Cosmos DB name the user chose and the add new container button is circled.](update/ScreenShot00994.png "Add New Container")
+
+        > **Note**: Pick a field in this schema.  Otherwise, you will have no documents in the Cosmo DB container. Below is a sample of the messages stored in the Cosmo DB at a later part in the lab. Data is not present in the container at this point in time. 
 
         ![A sample document in Json format is shown displaying all of the fields available to use as a partition key. The username field is highlighted.](media/2019-03-21-13-18-47.png "Possible fields to partition on.")
 
-    - **Throughput**: Set to `1000`.
+    - **Throughput**: Set to `400`.
 
     - Select **OK** to add the container.
-
-    ![The Add Container form is displayed and is populated with the preceding values.](media/create-messagestore-container.png "Add New Container")
 
 9. Add another container with the following:
 
@@ -477,6 +481,8 @@ In this section, you will provision an Azure Cosmos DB account, a database, and 
     - **Container Id**: Enter `trendingsentiment`.
 
     - **Partition Key**: Enter a partition key such as `/Snapshot`.
+
+   ![The screen shows the Cosmos DB name the user chose and the add new container button is circled.](update/ScreenShot00995.png "Add New Container")
 
     - Select **OK** to add the container.
 
@@ -526,7 +532,7 @@ In this section, you will create the Stream Analytics Job that will be used to r
 
     - Select **Create** to provision the new Stream Analytics job.
 
-      ![The New Stream Analytics Job form fields display the previously mentioned settings. ](media/image49.png "New Stream Analytics Job blade")
+   ![The screen shows the Cosmos DB name the user chose and the add new container button is circled.](update/ScreenShot00974.png "Add New Container")
 
 3. When provisioning completes, navigate to your new Stream Analytics job in the portal by selecting **Resource Groups** in the left menu, and selecting the **intelligent-analytics** resource group, then selecting your **Stream Analytics Job**.
 
@@ -623,6 +629,8 @@ In this section, you will create the Stream Analytics Job that will be used to r
     - **Authentication Mode**: Select **User token**.
 
       ![The Power BI New output form is shown and is populated with the preceding values.](media/2019-11-16-06-02-09.png "Power BI new output")
+
+    - **Authenticate** using the PowerBI user having 60 days free power BI licence
 
     - Select the **Save** button.
 
@@ -750,7 +758,7 @@ To provision access to the Text Analytics API (which provides sentiment analysis
 
     - **Pricing tier**: Choose **Free F0 (5K Transactions per 30 days)**.
 
-    - Acknowledge the Responsible AI notice. 
+    - Acknowledge all the needed Terms and Responsible AI notice. 
 
     ![The Text Analytics resource overview screen is displayed with a Create button.](media/2019-11-16-06-18-06.png "Azure Text Analytics Search")
 
@@ -999,11 +1007,15 @@ With the App Services projects properly configured, you are now ready to deploy 
 
 3. Select **Azure Function App (Windows)** as the specific target. Select **Next**.
 
-4. In the **Functions instance** tab, choose the **Subscription** that contains your Function App you provisioned earlier. Expand your **Resource Group** (e.g., **intelligent-analytics**), then select the node for your **Function App** in the tree view to select it.
+4. In the **Functions instance** tab, choose the **Subscription** that contains your Function App you provisioned earlier. Expand your **Resource Group** (e.g., **intelligent-analytics**), then select the node for your **Function App** in the tree view to select it. Select **Finish**
 
     ![In the App Service dialog box, the resource group is expanded and the function app chatprocessor is selected.](media/choose-function-app-blur.png "App Service dialog box")
 
-5. Select **Finish** and then **Publish**.
+**Not** Click on **Yes** when prompted upon **Publish** to Update the Azure Function version to match project version. Like this.  
+
+    ![The Azure Function publish dialog box is displayed.](update/ScreenShot00984.png "Publish dialog box")
+
+5. Select **Publish**.
 
     ![The Azure Function publish dialog box is displayed.](media/vs-publish-function-publish.png "Publish dialog box")
 
@@ -1027,9 +1039,19 @@ With the App Services projects properly configured, you are now ready to deploy 
 
     ![In the Specific target window, the Microsoft Azure App Service (Windows) option is selected.](media/azure-app-service-windows-target.png "Windows App Service target")
 
+    ![In the Specific target window, the Microsoft Azure App Service (Windows) option is selected.](update/ScreenShot00985.png "Windows App Service target")
+    
 4. In the **App Service** dialog, choose your **Subscription** that contains your Web App you provisioned earlier. Expand your **Resource Group**, **intelligent-analytics**, then select the node for your **Web App** in the tree view to select it.
 
-5. Select **OK** (or **Finish**). Then, publish the app.
+    ![In the Specific target window, the Microsoft Azure App Service (Windows) option is selected.](update/ScreenShot00986.png "Windows App Service target")
+  
+**Note** Before you publish select Deployment Mode to `Self-contained` using Deployment Mode option 
+    ![In the Specific target window, the Microsoft Azure App Service (Windows) option is selected.](update/ScreenShot00987.png "Windows App Service target")
+
+
+    ![In the Specific target window, the Microsoft Azure App Service (Windows) option is selected.](update/ScreenShot00988.png "Windows App Service target")
+    
+5. Select **OK** (or **Finish**). Then, **publish** the app.
 
 6. When the publishing is complete, a browser window should appear with content like the following:
 
@@ -1055,7 +1077,7 @@ With the App Services projects properly configured, you are now ready to deploy 
 
 4. Select the **Join** button.
 
-5. The Live Chat should appear. Wait for a 1 minute. The first message warms up the system. You should see a message stating you have connected to the chat service and you have joined the session.
+5. The Live Chat should appear. Wait for a **1 minute**. The first message warms up the system. You should see a message stating you have connected to the chat service and you have joined the session.
 
    The **connected** message means you have connected to the web application via SignalR.  The **join** message means you have sent a message to the event hub and the function app Event Hub Trigger copied the message to the service bus topic. Also, the web application has received the message using the topic subscription and pushed it the browser client.
 
@@ -1148,7 +1170,7 @@ In this task, you will add code that enables the Event Processor to invoke the T
     ```
 
 4. Build your **ChatMessageSentimentProcessFunction** project.
-5. Publish your **ChatMessageSentimentProcessFunction** project to Azure.
+5. **Publish** your **ChatMessageSentimentProcessFunction** project to Azure.
 6. Test your sentiment query by selecting the sentiment query and selecting the `Test selected query` button.  Check your results.  Look at the **score** column. You should have all of the negative chat messages. Sentiment analysis has not been applied just yet. The sentiment analysis will be tested after the Language Understanding configuration has been completed.
 
     ![The screen shows the ability to test your queries before saving them.](media/testing-sentiment.png "Test your queries")
@@ -1179,8 +1201,13 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
 
 8. Complete the **Create a new app** form by providing `awchat` as the name for your LUIS app, selecting the **English** culture, selecting the **luis-api-namespace** prediction resource, and then selecting **Done**.
 
-    ![In the Create a new app dialog box, the Name field is set to awchat, and Culture is set to English.](media/2020-08-18-17-46-45.png "Create new app")
+    ![In the Create a new app dialog box, the Name field is set to awchat, and Culture is set to English.](update/ScreenShot01001.png "Create new app")
 
+    ![In the Create a new app dialog box, the Name field is set to awchat, and Culture is set to English.](update/ScreenShot01002.png "Create new app")
+    
+    ![In the Create a new app dialog box, the Name field is set to awchat, and Culture is set to English.](update/ScreenShot01003.png "Create new app")
+    
+   
 9. Scroll through the examples of how to create the intents and utterances. Close the dialog.
 
 10. In a moment, your new `awchat` app will appear.
@@ -1364,28 +1391,6 @@ Now that you have added sentiment analysis and language understanding to the sol
 
     ![In the chat window, Tim is having a conversation with a ConciergeBot. He asks for towels, and the ConciergeBot says they are forwarding the request to Housekeeping.](media/2020-06-29-05-47-15.png "Live Chat window")
 
-### (Optional) Task 4: Improve LUIS Model Performance
-
-As mentioned previously, LUIS captures challenging queries from production use and allows developers to improve, train, test, and deploy their Language Understanding models. The key component that supports this feature is the `log=true` query parameter that is part of the LUIS endpoint.
-
-1. In [LUIS](luis.ai), select the **awchat** conversation app.
-
-2. Select **Review endpoint utterances** below **Improve app performance**.
-
-    ![LUIS endpoint utterances.](./media/review-endpoint-utterances-after-deploy.png "Utterances from the LUIS production endpoint")
-
-3. Consider the first utterance shown above (`the food was terrible`). As this is not a request, and should thus not be routed to neither the Housekeeping nor RoomService entities, the developer must change the **Predicted Intent** to **None**. Then, they must select **Save utterance**.
-
-4. Same applies to the `hello!` utterance. It is not a request, so the developer will change the predicted intent to **None**.
-
-    >**Note**: Is it possible to define an intent for greetings, given that customers will likely issue a greeting before conversing through the app? Will that add value to the app? What entities could you associate with a greetings intent? Defining a logical schema is a critical part of using LUIS.
-
-5. Move test entries that have incorrectly been classified as requests to the **None** intent. Notice how those utterances are now accessible under the **None** intent.
-
-    ![None intent in LUIS with utterances.](./media/none-intent.png "Utterances properly classified as the None intent")
-
-6. Once you've dealt with the suggested utterances, **Train** and **Test** the LUIS model.
-
 ## Exercise 5: Building the Power BI dashboard
 
 Duration: 30 minutes
@@ -1394,7 +1399,7 @@ Now that you have the solution deployed and exchanging messages, you can build a
 
 ### Task 1: Provision Power BI
 
-If you do not already have a Power BI account:
+If you do not already have a Power BI account: Otherwise ignore **Task 1**
 
 1. Go to <https://powerbi.microsoft.com/features/>.
 
