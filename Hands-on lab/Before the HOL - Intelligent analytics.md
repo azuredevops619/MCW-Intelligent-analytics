@@ -165,7 +165,7 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 
     ![The Review + create button displayed.](update/ScreenShot00956.png "Review and create button")
     
-**Note:** Log into Azure portal with PowerBI user and do all the steps (Next lab) with this new user only. 
+4. **Note:** Log into Azure portal with PowerBI user and do all the steps (in Next lab) with this new user only. 
 
 ![The Review + create button displayed.](update/ScreenShot00959.png "Review and create button")
 
