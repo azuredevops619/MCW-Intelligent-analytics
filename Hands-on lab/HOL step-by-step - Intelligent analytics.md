@@ -312,7 +312,7 @@ In this section, you will provision a Service Bus Namespace and Service Bus Topi
 
 Leave any other settings to defaults. 
   
-    Select the **Create** button.
+Select the **Create** button.
   
 11. Navigate back to the **Service Bus namespace** in the Azure Portal.
 
@@ -466,7 +466,7 @@ Now, go to Cost Management and set Total throughput limit setting to **No limit.
 
    ![The screen shows the Cosmos DB name the user chose and the add new container button is circled.](update/ScreenShot00994.png "Add New Container")
 
-        > **Note**: Pick a field in this schema.  Otherwise, you will have no documents in the Cosmo DB container. Below is a sample of the messages stored in the Cosmo DB at a later part in the lab. Data is not present in the container at this point in time. 
+      > **Note**: Pick a field in this schema.  Otherwise, you will have no documents in the Cosmo DB container. Below is a sample of the messages stored in the Cosmo DB at a later part in the lab. Data is not present in the container at this point in time. 
 
         ![A sample document in Json format is shown displaying all of the fields available to use as a partition key. The username field is highlighted.](media/2019-03-21-13-18-47.png "Possible fields to partition on.")
 
@@ -727,12 +727,6 @@ The EventProcessorHost requires an Azure Storage account that it will use to man
     - **Performance**: Set to **Standard**.
   
     - **Redundancy**: Set to **Locally Redundant Storage (LRS)**.
-
-    Go to the **Advanced** tab.
-
-    - **Enable secure transfer**: Uncheck the box.
-
-    - **Access tier**: **Hot**
 
     - Select **Review + create**.  Select **Create**.
 
@@ -1011,9 +1005,9 @@ With the App Services projects properly configured, you are now ready to deploy 
 
     ![In the App Service dialog box, the resource group is expanded and the function app chatprocessor is selected.](media/choose-function-app-blur.png "App Service dialog box")
 
-**Not** Click on **Yes** when prompted upon **Publish** to Update the Azure Function version to match project version. Like this.  
+**Note** Click on **Yes** when prompted upon **Publish** to Update the Azure Function version to match project version. Like this.  
 
-    ![The Azure Function publish dialog box is displayed.](update/ScreenShot00984.png "Publish dialog box")
+   ![The Azure Function publish dialog box is displayed.](update/ScreenShot00984.png "Publish dialog box")
 
 5. Select **Publish**.
 
@@ -1039,9 +1033,11 @@ With the App Services projects properly configured, you are now ready to deploy 
 
     ![In the Specific target window, the Microsoft Azure App Service (Windows) option is selected.](media/azure-app-service-windows-target.png "Windows App Service target")
 
-    ![In the Specific target window, the Microsoft Azure App Service (Windows) option is selected.](update/ScreenShot00985.png "Windows App Service target")
+
     
 4. In the **App Service** dialog, choose your **Subscription** that contains your Web App you provisioned earlier. Expand your **Resource Group**, **intelligent-analytics**, then select the node for your **Web App** in the tree view to select it.
+
+    ![In the Specific target window, the Microsoft Azure App Service (Windows) option is selected.](update/ScreenShot00985.png "Windows App Service target")
 
     ![In the Specific target window, the Microsoft Azure App Service (Windows) option is selected.](update/ScreenShot00986.png "Windows App Service target")
   
@@ -1049,7 +1045,7 @@ With the App Services projects properly configured, you are now ready to deploy 
     ![In the Specific target window, the Microsoft Azure App Service (Windows) option is selected.](update/ScreenShot00987.png "Windows App Service target")
 
 
-    ![In the Specific target window, the Microsoft Azure App Service (Windows) option is selected.](update/ScreenShot00988.png "Windows App Service target")
+   ![In the Specific target window, the Microsoft Azure App Service (Windows) option is selected.](update/ScreenShot00988.png "Windows App Service target")
     
 5. Select **OK** (or **Finish**). Then, **publish** the app.
 
@@ -1208,7 +1204,7 @@ In this task, you will create a LUIS app, publish it, and then enable the Event 
     ![In the Create a new app dialog box, the Name field is set to awchat, and Culture is set to English.](update/ScreenShot01003.png "Create new app")
     
    
-9. Scroll through the examples of how to create the intents and utterances. Close the dialog.
+9. Close the dialog.
 
 10. In a moment, your new `awchat` app will appear.
 
