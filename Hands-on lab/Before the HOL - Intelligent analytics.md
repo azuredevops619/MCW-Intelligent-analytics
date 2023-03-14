@@ -169,4 +169,4 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 
 ![The Review + create button displayed.](update/ScreenShot00959.png "Review and create button")
 
-You should follow all steps provided *above* performing the next part of the Hands-on lab.
+You should follow all steps provided *above* before performing the next part of the Hands-on lab (part 2).
