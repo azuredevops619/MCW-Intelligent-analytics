@@ -65,7 +65,7 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 
     - **Virtual Machine Name**: Enter `LabVM`
 
-    - **Region**: East US
+    - **Region**: East US or any other suitable location as instructed by the trainer. 
 
     - **Availability Options**:  Leave the availability option as **No infrastructure redundancy required**
 
