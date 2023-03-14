@@ -49,7 +49,7 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 
 ### Task: Setup a lab virtual machine
 
-1. In the [Azure Portal](https://portal.azure.com/), select **+Create a resource** from the left menu, then type `Visual Studio` into the search bar. Then select **Visual Studio Community 2019(latest release) on Windows Server 2019 (x64)** from the results. Note: Do not select enterprise edition. 
+1. In the [Azure Portal](https://portal.azure.com/), select **+Create a resource** from the left menu, then type `Visual Studio` into the search bar. Then select **Visual Studio Community 2019 on Windows Server 2019 (x64)** from the results. Note: Do not select enterprise edition. 
 
     ![In the Azure Portal, Visual Studio 2019 Latest is entered into the search textbox. Visual Studio 2019 Latest is displayed in the Search suggestions.](media/2019-06-19-15-05-08.png "Visual Studio 2019 Latest option is displayed")
 
@@ -69,7 +69,7 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
 
     - **Availability Options**:  Leave the availability option as **No infrastructure redundancy required**
 
-    - **Image**: Select **Visual Studio 2019 Community (latest release) on Windows Server 2019 (x64)**
+    - **Image**: Select **Visual Studio 2019 Community on Windows Server 2019 (x64)**
 
     - **Size**: Select the **See all sizes** link, and choose **Standard D2s v3** or any other suitable size. 
 
@@ -149,17 +149,17 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
     
 ### Task: Create a Power BI account
 
-1. Navigate to [Power BI sign up](https://powerbi.microsoft.com/) to create an account.
+1. Navigate to [Power BI sign up](https://powerbi.microsoft.com/) to create an account. Click on `Try free` on the top. 
 
     ![The Review + create button displayed.](update/ScreenShot00949.png "Review and create button")
     
-2. Use your powerBI user to complete the sign in. 
+2. Use your powerBI user to complete the sign in form. 
     
     ![The Review + create button displayed.](update/ScreenShot00950.png "Review and create button")
     
     ![The Review + create button displayed.](update/ScreenShot00951.png "Review and create button")
 
-4. Create a 60 day free powerBI trial.   
+4. Create a 60 day free powerBI trial by clicking on `Try free`.   
 
     ![The Review + create button displayed.](update/ScreenShot00955.png "Review and create button")
 
@@ -167,6 +167,6 @@ Synopsis: In this exercise, you will set up your environment for use in the rest
     
 **Note:** Log into Azure portal with PowerBI user and do all the steps (Next lab) with this new user only. 
 
-    ![The Review + create button displayed.](update/ScreenShot00959.png "Review and create button")
+![The Review + create button displayed.](update/ScreenShot00959.png "Review and create button")
 
 You should follow all steps provided *above* performing the next part of the Hands-on lab.
