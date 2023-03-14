@@ -468,7 +468,7 @@ Now, go to Cost Management and set Total throughput limit setting to **No limit.
 
       > **Note**: Pick a field in this schema.  Otherwise, you will have no documents in the Cosmo DB container. Below is a sample of the messages stored in the Cosmo DB at a later part in the lab. Data is not present in the container at this point in time. 
 
-        ![A sample document in Json format is shown displaying all of the fields available to use as a partition key. The username field is highlighted.](media/2019-03-21-13-18-47.png "Possible fields to partition on.")
+      ![A sample document in Json format is shown displaying all of the fields available to use as a partition key. The username field is highlighted.](media/2019-03-21-13-18-47.png "Possible fields to partition on.")
 
     - **Throughput**: Set to `400`.
 
